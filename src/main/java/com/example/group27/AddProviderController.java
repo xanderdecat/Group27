@@ -110,16 +110,18 @@ public class AddProviderController {
 
 
     public void goToProviderPage(ActionEvent actionEvent) {
-        try {
-            FXMLLoader fxmlLoader = new FXMLLoader();
-            fxmlLoader.setLocation(getClass().getResource("ProviderPage.fxml"));
-            Scene scene = new Scene(fxmlLoader.load(), 630, 400);
-            Stage stage = new Stage();
-            stage.setTitle("Muzer");
-            stage.setScene(scene);
-            stage.show();
-            ((Node) (actionEvent.getSource())).getScene().getWindow().hide();
-        } catch (IOException e) {
+        if (VATNumberInput.getText() != null && accountNumberInput.getText() != null && ZIPCodeInput.getText() != null && activityDateInput.getValue() != null && artistNameInput.getText() != null && cityInput.getText() != null && conditionsInput.getText() != null && countryInput.getText() != null && descriptionInput.getText() != null && houseNumberInput.getText() != null && linkToPageInput.getText() != null && linkToSetInput.getText() != null && maxHoursInput.getText() != null && minHoursInput.getText() != null && priceHourInput.getText() != null && straatNameInput.getText() != null) {
+            try {
+                FXMLLoader fxmlLoader = new FXMLLoader();
+                fxmlLoader.setLocation(getClass().getResource("ProviderPage.fxml"));
+                Scene scene = new Scene(fxmlLoader.load(), 630, 400);
+                Stage stage = new Stage();
+                stage.setTitle("Muzer");
+                stage.setScene(scene);
+                stage.show();
+                ((Node) (actionEvent.getSource())).getScene().getWindow().hide();
+            } catch (IOException e) {
+            }
         }
     }
 
