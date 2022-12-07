@@ -1,4 +1,127 @@
 package com.example.group27;
 
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.DatePicker;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+import javafx.stage.Stage;
+
+import java.io.IOException;
+
 public class AddProviderController {
+
+    @FXML
+    private TextField VATNumberInput;
+
+    @FXML
+    private TextField ZIPCodeInput;
+
+    @FXML
+    private TextField accountNumberInput;
+
+    @FXML
+    private DatePicker activityDateInput;
+
+    @FXML
+    private TextField artistNameInput;
+
+    @FXML
+    private TextField cityInput;
+
+    @FXML
+    private TextField conditionsInput;
+
+    @FXML
+    private TextField countryInput;
+
+    @FXML
+    private TextField descriptionInput;
+
+    @FXML
+    private TextField houseNumberInput;
+
+    @FXML
+    private TextField linkToPageInput;
+
+    @FXML
+    private TextField linkToSetInput;
+
+    @FXML
+    private TextField maxHoursInput;
+
+    @FXML
+    private TextField minHoursInput;
+
+    @FXML
+    private TextField priceHourInput;
+
+    @FXML
+    private Button registerMP;
+
+    @FXML
+    private TextField straatNameInput;
+
+    @FXML
+    private Label testLbl;
+
+    @FXML
+    private Label testLbl1;
+
+    @FXML
+    private Label testLbl11;
+
+    @FXML
+    private Label testLbl111;
+
+    @FXML
+    private Label testLbl1111;
+
+    @FXML
+    private Label testLbl11111;
+
+    @FXML
+    private Label testLbl1112;
+
+    @FXML
+    private Label testLbl1113;
+
+    @FXML
+    private Label testLbl11131;
+
+    // gaat terug naar HOMESCREEN
+    public void goToHomeScreen(ActionEvent actionEvent) {
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader();
+            fxmlLoader.setLocation(getClass().getResource("HomeScreenPage.fxml"));
+            Scene scene = new Scene(fxmlLoader.load(), 630, 400);
+            Stage stage = new Stage();
+            stage.setTitle("Muzer");
+            stage.setScene(scene);
+            stage.show();
+            ((Node) (actionEvent.getSource())).getScene().getWindow().hide();
+        } catch (IOException e) {
+        }
+    }
+
+
+    public void goToProviderPage(ActionEvent actionEvent) {
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader();
+            fxmlLoader.setLocation(getClass().getResource("ProviderPage.fxml"));
+            Scene scene = new Scene(fxmlLoader.load(), 630, 400);
+            Stage stage = new Stage();
+            stage.setTitle("Muzer");
+            stage.setScene(scene);
+            stage.show();
+            ((Node) (actionEvent.getSource())).getScene().getWindow().hide();
+        } catch (IOException e) {
+        }
+    }
+
+
 }

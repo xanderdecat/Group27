@@ -15,7 +15,7 @@ private User userMain;
         userMain = new User();
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("WelcomePage.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 630, 400);
-        stage.setTitle("Event App!");
+        stage.setTitle("Muzer");
         stage.setScene(scene);
         stage.show();
     }

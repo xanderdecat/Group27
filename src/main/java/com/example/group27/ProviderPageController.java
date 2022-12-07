@@ -8,37 +8,41 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class WelcomePageController {
-
-    //
-    public void goToLogInPage(ActionEvent actionEvent) {
+public class ProviderPageController {
+    public void logOut(ActionEvent actionEvent) {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader();
-            fxmlLoader.setLocation(getClass().getResource("LogInUser.fxml"));
+            fxmlLoader.setLocation(getClass().getResource("WelcomePAge.fxml"));
             Scene scene = new Scene(fxmlLoader.load(), 630, 400);
             Stage stage = new Stage();
             stage.setTitle("Muzer");
             stage.setScene(scene);
             stage.show();
-            ((Node)(actionEvent.getSource())).getScene().getWindow().hide();
-        }
-        catch (IOException e) {
+            ((Node) (actionEvent.getSource())).getScene().getWindow().hide();
+        } catch (IOException e) {
         }
     }
 
-    public void goToNewUserPage(ActionEvent actionEvent) throws IOException {
+    public void goToHomeScreen(ActionEvent actionEvent) {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader();
-            fxmlLoader.setLocation(getClass().getResource("AddUser.fxml"));
+            fxmlLoader.setLocation(getClass().getResource("HomeScreenPage.fxml"));
             Scene scene = new Scene(fxmlLoader.load(), 630, 400);
             Stage stage = new Stage();
             stage.setTitle("Muzer");
             stage.setScene(scene);
             stage.show();
-            ((Node)(actionEvent.getSource())).getScene().getWindow().hide();
+            ((Node) (actionEvent.getSource())).getScene().getWindow().hide();
+        } catch (IOException e) {
         }
-         catch (IOException e) {
-        }
+    }
 
+    public void goToPreviousEvents(ActionEvent actionEvent) {
+    }
+
+    public void goToAcceptedEvents(ActionEvent actionEvent) {
+    }
+
+    public void acceptRequestedEvent(ActionEvent actionEvent) {
     }
 }

@@ -7,27 +7,28 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.group27.HomeScreenPageController">
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.group27.ProviderPageController">
    <children>
-      <BorderPane prefHeight="400.0" prefWidth="600.0">
+      <BorderPane layoutX="10.0" layoutY="10.0" prefHeight="400.0" prefWidth="600.0">
          <top>
             <AnchorPane prefHeight="63.0" prefWidth="600.0" BorderPane.alignment="CENTER">
                <children>
                   <Button layoutX="519.0" layoutY="19.0" mnemonicParsing="false" onAction="#logOut" text="Log out" />
-                  <Label layoutX="47.0" layoutY="12.0" text="(NAME)">
+                  <Label fx:id="artistName" layoutX="47.0" layoutY="12.0" text="(ARTIST NAME)">
                      <font>
                         <Font name="System Bold Italic" size="33.0" />
                      </font>
                   </Label>
-                  <Button layoutX="369.0" layoutY="19.0" mnemonicParsing="false" onAction="#goToAddProviderPage" text="Upgrade to provider" />
+                  <Button layoutX="373.0" layoutY="19.0" mnemonicParsing="false" onAction="#goToHomeScreen" text="Back to home screen" />
                </children>
             </AnchorPane>
          </top>
          <left>
             <AnchorPane prefHeight="337.0" prefWidth="153.0" BorderPane.alignment="CENTER">
                <children>
-                  <Button layoutX="19.0" layoutY="14.0" mnemonicParsing="false" onAction="#goToCreateNewEvent" text="Create new event" />
-                  <Button layoutX="12.0" layoutY="50.0" mnemonicParsing="false" onAction="#goToSeePreviousEvents" text="See previous events" />
+                  <Button layoutX="17.0" layoutY="85.0" mnemonicParsing="false" onAction="#goToPreviousEvents" prefWidth="120.0" text="Previous events" />
+                  <Button layoutX="17.0" layoutY="51.0" mnemonicParsing="false" onAction="#goToAcceptedEvents" prefWidth="120.0" text="Accepted events" />
                </children>
             </AnchorPane>
          </left>
@@ -35,8 +36,8 @@
             <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                <children>
                   <ListView layoutX="29.0" layoutY="50.0" prefHeight="224.0" prefWidth="381.0" />
-                  <Label layoutX="29.0" layoutY="25.0" text="All your upcoming events:" />
-                  <Button layoutX="29.0" layoutY="290.0" mnemonicParsing="false" text="View upcoming event" />
+                  <Label layoutX="29.0" layoutY="25.0" text="All your requested events:" />
+                  <Button layoutX="29.0" layoutY="290.0" mnemonicParsing="false" onAction="#acceptRequestedEvent" text="Accept request" />
                </children>
             </AnchorPane>
          </center>

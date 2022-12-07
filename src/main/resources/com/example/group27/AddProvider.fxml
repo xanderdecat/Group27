@@ -48,7 +48,8 @@
       <TextField fx:id="linkToPageInput" layoutX="213.0" layoutY="623.0" prefHeight="27.0" prefWidth="200.0" />
       <Label fx:id="testLbl1113" layoutX="129.0" layoutY="628.0" text="Link to page" />
       <Label fx:id="testLbl11131" layoutX="138.0" layoutY="660.0" text="Genre" />
-      <Button fx:id="registerMP" layoutX="186.0" layoutY="705.0" mnemonicParsing="false" text="Register as new Music Provider" />
+      <Button fx:id="registerMP" layoutX="186.0" layoutY="705.0" mnemonicParsing="false" onAction="#goToProviderPage" text="Register as new Music Provider" />
       <ChoiceBox layoutX="213.0" layoutY="656.0" prefHeight="26.0" prefWidth="200.0" />
+      <Button layoutX="68.0" layoutY="706.0" mnemonicParsing="false" onAction="#goToHomeScreen" text="Back" />
    </children>
 </AnchorPane>
