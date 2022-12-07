@@ -1,5 +1,9 @@
 package APPLICATION;
 
+import java.time.Instant;
+import java.time.LocalDate;
+import java.time.Period;
+import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -23,7 +27,9 @@ public class User {
         this.lastName = lastName;
         this.name = firstName + " " + lastName;
         this.dateOfBirth = dateOfBirth;
-        // this.age =
+        Instant instant = dateOfBirth.toInstant();
+        LocalDate localDateOfBirth = instant.atZone(ZoneId.systemDefault()).toLocalDate();
+        this.age = Period.between(localDateOfBirth, LocalDate.now()).getYears();
         this.email = email;
         this.phoneNumber = phoneNumber;
     }
