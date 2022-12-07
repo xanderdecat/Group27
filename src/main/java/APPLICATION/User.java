@@ -15,24 +15,17 @@ public class User {
     private int age;                            // derived from dateOfBirth
     private String email;           // multiple emails
     private String phoneNumber;     // multiple phoneNumbers
-    private ArrayList<Event> actualEvents;
-    private ArrayList<Event> history;
-    private ArrayList<Review> reviews;
 
-    // constructor
+    // constructor for GUI
     public User(String firstName, String lastName, Date dateOfBirth, String email, String phoneNumber) {
         this.userNumber = helpUserNumber++;
         this.firstName = firstName;
         this.lastName = lastName;
         this.name = firstName + " " + lastName;
         this.dateOfBirth = dateOfBirth;
-        //this.age = Period.between(dateOfBirth, LocalDate.now()).getYears();      // correct
+        // this.age =
         this.email = email;
         this.phoneNumber = phoneNumber;
-        this.actualEvents = new ArrayList<>();
-        this.history = new ArrayList<>();
-        this.reviews = new ArrayList<>();
-        // userDAO.update()
     }
 
     // constructor for UserDAO
