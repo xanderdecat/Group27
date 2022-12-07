@@ -24,6 +24,20 @@ public class LogInUserController {
 
     // gaat verder naar HOMEPAGE
     public void goToHomePage(ActionEvent actionEvent) {
+
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader();
+            fxmlLoader.setLocation(getClass().getResource("HomeScreenPage.fxml"));
+            Scene scene = new Scene(fxmlLoader.load(), 630, 400);
+            Stage stage = new Stage();
+            stage.setTitle("Home screen");
+            stage.setScene(scene);
+            stage.show();
+            ((Node) (actionEvent.getSource())).getScene().getWindow().hide();
+        } catch (IOException e) {
+        }
+    }
+        /*
         if (!(emailInput.getText() == null || emailInput.getText().length() == 0)) {
             if (User.logUserInFromEmail(emailInput.toString())) {
                 try {
@@ -39,7 +53,9 @@ public class LogInUserController {
                 }
             }
         }
-    }
+
+         */
+
     // gaat terug naar WELCOMEPAGE
     public void goToWelcomePage(ActionEvent actionEvent) {
         try {
