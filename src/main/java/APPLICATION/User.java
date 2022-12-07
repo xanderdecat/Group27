@@ -1,5 +1,7 @@
 package APPLICATION;
 
+import DB.UserDAO;
+
 import java.time.Instant;
 import java.time.LocalDate;
 import java.time.Period;
@@ -43,6 +45,17 @@ public class User {
         this.age = age;
         this.email = email;
         this.phoneNumber = phoneNumber;
+    }
+    //empty constructor used in the main
+
+    public User() {
+    }
+
+    public static boolean logUserInFromEmail(String email){
+        for(User user : UserDAO.getUsers())
+            if (email.equals(user.getEmail()))
+                return true;
+        return false;
     }
 
 

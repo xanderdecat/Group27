@@ -1,6 +1,7 @@
 package DB;
 
 import APPLICATION.User;
+import javafx.scene.control.TextField;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -143,7 +144,9 @@ public class UserDAO { //klasse om te interageren met de database user table
         return null;
     }
 
-    public void deteUser(User u) {
+
+
+    public void deleteUser(User u) {
         Connection con = null;
         try {
             con = DBHandler.getConnection();
