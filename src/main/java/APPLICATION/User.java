@@ -123,20 +123,4 @@ public class User {
         this.phoneNumber = phoneNumber;
     }
 
-    public ArrayList<Event> getHistory() {
-        return history;
-    }
-
-    public void setHistory(ArrayList<Event> history) {
-        this.history = history;
-    }
-
-    public ArrayList<Review> getReviews() {
-        return reviews;
-    }
-
-    public void setReviews(ArrayList<Review> reviews) {
-        this.reviews = reviews;
-    }
-
 }

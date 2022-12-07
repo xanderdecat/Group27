@@ -20,7 +20,7 @@ public class LogInUserController {
     @FXML
     private TextField emailInput;
 
-    //
+    // gaat verder naar HOMEPAGE
     public void goToHomePage(ActionEvent actionEvent) {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader();

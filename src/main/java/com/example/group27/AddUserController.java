@@ -37,30 +37,32 @@ public class AddUserController {
     @FXML
     private TextField phoneNumber;
 
+    // gaat verder naar HOMEPAGE indien gegevens OK
     public void goToHomePage(ActionEvent actionEvent) {
-        String firstName1 = firstName.getText();
-        String lastName1 = lastName.getText();
-        LocalDate ld = dateOfBirth.getValue();
-        Instant instant = Instant.from(ld.atStartOfDay(ZoneId.systemDefault()));
-        Date dob = Date.from(instant);
-        String email1 = email.getText();
-        String phoneNumber1 = phoneNumber.getText();
+        if (dateOfBirth.getValue() != null && email.getText() != null && firstName.getText() != null && lastName.getText() != null && phoneNumber.getText() != null) {
+            String firstName1 = firstName.getText();
+            String lastName1 = lastName.getText();
+            LocalDate ld = dateOfBirth.getValue();
+            Instant instant = Instant.from(ld.atStartOfDay(ZoneId.systemDefault()));
+            Date dob = Date.from(instant);
+            String email1 = email.getText();
+            String phoneNumber1 = phoneNumber.getText();
 
-        User newUser = new User(firstName1, lastName1, dob, email1, phoneNumber1);
-        DB.UserDAO.saveUser(newUser);   // toevoegen aan DataBase
+            User newUser = new User(firstName1, lastName1, dob, email1, phoneNumber1);
+            DB.UserDAO.saveUser(newUser);   // toevoegen aan DataBase
 
-        try {
+            try {
 
-            FXMLLoader fxmlLoader = new FXMLLoader();
-            fxmlLoader.setLocation(getClass().getResource("HomeScreenPage.fxml"));
-            Scene scene = new Scene(fxmlLoader.load(), 630, 400);
-            Stage stage = new Stage();
-            stage.setTitle("Home screen");
-            stage.setScene(scene);
-            stage.show();
-            ((Node)(actionEvent.getSource())).getScene().getWindow().hide();
-        }
-        catch (IOException e) {
+                FXMLLoader fxmlLoader = new FXMLLoader();
+                fxmlLoader.setLocation(getClass().getResource("HomeScreenPage.fxml"));
+                Scene scene = new Scene(fxmlLoader.load(), 630, 400);
+                Stage stage = new Stage();
+                stage.setTitle("Home screen");
+                stage.setScene(scene);
+                stage.show();
+                ((Node) (actionEvent.getSource())).getScene().getWindow().hide();
+            } catch (IOException e) {
+            }
         }
     }
 }
