@@ -24,6 +24,7 @@ public class LogInUserController {
 
     // gaat verder naar HOMEPAGE
     public void goToHomePage(ActionEvent actionEvent) {
+        // ok
         if (!(emailInput.getText() == null || emailInput.getText().length() == 0)) {
             if (User.logUserInFromEmail(emailInput.toString())) {
                 try {
