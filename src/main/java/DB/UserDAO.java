@@ -65,7 +65,7 @@ public class UserDAO { //klasse om te interageren met de database user table
         }
     }
 
-    public void saveUser(User u) {
+    public static void saveUser(User u) {
         Connection con = null;
         try {
             con = DBHandler.getConnection();

@@ -1,5 +1,6 @@
 package com.example.group27;
 
+import APPLICATION.User;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -11,6 +12,10 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.time.Instant;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.util.Date;
 
 public class AddUserController {
 
@@ -33,14 +38,19 @@ public class AddUserController {
     private TextField phoneNumber;
 
     public void goToHomePage(ActionEvent actionEvent) {
+        String firstName1 = firstName.getText();
+        String lastName1 = lastName.getText();
+        LocalDate ld = dateOfBirth.getValue();
+        Instant instant = Instant.from(ld.atStartOfDay(ZoneId.systemDefault()));
+        Date dob = Date.from(instant);
+        String email1 = email.getText();
+        String phoneNumber1 = phoneNumber.getText();
+
+        User newUser = new User(firstName1, lastName1, dob, email1, phoneNumber1);
+        DB.UserDAO.saveUser(newUser);   // toevoegen aan DataBase
 
         try {
-            /*
-            String firstName1 = firstName.getText();
-            String lastName1 = lastName.getText();
-            // Date dob = dateOfBirth.get
 
-             */
             FXMLLoader fxmlLoader = new FXMLLoader();
             fxmlLoader.setLocation(getClass().getResource("HomeScreenPage.fxml"));
             Scene scene = new Scene(fxmlLoader.load(), 630, 400);
