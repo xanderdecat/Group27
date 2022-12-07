@@ -104,7 +104,10 @@ public class ProviderDAO extends UserDAO {
         }
     }
 
-    public void saveProvider(Provider p) {
+
+    }
+
+    public static void saveProvider(Provider p) {
         Connection con = null;
         try {
             con = DBHandler.getConnection();
