@@ -1,5 +1,7 @@
 package com.example.group27;
 
+import APPLICATION.Provider;
+import DB.ProviderDAO;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -12,6 +14,12 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.time.Instant;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.util.Date;
 
 public class AddProviderController {
 
@@ -64,7 +72,7 @@ public class AddProviderController {
     private Button registerMP;
 
     @FXML
-    private TextField straatNameInput;
+    private TextField streetNameInput;
 
     @FXML
     private Label testLbl;
@@ -109,8 +117,37 @@ public class AddProviderController {
     }
 
 
-    public void goToProviderPage(ActionEvent actionEvent) {
-        if (VATNumberInput.getText() != null && accountNumberInput.getText() != null && ZIPCodeInput.getText() != null && activityDateInput.getValue() != null && artistNameInput.getText() != null && cityInput.getText() != null && conditionsInput.getText() != null && countryInput.getText() != null && descriptionInput.getText() != null && houseNumberInput.getText() != null && linkToPageInput.getText() != null && linkToSetInput.getText() != null && maxHoursInput.getText() != null && minHoursInput.getText() != null && priceHourInput.getText() != null && straatNameInput.getText() != null) {
+    public void goToProviderPage(ActionEvent actionEvent) {         //op een of andere manier nog voorwaarden opleggen aan de input
+        if (VATNumberInput.getText() != null && accountNumberInput.getText() != null && ZIPCodeInput.getText() != null && activityDateInput.getValue() != null && artistNameInput.getText() != null && cityInput.getText() != null && countryInput.getText() != null && descriptionInput.getText() != null && houseNumberInput.getText() != null &&  linkToSetInput.getText() != null && maxHoursInput.getText() != null && minHoursInput.getText() != null && priceHourInput.getText() != null && straatNameInput.getText() != null) {
+            String VATNumber = VATNumberInput.getText().toString();
+            String accountNumber = accountNumberInput.getText().toString();
+            int ZIPCode = Integer.parseInt(ZIPCodeInput.getText().toString());
+            LocalDate ld = activityDateInput.getValue();
+            Instant instant = Instant.from(ld.atStartOfDay(ZoneId.systemDefault()));
+            Date activityDate = Date.from(instant);
+            String artistName = artistNameInput.getText().toString();
+            String city = cityInput.getText().toString();
+            String conditions = conditionsInput.getText().toString();
+            String country = countryInput.getText().toString();
+            String description = descriptionInput.getText().toString();
+            int houseNumber = Integer.parseInt(houseNumberInput.getText().toString());
+                try {
+                    URL linkToPage = new URL(linkToPageInput.getText().toString());
+                } catch (MalformedURLException e) {
+                    throw new RuntimeException(e);
+                }
+            try {
+                URL linkToSet = new URL(linkToSetInput.getText().toString());
+            } catch (MalformedURLException e) {
+                throw new RuntimeException(e);
+            }
+            Double maxHours = Double.parseDouble(maxHoursInput.getText().toString());
+            Double minHours = Double.parseDouble(minHoursInput.getText().toString());
+            Double priceHour = Double.parseDouble(priceHourInput.getText().toString());
+            String streetName = streetNameInput.getText().toString();
+            Provider provider = new Provider(userNumber, firstName, lastName, dateOfBirth, age, email, phoneNumber, VATNumber, accountNumber, streetName, houseNumber, ZIPCode, city, country, artistName,
+            genre, activityDate, priceHour, minHours, maxHours, conditions, description, linkToSet, linkToPage);
+            ProviderDAO.saveProvider(provider);
             try {
                 FXMLLoader fxmlLoader = new FXMLLoader();
                 fxmlLoader.setLocation(getClass().getResource("ProviderPage.fxml"));
