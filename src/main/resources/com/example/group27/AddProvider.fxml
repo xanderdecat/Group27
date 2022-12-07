@@ -25,7 +25,7 @@
             <Font size="21.0" />
          </font>
       </Label>
-      <TextField fx:id="straatNameInput" layoutX="212.0" layoutY="139.0" prefHeight="27.0" prefWidth="200.0" />
+      <TextField fx:id="streertNameInput" layoutX="212.0" layoutY="139.0" prefHeight="27.0" prefWidth="200.0" />
       <TextField fx:id="houseNumberInput" layoutX="212.0" layoutY="170.0" prefHeight="27.0" prefWidth="200.0" />
       <TextField fx:id="ZIPCodeInput" layoutX="212.0" layoutY="202.0" prefHeight="27.0" prefWidth="200.0" />
       <TextField fx:id="cityInput" layoutX="212.0" layoutY="234.0" prefHeight="27.0" prefWidth="200.0" />

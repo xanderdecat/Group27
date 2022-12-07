@@ -118,7 +118,7 @@ public class AddProviderController {
 
 
     public void goToProviderPage(ActionEvent actionEvent) {         //op een of andere manier nog voorwaarden opleggen aan de input
-        if (VATNumberInput.getText() != null && accountNumberInput.getText() != null && ZIPCodeInput.getText() != null && activityDateInput.getValue() != null && artistNameInput.getText() != null && cityInput.getText() != null && countryInput.getText() != null && descriptionInput.getText() != null && houseNumberInput.getText() != null &&  linkToSetInput.getText() != null && maxHoursInput.getText() != null && minHoursInput.getText() != null && priceHourInput.getText() != null && straatNameInput.getText() != null) {
+        if (VATNumberInput.getText() != null && accountNumberInput.getText() != null && ZIPCodeInput.getText() != null && activityDateInput.getValue() != null && artistNameInput.getText() != null && cityInput.getText() != null && countryInput.getText() != null && descriptionInput.getText() != null && houseNumberInput.getText() != null &&  linkToSetInput.getText() != null && maxHoursInput.getText() != null && minHoursInput.getText() != null && priceHourInput.getText() != null && streetNameInput.getText() != null) {
             String VATNumber = VATNumberInput.getText().toString();
             String accountNumber = accountNumberInput.getText().toString();
             int ZIPCode = Integer.parseInt(ZIPCodeInput.getText().toString());
@@ -145,9 +145,9 @@ public class AddProviderController {
             Double minHours = Double.parseDouble(minHoursInput.getText().toString());
             Double priceHour = Double.parseDouble(priceHourInput.getText().toString());
             String streetName = streetNameInput.getText().toString();
-            Provider provider = new Provider(userNumber, firstName, lastName, dateOfBirth, age, email, phoneNumber, VATNumber, accountNumber, streetName, houseNumber, ZIPCode, city, country, artistName,
-            genre, activityDate, priceHour, minHours, maxHours, conditions, description, linkToSet, linkToPage);
-            ProviderDAO.saveProvider(provider);
+            // Provider provider = new Provider(userNumber, firstName, lastName, dateOfBirth, age, email, phoneNumber, VATNumber, accountNumber, streetName, houseNumber, ZIPCode, city, country, artistName,
+            // genre, activityDate, priceHour, minHours, maxHours, conditions, description, linkToSet, linkToPage);
+            // ProviderDAO.saveProvider(provider);
             try {
                 FXMLLoader fxmlLoader = new FXMLLoader();
                 fxmlLoader.setLocation(getClass().getResource("ProviderPage.fxml"));

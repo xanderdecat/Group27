@@ -25,6 +25,18 @@ public class HomeScreenPageController {
     }
 
     public void goToCreateNewEvent(ActionEvent actionEvent) {
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader();
+            fxmlLoader.setLocation(getClass().getResource("AddEvent.fxml"));
+            Scene scene = new Scene(fxmlLoader.load(), 630, 600);
+            Stage stage = new Stage();
+            stage.setTitle("Muzer");
+            stage.setScene(scene);
+            stage.show();
+            ((Node)(actionEvent.getSource())).getScene().getWindow().hide();
+        }
+        catch (IOException e) {
+        }
     }
 
     public void goToSeePreviousEvents(ActionEvent actionEvent) {
