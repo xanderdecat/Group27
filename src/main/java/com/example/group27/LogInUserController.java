@@ -34,7 +34,7 @@ public class LogInUserController {
     public void goToHomePage(ActionEvent actionEvent) {
         for (User user : UserDAO.getUsers())
             if (user.getEmail().equals(emailInput.getText()) && user.getPassword().equals(passwordInput.getText())) {
-                HelloApplication.userMain = new User(user.getFirstName(), user.getLastName(), user.getDateOfBirth(), user.getEmail(), user.getPhoneNumber(), user.getPassword());
+                HelloApplication.userMain = new User(user.getUserNumber(), user.getFirstName(), user.getLastName(), user.getDateOfBirth(), user.getAge(), user.getEmail(), user.getPhoneNumber(), user.getPassword());
                 try {
                     FXMLLoader fxmlLoader = new FXMLLoader();
                     fxmlLoader.setLocation(getClass().getResource("HomeScreenPage.fxml"));

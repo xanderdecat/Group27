@@ -1,6 +1,9 @@
 package APPLICATION;
 
+import DB.EventDAO;
+
 import java.net.URL;
+import java.time.Duration;
 import java.time.LocalDateTime;
 
 public class Event {
@@ -43,6 +46,7 @@ public class Event {
 
     // constructor for GUI
     public Event(int eventUserNumber, String eventName, String streetName, int houseNumber, int ZIP, String city, String country, LocalDateTime startDate, LocalDateTime endDate, String description, URL linkToPage) {
+        this.eventNumber = EventDAO.getEvents().size() +1;
         this.eventUserNumber = eventUserNumber;
         this.eventName = eventName;
         this.streetName = streetName;
@@ -53,7 +57,7 @@ public class Event {
         this.startDate = startDate;
         this.confirmationDate = startDate.minusDays(2);
         this.endDate = endDate;
-        this.eventDuration = 2;
+        this.eventDuration = Duration.between(startDate, endDate).toHours();
         this.description = description;
         this.linkToPage = linkToPage;
     }
