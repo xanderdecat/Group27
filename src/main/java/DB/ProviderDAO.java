@@ -95,7 +95,7 @@ public class ProviderDAO extends UserDAO {
                     user = getUser(userNumber);
 
             if (user != null)
-                provider = new Provider(user.getUserNumber(), user.getFirstName(), user.getLastName(), user.getDateOfBirth(), user.getAge(), user.getEmail(), user.getPhoneNumber(), user.getWachtwoord(), providerNumber, VATNumber, accountNumber, streetName, houseNumber, ZIP, city, country, artistName, genre, activityDate, priceHour, minHours, maxHours, conditions, description, teaserSet, linkToPage);
+                provider = new Provider(user.getUserNumber(), user.getFirstName(), user.getLastName(), user.getDateOfBirth(), user.getAge(), user.getEmail(), user.getPhoneNumber(), user.getPassword(), providerNumber, VATNumber, accountNumber, streetName, houseNumber, ZIP, city, country, artistName, genre, activityDate, priceHour, minHours, maxHours, conditions, description, teaserSet, linkToPage);
             return provider;
         } catch (Exception ex) {
             ex.printStackTrace();

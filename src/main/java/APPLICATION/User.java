@@ -23,10 +23,10 @@ public class User {
     private int age;
     private String email;
     private String phoneNumber;
-    private String wachtwoord;
+    private String password;
 
     // constructor for GUI
-    public User(String firstName, String lastName, Date dateOfBirth, String email, String phoneNumber, String wachtwoord) {
+    public User(String firstName, String lastName, Date dateOfBirth, String email, String phoneNumber, String password) {
         helpUserNumber = getUsers().size() + 1;
         this.userNumber = helpUserNumber;
         this.firstName = firstName;
@@ -37,11 +37,11 @@ public class User {
         this.age = Period.between(lDateOfBirth, LocalDate.now()).getYears();
         this.email = email;
         this.phoneNumber = phoneNumber;
-        this.wachtwoord = wachtwoord;
+        this.password = password;
     }
 
     // constructor for UserDAO
-    public User(int userNumber, String firstName, String lastName, java.sql.Date dateOfBirth, int age, String email, String phoneNumber, String wachtwoord) {
+    public User(int userNumber, String firstName, String lastName, java.sql.Date dateOfBirth, int age, String email, String phoneNumber, String password) {
         this.userNumber = userNumber;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -49,7 +49,7 @@ public class User {
         this.age = age;
         this.email = email;
         this.phoneNumber = phoneNumber;
-        this.wachtwoord = wachtwoord;
+        this.password = password;
     }
     //empty constructor used in the main
 
@@ -151,11 +151,11 @@ public class User {
         this.email = email;
     }
 
-    public String getWachtwoord() {
-        return wachtwoord;
+    public String getPassword() {
+        return password;
     }
 
-    public void setWachtwoord(String wachtwoord) {
-        this.wachtwoord = wachtwoord;
+    public void setPassword(String password) {
+        this.password = password;
     }
 }
