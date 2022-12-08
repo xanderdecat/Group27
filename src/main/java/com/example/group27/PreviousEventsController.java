@@ -27,7 +27,7 @@ public class PreviousEventsController {
     public void goToProviderScreen2(ActionEvent actionEvent) {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader();
-            fxmlLoader.setLocation(getClass().getResource("HomeScreenPage.fxml"));
+            fxmlLoader.setLocation(getClass().getResource("ProviderPage.fxml"));
             Scene scene = new Scene(fxmlLoader.load(), 630, 400);
             Stage stage = new Stage();
             stage.setTitle("Muzer");

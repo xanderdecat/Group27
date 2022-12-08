@@ -40,5 +40,17 @@ public class PreviousEventsUserController {
     }
 
     public void goToLeaveAReviewFromUser(ActionEvent actionEvent) {
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader();
+            fxmlLoader.setLocation(getClass().getResource("ReviewPageUser.fxml"));
+            Scene scene = new Scene(fxmlLoader.load(), 630, 400);
+            Stage stage = new Stage();
+            stage.setTitle("Muzer");
+            stage.setScene(scene);
+            stage.show();
+            ((Node)(actionEvent.getSource())).getScene().getWindow().hide();
+        }
+        catch (IOException e) {
+        }
     }
 }
