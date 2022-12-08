@@ -118,49 +118,44 @@ public class AddProviderController {
 
 
     public void goToProviderPage(ActionEvent actionEvent) {         //op een of andere manier nog voorwaarden opleggen aan de input
-        if (VATNumberInput.getText() != null && accountNumberInput.getText() != null && ZIPCodeInput.getText() != null && activityDateInput.getValue() != null && artistNameInput.getText() != null && cityInput.getText() != null && countryInput.getText() != null && descriptionInput.getText() != null && houseNumberInput.getText() != null &&  linkToSetInput.getText() != null && maxHoursInput.getText() != null && minHoursInput.getText() != null && priceHourInput.getText() != null && streetNameInput.getText() != null) {
-            String VATNumber = VATNumberInput.getText().toString();
-            String accountNumber = accountNumberInput.getText().toString();
-            int ZIPCode = Integer.parseInt(ZIPCodeInput.getText().toString());
-            LocalDate ld = activityDateInput.getValue();
-            Instant instant = Instant.from(ld.atStartOfDay(ZoneId.systemDefault()));
-            Date activityDate = Date.from(instant);
-            String artistName = artistNameInput.getText().toString();
-            String city = cityInput.getText().toString();
-            String conditions = conditionsInput.getText().toString();
-            String country = countryInput.getText().toString();
-            String description = descriptionInput.getText().toString();
-            int houseNumber = Integer.parseInt(houseNumberInput.getText().toString());
+        if (VATNumberInput.getText() != null && accountNumberInput.getText() != null && ZIPCodeInput.getText() != null && activityDateInput.getValue() != null && artistNameInput.getText() != null && cityInput.getText() != null && countryInput.getText() != null && descriptionInput.getText() != null && houseNumberInput.getText() != null && linkToSetInput.getText() != null && maxHoursInput.getText() != null && minHoursInput.getText() != null && priceHourInput.getText() != null && streetNameInput.getText() != null) {
+            try {
+                String VATNumber = VATNumberInput.getText();
+                String accountNumber = accountNumberInput.getText();
+                int ZIPCode = Integer.parseInt(ZIPCodeInput.getText());
+                LocalDate ld = activityDateInput.getValue();
+                Instant instant = Instant.from(ld.atStartOfDay(ZoneId.systemDefault()));
+                Date activityDate = Date.from(instant);
+                String artistName = artistNameInput.getText();
+                String city = cityInput.getText();
+                String conditions = conditionsInput.getText();
+                String country = countryInput.getText();
+                String description = descriptionInput.getText();
+                int houseNumber = Integer.parseInt(houseNumberInput.getText());
+                URL linkToPage = new URL(linkToPageInput.getText());
+                URL linkToSet = new URL(linkToSetInput.getText());
+                double maxHours = Double.parseDouble(maxHoursInput.getText());
+                double minHours = Double.parseDouble(minHoursInput.getText());
+                double priceHour = Double.parseDouble(priceHourInput.getText());
+                String streetName = streetNameInput.getText();
+                Provider provider = new Provider(HelloApplication.userMain.getUserNumber(), HelloApplication.userMain.getFirstName(), HelloApplication.userMain.getLastName(), HelloApplication.userMain.getDateOfBirth(), HelloApplication.userMain.getAge(), HelloApplication.userMain.getEmail(), HelloApplication.userMain.getPhoneNumber(), VATNumber, accountNumber, streetName, houseNumber, ZIPCode, city, country, artistName,
+                        Provider.genres.Acoustic, activityDate, priceHour, minHours, maxHours, conditions, description, linkToSet, linkToPage);
+                ProviderDAO.saveProvider(provider);
                 try {
-                    URL linkToPage = new URL(linkToPageInput.getText().toString());
-                } catch (MalformedURLException e) {
-                    throw new RuntimeException(e);
+                    FXMLLoader fxmlLoader = new FXMLLoader();
+                    fxmlLoader.setLocation(getClass().getResource("ProviderPage.fxml"));
+                    Scene scene = new Scene(fxmlLoader.load(), 630, 400);
+                    Stage stage = new Stage();
+                    stage.setTitle("Muzer");
+                    stage.setScene(scene);
+                    stage.show();
+                    ((Node) (actionEvent.getSource())).getScene().getWindow().hide();
+                } catch (IOException e) {
                 }
-            try {
-                URL linkToSet = new URL(linkToSetInput.getText().toString());
             } catch (MalformedURLException e) {
-                throw new RuntimeException(e);
-            }
-            Double maxHours = Double.parseDouble(maxHoursInput.getText().toString());
-            Double minHours = Double.parseDouble(minHoursInput.getText().toString());
-            Double priceHour = Double.parseDouble(priceHourInput.getText().toString());
-            String streetName = streetNameInput.getText().toString();
-            // Provider provider = new Provider(userNumber, firstName, lastName, dateOfBirth, age, email, phoneNumber, VATNumber, accountNumber, streetName, houseNumber, ZIPCode, city, country, artistName,
-            // genre, activityDate, priceHour, minHours, maxHours, conditions, description, linkToSet, linkToPage);
-            // ProviderDAO.saveProvider(provider);
-            try {
-                FXMLLoader fxmlLoader = new FXMLLoader();
-                fxmlLoader.setLocation(getClass().getResource("ProviderPage.fxml"));
-                Scene scene = new Scene(fxmlLoader.load(), 630, 400);
-                Stage stage = new Stage();
-                stage.setTitle("Muzer");
-                stage.setScene(scene);
-                stage.show();
-                ((Node) (actionEvent.getSource())).getScene().getWindow().hide();
-            } catch (IOException e) {
             }
         }
+
+
     }
-
-
 }
