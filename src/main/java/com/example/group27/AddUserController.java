@@ -49,7 +49,7 @@ public class AddUserController {
             String lastName1 = lastName.getText();
             LocalDate ld = dateOfBirth.getValue();
             Instant instant = Instant.from(ld.atStartOfDay(ZoneId.systemDefault()));
-            Date dob = Date.from(instant);
+
             String email1 = email.getText();
             String phoneNumber1 = phoneNumber.getText();
             String wachtwoord1 = wachtwoordInput.getText();

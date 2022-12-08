@@ -51,7 +51,9 @@ public class Event {
         this.city = city;
         this.country = country;
         this.startDate = startDate;
+        this.confirmationDate = startDate.minusDays(2);
         this.endDate = endDate;
+        this.eventDuration = 2;
         this.description = description;
         this.linkToPage = linkToPage;
     }
