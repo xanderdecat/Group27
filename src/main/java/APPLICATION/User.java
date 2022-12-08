@@ -2,12 +2,12 @@ package APPLICATION;
 
 import DB.UserDAO;
 
+import java.sql.Date;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.time.Period;
 import java.time.ZoneId;
 import java.util.ArrayList;
-import java.util.Date;
 
 public class User {
 
@@ -23,15 +23,14 @@ public class User {
     private String phoneNumber;     // multiple phoneNumbers
 
     // constructor for GUI
-    public User(String firstName, String lastName, java.sql.Date dateOfBirth, String email, String phoneNumber) {
+    public User(String firstName, String lastName, Date dateOfBirth, String email, String phoneNumber) {
         this.userNumber = helpUserNumber++;
         this.firstName = firstName;
         this.lastName = lastName;
         this.name = firstName + " " + lastName;
         this.dateOfBirth = dateOfBirth;
-        Instant instant = dateOfBirth.toInstant();
-        LocalDate localDateOfBirth = instant.atZone(ZoneId.systemDefault()).toLocalDate();
-        this.age = Period.between(localDateOfBirth, LocalDate.now()).getYears();
+        LocalDate lDateOfBirth = dateOfBirth.toLocalDate();
+        this.age = Period.between(lDateOfBirth, LocalDate.now()).getYears();
         this.email = email;
         this.phoneNumber = phoneNumber;
     }
