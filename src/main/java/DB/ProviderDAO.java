@@ -103,6 +103,7 @@ public class ProviderDAO extends UserDAO {
             return null;
         }
     }
+    // ok
 
     public static void saveProvider(Provider p) {
         Connection con = null;
