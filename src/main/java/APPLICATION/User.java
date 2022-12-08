@@ -110,7 +110,7 @@ public class User {
         this.name = name;
     }
 
-    public Date getDateOfBirth() {
+    public java.sql.Date getDateOfBirth() {
         return dateOfBirth;
     }
 

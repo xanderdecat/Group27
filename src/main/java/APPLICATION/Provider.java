@@ -29,7 +29,7 @@ public class Provider extends User {
     private URL linkToPage;
 
     // constructor for DAO
-    public Provider(int userNumber, String firstName, String lastName, Date dateOfBirth, int age, String email, String phoneNumber, int providerNumber, String VATNumber, String accountNumber, String streetName, int houseNumber, int ZIP, String city, String country, String artistName, genres genre, Date activityDate, double priceHour, double minHours, double maxHours, String conditions, String description, URL teaserSet, URL linkToPage) {
+    public Provider(int userNumber, String firstName, String lastName, java.sql.Date dateOfBirth, int age, String email, String phoneNumber, int providerNumber, String VATNumber, String accountNumber, String streetName, int houseNumber, int ZIP, String city, String country, String artistName, genres genre, Date activityDate, double priceHour, double minHours, double maxHours, String conditions, String description, URL teaserSet, URL linkToPage) {
         super(userNumber, firstName, lastName, dateOfBirth, age, email, phoneNumber);
         this.providerNumber = providerNumber;
         this.VATNumber = VATNumber;
