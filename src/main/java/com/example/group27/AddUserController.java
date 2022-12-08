@@ -47,7 +47,7 @@ public class AddUserController {
             Date dob = Date.from(instant);
             String email1 = email.getText();
             String phoneNumber1 = phoneNumber.getText();
-            java.sql.Date testdate = null;
+            java.sql.Date testdate = java.sql.Date.valueOf(ld);
 
             HelloApplication.userMain = new User(firstName1, lastName1, testdate, email1, phoneNumber1);
             DB.UserDAO.saveUser(HelloApplication.userMain);   // toevoegen aan DataBase
