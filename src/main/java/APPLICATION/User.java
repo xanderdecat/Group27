@@ -24,7 +24,8 @@ public class User {
 
     // constructor for GUI
     public User(String firstName, String lastName, Date dateOfBirth, String email, String phoneNumber) {
-        this.userNumber = helpUserNumber++;
+        helpUserNumber++;
+        this.userNumber = helpUserNumber;
         this.firstName = firstName;
         this.lastName = lastName;
         this.name = firstName + " " + lastName;
