@@ -8,22 +8,23 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class ProviderPageController {
-    public void logOut(ActionEvent actionEvent) {
+public class PreviousEventsController {
+    public void logOut2(ActionEvent actionEvent) {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader();
-            fxmlLoader.setLocation(getClass().getResource("WelcomePAge.fxml"));
+            fxmlLoader.setLocation(getClass().getResource("WelcomePage.fxml"));
             Scene scene = new Scene(fxmlLoader.load(), 630, 400);
             Stage stage = new Stage();
             stage.setTitle("Muzer");
             stage.setScene(scene);
             stage.show();
-            ((Node) (actionEvent.getSource())).getScene().getWindow().hide();
-        } catch (IOException e) {
+            ((Node)(actionEvent.getSource())).getScene().getWindow().hide();
+        }
+        catch (IOException e) {
         }
     }
 
-    public void goToHomeScreen(ActionEvent actionEvent) {
+    public void goToProviderScreen2(ActionEvent actionEvent) {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader();
             fxmlLoader.setLocation(getClass().getResource("HomeScreenPage.fxml"));
@@ -32,15 +33,16 @@ public class ProviderPageController {
             stage.setTitle("Muzer");
             stage.setScene(scene);
             stage.show();
-            ((Node) (actionEvent.getSource())).getScene().getWindow().hide();
-        } catch (IOException e) {
+            ((Node)(actionEvent.getSource())).getScene().getWindow().hide();
+        }
+        catch (IOException e) {
         }
     }
 
-    public void goToPreviousEvents(ActionEvent actionEvent) {
+    public void goToLeaveAReview(ActionEvent actionEvent) {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader();
-            fxmlLoader.setLocation(getClass().getResource("PreviousEvents.fxml"));
+            fxmlLoader.setLocation(getClass().getResource("ReviewPage.fxml"));
             Scene scene = new Scene(fxmlLoader.load(), 630, 400);
             Stage stage = new Stage();
             stage.setTitle("Muzer");
@@ -50,23 +52,5 @@ public class ProviderPageController {
         }
         catch (IOException e) {
         }
-    }
-
-    public void goToAcceptedEvents(ActionEvent actionEvent) {
-        try {
-            FXMLLoader fxmlLoader = new FXMLLoader();
-            fxmlLoader.setLocation(getClass().getResource("AcceptedEvents.fxml"));
-            Scene scene = new Scene(fxmlLoader.load(), 630, 400);
-            Stage stage = new Stage();
-            stage.setTitle("Muzer");
-            stage.setScene(scene);
-            stage.show();
-            ((Node)(actionEvent.getSource())).getScene().getWindow().hide();
-        }
-        catch (IOException e) {
-        }
-    }
-
-    public void acceptRequestedEvent(ActionEvent actionEvent) {
     }
 }
