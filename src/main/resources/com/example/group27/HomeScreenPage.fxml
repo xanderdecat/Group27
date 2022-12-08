@@ -7,20 +7,20 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.group27.HomeScreenPageController">
+<AnchorPane prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.group27.HomeScreenPageController">
    <children>
-      <BorderPane prefHeight="400.0" prefWidth="600.0">
+      <BorderPane prefHeight="500.0" prefWidth="700.0">
          <top>
-            <AnchorPane prefHeight="63.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+            <AnchorPane prefHeight="63.0" prefWidth="625.0" BorderPane.alignment="CENTER">
                <children>
-                  <Button layoutX="519.0" layoutY="19.0" mnemonicParsing="false" onAction="#logOut" text="Log out" />
-                  <Label layoutX="47.0" layoutY="12.0" text="(NAME)">
+                  <Button layoutX="596.0" layoutY="19.0" mnemonicParsing="false" onAction="#logOut" text="Log out" AnchorPane.rightAnchor="30.0" />
+                  <Label fx:id="namefield" layoutX="23.0" layoutY="11.0" text="(NAME)" AnchorPane.leftAnchor="30.0">
                      <font>
-                        <Font name="System Bold Italic" size="33.0" />
+                        <Font name="Arial Black" size="28.0" />
                      </font>
                   </Label>
-                  <Button layoutX="369.0" layoutY="19.0" mnemonicParsing="false" onAction="#goToAddProviderPage" text="Upgrade to provider" />
-                  <Button layoutX="225.0" layoutY="19.0" mnemonicParsing="false" onAction="#continueAsProvider" text="Continue as provider" />
+                  <Button layoutX="369.0" layoutY="19.0" mnemonicParsing="false" onAction="#goToAddProviderPage" text="Upgrade to provider" AnchorPane.rightAnchor="100.0" />
+                  <Button layoutX="225.0" layoutY="19.0" mnemonicParsing="false" onAction="#continueAsProvider" text="Continue as provider" AnchorPane.rightAnchor="240.0" />
                </children>
             </AnchorPane>
          </top>
@@ -35,9 +35,9 @@
          <center>
             <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                <children>
-                  <ListView layoutX="29.0" layoutY="50.0" prefHeight="224.0" prefWidth="381.0" />
+                  <ListView layoutX="29.0" layoutY="50.0" prefHeight="312.0" prefWidth="490.0" />
                   <Label layoutX="29.0" layoutY="25.0" text="All your upcoming events:" />
-                  <Button layoutX="29.0" layoutY="290.0" mnemonicParsing="false" text="View upcoming event" />
+                  <Button layoutX="29.0" layoutY="380.0" mnemonicParsing="false" text="View upcoming event" />
                </children>
             </AnchorPane>
          </center>

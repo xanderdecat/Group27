@@ -38,7 +38,7 @@ public class LogInUserController {
                 try {
                     FXMLLoader fxmlLoader = new FXMLLoader();
                     fxmlLoader.setLocation(getClass().getResource("HomeScreenPage.fxml"));
-                    Scene scene = new Scene(fxmlLoader.load(), 630, 400);
+                    Scene scene = new Scene(fxmlLoader.load(), 700, 500);
                     Stage stage = new Stage();
                     stage.setTitle("Home screen");
                     stage.setScene(scene);

@@ -1,14 +1,22 @@
 package com.example.group27;
 
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 
 public class HomeScreenPageController {
+
+    @FXML
+    private Label namefield;
+    public void initialize() {
+        namefield.setText(HelloApplication.userMain.getName());
+    }
     public void logOut(ActionEvent actionEvent) {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader();
