@@ -34,8 +34,7 @@ public class DBHandler {
                 String protocol = "jdbc";
                 String subProtocol = "mysql";
                 String myDatabase = "//pdbmbook.com/" + DB_NAME;
-                //String URL = protocol + ":" + subProtocol + ":" + myDatabase
-                 //   + "?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
+                // String URL = protocol + ":" + subProtocol + ":" + myDatabase + "?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
                 String URL2 = "jdbc:mysql://pdbmbook.com/" + DB_NAME;
 
                 connection = DriverManager.getConnection(URL2, DB_NAME, DB_PASS);

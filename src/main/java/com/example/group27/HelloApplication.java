@@ -9,7 +9,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class HelloApplication extends Application {
-private User userMain;
+public static User userMain;
     @Override
     public void start(Stage stage) throws IOException {
         userMain = new User();

@@ -48,8 +48,8 @@ public class AddUserController {
             String email1 = email.getText();
             String phoneNumber1 = phoneNumber.getText();
 
-            User newUser = new User(firstName1, lastName1, dob, email1, phoneNumber1);
-            DB.UserDAO.saveUser(newUser);   // toevoegen aan DataBase
+            HelloApplication.userMain = new User(firstName1, lastName1, dob, email1, phoneNumber1);
+            DB.UserDAO.saveUser(HelloApplication.userMain);   // toevoegen aan DataBase
 
             try {
 
