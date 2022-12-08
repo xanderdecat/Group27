@@ -54,7 +54,7 @@ public class Provider extends User {
 
     }
     // constructor for DAO
-    public int Provider(int userNumber, String firstName, String lastName, java.sql.Date dateOfBirth, int age, String email, String phoneNumber, String wachtwoord, int providerNumber, String VATNumber, String accountNumber, String streetName, int houseNumber, int ZIP, String city, String country, String artistName, genres genre, Date activityDate, double priceHour, double minHours, double maxHours, String conditions, String description, URL teaserSet, URL linkToPage) {
+    public Provider(int userNumber, String firstName, String lastName, java.sql.Date dateOfBirth, int age, String email, String phoneNumber, String wachtwoord, int providerNumber, String VATNumber, String accountNumber, String streetName, int houseNumber, int ZIP, String city, String country, String artistName, genres genre, Date activityDate, double priceHour, double minHours, double maxHours, String conditions, String description, URL teaserSet, URL linkToPage) {
         super(userNumber, firstName, lastName, dateOfBirth, age, email, phoneNumber, wachtwoord);
         this.providerNumber = providerNumber;
         this.VATNumber = VATNumber;
