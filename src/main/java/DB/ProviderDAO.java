@@ -35,8 +35,8 @@ public class ProviderDAO extends UserDAO {
                     + "maxHours double NOT NULL, "
                     + "conditions varchar(100), "
                     + "description varchar(100) NOT NULL, "
-                    + "teaserSet varchar(50) NOT NULL, "
-                    + "linkToPage varchar(50) UNIQUE, "
+                    + "teaserSet varchar(300) NOT NULL, "
+                    + "linkToPage varchar(300) UNIQUE, "
                     + "PRIMARY KEY (providerNumber)" + ")";
             stmt.executeUpdate(sql);
         } catch (SQLException e) {
@@ -245,8 +245,8 @@ public class ProviderDAO extends UserDAO {
             con = DBHandler.getConnection();
             Statement stmt = con.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
 
-            String sql = "SELECT number "
-                    + "FROM Students "
+            String sql = "SELECT providerNumber "
+                    + "FROM providers "
                     + "WHERE genre=" + gnr.toString();
             ResultSet srs = stmt.executeQuery(sql);
 
