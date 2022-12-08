@@ -118,7 +118,7 @@ public class AddProviderController {
 
 
     public void goToProviderPage(ActionEvent actionEvent) {         //op een of andere manier nog voorwaarden opleggen aan de input
-        if (VATNumberInput.getText() != null && accountNumberInput.getText() != null && ZIPCodeInput.getText() != null && activityDateInput.getValue() != null && artistNameInput.getText() != null && cityInput.getText() != null && countryInput.getText() != null && descriptionInput.getText() != null && houseNumberInput.getText() != null && linkToSetInput.getText() != null && maxHoursInput.getText() != null && minHoursInput.getText() != null && priceHourInput.getText() != null && streetNameInput.getText() != null) {
+        if (VATNumberInput.getText() != null && accountNumberInput.getText() != null && ZIPCodeInput.getText() != null && activityDateInput.getValue() != null && artistNameInput.getText() != null && cityInput.getText() != null && countryInput.getText() != null && descriptionInput.getText() != null && houseNumberInput.getText() != null && linkToSetInput.getText() != null && maxHoursInput.getText() != null && minHoursInput.getText() != null && priceHourInput.getText() != null ) {//&& streetNameInput.getText() != null
             try {
                 String VATNumber = VATNumberInput.getText();
                 String accountNumber = accountNumberInput.getText();
@@ -137,8 +137,8 @@ public class AddProviderController {
                 double maxHours = Double.parseDouble(maxHoursInput.getText());
                 double minHours = Double.parseDouble(minHoursInput.getText());
                 double priceHour = Double.parseDouble(priceHourInput.getText());
-                String streetName = streetNameInput.getText();
-                Provider provider = new Provider(HelloApplication.userMain.getUserNumber(), HelloApplication.userMain.getFirstName(), HelloApplication.userMain.getLastName(), HelloApplication.userMain.getDateOfBirth(), HelloApplication.userMain.getAge(), HelloApplication.userMain.getEmail(), HelloApplication.userMain.getPhoneNumber(), HelloApplication.userMain.getPassword(), VATNumber, accountNumber, streetName, houseNumber, ZIPCode, city, country, artistName,
+                //String streetName = streetNameInput.getText();
+                Provider provider = new Provider(HelloApplication.userMain.getUserNumber(), HelloApplication.userMain.getFirstName(), HelloApplication.userMain.getLastName(), HelloApplication.userMain.getDateOfBirth(), HelloApplication.userMain.getAge(), HelloApplication.userMain.getEmail(), HelloApplication.userMain.getPhoneNumber(), HelloApplication.userMain.getPassword(), VATNumber, accountNumber, "streetName", houseNumber, ZIPCode, city, country, artistName,
                         Provider.genres.Acoustic, activityDate, priceHour, minHours, maxHours, conditions, description, linkToSet, linkToPage);
                 ProviderDAO.saveProvider(provider);
                 try {
