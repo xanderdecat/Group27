@@ -56,9 +56,9 @@ public class User {
     public User() {
     }
 
-    public static boolean logUserInFromEmail(String email){
+    public static boolean logUserInFromEmail(String email, String password){
         for(User user : getUsers())
-            if (email.equals(user.getEmail()))
+            if (email.equals(user.getEmail()) && password.equals(user.getPassword()))
                 return true;
         return false;
     }

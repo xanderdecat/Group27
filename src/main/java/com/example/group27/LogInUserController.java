@@ -13,6 +13,7 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.Objects;
 
 public class LogInUserController {
 
@@ -31,8 +32,9 @@ public class LogInUserController {
 
     // gaat verder naar HOMEPAGE
     public void goToHomePage(ActionEvent actionEvent) {
-        if (!(emailInput.getText() == null || emailInput.getText().length() == 0)) {
-            if (User.logUserInFromEmail(emailInput.toString())) {
+        for (User user : UserDAO.getUsers())
+            if (user.getEmail().equals(emailInput.getText()) && user.getPassword().equals(passwordInput.getText())) {
+                HelloApplication.userMain = new User(user.getFirstName(), user.getLastName(), user.getDateOfBirth(), user.getEmail(), user.getPhoneNumber(), user.getPassword());
                 try {
                     FXMLLoader fxmlLoader = new FXMLLoader();
                     fxmlLoader.setLocation(getClass().getResource("HomeScreenPage.fxml"));
@@ -44,12 +46,12 @@ public class LogInUserController {
                     ((Node) (actionEvent.getSource())).getScene().getWindow().hide();
                 } catch (IOException e) {
                 }
+
             }
-        }
     }
 
 
-        // gaat terug naar WELCOMEPAGE
+    // gaat terug naar WELCOMEPAGE
     public void goToWelcomePage (ActionEvent actionEvent){
         try {
             FXMLLoader fxmlLoader = new FXMLLoader();
