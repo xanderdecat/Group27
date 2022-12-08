@@ -41,6 +41,21 @@ public class Event {
         this.linkToPage = linkToPage;
     }
 
+    // constructor for GUI
+    public Event(int eventUserNumber, String eventName, String streetName, int houseNumber, int ZIP, String city, String country, LocalDateTime startDate, LocalDateTime endDate, String description, URL linkToPage) {
+        this.eventUserNumber = eventUserNumber;
+        this.eventName = eventName;
+        this.streetName = streetName;
+        this.houseNumber = houseNumber;
+        this.ZIP = ZIP;
+        this.city = city;
+        this.country = country;
+        this.startDate = startDate;
+        this.endDate = endDate;
+        this.description = description;
+        this.linkToPage = linkToPage;
+    }
+
     // getters en setters
     public static long getHelpEventNumber() {
         return helpEventNumber;

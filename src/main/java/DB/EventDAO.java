@@ -17,7 +17,7 @@ public class EventDAO {
             Statement stmt = con.createStatement();
             String sql = "CREATE TABLE events ("
                     + "eventNumber int NOT NULL, "
-                    + "eventUserNumber int NOT NULL, "
+                    + "UserNumber int NOT NULL, "
                     + "eventName varchar(50) NOT NULL, "
                     + "streetName varchar(50), "
                     + "houseNumber int, "
@@ -28,8 +28,8 @@ public class EventDAO {
                     + "confirmationDate datetime NOT NULL, "
                     + "endDate datetime NOT NULL, "
                     + "eventDuration double NOT NULL, "
-                    + "description varchar(100) NOT NULL, "
-                    + "linkToPage varchar(50), "
+                    + "description varchar(1000) NOT NULL, "
+                    + "linkToPage varchar(300), "
                     + "PRIMARY KEY (eventNumber)" + ")";
             stmt.executeUpdate(sql);
         } catch (SQLException e) {
@@ -41,7 +41,7 @@ public class EventDAO {
         Connection con = null;
         try {
             con = DBHandler.getConnection();
-            String sql1 = "SELECT eventNumber, eventUserNumber, eventName, streetName, houseNumber, ZIP, city, country, startDate, confirmationDate, endDate, eventDuration, description, linkToPage "
+            String sql1 = "SELECT eventNumber, UserNumber, eventName, streetName, houseNumber, ZIP, city, country, startDate, confirmationDate, endDate, eventDuration, description, linkToPage "
                     + "FROM events "
                     + "WHERE eventNumber = ?";
             PreparedStatement stmt = con.prepareStatement(sql1);
@@ -58,7 +58,7 @@ public class EventDAO {
 
             if (srs.next()) {
                 eventNumber = srs.getInt("eventNumber");
-                eventUserNumber = srs.getInt("eventUserNumber");
+                eventUserNumber = srs.getInt("UserNumber");
                 eventName = srs.getString("eventName");
                 streetName = srs.getString("streetName");
                 houseNumber = srs.getInt("houseNumber");
@@ -84,7 +84,7 @@ public class EventDAO {
         }
     }
 
-    public void saveEvent(Event e) {
+    public static void saveEvent(Event e) {
         Connection con = null;
         try {
             con = DBHandler.getConnection();
@@ -100,7 +100,7 @@ public class EventDAO {
 
                 // UPDATE
                 String sqlUpdate = "UPDATE events " +
-                        "SET eventUserNumber = ? ," +
+                        "SET UserNumber = ? ," +
                         " eventName = ? ," +
                         " streetName = ?, " +
                         " houseNumber = ?, " +
@@ -134,7 +134,7 @@ public class EventDAO {
 
                 // INSERT
                 String sqlInsert = "INSERT into events "
-                        + "(eventNumber, eventUserNumber, eventName, streetName, houseNumber, ZIP, city, country, startDate, confirmationDate, endDate, eventDuration, description, linkToPage) "
+                        + "(eventNumber, UserNumber, eventName, streetName, houseNumber, ZIP, city, country, startDate, confirmationDate, endDate, eventDuration, description, linkToPage) "
                         + "VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
                 //System.out.println(sql);
                 PreparedStatement insertStm = con.prepareStatement(sqlInsert);

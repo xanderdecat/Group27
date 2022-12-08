@@ -1,6 +1,8 @@
 package com.example.group27;
 
+import APPLICATION.Event;
 import APPLICATION.Provider;
+import DB.EventDAO;
 import DB.ProviderDAO;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -11,10 +13,14 @@ import javafx.scene.control.*;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 public class AddEventController {
+
+    public static Event eventMain;
 
     @FXML
     private TextField cityInput;
@@ -26,7 +32,7 @@ public class AddEventController {
     private TextField descriptionInput;
 
     @FXML
-    private DatePicker eventDateInput;
+    private DatePicker endDateInput;
 
     @FXML
     private TextField eventNameInput;
@@ -59,28 +65,43 @@ public class AddEventController {
     @FXML
     private TextField zipCodeInput;
     public void makeNewEvent(ActionEvent actionEvent) {
-        String eventName1 = eventNameInput.getText();
-        String streetName1 = streetNameInput.getText();
-        String houseNumber = houseNumberInput.getText();
-        String ZIPCode1 = zipCodeInput.getText();
-        String country1 = countryInput.getText();
-        String
-        LocalDate endDate1 = eventDateInput.getValue();
-        java.sql.Date endDate11 = java.sql.Date.valueOf(endDate1);
-        String description1 = descriptionInput.getText();
-        String linkToPage1 = linkToPageInput.getText();
-
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader();
-            fxmlLoader.setLocation(getClass().getResource("AddEventChooser.fxml"));
-            Scene scene = new Scene(fxmlLoader.load(), 630, 600);
-            Stage stage = new Stage();
-            stage.setTitle("Muzer");
-            stage.setScene(scene);
-            stage.show();
-            ((Node)(actionEvent.getSource())).getScene().getWindow().hide();
-        }
-        catch (IOException e) {
+            String eventName1 = eventNameInput.getText();
+            String streetName1 = streetNameInput.getText();
+            int houseNumber1 = Integer.parseInt(houseNumberInput.getText());
+            int ZIPCode1 = Integer.parseInt(zipCodeInput.getText());
+            String cityInput1 = cityInput.getText();
+            String country1 = countryInput.getText();
+
+            LocalDate startDateLD = startDateInput.getValue();
+            String startDateString = startDatePicker.getValue();
+            Integer startDateInteger = Integer.valueOf(startDateString.substring(0, 1));
+            LocalDateTime startDate1 = LocalDateTime.of(startDateLD.getYear(), startDateLD.getMonth(), startDateLD.getDayOfMonth(), startDateInteger, 00, 00);
+
+            LocalDate endDateLD = endDateInput.getValue();
+            String endDateString = endDatePicker.getValue();
+            Integer endDateInteger = Integer.valueOf(endDateString.substring(0, 1));
+            LocalDateTime endDate1 = LocalDateTime.of(endDateLD.getYear(), endDateLD.getMonth(), endDateLD.getDayOfMonth(), endDateInteger, 00, 00);
+
+            String description1 = descriptionInput.getText();
+            URL linkToPage1 = new URL(linkToPageInput.getText());
+
+            if (startDate1.isBefore(endDate1) && eventName1 != null && streetName1 != null && houseNumberInput.getText() != null && zipCodeInput.getText() != null && country1 != null && description1 != null && linkToPage1 != null) {
+                eventMain = new Event(HelloApplication.userMain.getUserNumber(), eventName1, streetName1, houseNumber1, ZIPCode1, cityInput1, country1, startDate1, endDate1, description1, linkToPage1);
+                EventDAO.saveEvent(eventMain);
+                try {
+                    FXMLLoader fxmlLoader = new FXMLLoader();
+                    fxmlLoader.setLocation(getClass().getResource("AddEventChooser.fxml"));
+                    Scene scene = new Scene(fxmlLoader.load(), 630, 600);
+                    Stage stage = new Stage();
+                    stage.setTitle("Muzer");
+                    stage.setScene(scene);
+                    stage.show();
+                    ((Node) (actionEvent.getSource())).getScene().getWindow().hide();
+                } catch (IOException e) {
+                }
+            }
+        } catch (MalformedURLException e) {
         }
 
     }
