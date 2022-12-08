@@ -17,13 +17,13 @@ public class User {
     private String firstName;
     private String lastName;
     private String name;
-    private Date dateOfBirth;
+    private java.sql.Date dateOfBirth;
     private int age;                            // derived from dateOfBirth
     private String email;           // multiple emails
     private String phoneNumber;     // multiple phoneNumbers
 
     // constructor for GUI
-    public User(String firstName, String lastName, Date dateOfBirth, String email, String phoneNumber) {
+    public User(String firstName, String lastName, java.sql.Date dateOfBirth, String email, String phoneNumber) {
         this.userNumber = helpUserNumber++;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -37,7 +37,7 @@ public class User {
     }
 
     // constructor for UserDAO
-    public User(int userNumber, String firstName, String lastName, Date dateOfBirth, int age, String email, String phoneNumber) {
+    public User(int userNumber, String firstName, String lastName, java.sql.Date dateOfBirth, int age, String email, String phoneNumber) {
         this.userNumber = userNumber;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -114,7 +114,7 @@ public class User {
         return dateOfBirth;
     }
 
-    public void setDateOfBirth(Date dateOfBirth) {
+    public void setDateOfBirth(java.sql.Date dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
     }
 
