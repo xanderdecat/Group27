@@ -196,7 +196,7 @@ public class ProviderDAO extends UserDAO {
         }
     }
 
-    public ArrayList<Provider> getProviders() {
+    public static ArrayList<Provider> getProviders() {
         Connection con = null;
         try {
             con = DBHandler.getConnection();

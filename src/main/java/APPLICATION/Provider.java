@@ -1,5 +1,7 @@
 package APPLICATION;
 
+import DB.ProviderDAO;
+
 import java.net.URL;
 import java.util.Date;
 
@@ -28,8 +30,31 @@ public class Provider extends User {
     private URL teaserSet;
     private URL linkToPage;
 
+    // constructor for GUI
+    public Provider(int userNumber, String firstName, String lastName, java.sql.Date dateOfBirth, int age, String email, String phoneNumber, String wachtwoord, String VATNumber, String accountNumber, String streetName, int houseNumber, int ZIP, String city, String country, String artistName, genres genre, Date activityDate, double priceHour, double minHours, double maxHours, String conditions, String description, URL teaserSet, URL linkToPage) {
+        super(userNumber, firstName, lastName, dateOfBirth, age, email, phoneNumber, wachtwoord);
+        this.providerNumber = ProviderDAO.getProviders().size() + 1;
+        this.VATNumber = VATNumber;
+        this.accountNumber = accountNumber;
+        this.streetName = streetName;
+        this.houseNumber = houseNumber;
+        this.ZIP = ZIP;
+        this.city = city;
+        this.country = country;
+        this.artistName = artistName;
+        this.genre = genre;
+        this.activityDate = activityDate;
+        this.priceHour = priceHour;
+        this.minHours = minHours;
+        this.maxHours = maxHours;
+        this.conditions = conditions;
+        this.description = description;
+        this.teaserSet = teaserSet;
+        this.linkToPage = linkToPage;
+
+    }
     // constructor for DAO
-    public Provider(int userNumber, String firstName, String lastName, java.sql.Date dateOfBirth, int age, String email, String phoneNumber, String wachtwoord, int providerNumber, String VATNumber, String accountNumber, String streetName, int houseNumber, int ZIP, String city, String country, String artistName, genres genre, Date activityDate, double priceHour, double minHours, double maxHours, String conditions, String description, URL teaserSet, URL linkToPage) {
+    public int Provider(int userNumber, String firstName, String lastName, java.sql.Date dateOfBirth, int age, String email, String phoneNumber, String wachtwoord, int providerNumber, String VATNumber, String accountNumber, String streetName, int houseNumber, int ZIP, String city, String country, String artistName, genres genre, Date activityDate, double priceHour, double minHours, double maxHours, String conditions, String description, URL teaserSet, URL linkToPage) {
         super(userNumber, firstName, lastName, dateOfBirth, age, email, phoneNumber, wachtwoord);
         this.providerNumber = providerNumber;
         this.VATNumber = VATNumber;
@@ -54,9 +79,7 @@ public class Provider extends User {
 
 
 
-    public static int getHelpProviderNumber() {
-        return helpProviderNumber;
-    }
+
 
     public static void setHelpProviderNumber(int helpProviderNumber) {
         Provider.helpProviderNumber = helpProviderNumber;
@@ -204,7 +227,6 @@ public class Provider extends User {
 
     public void setLinkToPage(URL linkToPage) {
         this.linkToPage = linkToPage;
-    }
 
 
 
