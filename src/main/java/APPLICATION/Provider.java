@@ -3,6 +3,7 @@ package APPLICATION;
 import DB.ProviderDAO;
 
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.Date;
 
 public class Provider extends User {
@@ -21,7 +22,7 @@ public class Provider extends User {
     private String country;
     private String artistName;
     private genres genre;
-    private Date activityDate;
+    private java.sql.Date activityDate;
     private double priceHour;
     private double minHours;
     private double maxHours;
@@ -31,7 +32,7 @@ public class Provider extends User {
     private URL linkToPage;
 
     // constructor for GUI
-    public Provider(int userNumber, String firstName, String lastName, java.sql.Date dateOfBirth, int age, String email, String phoneNumber, String password, String VATNumber, String accountNumber, String streetName, int houseNumber, int ZIP, String city, String country, String artistName, genres genre, Date activityDate, double priceHour, double minHours, double maxHours, String conditions, String description, URL teaserSet, URL linkToPage) {
+    public Provider(int userNumber, String firstName, String lastName, java.sql.Date dateOfBirth, int age, String email, String phoneNumber, String password, String VATNumber, String accountNumber, String streetName, int houseNumber, int ZIP, String city, String country, String artistName, genres genre, java.sql.Date activityDate, double priceHour, double minHours, double maxHours, String conditions, String description, URL teaserSet, URL linkToPage) {
         super(userNumber, firstName, lastName, dateOfBirth, age, email, phoneNumber, password);
         this.providerNumber = ProviderDAO.getProviders().size() + 1;
         this.VATNumber = VATNumber;
@@ -55,7 +56,7 @@ public class Provider extends User {
     }
 
     // constructor for DAO
-    public Provider(int userNumber, String firstName, String lastName, java.sql.Date dateOfBirth, int age, String email, String phoneNumber, String password, int providerNumber, String VATNumber, String accountNumber, String streetName, int houseNumber, int ZIP, String city, String country, String artistName, genres genre, Date activityDate, double priceHour, double minHours, double maxHours, String conditions, String description, URL teaserSet, URL linkToPage) {
+    public Provider(int userNumber, String firstName, String lastName, java.sql.Date dateOfBirth, int age, String email, String phoneNumber, String password, int providerNumber, String VATNumber, String accountNumber, String streetName, int houseNumber, int ZIP, String city, String country, String artistName, genres genre, java.sql.Date activityDate, double priceHour, double minHours, double maxHours, String conditions, String description, URL teaserSet, URL linkToPage) {
         super(userNumber, firstName, lastName, dateOfBirth, age, email, phoneNumber, password);
         this.providerNumber = providerNumber;
         this.VATNumber = VATNumber;
@@ -75,7 +76,6 @@ public class Provider extends User {
         this.description = description;
         this.teaserSet = teaserSet;
         this.linkToPage = linkToPage;
-        // test
     }
 
 
@@ -163,11 +163,11 @@ public class Provider extends User {
         this.genre = genre;
     }
 
-    public Date getActivityDate() {
+    public java.sql.Date getActivityDate() {
         return activityDate;
     }
 
-    public void setActivityDate(Date activityDate) {
+    public void setActivityDate(java.sql.Date activityDate) {
         this.activityDate = activityDate;
     }
 
@@ -225,31 +225,5 @@ public class Provider extends User {
 
     public void setLinkToPage(URL linkToPage) {
         this.linkToPage = linkToPage;
-
-
-
-    /*
-    "CREATE TABLE providers ("
-                    + "providerNumber int NOT NULL, "
-                    + "userNumber int NOT NULL, "
-                    + "VATNumber varchar(50) UNIQUE, "
-                    + "accountNumber varchar(50) NOT NULL UNIQUE, "
-                    + "streetName varchar(50) NOT NULL, "
-                    + "houseNumber int NOT NULL, "
-                    + "ZIP int NOT NULL, "
-                    + "city varchar(50) NOT NULL, "
-                    + "country varchar(50) NOT NULL, "
-                    + "artistName varchar(50) NOT NULL, "
-                    + "genre ENUM('Techno', 'Rock', 'Pop', 'Dance', 'Blues', 'Jazz', 'Soul', 'Party', 'Hiphop', 'Acoustic', 'Disco', 'Funk', 'Classic', 'Background', 'Nineties', 'Eighties', 'Seventies', 'Sixties', 'Latin', 'Lounge') NOT NULL, "
-                    + "activityDate date NOT NULL, "
-                    + "priceHour double NOT NULL, "
-                    + "minHours double NOT NULL, "
-                    + "maxHours double NOT NULL, "
-                    + "conditions varchar(100), "
-                    + "description varchar(100) NOT NULL, "
-                    + "teaserSet varchar(50) NOT NULL, "
-                    + "linkToPage varchar(50) UNIQUE, "
-                    + "PRIMARY KEY (providerNumber)" + ")";
-     */
     }
 }

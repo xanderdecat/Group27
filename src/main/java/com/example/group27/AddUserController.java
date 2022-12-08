@@ -48,12 +48,13 @@ public class AddUserController {
             String firstName1 = firstName.getText();
             String lastName1 = lastName.getText();
             LocalDate ld = dateOfBirth.getValue();
-            Instant instant = Instant.from(ld.atStartOfDay(ZoneId.systemDefault()));
+            java.sql.Date testdate = java.sql.Date.valueOf(ld);
+
 
             String email1 = email.getText();
             String phoneNumber1 = phoneNumber.getText();
             String wachtwoord1 = wachtwoordInput.getText();
-            java.sql.Date testdate = java.sql.Date.valueOf(ld);
+
 
             HelloApplication.userMain = new User(firstName1, lastName1, testdate, email1, phoneNumber1, wachtwoord1);
             DB.UserDAO.saveUser(HelloApplication.userMain);   // toevoegen aan DataBase
@@ -77,9 +78,9 @@ public class AddUserController {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader();
             fxmlLoader.setLocation(getClass().getResource("WelcomePage.fxml"));
-            Scene scene = new Scene(fxmlLoader.load(), 630, 400);
+            Scene scene = new Scene(fxmlLoader.load(), 700, 500);
             Stage stage = new Stage();
-            stage.setTitle("Event App");
+            stage.setTitle("Muzer");
             stage.setScene(scene);
             stage.show();
             ((Node)(actionEvent.getSource())).getScene().getWindow().hide();

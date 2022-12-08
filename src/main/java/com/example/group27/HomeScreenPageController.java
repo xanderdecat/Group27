@@ -22,8 +22,13 @@ public class HomeScreenPageController {
     private Button upgradeButton;
     @FXML
     private Label namefield;
-    public void initialize() {
+
+    public void start() {
         namefield.setText(HelloApplication.userMain.getName());
+    }
+
+    public void initialize() {
+
         continuButton.setVisible(false);
         upgradeButton.setVisible(true);
 
@@ -39,7 +44,7 @@ public class HomeScreenPageController {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader();
             fxmlLoader.setLocation(getClass().getResource("WelcomePage.fxml"));
-            Scene scene = new Scene(fxmlLoader.load(), 630, 400);
+            Scene scene = new Scene(fxmlLoader.load(), 700, 500);
             Stage stage = new Stage();
             stage.setTitle("Muzer");
             stage.setScene(scene);

@@ -95,7 +95,7 @@ public class UserDAO { //klasse om te interageren met de database user table
                 PreparedStatement stmt2 = con.prepareStatement(sqlUpdate);
                 stmt2.setString(1, u.getFirstName());
                 stmt2.setString(2, u.getLastName());
-                stmt2.setDate(3, (Date) u.getDateOfBirth());
+                stmt2.setDate(3, u.getDateOfBirth());
                 stmt2.setInt(4, u.getAge());
                 stmt2.setString(5, u.getEmail());
                 stmt2.setString(6, u.getPhoneNumber());
@@ -113,7 +113,7 @@ public class UserDAO { //klasse om te interageren met de database user table
                 insertStm.setInt(1, u.getUserNumber());
                 insertStm.setString(2, u.getFirstName());
                 insertStm.setString(3, u.getLastName());
-                insertStm.setDate(4, (Date) u.getDateOfBirth());
+                insertStm.setDate(4, u.getDateOfBirth());
                 insertStm.setInt(5, u.getAge());
                 insertStm.setString(6, u.getEmail());
                 insertStm.setString(7, u.getPhoneNumber());

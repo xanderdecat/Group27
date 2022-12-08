@@ -180,7 +180,7 @@ public class ProviderDAO extends UserDAO {
                 insertStm.setString(9, p.getCountry());
                 insertStm.setString(10, p.getArtistName());
                 insertStm.setString(11, String.valueOf(p.getGenre()));
-                insertStm.setDate(12, (Date) p.getActivityDate());
+                insertStm.setDate(12, p.getActivityDate());
                 insertStm.setDouble(13, p.getPriceHour());
                 insertStm.setDouble(14, p.getMinHours());
                 insertStm.setDouble(15, p.getMaxHours());

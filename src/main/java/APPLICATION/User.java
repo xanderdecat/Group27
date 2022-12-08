@@ -52,27 +52,8 @@ public class User {
         this.password = password;
     }
     //empty constructor used in the main
-
     public User() {
     }
-
-    public static boolean logUserInFromEmail(String email, String password){
-        for(User user : getUsers())
-            if (email.equals(user.getEmail()) && password.equals(user.getPassword()))
-                return true;
-        return false;
-    }
-
-
-    // methodes
-    /*
-    public Event createEmptyEvent (String eventName, LocalDateTime startDate, LocalDateTime endDate, String description, URL linkToPage) {
-        Event newEvent = new Event(getUserNumber(), eventName, startDate, endDate, description, linkToPage);
-        actualEvents.add(newEvent);
-        return newEvent;
-    }
-
-     */
 
     // getters en setters
     public static int getHelpUserNumber() {

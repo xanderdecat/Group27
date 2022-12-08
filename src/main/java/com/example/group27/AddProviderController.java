@@ -124,8 +124,7 @@ public class AddProviderController {
                 String accountNumber = accountNumberInput.getText();
                 int ZIPCode = Integer.parseInt(ZIPCodeInput.getText());
                 LocalDate ld = activityDateInput.getValue();
-                Instant instant = Instant.from(ld.atStartOfDay(ZoneId.systemDefault()));
-                Date activityDate = Date.from(instant);
+                java.sql.Date testdate = java.sql.Date.valueOf(ld);
                 String artistName = artistNameInput.getText();
                 String city = cityInput.getText();
                 String conditions = conditionsInput.getText();
@@ -139,7 +138,7 @@ public class AddProviderController {
                 double priceHour = Double.parseDouble(priceHourInput.getText());
                 //String streetName = streetNameInput.getText();
                 Provider provider = new Provider(HelloApplication.userMain.getUserNumber(), HelloApplication.userMain.getFirstName(), HelloApplication.userMain.getLastName(), HelloApplication.userMain.getDateOfBirth(), HelloApplication.userMain.getAge(), HelloApplication.userMain.getEmail(), HelloApplication.userMain.getPhoneNumber(), HelloApplication.userMain.getPassword(), VATNumber, accountNumber, "streetName", houseNumber, ZIPCode, city, country, artistName,
-                        Provider.genres.Acoustic, activityDate, priceHour, minHours, maxHours, conditions, description, linkToSet, linkToPage);
+                        Provider.genres.Acoustic, testdate, priceHour, minHours, maxHours, conditions, description, linkToSet, linkToPage);
                 ProviderDAO.saveProvider(provider);
                 try {
                     FXMLLoader fxmlLoader = new FXMLLoader();

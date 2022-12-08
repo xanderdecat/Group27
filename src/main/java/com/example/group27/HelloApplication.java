@@ -14,7 +14,7 @@ public static User userMain;
     public void start(Stage stage) throws IOException {
         userMain = new User();
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("WelcomePage.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 630, 400);
+        Scene scene = new Scene(fxmlLoader.load(), 700, 500);
         stage.setTitle("Muzer");
         stage.setScene(scene);
         stage.show();

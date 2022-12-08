@@ -17,10 +17,6 @@ import java.util.Objects;
 
 public class LogInUserController {
 
-
-    @FXML
-    private Button LogIn2Button;
-
     @FXML
     private TextField emailInput;
 
@@ -40,7 +36,7 @@ public class LogInUserController {
                     fxmlLoader.setLocation(getClass().getResource("HomeScreenPage.fxml"));
                     Scene scene = new Scene(fxmlLoader.load(), 700, 500);
                     Stage stage = new Stage();
-                    stage.setTitle("Home screen");
+                    stage.setTitle("Muzer");
                     stage.setScene(scene);
                     stage.show();
                     ((Node) (actionEvent.getSource())).getScene().getWindow().hide();
@@ -56,9 +52,9 @@ public class LogInUserController {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader();
             fxmlLoader.setLocation(getClass().getResource("WelcomePage.fxml"));
-            Scene scene = new Scene(fxmlLoader.load(), 630, 400);
+            Scene scene = new Scene(fxmlLoader.load(), 700, 500);
             Stage stage = new Stage();
-            stage.setTitle("Event App");
+            stage.setTitle("Muzer");
             stage.setScene(scene);
             stage.show();
             ((Node) (actionEvent.getSource())).getScene().getWindow().hide();
