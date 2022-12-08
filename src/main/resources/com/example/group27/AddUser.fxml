@@ -24,7 +24,9 @@
             <Font size="14.0" />
          </font>
       </Label>
-      <Button fx:id="RegisterButton" layoutX="331.0" layoutY="278.0" mnemonicParsing="false" onAction="#goToHomePage" text="Register" />
-      <Button layoutX="65.0" layoutY="278.0" mnemonicParsing="false" onAction="#goToWelcomePage" text="Back" />
+      <Button fx:id="RegisterButton" layoutX="331.0" layoutY="304.0" mnemonicParsing="false" onAction="#goToHomePage" text="Register" />
+      <Button layoutX="62.0" layoutY="304.0" mnemonicParsing="false" onAction="#goToWelcomePage" text="Back" />
+      <TextField fx:id="wachtwoordInput" layoutX="193.0" layoutY="265.0" prefHeight="27.0" prefWidth="200.0" />
+      <Label layoutX="38.0" layoutY="270.0" text="Wachtwoord" />
    </children>
 </AnchorPane>

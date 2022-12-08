@@ -1,6 +1,7 @@
 package com.example.group27;
 
 import APPLICATION.User;
+import DB.UserDAO;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -37,9 +38,13 @@ public class AddUserController {
     @FXML
     private TextField phoneNumber;
 
+    @FXML
+    private TextField wachtwoordInput;
+
+
     // gaat verder naar HOMEPAGE indien gegevens OK
     public void goToHomePage(ActionEvent actionEvent) {
-        if (dateOfBirth.getValue() != null && email.getText() != null && firstName.getText() != null && lastName.getText() != null && phoneNumber.getText() != null) {
+        if (dateOfBirth.getValue() != null && email.getText() != null && firstName.getText() != null && lastName.getText() != null && phoneNumber.getText() != null && wachtwoordInput.getText() != null) {
             String firstName1 = firstName.getText();
             String lastName1 = lastName.getText();
             LocalDate ld = dateOfBirth.getValue();
@@ -47,9 +52,10 @@ public class AddUserController {
             Date dob = Date.from(instant);
             String email1 = email.getText();
             String phoneNumber1 = phoneNumber.getText();
+            String wachtwoord1 = wachtwoordInput.getText();
             java.sql.Date testdate = java.sql.Date.valueOf(ld);
 
-            HelloApplication.userMain = new User(firstName1, lastName1, testdate, email1, phoneNumber1);
+            HelloApplication.userMain = new User(firstName1, lastName1, testdate, email1, phoneNumber1, wachtwoord1);
             DB.UserDAO.saveUser(HelloApplication.userMain);   // toevoegen aan DataBase
 
             try {

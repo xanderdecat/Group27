@@ -22,6 +22,7 @@ public class UserDAO { //klasse om te interageren met de database user table
                     + "age int NOT NULL, "
                     + "email varchar(50) NOT NULL, "
                     + "phoneNumber varchar(50) NOT NULL, "
+                    + "wachtwoord varchar(50) NOT NULL, "
                     + "PRIMARY KEY (userNumber)" + ")";
             stmt.executeUpdate(sql);
         } catch (SQLException e) {
@@ -33,7 +34,7 @@ public class UserDAO { //klasse om te interageren met de database user table
         Connection con = null;
         try {
             con = DBHandler.getConnection();
-            String sql1 = "SELECT userNumber, firstName, lastName, dateOfBirth, age, email, phoneNumber "
+            String sql1 = "SELECT userNumber, firstName, lastName, dateOfBirth, age, email, phoneNumber, wachtwoord "
                     + "FROM users "
                     + "WHERE userNumber = ?";
             PreparedStatement stmt = con.prepareStatement(sql1);
@@ -42,7 +43,7 @@ public class UserDAO { //klasse om te interageren met de database user table
             // let op de spatie na 'summary' en 'Students' in voorgaande SQL
             ResultSet srs = stmt.executeQuery();
 
-            String firstName, lastName, email, phoneNumber;
+            String firstName, lastName, email, phoneNumber, wachtwoord;
             int userNumber, age;
             Date dateOfBirth;
 
@@ -54,10 +55,11 @@ public class UserDAO { //klasse om te interageren met de database user table
                 age = srs.getInt("age");
                 email = srs.getString("email");
                 phoneNumber = srs.getString("phoneNumber");
+                wachtwoord = srs.getString("wachtwoord");
             } else {// we verwachten slechts 1 rij...
                 return null;
             }
-            User user = new User(userNumber, firstName, lastName, dateOfBirth, age, email, phoneNumber);
+            User user = new User(userNumber, firstName, lastName, dateOfBirth, age, email, phoneNumber, wachtwoord);
             return user;
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -84,10 +86,11 @@ public class UserDAO { //klasse om te interageren met de database user table
                 String sqlUpdate = "UPDATE users " +
                         "SET firstName = ? ," +
                         " lastName = ? ," +
-                        " dateOfbirth = ?, " +
-                        " age = ?, " +
-                        " email = ?, " +
-                        " phoneNumber = ? " +
+                        " dateOfbirth = ?," +
+                        " age = ?," +
+                        " email = ?," +
+                        " phoneNumber = ?," +
+                        " wachtwoord = ? " +
                         "WHERE userNumber = ?";
                 PreparedStatement stmt2 = con.prepareStatement(sqlUpdate);
                 stmt2.setString(1, u.getFirstName());
@@ -96,14 +99,15 @@ public class UserDAO { //klasse om te interageren met de database user table
                 stmt2.setInt(4, u.getAge());
                 stmt2.setString(5, u.getEmail());
                 stmt2.setString(6, u.getPhoneNumber());
-                stmt2.setInt(7, u.getUserNumber());
+                stmt2.setString(7, u.getWachtwoord());
+                stmt2.setInt(8, u.getUserNumber());
                 stmt2.executeUpdate();
             } else {
 
                 // INSERT
                 String sqlInsert = "INSERT into users "
-                        + "(userNumber, firstName, lastName, dateOfBirth, age, email, phoneNumber) "
-                        + "VALUES (?,?,?,?,?,?,?)";
+                        + "(userNumber, firstName, lastName, dateOfBirth, age, email, phoneNumber, wachtwoord) "
+                        + "VALUES (?,?,?,?,?,?,?,?)";
                 //System.out.println(sql);
                 PreparedStatement insertStm = con.prepareStatement(sqlInsert);
                 insertStm.setInt(1, u.getUserNumber());
@@ -113,6 +117,7 @@ public class UserDAO { //klasse om te interageren met de database user table
                 insertStm.setInt(5, u.getAge());
                 insertStm.setString(6, u.getEmail());
                 insertStm.setString(7, u.getPhoneNumber());
+                insertStm.setString(8, u.getWachtwoord());
                 insertStm.executeUpdate();
             }
         } catch (Exception ex) {

@@ -138,7 +138,7 @@ public class AddProviderController {
                 double minHours = Double.parseDouble(minHoursInput.getText());
                 double priceHour = Double.parseDouble(priceHourInput.getText());
                 String streetName = streetNameInput.getText();
-                Provider provider = new Provider(HelloApplication.userMain.getUserNumber(), HelloApplication.userMain.getFirstName(), HelloApplication.userMain.getLastName(), HelloApplication.userMain.getDateOfBirth(), HelloApplication.userMain.getAge(), HelloApplication.userMain.getEmail(), HelloApplication.userMain.getPhoneNumber(), VATNumber, accountNumber, streetName, houseNumber, ZIPCode, city, country, artistName,
+                Provider provider = new Provider(HelloApplication.userMain.getUserNumber(), HelloApplication.userMain.getFirstName(), HelloApplication.userMain.getLastName(), HelloApplication.userMain.getDateOfBirth(), HelloApplication.userMain.getAge(), HelloApplication.userMain.getEmail(), HelloApplication.userMain.getPhoneNumber(), HelloApplication.userMain.getWachtwoord(), VATNumber, accountNumber, streetName, houseNumber, ZIPCode, city, country, artistName,
                         Provider.genres.Acoustic, activityDate, priceHour, minHours, maxHours, conditions, description, linkToSet, linkToPage);
                 ProviderDAO.saveProvider(provider);
                 try {

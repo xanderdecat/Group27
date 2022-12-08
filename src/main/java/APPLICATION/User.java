@@ -9,6 +9,8 @@ import java.time.Period;
 import java.time.ZoneId;
 import java.util.ArrayList;
 
+import static DB.UserDAO.getUsers;
+
 public class User {
 
     // instantievariabelen
@@ -18,13 +20,14 @@ public class User {
     private String lastName;
     private String name;
     private java.sql.Date dateOfBirth;
-    private int age;                            // derived from dateOfBirth
-    private String email;           // multiple emails
-    private String phoneNumber;     // multiple phoneNumbers
+    private int age;
+    private String email;
+    private String phoneNumber;
+    private String wachtwoord;
 
     // constructor for GUI
-    public User(String firstName, String lastName, Date dateOfBirth, String email, String phoneNumber) {
-        helpUserNumber++;
+    public User(String firstName, String lastName, Date dateOfBirth, String email, String phoneNumber, String wachtwoord) {
+        helpUserNumber = getUsers().size() + 1;
         this.userNumber = helpUserNumber;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -34,10 +37,11 @@ public class User {
         this.age = Period.between(lDateOfBirth, LocalDate.now()).getYears();
         this.email = email;
         this.phoneNumber = phoneNumber;
+        this.wachtwoord = wachtwoord;
     }
 
     // constructor for UserDAO
-    public User(int userNumber, String firstName, String lastName, java.sql.Date dateOfBirth, int age, String email, String phoneNumber) {
+    public User(int userNumber, String firstName, String lastName, java.sql.Date dateOfBirth, int age, String email, String phoneNumber, String wachtwoord) {
         this.userNumber = userNumber;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -45,6 +49,7 @@ public class User {
         this.age = age;
         this.email = email;
         this.phoneNumber = phoneNumber;
+        this.wachtwoord = wachtwoord;
     }
     //empty constructor used in the main
 
@@ -52,7 +57,7 @@ public class User {
     }
 
     public static boolean logUserInFromEmail(String email){
-        for(User user : UserDAO.getUsers())
+        for(User user : getUsers())
             if (email.equals(user.getEmail()))
                 return true;
         return false;
@@ -142,4 +147,15 @@ public class User {
         this.phoneNumber = phoneNumber;
     }
 
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getWachtwoord() {
+        return wachtwoord;
+    }
+
+    public void setWachtwoord(String wachtwoord) {
+        this.wachtwoord = wachtwoord;
+    }
 }
