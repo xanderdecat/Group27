@@ -88,12 +88,12 @@ public class AddEventController {
 
             LocalDate startDateLD = startDateInput.getValue();
             String startDateString = startDatePicker.getValue();
-            Integer startDateInteger = Integer.valueOf(startDateString.substring(0, 1));
+            int startDateInteger = Integer.parseInt(startDateString.substring(0, 1));
             LocalDateTime startDate1 = LocalDateTime.of(startDateLD.getYear(), startDateLD.getMonth(), startDateLD.getDayOfMonth(), startDateInteger, 00, 00);
 
             LocalDate endDateLD = endDateInput.getValue();
             String endDateString = endDatePicker.getValue();
-            Integer endDateInteger = Integer.valueOf(endDateString.substring(0, 1));
+            int endDateInteger = Integer.parseInt(endDateString.substring(0, 1));
             LocalDateTime endDate1 = LocalDateTime.of(endDateLD.getYear(), endDateLD.getMonth(), endDateLD.getDayOfMonth(), endDateInteger, 00, 00);
 
             String description1 = descriptionInput.getText();
@@ -122,9 +122,8 @@ public class AddEventController {
                 catch (IOException e) {
                 }
             }
-        } catch (MalformedURLException e) {
+        }catch (MalformedURLException | NumberFormatException e) {
         }
-
     }
 
     public void goToHomePage(ActionEvent actionEvent) {

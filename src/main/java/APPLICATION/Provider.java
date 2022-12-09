@@ -1,6 +1,8 @@
 package APPLICATION;
 
 import DB.ProviderDAO;
+import javafx.scene.control.DatePicker;
+import javafx.scene.control.TextField;
 
 import java.net.URL;
 import java.time.LocalDate;
@@ -225,5 +227,19 @@ public class Provider extends User {
 
     public void setLinkToPage(URL linkToPage) {
         this.linkToPage = linkToPage;
+    }
+
+    public static boolean checkVATnumber(String VATNumberToCheck) {
+        if (VATNumberToCheck == null || VATNumberToCheck.length() == 0)
+            return false;
+        for (Provider provider : ProviderDAO.getProviders())
+            if (provider.VATNumber.equals(VATNumberToCheck))
+                return true;
+        return false;
+    }
+    public static boolean checkMinMaxHours(TextField minHoursInput, TextField maxHoursInput){
+        double maxHours = Double.parseDouble(maxHoursInput.getText());
+        double minHours = Double.parseDouble(minHoursInput.getText());
+        return maxHours >= minHours;
     }
 }

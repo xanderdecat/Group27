@@ -45,6 +45,7 @@ public class AddUserController {
     // gaat verder naar HOMEPAGE indien gegevens OK
     public void goToHomePage(ActionEvent actionEvent) {
         if (dateOfBirth.getValue() != null && email.getText() != null && firstName.getText() != null && lastName.getText() != null && phoneNumber.getText() != null && wachtwoordInput.getText() != null) {
+            if(dateOfBirth.getClass().equals(DatePicker.class) ){
             String firstName1 = firstName.getText();
             String lastName1 = lastName.getText();
             LocalDate ld = dateOfBirth.getValue();
@@ -72,7 +73,7 @@ public class AddUserController {
             } catch (IOException e) {
             }
         }
-    }
+    }}
 
     public void goToWelcomePage(ActionEvent actionEvent) {
         try {

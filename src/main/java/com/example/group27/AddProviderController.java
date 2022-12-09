@@ -118,7 +118,7 @@ public class AddProviderController {
 
 
     public void goToProviderPage(ActionEvent actionEvent) {         //op een of andere manier nog voorwaarden opleggen aan de input
-        if (VATNumberInput.getText() != null && accountNumberInput.getText() != null && ZIPCodeInput.getText() != null && activityDateInput.getValue() != null && artistNameInput.getText() != null && cityInput.getText() != null && countryInput.getText() != null && descriptionInput.getText() != null && houseNumberInput.getText() != null && linkToSetInput.getText() != null && maxHoursInput.getText() != null && minHoursInput.getText() != null && priceHourInput.getText() != null ) {//&& streetNameInput.getText() != null
+        if (Provider.checkVATnumber(VATNumberInput.getText()) && accountNumberInput.getText() != null && ZIPCodeInput.getText() != null && activityDateInput.getValue() != null && activityDateInput.getClass().equals(DatePicker.class) && artistNameInput.getText() != null && cityInput.getText() != null && countryInput.getText() != null && descriptionInput.getText() != null && houseNumberInput.getText() != null && linkToSetInput.getText() != null && maxHoursInput.getText() != null && minHoursInput.getText() != null && Provider.checkMinMaxHours(minHoursInput, maxHoursInput) && priceHourInput.getText() != null ) {//&& streetNameInput.getText() != null VATNumberInput.getText() != null
             try {
                 String VATNumber = VATNumberInput.getText();
                 String accountNumber = accountNumberInput.getText();
@@ -151,7 +151,7 @@ public class AddProviderController {
                     ((Node) (actionEvent.getSource())).getScene().getWindow().hide();
                 } catch (IOException e) {
                 }
-            } catch (MalformedURLException e) {
+            } catch (MalformedURLException | NumberFormatException e) {
             }
         }
 
