@@ -15,7 +15,7 @@ public class WelcomePageController {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader();
             fxmlLoader.setLocation(getClass().getResource("LogInUser.fxml"));
-            Scene scene = new Scene(fxmlLoader.load(), 700, 500);
+            Scene scene = new Scene(fxmlLoader.load(), 800, 500);
             Stage stage = new Stage();
             stage.setTitle("Muzer");
             stage.setScene(scene);
@@ -30,7 +30,7 @@ public class WelcomePageController {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader();
             fxmlLoader.setLocation(getClass().getResource("AddUser.fxml"));
-            Scene scene = new Scene(fxmlLoader.load(), 700, 500);
+            Scene scene = new Scene(fxmlLoader.load(), 800, 500);
             Stage stage = new Stage();
             stage.setTitle("Muzer");
             stage.setScene(scene);

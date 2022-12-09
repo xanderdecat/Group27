@@ -28,7 +28,7 @@ public class PreviousEventsController {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader();
             fxmlLoader.setLocation(getClass().getResource("ProviderPage.fxml"));
-            Scene scene = new Scene(fxmlLoader.load(), 630, 400);
+            Scene scene = new Scene(fxmlLoader.load(), 800, 500);
             Stage stage = new Stage();
             stage.setTitle("Muzer");
             stage.setScene(scene);
@@ -43,7 +43,7 @@ public class PreviousEventsController {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader();
             fxmlLoader.setLocation(getClass().getResource("ReviewPage.fxml"));
-            Scene scene = new Scene(fxmlLoader.load(), 630, 400);
+            Scene scene = new Scene(fxmlLoader.load(), 800, 500);
             Stage stage = new Stage();
             stage.setTitle("Muzer");
             stage.setScene(scene);

@@ -1,6 +1,8 @@
 package com.example.group27;
 
+import APPLICATION.Event;
 import APPLICATION.Provider;
+import DB.EventDAO;
 import DB.ProviderDAO;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -9,9 +11,11 @@ import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.time.LocalDateTime;
 
 public class HomeScreenPageController {
 
@@ -23,6 +27,16 @@ public class HomeScreenPageController {
     @FXML
     private Label namefield;
 
+    @FXML
+    private ListView<String> previousEventsChooser;
+
+    @FXML
+    private Label score;
+
+    @FXML
+    private ListView<String> upcomingEventsChooser;
+
+
     public void initialize() {
         continuButton.setVisible(false);
         upgradeButton.setVisible(true);
@@ -33,6 +47,17 @@ public class HomeScreenPageController {
             if (provider.getUserNumber() == HelloApplication.userMain.getUserNumber()) {
                 continuButton.setVisible(true);
                 upgradeButton.setVisible(false);
+            }
+        }
+
+        for (Event event : EventDAO.getEvents()) {
+            if (event.getEventUserNumber() == HelloApplication.userMain.getUserNumber() && event.getEndDate().isAfter(LocalDateTime.now())) {
+                String s = event.getEventName() + " - " + event.getCity();
+                upcomingEventsChooser.getItems().add(s);
+            }
+            if (event.getEventUserNumber() == HelloApplication.userMain.getUserNumber() && event.getEndDate().isBefore(LocalDateTime.now())) {
+                String s = event.getEventName() + " - " + event.getCity();
+                previousEventsChooser.getItems().add(s);
             }
         }
     }
@@ -102,7 +127,7 @@ public class HomeScreenPageController {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader();
             fxmlLoader.setLocation(getClass().getResource("LogInProvider.fxml"));
-            Scene scene = new Scene(fxmlLoader.load(), 630, 400);
+            Scene scene = new Scene(fxmlLoader.load(), 800, 500);
             Stage stage = new Stage();
             stage.setTitle("Muzer");
             stage.setScene(scene);
