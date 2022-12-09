@@ -45,6 +45,7 @@ public class User {
         this.userNumber = userNumber;
         this.firstName = firstName;
         this.lastName = lastName;
+        this.name = firstName + " " + lastName;
         this.dateOfBirth = dateOfBirth;
         this.age = age;
         this.email = email;

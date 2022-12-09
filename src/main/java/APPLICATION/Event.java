@@ -25,9 +25,10 @@ public class Event {
     private double eventDuration;       // in uren
     private String description;
     private URL linkToPage;
+    private int NPONumber;
 
     // constructor for DAO
-    public Event(int eventNumber, int eventUserNumber, String eventName, String streetName, int houseNumber, int ZIP, String city, String country, LocalDateTime startDate, LocalDateTime confirmationDate, LocalDateTime endDate, double eventDuration, String description, URL linkToPage) {
+    public Event(int eventNumber, int eventUserNumber, String eventName, String streetName, int houseNumber, int ZIP, String city, String country, LocalDateTime startDate, LocalDateTime confirmationDate, LocalDateTime endDate, double eventDuration, String description, URL linkToPage, int NPONumber) {
         this.eventNumber = eventNumber;
         this.eventUserNumber = eventUserNumber;
         this.eventName = eventName;
@@ -42,11 +43,12 @@ public class Event {
         this.eventDuration = eventDuration;
         this.description = description;
         this.linkToPage = linkToPage;
+        this.NPONumber = NPONumber;
     }
 
     // constructor for GUI
-    public Event(int eventUserNumber, String eventName, String streetName, int houseNumber, int ZIP, String city, String country, LocalDateTime startDate, LocalDateTime endDate, String description, URL linkToPage) {
-        this.eventNumber = EventDAO.getEvents().size() +1;
+    public Event(int eventUserNumber, String eventName, String streetName, int houseNumber, int ZIP, String city, String country, LocalDateTime startDate, LocalDateTime endDate, String description, URL linkToPage, int NPONumber) {
+        this.eventNumber = DB.EventDAO.getEvents().size() + 1;
         this.eventUserNumber = eventUserNumber;
         this.eventName = eventName;
         this.streetName = streetName;
@@ -60,6 +62,7 @@ public class Event {
         this.eventDuration = Duration.between(startDate, endDate).toHours();
         this.description = description;
         this.linkToPage = linkToPage;
+        this.NPONumber = NPONumber;
     }
 
     // getters en setters
@@ -183,58 +186,13 @@ public class Event {
         this.linkToPage = linkToPage;
     }
 
-
-    /*
-    // constructor
-    public Event(long eventUserNumber, ArrayList<Provider> eventProviderNumbers, long eventNumber, String eventName, Location location, String streetName, int houseNumber, int ZIP, String city, String country, LocalDateTime startDate, LocalDateTime endDate, String description, URL linkToPage, ArrayList<Review> reviews) {
-        this.eventUserNumber = eventUserNumber;
-        this.eventProviderNumbers = eventProviderNumbers;
-        this.eventNumber = helpEventNumber + 1;
-        this.eventName = eventName;
-        this.location = location;
-        this.streetName = streetName;
-        this.houseNumber = houseNumber;
-        this.ZIP = ZIP;
-        this.city = city;
-        this.country = country;
-        this.startDate = startDate;
-        this.confirmationDate = startDate.minusDays(2);
-        this.endDate = endDate;
-        this.eventDuration = calculateDuration(startDate, endDate);
-        this.description = description;
-        this.linkToPage = linkToPage;
-        this.reviews = reviews;
+    public int getNPONumber() {
+        return NPONumber;
     }
 
-    // constructor om een event aan te maken met minimale informatie
-    public Event(long eventUserNumber, String eventName, String city, String country, LocalDateTime startDate, LocalDateTime endDate, String description, URL linkToPage) {
-        this.eventUserNumber = eventUserNumber;
-        this.eventNumber = helpEventNumber +1;
-        this.eventName = eventName;
-        this.city = city;
-        this.country = country;
-        this.startDate = startDate;
-        this.confirmationDate = startDate.minusDays(2);
-        this.endDate = endDate;
-        this.eventDuration = calculateDuration(startDate, endDate);
-        this.description = description;
-        this.linkToPage = linkToPage;
+    public void setNPONumber(int NPONumber) {
+        this.NPONumber = NPONumber;
     }
-
-    // emptyEvent
-    public Event(long eventUserNumber, String eventName, LocalDateTime startDate, LocalDateTime endDate, String description, URL linkToPage) {
-        this.eventUserNumber = eventUserNumber;
-        this.eventNumber = helpEventNumber++;
-        this.eventName = eventName;
-        this.confirmationDate = startDate.minusDays(2);
-        this.startDate = startDate;
-        this.endDate = endDate;
-        this.eventDuration = calculateDuration(startDate, endDate);
-        this.description = description;
-        this.linkToPage = linkToPage;
-        this.reviews = new ArrayList<>();
-    }
-    */
 
     /*
     // methodes

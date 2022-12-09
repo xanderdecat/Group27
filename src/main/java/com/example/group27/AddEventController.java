@@ -1,9 +1,13 @@
 package com.example.group27;
 
 import APPLICATION.Event;
+import APPLICATION.NonProfitOrganisation;
 import APPLICATION.Provider;
 import DB.EventDAO;
+import DB.NonProfitOrganisationDAO;
 import DB.ProviderDAO;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -17,6 +21,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.Objects;
 
 public class AddEventController {
 
@@ -56,11 +61,19 @@ public class AddEventController {
 
     @FXML
     private ChoiceBox<String> startDatePicker;
+    @FXML
+    private ListView<String> goodCauses;
 
     public void initialize() {
+        for (NonProfitOrganisation npo : NonProfitOrganisationDAO.getNonProfitOrganisations()) {
+            String s = npo.getNPOName() + " - " + npo.getCauseOfNPO().toString();
+            goodCauses.getItems().add(s);
+        }
+
         startDatePicker.getItems().addAll("00:00", "01:00", "02:00", "03:00", "04:00", "05:00", "06:00", "07:00", "08:00", "09:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00", "20:00", "21:00", "22:00", "23:00");
         endDatePicker.getItems().addAll("00:00", "01:00", "02:00", "03:00", "04:00", "05:00", "06:00", "07:00", "08:00", "09:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00", "20:00", "21:00", "22:00", "23:00");
     }
+
 
     @FXML
     private TextField zipCodeInput;
@@ -86,19 +99,27 @@ public class AddEventController {
             String description1 = descriptionInput.getText();
             URL linkToPage1 = new URL(linkToPageInput.getText());
 
-            if (startDate1.isBefore(endDate1) && eventName1 != null && streetName1 != null && houseNumberInput.getText() != null && zipCodeInput.getText() != null && country1 != null && description1 != null && linkToPage1 != null) {
-                eventMain = new Event(HelloApplication.userMain.getUserNumber(), eventName1, streetName1, houseNumber1, ZIPCode1, cityInput1, country1, startDate1, endDate1, description1, linkToPage1);
+            String s = goodCauses.getSelectionModel().getSelectedItem();
+            String subs = s.substring(0, (s.indexOf("-")-2));
+            int npoNumber1 = 0;
+            for (NonProfitOrganisation npo : NonProfitOrganisationDAO.getNonProfitOrganisations())
+                if (subs.equals(npo.getNPOName()))
+                    npoNumber1 = npo.getNonPONumber();
+
+            if (startDate1.isBefore(endDate1) && eventName1 != null && streetName1 != null && houseNumberInput.getText() != null && zipCodeInput.getText() != null && country1 != null && description1 != null) {
+                eventMain = new Event(HelloApplication.userMain.getUserNumber(), eventName1, streetName1, houseNumber1, ZIPCode1, cityInput1, country1, startDate1, endDate1, description1, linkToPage1, npoNumber1);
                 EventDAO.saveEvent(eventMain);
                 try {
                     FXMLLoader fxmlLoader = new FXMLLoader();
                     fxmlLoader.setLocation(getClass().getResource("AddEventChooser.fxml"));
-                    Scene scene = new Scene(fxmlLoader.load(), 630, 600);
+                    Scene scene = new Scene(fxmlLoader.load(), 700, 500);
                     Stage stage = new Stage();
                     stage.setTitle("Muzer");
                     stage.setScene(scene);
                     stage.show();
-                    ((Node) (actionEvent.getSource())).getScene().getWindow().hide();
-                } catch (IOException e) {
+                    ((Node)(actionEvent.getSource())).getScene().getWindow().hide();
+                }
+                catch (IOException e) {
                 }
             }
         } catch (MalformedURLException e) {

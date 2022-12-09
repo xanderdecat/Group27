@@ -17,7 +17,7 @@ public class NonProfitOrganisationDAO {
                     + "nonPONnumber int NOT NULL, "
                     + "NPOName varchar(50) NOT NULL, "
                     + "description varchar(1000) NOT NULL, "
-                    + "accountNumber varchar(50) NOT NULL, "
+                    + "accountNumber varchar(50) NOT NULL UNIQUE , "
                     + "causeOfNPO ENUM('Education', 'AnimalRights', 'ClimateChange', 'HumanRights', 'Poverty', 'Research', 'Healthcare', 'Other') NOT NULL, "
                     + "PRIMARY KEY (nonPONnumber)" + ")";
             stmt.executeUpdate(sql);
@@ -25,11 +25,11 @@ public class NonProfitOrganisationDAO {
             e.printStackTrace();
         }
     }
-    public NonProfitOrganisation getNPO(int nPONum)  {
+    public static NonProfitOrganisation getNPO(int nPONum)  {
         Connection con = null;
         try {
             con = DBHandler.getConnection();
-            String sql1 = "SELECT nonPONnumber, NPOName, description, accountNumber, causeofNPO "
+            String sql1 = "SELECT nonPONumber, NPOName, description, accountNumber, causeofNPO "
                     + "FROM nonprofitorganisations "
                     + "WHERE nonPONumber = ?";
             PreparedStatement stmt = con.prepareStatement(sql1);
@@ -47,7 +47,7 @@ public class NonProfitOrganisationDAO {
 
                 description = srs.getString("description");
                 accountNumber = srs.getString("accountNumber");
-                causeOfNPO = (NonProfitOrganisation.cause.valueOf(srs.getString("summary")));
+                causeOfNPO = (NonProfitOrganisation.cause.valueOf(srs.getString("causeOfNPO")));
             } else {// we verwachten slechts 1 rij...
                 return null;
             }
@@ -59,7 +59,7 @@ public class NonProfitOrganisationDAO {
             return null;
         }
     }
-    public void save(NonProfitOrganisation nonProfitOrganisation)  {
+    public static void save(NonProfitOrganisation nonProfitOrganisation)  {
         Connection con = null;
         try {
             con = DBHandler.getConnection();
@@ -107,7 +107,7 @@ public class NonProfitOrganisationDAO {
 
         }
     }
-    public ArrayList<NonProfitOrganisation> getNonProfitOrganisations()  {
+    public static ArrayList<NonProfitOrganisation> getNonProfitOrganisations()  {
         Connection con = null;
         try {
             con = DBHandler.getConnection();

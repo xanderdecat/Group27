@@ -7,7 +7,6 @@ public class NonProfitOrganisation {
     public enum cause {Education, AnimalRights, ClimateChange, HumanRights, Poverty, Research, Healthcare, Other}      // nog aan te vullen
 
     // instantievariabelen
-    private static long helpNonPONumber = 0;
     private int nonPONumber;
     private String NPOName;
     private String description;
@@ -24,13 +23,6 @@ public class NonProfitOrganisation {
     }
 
     // getters en setters
-    public static long getHelpNonPONumber() {
-        return helpNonPONumber;
-    }
-
-    public static void setHelpNonPONumber(long helpNonPONumber) {
-        NonProfitOrganisation.helpNonPONumber = helpNonPONumber;
-    }
 
     public int getNonPONumber() {
         return nonPONumber;

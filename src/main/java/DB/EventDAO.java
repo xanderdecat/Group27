@@ -30,6 +30,7 @@ public class EventDAO {
                     + "eventDuration double NOT NULL, "
                     + "description varchar(1000) NOT NULL, "
                     + "linkToPage varchar(300), "
+                    + "NPONumber int NOT NULL, "
                     + "PRIMARY KEY (eventNumber)" + ")";
             stmt.executeUpdate(sql);
         } catch (SQLException e) {
@@ -41,7 +42,7 @@ public class EventDAO {
         Connection con = null;
         try {
             con = DBHandler.getConnection();
-            String sql1 = "SELECT eventNumber, UserNumber, eventName, streetName, houseNumber, ZIP, city, country, startDate, confirmationDate, endDate, eventDuration, description, linkToPage "
+            String sql1 = "SELECT eventNumber, UserNumber, eventName, streetName, houseNumber, ZIP, city, country, startDate, confirmationDate, endDate, eventDuration, description, linkToPage, NPONumber "
                     + "FROM events "
                     + "WHERE eventNumber = ?";
             PreparedStatement stmt = con.prepareStatement(sql1);
@@ -51,7 +52,7 @@ public class EventDAO {
             ResultSet srs = stmt.executeQuery();
 
             String eventName, streetName, city, country, description;
-            int eventNumber, eventUserNumber, houseNumber, ZIP;
+            int eventNumber, eventUserNumber, houseNumber, ZIP, NPONumber;
             LocalDateTime startDate, confirmationDate, endDate;
             double eventDuration;
             URL linkToPage;
@@ -71,11 +72,12 @@ public class EventDAO {
                 eventDuration = srs.getDouble("eventDuration");
                 description = srs.getString("description");
                 linkToPage = srs.getURL("linkToPage");
+                NPONumber = srs.getInt("NPONumber");
 
             } else {// we verwachten slechts 1 rij...
                 return null;
             }
-            Event event = new Event(eventNumber, eventUserNumber, eventName, streetName, houseNumber, ZIP, city, country, startDate, confirmationDate, endDate, eventDuration, description, linkToPage);
+            Event event = new Event(eventNumber, eventUserNumber, eventName, streetName, houseNumber, ZIP, city, country, startDate, confirmationDate, endDate, eventDuration, description, linkToPage, NPONumber);
             return event;
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -102,17 +104,18 @@ public class EventDAO {
                 String sqlUpdate = "UPDATE events " +
                         "SET UserNumber = ? ," +
                         " eventName = ? ," +
-                        " streetName = ?, " +
-                        " houseNumber = ?, " +
-                        " ZIP = ?, " +
-                        " city = ?, " +
-                        " country = ?, " +
-                        " startDate = ?, " +
-                        " confirmationDate = ?, " +
-                        " endDate = ?, " +
-                        " eventDuration = ?, " +
-                        " description = ?, " +
-                        " linkToPage = ? " +
+                        " streetName = ?," +
+                        " houseNumber = ?," +
+                        " ZIP = ?," +
+                        " city = ?," +
+                        " country = ?," +
+                        " startDate = ?," +
+                        " confirmationDate = ?," +
+                        " endDate = ?," +
+                        " eventDuration = ?," +
+                        " description = ?," +
+                        " linkToPage = ?," +
+                        " NPONumber = ? " +
                         "WHERE eventNumber = ?";
                 PreparedStatement stmt2 = con.prepareStatement(sqlUpdate);
                 stmt2.setInt(1, e.getEventUserNumber());
@@ -128,14 +131,15 @@ public class EventDAO {
                 stmt2.setDouble(11, e.getEventDuration());
                 stmt2.setString(12, e.getDescription());
                 stmt2.setURL(13, e.getLinkToPage());
-                stmt2.setInt(14, e.getEventNumber());
+                stmt2.setInt(14, e.getNPONumber());
+                stmt2.setInt(15, e.getEventNumber());
                 stmt2.executeUpdate();
             } else {
 
                 // INSERT
                 String sqlInsert = "INSERT into events "
-                        + "(eventNumber, UserNumber, eventName, streetName, houseNumber, ZIP, city, country, startDate, confirmationDate, endDate, eventDuration, description, linkToPage) "
-                        + "VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+                        + "(eventNumber, UserNumber, eventName, streetName, houseNumber, ZIP, city, country, startDate, confirmationDate, endDate, eventDuration, description, linkToPage, NPONumber) "
+                        + "VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
                 //System.out.println(sql);
                 PreparedStatement insertStm = con.prepareStatement(sqlInsert);
                 insertStm.setInt(1, e.getEventNumber());
@@ -152,6 +156,7 @@ public class EventDAO {
                 insertStm.setDouble(12, e.getEventDuration());
                 insertStm.setString(13, e.getDescription());
                 insertStm.setURL(14, e.getLinkToPage());
+                insertStm.setInt(15, e.getNPONumber());
                 insertStm.executeUpdate();
             }
         } catch (Exception ex) {
