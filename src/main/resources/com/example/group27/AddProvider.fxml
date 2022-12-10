@@ -49,7 +49,7 @@
       <Label fx:id="testLbl1113" layoutX="421.0" layoutY="349.0" text="Link to page " />
       <Label fx:id="testLbl11131" layoutX="456.0" layoutY="379.0" text="Genre " />
       <Button fx:id="registerMP" layoutX="339.0" layoutY="436.0" mnemonicParsing="false" onAction="#goToProviderPage" prefHeight="26.0" text="Register as new artist!" />
-      <ChoiceBox layoutX="520.0" layoutY="374.0" prefHeight="26.0" prefWidth="200.0" />
+      <ChoiceBox fx:id="genreChooser" layoutX="520.0" layoutY="374.0" prefHeight="26.0" prefWidth="200.0" />
       <Button layoutX="84.0" layoutY="436.0" mnemonicParsing="false" onAction="#goToHomeScreen" text="Back" />
    </children>
 </AnchorPane>

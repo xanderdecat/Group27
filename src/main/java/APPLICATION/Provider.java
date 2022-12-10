@@ -10,7 +10,7 @@ import java.util.Date;
 
 public class Provider extends User {
 
-    public enum genres {Techno, Rock, Pop, Dance, Blues, Jazz, Soul, Party, Hiphop, Acoustic, Disco, Funk, Classic, Background, Nineties, Eighties, Seventies, Sixties, Latin, Lounge}
+    public enum genres {Techno, Rock, Pop, Dance, Blues, Jazz, Soul, Party, Hiphop, Acoustic, Disco, Funk, Classic, Background, Nineties, Eighties, Seventies, Sixties, Latin, Lounge, Other}
 
     // instantievariabelen
     private static int helpProviderNumber = 0;

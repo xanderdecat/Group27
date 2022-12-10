@@ -28,7 +28,7 @@ public class ProviderDAO extends UserDAO {
                     + "city varchar(50) NOT NULL, "
                     + "country varchar(50) NOT NULL, "
                     + "artistName varchar(50) NOT NULL, "
-                    + "genre ENUM('Techno', 'Rock', 'Pop', 'Dance', 'Blues', 'Jazz', 'Soul', 'Party', 'Hiphop', 'Acoustic', 'Disco', 'Funk', 'Classic', 'Background', 'Nineties', 'Eighties', 'Seventies', 'Sixties', 'Latin', 'Lounge') NOT NULL, "
+                    + "genre ENUM('Techno', 'Rock', 'Pop', 'Dance', 'Blues', 'Jazz', 'Soul', 'Party', 'Hiphop', 'Acoustic', 'Disco', 'Funk', 'Classic', 'Background', 'Nineties', 'Eighties', 'Seventies', 'Sixties', 'Latin', 'Lounge', 'Other') NOT NULL, "
                     + "activityDate date NOT NULL, "
                     + "priceHour double NOT NULL, "
                     + "minHours double NOT NULL, "
