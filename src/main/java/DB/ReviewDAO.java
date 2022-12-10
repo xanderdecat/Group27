@@ -30,7 +30,7 @@ public class ReviewDAO {
         try {
             con = DBHandler.getConnection();
             String sql1 = "SELECT ReviewNumber, subject, ScoreOn10, description, dateOfReview, EventNumber "
-                    + "FROM reviews "
+                    + "FROM review "
                     + "WHERE ReviewNumber = ?";
             PreparedStatement stmt = con.prepareStatement(sql1);
             stmt.setInt(1,reviewNum);
@@ -65,7 +65,7 @@ public class ReviewDAO {
             con = DBHandler.getConnection();
 
             String sqlSelect = "SELECT ReviewNumber "
-                    + "FROM reviews "
+                    + "FROM review "
                     + "WHERE ReviewNumber = ? ";
 
             PreparedStatement stmt = con.prepareStatement(sqlSelect);
@@ -74,7 +74,7 @@ public class ReviewDAO {
             if (srs.next()) {
 
                 // UPDATE
-                String sqlUpdate = "UPDATE reviews " +
+                String sqlUpdate = "UPDATE review " +
                         "SET " +
                         " subject = ? , " +
                         "scoreOn10 = ?, " +
@@ -92,7 +92,7 @@ public class ReviewDAO {
             } else {
                 // INSERT
 
-                String sqlInsert = "INSERT into reviews "
+                String sqlInsert = "INSERT into review "
                         + "(ReviewNumber, subject, scoreOn10, description, dateOfReview, EventNumber) "
                         + "VALUES (?,?,?,?,?,?)";
                 //System.out.println(sql);
@@ -117,7 +117,7 @@ public class ReviewDAO {
             Statement stmt = con.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
 
             String sql = "SELECT ReviewNumber "
-                    + "FROM reviews";
+                    + "FROM review";
             ResultSet srs = stmt.executeQuery(sql);
             ArrayList<Review> reviews = new ArrayList<Review>();
             while (srs.next())
@@ -136,7 +136,7 @@ public class ReviewDAO {
         Connection con = null;
         try {
             con = DBHandler.getConnection();
-            String sql ="DELETE FROM reviews "
+            String sql ="DELETE FROM review "
                     + "WHERE reviewNumber = ?";
             PreparedStatement stmt = con.prepareStatement(sql);
             stmt.setInt(1,review.getReviewNumber());

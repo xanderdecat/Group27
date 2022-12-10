@@ -9,7 +9,7 @@ public class Transaction {
     private int transactionNumber;
     // private Provider.Event event;
     private Provider beneficiaryPerson; // hieruit accountnumber halen
-    private User indeptedPerson;
+    private User indebtedPerson;
     private String statement;
     private long amountNPO;
     private long amountPlatform;
@@ -31,7 +31,7 @@ public class Transaction {
         this.transactionNumber = transactionNumber;
         this.beneficiaryPerson = beneficiaryPerson;
         this.confirmationDate = confirmationDate;
-        this.indeptedPerson = indeptedPerson;
+        this.indebtedPerson = indeptedPerson;
         this.statement = statement;
         this.amountNPO = amountNPO;
         this.amountDiscount = amountDiscount;
@@ -82,12 +82,12 @@ public class Transaction {
         this.beneficiaryPerson = beneficiaryPerson;
     }
 
-    public User getIndeptedPerson() {
-        return indeptedPerson;
+    public User getIndebtedPerson() {
+        return indebtedPerson;
     }
 
     public void setIndeptedPerson(User indeptedPerson) {
-        this.indeptedPerson = indeptedPerson;
+        this.indebtedPerson = indeptedPerson;
     }
 
     public String getStatement() {

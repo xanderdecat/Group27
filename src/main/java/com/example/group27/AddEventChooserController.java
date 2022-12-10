@@ -1,5 +1,6 @@
 package com.example.group27;
 
+import APPLICATION.Event;
 import APPLICATION.NonProfitOrganisation;
 import DB.NonProfitOrganisationDAO;
 import javafx.collections.FXCollections;
@@ -28,7 +29,6 @@ public class AddEventChooserController {
 
 
     public void confirmSpecificEventInfo(ActionEvent actionEvent) {
-
         try {
             FXMLLoader fxmlLoader = new FXMLLoader();
             fxmlLoader.setLocation(getClass().getResource("HomeScreen.fxml"));

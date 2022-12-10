@@ -40,7 +40,7 @@ public class TransactionDAO { //klasse om te interageren met de database user ta
         try {
             con = DBHandler.getConnection();
             String sql1 = "SELECT TransactionNumber, beneficiaryPersonProviderNumber, indebtedPersonUserNumber, accountNumber, confirmationDate, statement, amountToPay, amountPayed, amountProvider, amountNPO, amountDiscount, EventNumber "
-                    + "FROM Transactions "
+                    + "FROM transaction "
                     + "WHERE TransactionNumber = ?";
             PreparedStatement stmt = con.prepareStatement(sql1);
             stmt.setInt(1, transactionNum);
@@ -84,7 +84,7 @@ public class TransactionDAO { //klasse om te interageren met de database user ta
             con = DBHandler.getConnection();
 
             String sqlSelect = "SELECT TransactionNumber "
-                    + "FROM Transactions "
+                    + "FROM transaction "
                     + "WHERE TransactionNumber = ? ";
 
             PreparedStatement stmt = con.prepareStatement(sqlSelect);
@@ -93,7 +93,7 @@ public class TransactionDAO { //klasse om te interageren met de database user ta
             if (srs.next()) {
 
                 // UPDATE
-                String sqlUpdate = "UPDATE Transactions " +
+                String sqlUpdate = "UPDATE transaction " +
                         "SET beneficiaryPerson = ? , " +
                         " indebtedPerson = ? , " +
                         " confirmationDate = ? , " +
@@ -109,7 +109,7 @@ public class TransactionDAO { //klasse om te interageren met de database user ta
                 PreparedStatement stmt2 = con.prepareStatement(sqlUpdate);
 
                 stmt2.setInt(1, transaction.getBeneficiaryPerson().getProviderNumber());
-                stmt2.setInt(2, transaction.getIndeptedPerson().getUserNumber());
+                stmt2.setInt(2, transaction.getIndebtedPerson().getUserNumber());
                 stmt2.setInt(3, transaction.getAccountNumber());
                 stmt2.setDate(4, (Date) transaction.getConfirmationDate());
                 stmt2.setString(5,transaction.getStatement());
@@ -125,7 +125,7 @@ public class TransactionDAO { //klasse om te interageren met de database user ta
             } else {
 
                 // INSERT
-                String sqlInsert = "INSERT into Transactions "
+                String sqlInsert = "INSERT into transaction "
                         + "(TransactionNumber, beneficiaryPerson, indebtedPerson, confirmationDate, statement, amountNPO, amountDiscount, amountProvider, amountToPay, amountPayed, EventNumber) "
                         + "VALUES (?,?,?,?,?,?,?,?,?,?,?)";
                 //System.out.println(sql);
@@ -133,7 +133,7 @@ public class TransactionDAO { //klasse om te interageren met de database user ta
 
                 insertStm.setInt(1,transaction.getTransactionNumber());
                 insertStm.setInt(2, transaction.getBeneficiaryPerson().getProviderNumber());
-                insertStm.setInt(3, transaction.getIndeptedPerson().getUserNumber());
+                insertStm.setInt(3, transaction.getIndebtedPerson().getUserNumber());
                 insertStm.setInt(4, transaction.getAccountNumber());
                 insertStm.setDate(5, (Date) transaction.getConfirmationDate());
                 insertStm.setString(6,transaction.getStatement());
@@ -156,7 +156,7 @@ public class TransactionDAO { //klasse om te interageren met de database user ta
             Statement stmt = con.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
 
             String sql = "SELECT TransactionNumber "
-                    + "FROM Transactions";
+                    + "FROM transaction";
             ResultSet srs = stmt.executeQuery(sql);
             ArrayList<Transaction> transactions = new ArrayList<Transaction>();
             while (srs.next())
@@ -176,7 +176,7 @@ public class TransactionDAO { //klasse om te interageren met de database user ta
         Connection con = null;
         try {
             con = DBHandler.getConnection();
-            String sql = "DELETE FROM Transactions "
+            String sql = "DELETE FROM transaction "
                     + "WHERE TransactionNumber = ?";
             PreparedStatement stmt = con.prepareStatement(sql);
             stmt.setInt(1, transaction.getTransactionNumber());
