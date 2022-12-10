@@ -30,7 +30,7 @@ public class NonProfitOrganisationDAO {
         try {
             con = DBHandler.getConnection();
             String sql1 = "SELECT nonPONumber, NPOName, description, accountNumber, causeofNPO "
-                    + "FROM `nonprofit organisation` "
+                    + "FROM nonprofitorganisations "
                     + "WHERE nonPONumber = ?";
             PreparedStatement stmt = con.prepareStatement(sql1);
             stmt.setInt(1,nPONum);
@@ -65,7 +65,7 @@ public class NonProfitOrganisationDAO {
             con = DBHandler.getConnection();
 
             String sqlSelect = "SELECT nonPONumber "
-                    + "FROM `nonprofit organisation` "
+                    + "FROM nonprofitorganisations "
                     + "WHERE nonPONumber = ? ";
 
             PreparedStatement stmt = con.prepareStatement(sqlSelect);
@@ -74,7 +74,7 @@ public class NonProfitOrganisationDAO {
             if (srs.next()) {
 
                 // UPDATE
-                String sqlUpdate = "UPDATE `nonprofit organisation` " +
+                String sqlUpdate = "UPDATE nonprofitorganisations " +
                         "SET NPOName = ? ," +
                         " description = ? , " +
                         " accountNumber = ?," +
@@ -90,7 +90,7 @@ public class NonProfitOrganisationDAO {
             } else {
                 // INSERT
 
-                String sqlInsert = "INSERT into `nonprofit organisation` "
+                String sqlInsert = "INSERT into nonprofitorganisations "
                         + "(nonPONumber, NPOName, description, accountNumber, causeOfNPO) "
                         + "VALUES (?,?,?,?,?)";
                 //System.out.println(sql);
@@ -114,7 +114,7 @@ public class NonProfitOrganisationDAO {
             Statement stmt = con.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
 
             String sql = "SELECT nonPONumber "
-                    + "FROM `nonprofit organisation`";
+                    + "FROM nonprofitorganisations";
             ResultSet srs = stmt.executeQuery(sql);
             ArrayList<NonProfitOrganisation> nonProfitOrganisations = new ArrayList<NonProfitOrganisation>();
             while (srs.next())
@@ -133,7 +133,7 @@ public class NonProfitOrganisationDAO {
         Connection con = null;
         try {
             con = DBHandler.getConnection();
-            String sql ="DELETE FROM `nonprofit organisation` "
+            String sql ="DELETE FROM nonprofitorganisations "
                     + "WHERE nonPONumber = ?";
             PreparedStatement stmt = con.prepareStatement(sql);
             stmt.setInt(1,nonProfitOrganisation.getNonPONumber());

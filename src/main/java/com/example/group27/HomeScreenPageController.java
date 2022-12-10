@@ -112,7 +112,7 @@ public class HomeScreenPageController {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader();
             fxmlLoader.setLocation(getClass().getResource("AddProvider.fxml"));
-            Scene scene = new Scene(fxmlLoader.load(), 630, 900);
+            Scene scene = new Scene(fxmlLoader.load(), 800, 500);
             Stage stage = new Stage();
             stage.setTitle("Muzer");
             stage.setScene(scene);
