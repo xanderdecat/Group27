@@ -69,37 +69,9 @@ public class AddProviderController {
     private TextField priceHourInput;
 
     @FXML
-    private Button registerMP;
-
-    @FXML
     private TextField streetNameInput;
 
-    @FXML
-    private Label testLbl;
 
-    @FXML
-    private Label testLbl1;
-
-    @FXML
-    private Label testLbl11;
-
-    @FXML
-    private Label testLbl111;
-
-    @FXML
-    private Label testLbl1111;
-
-    @FXML
-    private Label testLbl11111;
-
-    @FXML
-    private Label testLbl1112;
-
-    @FXML
-    private Label testLbl1113;
-
-    @FXML
-    private Label testLbl11131;
 
     // gaat terug naar HOMESCREEN
     public void goToHomeScreen(ActionEvent actionEvent) {
@@ -130,14 +102,14 @@ public class AddProviderController {
                 String conditions = conditionsInput.getText();
                 String country = countryInput.getText();
                 String description = descriptionInput.getText();
+                String streetName = streetNameInput.getText();
                 int houseNumber = Integer.parseInt(houseNumberInput.getText());
                 URL linkToPage = new URL(linkToPageInput.getText());
                 URL linkToSet = new URL(linkToSetInput.getText());
                 double maxHours = Double.parseDouble(maxHoursInput.getText());
                 double minHours = Double.parseDouble(minHoursInput.getText());
                 double priceHour = Double.parseDouble(priceHourInput.getText());
-                //String streetName = streetNameInput.getText();
-                Provider provider = new Provider(HelloApplication.userMain.getUserNumber(), HelloApplication.userMain.getFirstName(), HelloApplication.userMain.getLastName(), HelloApplication.userMain.getDateOfBirth(), HelloApplication.userMain.getAge(), HelloApplication.userMain.getEmail(), HelloApplication.userMain.getPhoneNumber(), HelloApplication.userMain.getPassword(), VATNumber, accountNumber, "streetName", houseNumber, ZIPCode, city, country, artistName,
+                Provider provider = new Provider(HelloApplication.userMain.getUserNumber(), HelloApplication.userMain.getFirstName(), HelloApplication.userMain.getLastName(), HelloApplication.userMain.getDateOfBirth(), HelloApplication.userMain.getAge(), HelloApplication.userMain.getEmail(), HelloApplication.userMain.getPhoneNumber(), HelloApplication.userMain.getPassword(), VATNumber, accountNumber, streetName, houseNumber, ZIPCode, city, country, artistName,
                         Provider.genres.Acoustic, testdate, priceHour, minHours, maxHours, conditions, description, linkToSet, linkToPage);
                 ProviderDAO.saveProvider(provider);
                 try {

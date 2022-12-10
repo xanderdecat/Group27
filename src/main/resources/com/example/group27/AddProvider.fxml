@@ -8,48 +8,48 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="751.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.group27.AddProviderController">
+<AnchorPane prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.group27.AddProviderController">
    <children>
-      <Label layoutX="123.0" layoutY="85.0" prefHeight="17.0" prefWidth="92.0" text="VAT Number" />
-      <TextField fx:id="VATNumberInput" layoutX="212.0" layoutY="80.0" prefHeight="27.0" prefWidth="200.0" />
-      <TextField fx:id="accountNumberInput" layoutX="212.0" layoutY="108.0" prefHeight="27.0" prefWidth="200.0" />
-      <Label layoutX="106.0" layoutY="113.0" text="Accountnumber" />
-      <Label fx:id="testLbl" layoutX="129.0" layoutY="337.0" text="Activity date" />
-      <Label layoutX="126.0" layoutY="144.0" text="Streetname" />
-      <Label layoutX="111.0" layoutY="175.0" text="Housenumber" />
-      <Label layoutX="139.0" layoutY="207.0" text="ZIP code" />
-      <Label layoutX="158.0" layoutY="239.0" text="City" />
-      <Label layoutX="141.0" layoutY="271.0" text="Country" />
-      <Label layoutX="95.0" layoutY="33.0" text="Please fill in all the boxes as a new Music Provider">
+      <Label layoutX="50.0" layoutY="109.0" prefHeight="17.0" prefWidth="92.0" text="VAT Number" />
+      <TextField fx:id="VATNumberInput" layoutX="149.0" layoutY="104.0" prefHeight="27.0" prefWidth="200.0" />
+      <TextField fx:id="accountNumberInput" layoutX="149.0" layoutY="134.0" prefHeight="27.0" prefWidth="200.0" />
+      <Label layoutX="33.0" layoutY="139.0" text="Accountnumber" />
+      <Label fx:id="testLbl" layoutX="50.0" layoutY="349.0" text="Activity date" />
+      <Label layoutX="57.0" layoutY="169.0" text="Streetname" />
+      <Label layoutX="45.0" layoutY="199.0" text="Housenumber" />
+      <Label layoutX="72.0" layoutY="229.0" text="ZIP code" />
+      <Label layoutX="96.0" layoutY="259.0" text="City" />
+      <Label layoutX="74.0" layoutY="289.0" text="Country" />
+      <Label layoutX="146.0" layoutY="32.0" text="Please fill in all the boxes as a new Music Provider">
          <font>
-            <Font size="21.0" />
+            <Font name="Arial Black" size="18.0" />
          </font>
       </Label>
-      <TextField fx:id="streertNameInput" layoutX="212.0" layoutY="139.0" prefHeight="27.0" prefWidth="200.0" />
-      <TextField fx:id="houseNumberInput" layoutX="212.0" layoutY="170.0" prefHeight="27.0" prefWidth="200.0" />
-      <TextField fx:id="ZIPCodeInput" layoutX="212.0" layoutY="202.0" prefHeight="27.0" prefWidth="200.0" />
-      <TextField fx:id="cityInput" layoutX="212.0" layoutY="234.0" prefHeight="27.0" prefWidth="200.0" />
-      <TextField fx:id="countryInput" layoutX="212.0" layoutY="266.0" prefHeight="27.0" prefWidth="200.0" />
-      <TextField fx:id="artistNameInput" layoutX="212.0" layoutY="298.0" prefHeight="27.0" prefWidth="200.0" />
-      <Label layoutX="139.0" layoutY="303.0" text="Artistname" />
-      <DatePicker fx:id="activityDateInput" layoutX="213.0" layoutY="333.0" prefHeight="26.0" prefWidth="200.0" />
-      <TextField fx:id="priceHourInput" layoutX="213.0" layoutY="366.0" prefHeight="27.0" prefWidth="200.0" />
-      <Label fx:id="testLbl1" layoutX="129.0" layoutY="371.0" text="Price hour" />
-      <TextField fx:id="minHoursInput" layoutX="213.0" layoutY="397.0" prefHeight="27.0" prefWidth="200.0" />
-      <Label fx:id="testLbl11" layoutX="129.0" layoutY="402.0" text="Min hours" />
-      <TextField fx:id="maxHoursInput" layoutX="213.0" layoutY="427.0" prefHeight="27.0" prefWidth="200.0" />
-      <Label fx:id="testLbl111" layoutX="129.0" layoutY="432.0" text="Max hours" />
-      <TextField fx:id="conditionsInput" layoutX="213.0" layoutY="458.0" prefHeight="59.0" prefWidth="200.0" />
-      <Label fx:id="testLbl1111" layoutX="129.0" layoutY="463.0" text="Conditions" />
-      <TextField fx:id="descriptionInput" layoutX="213.0" layoutY="523.0" prefHeight="59.0" prefWidth="200.0" />
-      <Label fx:id="testLbl11111" layoutX="129.0" layoutY="528.0" text="Description" />
-      <TextField fx:id="linkToSetInput" layoutX="213.0" layoutY="589.0" prefHeight="27.0" prefWidth="200.0" />
-      <Label fx:id="testLbl1112" layoutX="105.0" layoutY="594.0" text="Link to teaserset" />
-      <TextField fx:id="linkToPageInput" layoutX="213.0" layoutY="623.0" prefHeight="27.0" prefWidth="200.0" />
-      <Label fx:id="testLbl1113" layoutX="129.0" layoutY="628.0" text="Link to page" />
-      <Label fx:id="testLbl11131" layoutX="138.0" layoutY="660.0" text="Genre" />
-      <Button fx:id="registerMP" layoutX="186.0" layoutY="705.0" mnemonicParsing="false" onAction="#goToProviderPage" text="Register as new Music Provider" />
-      <ChoiceBox layoutX="213.0" layoutY="656.0" prefHeight="26.0" prefWidth="200.0" />
-      <Button layoutX="68.0" layoutY="706.0" mnemonicParsing="false" onAction="#goToHomeScreen" text="Back" />
+      <TextField fx:id="streertNameInput" layoutX="149.0" layoutY="164.0" prefHeight="27.0" prefWidth="200.0" />
+      <TextField fx:id="houseNumberInput" layoutX="149.0" layoutY="194.0" prefHeight="27.0" prefWidth="200.0" />
+      <TextField fx:id="ZIPCodeInput" layoutX="149.0" layoutY="224.0" prefHeight="27.0" prefWidth="200.0" />
+      <TextField fx:id="cityInput" layoutX="149.0" layoutY="254.0" prefHeight="27.0" prefWidth="200.0" />
+      <TextField fx:id="countryInput" layoutX="149.0" layoutY="284.0" prefHeight="27.0" prefWidth="200.0" />
+      <TextField fx:id="artistNameInput" layoutX="149.0" layoutY="314.0" prefHeight="27.0" prefWidth="200.0" />
+      <Label layoutX="59.0" layoutY="319.0" text="Artistname" />
+      <DatePicker fx:id="activityDateInput" layoutX="149.0" layoutY="344.0" prefHeight="26.0" prefWidth="200.0" />
+      <TextField fx:id="priceHourInput" layoutX="149.0" layoutY="374.0" prefHeight="27.0" prefWidth="200.0" />
+      <Label fx:id="testLbl1" layoutX="62.0" layoutY="379.0" text="Price hour" />
+      <TextField fx:id="minHoursInput" layoutX="520.0" layoutY="134.0" prefHeight="27.0" prefWidth="200.0" />
+      <Label fx:id="testLbl11" layoutX="437.0" layoutY="113.0" text="Min hours" />
+      <TextField fx:id="maxHoursInput" layoutX="520.0" layoutY="104.0" prefHeight="27.0" prefWidth="200.0" />
+      <Label fx:id="testLbl111" layoutX="433.0" layoutY="139.0" text="Max hours " />
+      <TextField fx:id="conditionsInput" layoutX="520.0" layoutY="164.0" prefHeight="72.0" prefWidth="200.0" />
+      <Label fx:id="testLbl1111" layoutX="430.0" layoutY="192.0" text="Conditions  " />
+      <TextField fx:id="descriptionInput" layoutX="520.0" layoutY="241.0" prefHeight="69.0" prefWidth="200.0" />
+      <Label fx:id="testLbl11111" layoutX="425.0" layoutY="267.0" text="Description  " />
+      <TextField fx:id="linkToSetInput" layoutX="520.0" layoutY="314.0" prefHeight="27.0" prefWidth="200.0" />
+      <Label fx:id="testLbl1112" layoutX="399.0" layoutY="319.0" text="Link to teaserset" />
+      <TextField fx:id="linkToPageInput" layoutX="520.0" layoutY="344.0" prefHeight="27.0" prefWidth="200.0" />
+      <Label fx:id="testLbl1113" layoutX="421.0" layoutY="349.0" text="Link to page " />
+      <Label fx:id="testLbl11131" layoutX="456.0" layoutY="379.0" text="Genre " />
+      <Button fx:id="registerMP" layoutX="339.0" layoutY="436.0" mnemonicParsing="false" onAction="#goToProviderPage" prefHeight="26.0" text="Register as new artist!" />
+      <ChoiceBox layoutX="520.0" layoutY="374.0" prefHeight="26.0" prefWidth="200.0" />
+      <Button layoutX="84.0" layoutY="436.0" mnemonicParsing="false" onAction="#goToHomeScreen" text="Back" />
    </children>
 </AnchorPane>
