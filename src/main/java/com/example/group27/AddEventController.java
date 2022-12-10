@@ -100,7 +100,7 @@ public class AddEventController {
             URL linkToPage1 = new URL(linkToPageInput.getText());
 
             String s = goodCauses.getSelectionModel().getSelectedItem();
-            String subs = s.substring(0, (s.indexOf("-")-2));
+            String subs = s.substring(0, (s.indexOf("-")-1));
             int npoNumber1 = 0;
             for (NonProfitOrganisation npo : NonProfitOrganisationDAO.getNonProfitOrganisations())
                 if (subs.equals(npo.getNPOName()))

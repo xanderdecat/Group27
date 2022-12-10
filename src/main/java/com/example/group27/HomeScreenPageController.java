@@ -36,6 +36,9 @@ public class HomeScreenPageController {
     @FXML
     private ListView<String> upcomingEventsChooser;
 
+    public static Event upcomingEvent;
+    public static Event previousEvent;
+
 
     public void initialize() {
         continuButton.setVisible(false);
@@ -66,7 +69,7 @@ public class HomeScreenPageController {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader();
             fxmlLoader.setLocation(getClass().getResource("WelcomePage.fxml"));
-            Scene scene = new Scene(fxmlLoader.load(), 700, 500);
+            Scene scene = new Scene(fxmlLoader.load(), 800, 500);
             Stage stage = new Stage();
             stage.setTitle("Muzer");
             stage.setScene(scene);
@@ -82,21 +85,6 @@ public class HomeScreenPageController {
             FXMLLoader fxmlLoader = new FXMLLoader();
             fxmlLoader.setLocation(getClass().getResource("AddEvent.fxml"));
             Scene scene = new Scene(fxmlLoader.load(), 800, 500);
-            Stage stage = new Stage();
-            stage.setTitle("Muzer");
-            stage.setScene(scene);
-            stage.show();
-            ((Node)(actionEvent.getSource())).getScene().getWindow().hide();
-        }
-        catch (IOException e) {
-        }
-    }
-
-    public void goToSeePreviousEvents(ActionEvent actionEvent) {
-        try {
-            FXMLLoader fxmlLoader = new FXMLLoader();
-            fxmlLoader.setLocation(getClass().getResource("PreviousEventsUser.fxml"));
-            Scene scene = new Scene(fxmlLoader.load(), 630, 400);
             Stage stage = new Stage();
             stage.setTitle("Muzer");
             stage.setScene(scene);
@@ -138,19 +126,42 @@ public class HomeScreenPageController {
     }
 
     public void viewUpcomingEvent(ActionEvent actionEvent) {
+        String selected = upcomingEventsChooser.getSelectionModel().getSelectedItem();
+        for (Event ev : EventDAO.getEvents())
+            if (ev.getEventName().equals(selected.substring(0, selected.indexOf("-") - 1))) {
+                upcomingEvent = EventDAO.getEvent(ev.getEventNumber());
+                try {
+                    FXMLLoader fxmlLoader = new FXMLLoader();
+                    fxmlLoader.setLocation(getClass().getResource("EventPage.fxml"));
+                    Scene scene = new Scene(fxmlLoader.load(), 800, 500);
+                    Stage stage = new Stage();
+                    stage.setTitle("Muzer");
+                    stage.setScene(scene);
+                    stage.show();
+                    ((Node) (actionEvent.getSource())).getScene().getWindow().hide();
+                } catch (IOException e) {
+                }
+            }
     }
 
     public void viewPreviousEvent(ActionEvent actionEvent) {
-        try {
-            FXMLLoader fxmlLoader = new FXMLLoader();
-            fxmlLoader.setLocation(getClass().getResource("ReviewPageUser.fxml"));
-            Scene scene = new Scene(fxmlLoader.load(), 800, 500);
-            Stage stage = new Stage();
-            stage.setTitle("Muzer");
-            stage.setScene(scene);
-            stage.show();
-            ((Node) (actionEvent.getSource())).getScene().getWindow().hide();
-        } catch (IOException e) {
-        }
+        String selected = previousEventsChooser.getSelectionModel().getSelectedItem();
+        for (Event ev : EventDAO.getEvents())
+            if (ev.getEventName().equals(selected.substring(0, selected.indexOf("-") - 1))) {
+                previousEvent = EventDAO.getEvent(ev.getEventNumber());
+                try {
+                    FXMLLoader fxmlLoader = new FXMLLoader();
+                    fxmlLoader.setLocation(getClass().getResource("ReviewPageUser.fxml"));
+                    Scene scene = new Scene(fxmlLoader.load(), 800, 500);
+                    Stage stage = new Stage();
+                    stage.setTitle("Muzer");
+                    stage.setScene(scene);
+                    stage.show();
+                    ((Node) (actionEvent.getSource())).getScene().getWindow().hide();
+                } catch (IOException e) {
+                }
+            }
     }
+
+
 }

@@ -10,25 +10,39 @@
 
 <AnchorPane prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.group27.ReviewPageUserController">
    <children>
-      <TextField fx:id="subjectInput" layoutX="460.0" layoutY="175.0" prefHeight="27.0" prefWidth="235.0" />
-      <Label layoutX="353.0" layoutY="59.0" text="Review page">
+      <TextField fx:id="subjectInput" layoutX="464.0" layoutY="155.0" prefHeight="27.0" prefWidth="235.0" />
+      <Label layoutX="341.0" layoutY="58.0" text="Review page">
          <font>
-            <Font name="Arial Black" size="21.0" />
+            <Font name="Arial Black" size="18.0" />
          </font>
       </Label>
-      <TextField fx:id="descriptionInput" layoutX="460.0" layoutY="265.0" prefHeight="109.0" prefWidth="235.0" />
-      <Button layoutX="104.0" layoutY="419.0" mnemonicParsing="false" onAction="#goBack2" text="Back" />
-      <Button layoutX="361.0" layoutY="419.0" mnemonicParsing="false" onAction="#submit2" text="Submit" />
-      <Label layoutX="390.0" layoutY="181.0" text="Subject" />
-      <Label layoutX="398.0" layoutY="225.0" text="Score" />
-      <Label layoutX="371.0" layoutY="311.0" text="Description" />
-      <ListView fx:id="artistToReviewChooser" layoutX="100.0" layoutY="222.0" prefHeight="151.0" prefWidth="202.0" />
-      <Label layoutX="100.0" layoutY="196.0" text="Choose artist to review:" />
-      <Label layoutX="100.0" layoutY="140.0" text="(EVENTNAAM)">
+      <TextField fx:id="descriptionInput" layoutX="464.0" layoutY="245.0" prefHeight="148.0" prefWidth="235.0" />
+      <Button layoutX="104.0" layoutY="419.0" mnemonicParsing="false" onAction="#goBack" text="Back" />
+      <Button layoutX="361.0" layoutY="419.0" mnemonicParsing="false" onAction="#submitReview" text="Submit review!" />
+      <Label layoutX="394.0" layoutY="161.0" text="Subject" />
+      <Label layoutX="402.0" layoutY="205.0" text="Score" />
+      <Label layoutX="373.0" layoutY="314.0" text="Description" />
+      <ChoiceBox fx:id="scoreOn10" layoutX="464.0" layoutY="200.0" prefHeight="26.0" prefWidth="88.0" />
+      <Label layoutX="51.0" layoutY="179.0" />
+      <Label layoutX="80.0" layoutY="120.0" text="Event specifications:">
          <font>
-            <Font name="Arial Black" size="21.0" />
+            <Font name="Arial Black" size="13.0" />
          </font>
       </Label>
-      <ChoiceBox fx:id="scoreOn10" layoutX="460.0" layoutY="220.0" prefHeight="26.0" prefWidth="88.0" />
+      <Label fx:id="eventNameToSet" layoutX="120.0" layoutY="154.0" text="(EVENTNAME)" />
+      <Label fx:id="startDateToSet" layoutX="120.0" layoutY="184.0" text="(STARTDATE)" />
+      <Label fx:id="endDateToSet" layoutX="120.0" layoutY="214.0" text="(ENDDATE)" />
+      <Label fx:id="cityToSet" layoutX="120.0" layoutY="244.0" text="(CITY)" />
+      <ListView fx:id="artistToChoose" layoutX="75.0" layoutY="309.0" prefHeight="81.0" prefWidth="224.0" />
+      <Label layoutX="80.0" layoutY="284.0" text="Choose artist to review:">
+         <font>
+            <Font name="Arial Black" size="13.0" />
+         </font>
+      </Label>
+      <Label layoutX="440.0" layoutY="120.0" text="Review:">
+         <font>
+            <Font name="Arial Black" size="13.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

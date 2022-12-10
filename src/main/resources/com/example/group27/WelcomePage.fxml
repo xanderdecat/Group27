@@ -5,17 +5,17 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="500.0" prefWidth="700.0" style="-fx-background-color: #6d78DD;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.group27.WelcomePageController">
+<AnchorPane prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.group27.WelcomePageController">
    <children>
-      <Button fx:id="loginButton" layoutX="270.0" layoutY="296.0" mnemonicParsing="false" onAction="#goToLogInPage" text="Log in" textFill="#e12121">
+      <Button fx:id="loginButton" layoutX="314.0" layoutY="320.0" mnemonicParsing="false" onAction="#goToLogInPage" text="Log in">
          <font>
             <Font name="Avenir Next Bold" size="13.0" />
          </font></Button>
-      <Button fx:id="newUserButton" layoutX="378.0" layoutY="296.0" mnemonicParsing="false" onAction="#goToNewUserPage" text="Register" textFill="#dd3333">
+      <Button fx:id="newUserButton" layoutX="422.0" layoutY="320.0" mnemonicParsing="false" onAction="#goToNewUserPage" text="Register">
          <font>
             <Font name="Avenir Next Bold" size="13.0" />
          </font></Button>
-      <Label layoutX="205.0" layoutY="118.0" text="MUZER" textFill="#eb4848">
+      <Label layoutX="255.0" layoutY="150.0" text="MUZER" textFill="#eb4848">
          <font>
             <Font name="Bangla MN" size="74.0" />
          </font>
