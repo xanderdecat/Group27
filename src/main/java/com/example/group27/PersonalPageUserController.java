@@ -117,24 +117,24 @@ public class PersonalPageUserController {
         String newEmail = HelloApplication.userMain.getEmail();
         String newPhoneNumber = HelloApplication.userMain.getPhoneNumber();
         String newPassword = HelloApplication.userMain.getPassword();
-        if (newFirstNameInput.getText() != null) {
+        if (newFirstNameInput.getText() != "") {
             newFirstName = newFirstNameInput.getText();
         }
-        if (newLastNameInput != null) {
+        if (newLastNameInput.getText() != "") {
             newLastName = newLastNameInput.getText();
         }
-        if (newDateOfBirthInput != null) {
+        if (newDateOfBirthInput.getValue() != null) {
             LocalDate ld = newDateOfBirthInput.getValue();
             newDateofBirth = java.sql.Date.valueOf(ld);
             newAge = Period.between(ld, LocalDate.now()).getYears();
         }
-        if (newEmailInput != null) {
+        if (newEmailInput.getText() != "") {
             newEmail = newEmailInput.getText();
         }
-        if (newPhoneNumberInput != null) {
+        if (newPhoneNumberInput.getText() != "") {
             newPhoneNumber = newPhoneNumberInput.getText();
         }
-        if (newPasswordInput != null) {
+        if (newPasswordInput.getText() != "") {
             newPassword = newPasswordInput.getText();
         }
 
@@ -142,6 +142,14 @@ public class PersonalPageUserController {
         UserDAO.saveUser(HelloApplication.userMain);
 
         initialize();
+
+        newFirstNameInput.clear();
+        newLastNameInput.clear();
+        newDateOfBirthInput.setValue(null);
+        newEmailInput.clear();
+        newPhoneNumberInput.clear();
+        newPasswordInput.clear();
+
 
     }
 
