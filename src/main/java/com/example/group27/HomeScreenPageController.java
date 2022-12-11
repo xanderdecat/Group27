@@ -20,7 +20,7 @@ import java.time.LocalDateTime;
 public class HomeScreenPageController {
 
     @FXML
-    private Button continuButton;
+    private Button continueButton;
 
     @FXML
     private Button upgradeButton;
@@ -41,14 +41,14 @@ public class HomeScreenPageController {
 
 
     public void initialize() {
-        continuButton.setVisible(false);
+        continueButton.setVisible(false);
         upgradeButton.setVisible(true);
         namefield.setText(HelloApplication.userMain.getName());
         namefield.setVisible(true);
 
         for (Provider provider : ProviderDAO.getProviders()) {
             if (provider.getUserNumber() == HelloApplication.userMain.getUserNumber()) {
-                continuButton.setVisible(true);
+                continueButton.setVisible(true);
                 upgradeButton.setVisible(false);
             }
         }
@@ -164,4 +164,19 @@ public class HomeScreenPageController {
     }
 
 
+    public void seePersonalInformation(ActionEvent actionEvent) {
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader();
+            fxmlLoader.setLocation(getClass().getResource("PersonalPageUser.fxml"));
+            Scene scene = new Scene(fxmlLoader.load(), 800, 500);
+            Stage stage = new Stage();
+            stage.setTitle("Muzer");
+            stage.setScene(scene);
+            stage.show();
+            ((Node)(actionEvent.getSource())).getScene().getWindow().hide();
+        }
+        catch (IOException e) {
+        }
+
+    }
 }
