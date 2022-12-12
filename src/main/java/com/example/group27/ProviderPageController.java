@@ -143,4 +143,34 @@ public class ProviderPageController {
         } catch (IOException e) {
         }
     }
+
+    public void seeReviews(ActionEvent actionEvent) {
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader();
+            fxmlLoader.setLocation(getClass().getResource("ReviewOverviewProvider.fxml"));
+            Scene scene = new Scene(fxmlLoader.load(), 800, 500);
+            Stage stage = new Stage();
+            stage.setTitle("Muzer");
+            stage.setScene(scene);
+            stage.show();
+            stage.setResizable(false);
+            ((Node) (actionEvent.getSource())).getScene().getWindow().hide();
+        } catch (IOException e) {
+        }
+    }
+
+    public void seeTransactions(ActionEvent actionEvent) {
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader();
+            fxmlLoader.setLocation(getClass().getResource("TransactionPageProvider.fxml"));
+            Scene scene = new Scene(fxmlLoader.load(), 800, 500);
+            Stage stage = new Stage();
+            stage.setTitle("Muzer");
+            stage.setScene(scene);
+            stage.show();
+            stage.setResizable(false);
+            ((Node) (actionEvent.getSource())).getScene().getWindow().hide();
+        } catch (IOException e) {
+        }
+    }
 }
