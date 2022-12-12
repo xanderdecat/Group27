@@ -41,8 +41,6 @@ public class AddUserController {
     @FXML
     private TextField wachtwoordInput;
 
-
-    // gaat verder naar HOMEPAGE indien gegevens OK
     public void goToHomePage(ActionEvent actionEvent) {
         if (dateOfBirth.getValue() != null && email.getText() != null && firstName.getText() != null && lastName.getText() != null && phoneNumber.getText() != null && wachtwoordInput.getText() != null) {
             if(dateOfBirth.getClass().equals(DatePicker.class) ){

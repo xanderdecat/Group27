@@ -140,6 +140,18 @@ public class ProviderPageController {
     }
 
     public void seeArtistInformation(ActionEvent actionEvent) {
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader();
+            fxmlLoader.setLocation(getClass().getResource("PersonalPageProvider.fxml"));
+            Scene scene = new Scene(fxmlLoader.load(), 800, 500);
+            Stage stage = new Stage();
+            stage.setTitle("Muzer");
+            stage.setScene(scene);
+            stage.show();
+            stage.setResizable(false);
+            ((Node) (actionEvent.getSource())).getScene().getWindow().hide();
+        } catch (IOException e) {
+        }
     }
 
     public void logOut(ActionEvent actionEvent) {

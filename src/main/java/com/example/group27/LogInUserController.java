@@ -26,6 +26,7 @@ public class LogInUserController {
 
 
 
+
     // gaat verder naar HOMEPAGE
     public void goToHomePage(ActionEvent actionEvent) {
         for (User user : UserDAO.getUsers())

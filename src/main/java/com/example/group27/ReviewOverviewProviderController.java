@@ -32,24 +32,30 @@ public class ReviewOverviewProviderController {
         subjectToSet.setVisible(false);
         scoreToSet.setVisible(false);
         descriptionToSet.setVisible(false);
+
         for (Review review : ReviewDAO.getReviews()) {
-            if (ProviderDAO.getProvider(review.getProviderNumber()).getUserNumber() == HelloApplication.userMain.getUserNumber() && review.isProviderReview()) {
+            if (review.getProviderNumber() == HelloApplication.providerMain.getProviderNumber() && review.isProviderReview()) {
                 String s = review.getSubject();
                 allReviews.getItems().add(s);
             }
         }
     }
+
     public void seeFullReview(ActionEvent actionEvent) {
 
-        Review review =new Review();
-        for (Review reviewToFind : ReviewDAO.getReviews()){
-            if(reviewToFind.getSubject().equals(allReviews.getSelectionModel().getSelectedItem())){
-                review = reviewToFind;
+        for (Review review : ReviewDAO.getReviews()){
+            if(review.getSubject().equals(allReviews.getSelectionModel().getSelectedItem())) {
+                descriptionToSet.setText(review.getDescription());
+                scoreToSet.setText(String.valueOf(review.getScoreOn10()));
+                subjectToSet.setText(review.getSubject());
+
+                subjectToSet.setVisible(true);
+                scoreToSet.setVisible(true);
+                descriptionToSet.setVisible(true);
+
             }
         }
-        descriptionToSet.setText(review.getDescription());
-        scoreToSet.setText(String.valueOf(review.getScoreOn10()));
-        subjectToSet.setText(review.getSubject());
+
 
     }
 
