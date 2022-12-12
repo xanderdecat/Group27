@@ -1,5 +1,6 @@
 package APPLICATION;
 
+import DB.ReviewDAO;
 import DB.UserDAO;
 
 import java.sql.Date;
@@ -139,5 +140,11 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+    public static double calculateAverageScore(User user){
+        for(Review review : ReviewDAO.getReviews()){
+            if (user.getUserNumber() == review.getUserNumber())
+        }
+
     }
 }

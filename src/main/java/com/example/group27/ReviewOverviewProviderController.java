@@ -35,7 +35,7 @@ public class ReviewOverviewProviderController {
 
         for (Review review : ReviewDAO.getReviews()) {
             if (review.getProviderNumber() == HelloApplication.providerMain.getProviderNumber() && review.isProviderReview()) {
-                String s = review.getSubject();
+                String s = review.getSubject() + " #" + review.getReviewNumber();
                 allReviews.getItems().add(s);
             }
         }
@@ -43,8 +43,8 @@ public class ReviewOverviewProviderController {
 
     public void seeFullReview(ActionEvent actionEvent) {
 
-        for (Review review : ReviewDAO.getReviews()){
-            if(review.getSubject().equals(allReviews.getSelectionModel().getSelectedItem())) {
+        for (Review review : ReviewDAO.getReviews()) {
+            if (review.getReviewNumber() == Integer.parseInt(allReviews.getSelectionModel().getSelectedItem().substring(allReviews.getSelectionModel().getSelectedItem().indexOf("#") + 1))) {
                 descriptionToSet.setText(review.getDescription());
                 scoreToSet.setText(String.valueOf(review.getScoreOn10()));
                 subjectToSet.setText(review.getSubject());
