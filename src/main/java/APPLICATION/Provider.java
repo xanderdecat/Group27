@@ -231,11 +231,11 @@ public class Provider extends User {
 
     public static boolean checkVATnumber(String VATNumberToCheck) {
         if (VATNumberToCheck == null || VATNumberToCheck.length() == 0)
-            return false;
+            return true;
         for (Provider provider : ProviderDAO.getProviders())
             if (provider.VATNumber.equals(VATNumberToCheck))
-                return true;
-        return false;
+                return false;
+        return true;
     }
     public static boolean checkMinMaxHours(TextField minHoursInput, TextField maxHoursInput){
         double maxHours = Double.parseDouble(maxHoursInput.getText());

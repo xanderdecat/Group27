@@ -21,6 +21,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.chrono.ChronoLocalDate;
 import java.util.Objects;
 
 public class AddEventController {
@@ -106,7 +107,7 @@ public class AddEventController {
                 if (subs.equals(npo.getNPOName()))
                     npoNumber1 = npo.getNonPONumber();
 
-            if (startDate1.isBefore(endDate1) && eventName1 != null && streetName1 != null && houseNumberInput.getText() != null && zipCodeInput.getText() != null && country1 != null && description1 != null) {
+            if (startDate1.isBefore(endDate1) && LocalDate.now().isBefore(ChronoLocalDate.from(startDate1.minusDays(5))) && eventName1 != null && streetName1 != null && houseNumberInput.getText() != null && zipCodeInput.getText() != null && country1 != null && description1 != null) {
                 eventMain = new Event(HelloApplication.userMain.getUserNumber(), eventName1, streetName1, houseNumber1, ZIPCode1, cityInput1, country1, startDate1, endDate1, description1, linkToPage1, npoNumber1);
                 EventDAO.saveEvent(eventMain);
                 try {
