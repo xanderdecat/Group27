@@ -16,6 +16,8 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
 
 public class ProviderPageController {
 
@@ -34,28 +36,30 @@ public class ProviderPageController {
     @FXML
     private Label scoreToSet;
 
-    private ArrayList<Transaction> transactions;
-    private ArrayList<Event> events;
+    /*
+    public ArrayList<Transaction> transactions1;
+    private ArrayList<Event> requestedEventsAL;
     public static Event requestedEvent;
     public static Transaction requestedTransaction;
+
+     */
 
     public void initialize() {
         artistNameToSet.setText(HelloApplication.providerMain.getArtistName());
 
-        transactions = new ArrayList<>();
-
         for (Transaction transaction : TransactionDAO.getTransactions()) {
             if (transaction.getProviderNumber() == HelloApplication.providerMain.getProviderNumber()) {
                 if (transaction.getStatus() == Transaction.status.Requested && EventDAO.getEvent(transaction.getEventNumber()).getConfirmationDate().isAfter(LocalDateTime.now())) {
-                    String s = EventDAO.getEvent(transaction.getEventNumber()).getEventName() + " - " + EventDAO.getEvent(transaction.getEventNumber()).getCity();
+                    String s = EventDAO.getEvent(transaction.getEventNumber()).getEventName() + " - " + EventDAO.getEvent(transaction.getEventNumber()).getCity() + " (" + transaction.getTransactionNumber() + ")";
                     requestedEvents.getItems().add(s);
+
                 }
                 if (transaction.getStatus() == Transaction.status.Accepted && EventDAO.getEvent(transaction.getEventNumber()).getEndDate().isAfter(LocalDateTime.now())) {
-                    String s = EventDAO.getEvent(transaction.getEventNumber()).getEventName() + " - " + EventDAO.getEvent(transaction.getEventNumber()).getCity();
+                    String s = EventDAO.getEvent(transaction.getEventNumber()).getEventName() + " - " + EventDAO.getEvent(transaction.getEventNumber()).getCity() + " (" + transaction.getTransactionNumber() + ")";
                     upcomingEvents.getItems().add(s);
                 }
                 if (transaction.getStatus() == Transaction.status.Accepted && EventDAO.getEvent(transaction.getEventNumber()).getEndDate().isBefore(LocalDateTime.now())) {
-                    String s = EventDAO.getEvent(transaction.getEventNumber()).getEventName() + " - " + EventDAO.getEvent(transaction.getEventNumber()).getCity();
+                    String s = EventDAO.getEvent(transaction.getEventNumber()).getEventName() + " - " + EventDAO.getEvent(transaction.getEventNumber()).getCity() + " (" + transaction.getTransactionNumber() + ")";
                     previousEvents.getItems().add(s);
                 }
             }
@@ -63,15 +67,12 @@ public class ProviderPageController {
     }
 
     public void replyOnRequest(ActionEvent actionEvent) {
-        String selected = requestedEvents.getSelectionModel().getSelectedItem();
-        for (Event e : events)
-            if (e.getEventName().equals(selected.substring(0, selected.indexOf("-") - 1))) {
-                requestedEvent = e;
-            }
-        for (Transaction t : transactions)
-            if (t.getEventNumber() == requestedEvent.getEventNumber()) {
-                requestedTransaction = t;
-            }
+        /*
+        int selected = requestedEvents.getSelectionModel().getSelectedIndex();
+        requestedTransaction = transactions.get(selected);
+        requestedEvent = EventDAO.getEvent(requestedTransaction.getEventNumber());
+
+         */
         try {
             FXMLLoader fxmlLoader = new FXMLLoader();
             fxmlLoader.setLocation(getClass().getResource("HomeScreenPage.fxml"));
