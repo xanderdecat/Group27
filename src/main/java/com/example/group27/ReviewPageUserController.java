@@ -91,7 +91,7 @@ public class ReviewPageUserController {
                 providerNumber = provider.getProviderNumber();
             }}
             String subject = subjectInput.getText();
-            int score = Integer.parseInt(scoreOn10.getValue().toString().substring(0,1));
+            int score = Integer.parseInt(scoreOn10.getValue().toString().substring(0,scoreOn10.getValue().indexOf("/")));
             String description = descriptionInput.getText();
             Review review = new Review(HomeScreenPageController.previousEvent.getEventNumber(), true, HomeScreenPageController.previousEvent.getEventUserNumber(), providerNumber, subject, score, description);
             ReviewDAO.save(review);
