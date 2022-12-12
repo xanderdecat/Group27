@@ -62,6 +62,11 @@ public class EventPageController {
     public static Transaction eventTransaction;
 
     public void initialize() {
+        priceHourToSet.setVisible(false);
+        minHoursToSet.setVisible(false);
+        maxHoursToSet.setVisible(false);
+        conditionsToSet.setVisible(false);
+
         selectedMinPrice.getItems().addAll("1", "50", "100", "200", "500", "1000");
         selectedMaxPrice.getItems().addAll("1", "50", "100", "200", "500", "1000", "10000");
         selectedGenre.getItems().addAll("Techno", "Rock", "Pop", "Dance", "Blues", "Jazz", "Soul", "Party", "Hiphop", "Acoustic", "Disco", "Funk", "Classic", "Background", "Nineties", "Eighties", "Seventies", "Sixties", "Latin", "Lounge", "Other");
@@ -69,7 +74,6 @@ public class EventPageController {
         startDateToSet.setText(HomeScreenPageController.upcomingEvent.getStartDate().toString());
         endDateToSet.setText(HomeScreenPageController.upcomingEvent.getEndDate().toString());
         cityToSet.setText(HomeScreenPageController.upcomingEvent.getCity());
-
 
         for (Provider provider : ProviderDAO.getProviders()) {
             String s = provider.getArtistName() + " - " + provider.getGenre().toString() + " - " + provider.getCity();
@@ -93,7 +97,6 @@ public class EventPageController {
         }
     }
 
-
     public void seeSpecificList(ActionEvent actionEvent) {
         possibleArtists.getItems().clear();
 
@@ -112,13 +115,17 @@ public class EventPageController {
         }
 
     }
-
     
     public void seeArtist(ActionEvent actionEvent) {
         String chosen = possibleArtists.getSelectionModel().getSelectedItem();
         String artist = chosen.substring(0, chosen.indexOf("-") - 1);
         for (Provider provider : ProviderDAO.getProviders()) {
             if (provider.getArtistName().equals(artist)) {
+                priceHourToSet.setVisible(false);
+                minHoursToSet.setVisible(false);
+                maxHoursToSet.setVisible(false);
+                conditionsToSet.setVisible(false);
+
                 priceHourToSet.setText("€" + String.valueOf(provider.getPriceHour()));
                 minHoursToSet.setText(String.valueOf(provider.getMinHours()) + " hours");
                 maxHoursToSet.setText(String.valueOf(provider.getMaxHours()) + " hours");
@@ -148,7 +155,7 @@ public class EventPageController {
                 ((Node)(actionEvent.getSource())).getScene().getWindow().hide();
             }
             catch (IOException e) {
-            }        }
-
+            }
+        }
     }
 }

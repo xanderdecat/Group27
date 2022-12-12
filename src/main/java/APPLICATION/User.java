@@ -141,13 +141,14 @@ public class User {
     public void setPassword(String password) {
         this.password = password;
     }
-    public static double calculateAverageScore(User user){
+
+    public static double calculateAverageScoreForUser(User user){
         double sum = 0;
         double numberOfUsers = 0;
         for(Review review : ReviewDAO.getReviews()){
             if (user.getUserNumber() == review.getUserNumber() && !review.isProviderReview()){
-                sum += review.getScoreOn10();
-                numberOfUsers++;
+                sum = sum + review.getScoreOn10();
+                numberOfUsers = numberOfUsers + 1;
             }
         }
         if (numberOfUsers == 0)

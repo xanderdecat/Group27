@@ -1,8 +1,8 @@
 package com.example.group27;
 
 import APPLICATION.Event;
+import APPLICATION.Provider;
 import APPLICATION.Transaction;
-import APPLICATION.User;
 import DB.EventDAO;
 import DB.TransactionDAO;
 import javafx.event.ActionEvent;
@@ -42,7 +42,8 @@ public class ProviderPageController {
 
     public void initialize() {
         artistNameToSet.setText(HelloApplication.providerMain.getArtistName());
-        scoreToSet.setText(String.valueOf(User.calculateAverageScore(HelloApplication.providerMain)));
+        scoreToSet.setText(String.valueOf(Provider.calculateAverageScoreForProvider(HelloApplication.providerMain)));
+
         for (Transaction transaction : TransactionDAO.getTransactions()) {
             if (transaction.getProviderNumber() == HelloApplication.providerMain.getProviderNumber()) {
                 if (transaction.getStatus() == Transaction.status.Requested && EventDAO.getEvent(transaction.getEventNumber()).getConfirmationDate().isAfter(LocalDateTime.now())) {

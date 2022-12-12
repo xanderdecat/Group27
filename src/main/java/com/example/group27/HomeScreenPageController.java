@@ -46,7 +46,9 @@ public class HomeScreenPageController {
         upgradeButton.setVisible(true);
         namefield.setText(HelloApplication.userMain.getName());
         namefield.setVisible(true);
-        score.setText(String.valueOf(User.calculateAverageScore(HelloApplication.userMain)));
+
+        score.setText(String.valueOf(User.calculateAverageScoreForUser(HelloApplication.userMain)));
+
         for (Provider provider : ProviderDAO.getProviders()) {
             if (provider.getUserNumber() == HelloApplication.userMain.getUserNumber()) {
                 HelloApplication.providerMain = provider;
