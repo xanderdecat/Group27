@@ -3,6 +3,7 @@ package com.example.group27;
 import APPLICATION.Provider;
 import APPLICATION.Transaction;
 import DB.ProviderDAO;
+import DB.TransactionDAO;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -129,10 +130,10 @@ public class EventPageController {
         String chosen = possibleArtists.getSelectionModel().getSelectedItem();
         String artist = chosen.substring(0, chosen.indexOf("-") - 1);
         double requestedHours1 = Double.parseDouble(requestedHours.getText());
-        if (requestedHours1 > chosenProvider.getMinHours() && requestedHours1 < chosenProvider.getMaxHours()) {
+        if (requestedHours1 >= chosenProvider.getMinHours() && requestedHours1 <= chosenProvider.getMaxHours()) {
             double totalamount = requestedHours1 * chosenProvider.getPriceHour();
-            eventTransaction = new Transaction(HomeScreenPageController.upcomingEvent.getEventNumber(), HelloApplication.userMain.getUserNumber(), chosenProvider.getProviderNumber(), Transaction.status.Requested, totalamount);
-
+            eventTransaction = new Transaction(HomeScreenPageController.upcomingEvent.getEventNumber(), HelloApplication.userMain.getUserNumber(), chosenProvider.getProviderNumber(), Transaction.status.Requested, HomeScreenPageController.upcomingEvent.getEventName() + " - " + chosenProvider.getArtistName(), totalamount);
+            TransactionDAO.saveTransaction(eventTransaction);
             try {
                 FXMLLoader fxmlLoader = new FXMLLoader();
                 fxmlLoader.setLocation(getClass().getResource("HomeScreenPage.fxml"));
