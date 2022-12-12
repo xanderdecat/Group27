@@ -40,7 +40,7 @@ public class ReviewOverviewController {
 
         for (Review review : ReviewDAO.getReviews()) {
             if (review.getUserNumber() == HelloApplication.userMain.getUserNumber() && !review.isProviderReview()) {
-                        String s = review.getSubject();
+                        String s = review.getSubject() + " #" + review.getReviewNumber();
                         allReviews.getItems().add(s);
                     }
                 }
@@ -49,17 +49,17 @@ public class ReviewOverviewController {
     /**/
 
     public void seeFullReview(ActionEvent actionEvent) {
+        for (Review review : ReviewDAO.getReviews()) {
+            if (review.getReviewNumber() == Integer.parseInt(allReviews.getSelectionModel().getSelectedItem().substring(allReviews.getSelectionModel().getSelectedItem().indexOf("#") + 1))) {
+                descriptionToSet.setText(review.getDescription());
+                scoreToSet.setText(String.valueOf(review.getScoreOn10()));
+                subjectToSet.setText(review.getSubject());
+                subjectToSet.setVisible(true);
+                scoreToSet.setVisible(true);
+                descriptionToSet.setVisible(true);
 
-        Review review =new Review();
-        for (Review reviewToFind : ReviewDAO.getReviews()){
-            if(reviewToFind.getSubject().equals(allReviews.getSelectionModel().getSelectedItem())){
-                review = reviewToFind;
             }
         }
-        descriptionToSet.setText(review.getDescription());
-        scoreToSet.setText(String.valueOf(review.getScoreOn10()));
-        subjectToSet.setText(review.getSubject());
-
     }
 
     public void goBack(ActionEvent actionEvent) {

@@ -2,6 +2,7 @@ package com.example.group27;
 
 import APPLICATION.Event;
 import APPLICATION.Provider;
+import APPLICATION.User;
 import DB.EventDAO;
 import DB.ProviderDAO;
 import javafx.event.ActionEvent;
@@ -45,7 +46,7 @@ public class HomeScreenPageController {
         upgradeButton.setVisible(true);
         namefield.setText(HelloApplication.userMain.getName());
         namefield.setVisible(true);
-
+        score.setText(String.valueOf(User.calculateAverageScore(HelloApplication.userMain)));
         for (Provider provider : ProviderDAO.getProviders()) {
             if (provider.getUserNumber() == HelloApplication.userMain.getUserNumber()) {
                 HelloApplication.providerMain = provider;
@@ -239,4 +240,5 @@ public class HomeScreenPageController {
         catch (IOException e) {
         }
     }
+
 }
