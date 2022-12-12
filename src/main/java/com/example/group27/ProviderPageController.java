@@ -20,7 +20,8 @@ import java.util.HashMap;
 import java.util.HashSet;
 
 public class ProviderPageController {
-
+public static Event upcomingEvent;
+public static Event previousEvent;
     @FXML
     private Label artistNameToSet;
 
@@ -91,7 +92,24 @@ public class ProviderPageController {
     public void viewUpcomingEvent(ActionEvent actionEvent) {
     }
 
-    public void leaveAReview(ActionEvent actionEvent) {
+    public void viewPreviousEvent(ActionEvent actionEvent) {
+        String selected = previousEvents.getSelectionModel().getSelectedItem();
+        for (Event ev : EventDAO.getEvents())
+            if (ev.getEventName().equals(selected.substring(0, selected.indexOf("-") - 1))) {
+                previousEvent = EventDAO.getEvent(ev.getEventNumber());
+                try {
+                    FXMLLoader fxmlLoader = new FXMLLoader();
+                    fxmlLoader.setLocation(getClass().getResource("ReviewPageProvider.fxml"));
+                    Scene scene = new Scene(fxmlLoader.load(), 800, 500);
+                    Stage stage = new Stage();
+                    stage.setTitle("Muzer");
+                    stage.setScene(scene);
+                    stage.show();
+                    stage.setResizable(false);
+                    ((Node) (actionEvent.getSource())).getScene().getWindow().hide();
+                } catch (IOException e) {
+                }
+            }
     }
 
     public void goToUserPage(ActionEvent actionEvent) {

@@ -250,4 +250,5 @@ public class Provider extends User {
         double minHours = Double.parseDouble(minHoursInput.getText());
         return maxHours <= minHours;
     }
+
 }
