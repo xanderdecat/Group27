@@ -46,6 +46,15 @@ public class Transaction {
         this.totalAmount = totalAmount;
     }
 
+    //
+    public Transaction(int eventNumber, int userNumber, int providerNumber, Transaction.status status, double totalAmount) {
+        this.eventNumber = eventNumber;
+        this.userNumber = userNumber;
+        this.providerNumber = providerNumber;
+        this.status = status;
+        this.totalAmount = totalAmount;
+    }
+
     // getters en setters
     public int getTransactionNumber() {
         return transactionNumber;

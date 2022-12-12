@@ -1,6 +1,7 @@
 package com.example.group27;
 
 import APPLICATION.Provider;
+import APPLICATION.Transaction;
 import DB.ProviderDAO;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -10,6 +11,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -52,6 +54,12 @@ public class EventPageController {
     @FXML
     private Label maxHoursToSet;
 
+    @FXML
+    private TextField requestedHours;
+
+    public static Provider chosenProvider;
+    public static Transaction eventTransaction;
+
     public void initialize() {
         selectedMinPrice.getItems().addAll("1", "50", "100", "200", "500", "1000");
         selectedMaxPrice.getItems().addAll("1", "50", "100", "200", "500", "1000", "10000");
@@ -85,9 +93,20 @@ public class EventPageController {
 
 
     public void seeSpecificList(ActionEvent actionEvent) {
+        possibleArtists.getItems().clear();
+
         double minPrice = Double.parseDouble(selectedMinPrice.getValue());
         double maxPrice = Double.parseDouble(selectedMaxPrice.getValue());
         Provider.genres genre = Provider.genres.valueOf(selectedGenre.getValue());
+
+        if (minPrice != 0 && maxPrice != 0 && genre != null) {
+            for (Provider provider : ProviderDAO.getProviders()) {
+                if ((minPrice <= provider.getPriceHour()) && (provider.getPriceHour() <= maxPrice) && provider.getGenre() == genre) {
+                    String s = provider.getArtistName() + " - " + provider.getGenre().toString() + " - " + provider.getCity();
+                    possibleArtists.getItems().add(s);
+                }
+            }
+        }
 
     }
 
@@ -97,14 +116,35 @@ public class EventPageController {
         String artist = chosen.substring(0, chosen.indexOf("-") - 1);
         for (Provider provider : ProviderDAO.getProviders()) {
             if (provider.getArtistName().equals(artist)) {
-                priceHourToSet.setText(String.valueOf(provider.getPriceHour()));
-                minHoursToSet.setText(String.valueOf(provider.getMinHours()));
-                maxHoursToSet.setText(String.valueOf(provider.getMaxHours()));
+                priceHourToSet.setText("€" + String.valueOf(provider.getPriceHour()));
+                minHoursToSet.setText(String.valueOf(provider.getMinHours()) + " hours");
+                maxHoursToSet.setText(String.valueOf(provider.getMaxHours()) + " hours");
                 conditionsToSet.setText(provider.getConditions());
+                chosenProvider = provider;
             }
         }
     }
 
     public void chooseArtist(ActionEvent actionEvent) {
+        String chosen = possibleArtists.getSelectionModel().getSelectedItem();
+        String artist = chosen.substring(0, chosen.indexOf("-") - 1);
+        double requestedHours1 = Double.parseDouble(requestedHours.getText());
+        if (requestedHours1 > chosenProvider.getMinHours() && requestedHours1 < chosenProvider.getMaxHours()) {
+            double totalamount = requestedHours1 * chosenProvider.getPriceHour();
+            eventTransaction = new Transaction(HomeScreenPageController.upcomingEvent.getEventNumber(), HelloApplication.userMain.getUserNumber(), chosenProvider.getProviderNumber(), Transaction.status.Requested, totalamount);
+
+            try {
+                FXMLLoader fxmlLoader = new FXMLLoader();
+                fxmlLoader.setLocation(getClass().getResource("HomeScreenPage.fxml"));
+                Scene scene = new Scene(fxmlLoader.load(), 800, 500);
+                Stage stage = new Stage();
+                stage.setTitle("Muzer");
+                stage.setScene(scene);
+                stage.show();
+                ((Node)(actionEvent.getSource())).getScene().getWindow().hide();
+            }
+            catch (IOException e) {
+            }        }
+
     }
 }
