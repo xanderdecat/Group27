@@ -1,5 +1,8 @@
 package com.example.group27;
 
+import APPLICATION.Review;
+import DB.ProviderDAO;
+import DB.ReviewDAO;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -26,9 +29,28 @@ public class ReviewOverviewProviderController {
     private Label subjectToSet;
 
     public void initialize() {
+        subjectToSet.setVisible(false);
+        scoreToSet.setVisible(false);
+        descriptionToSet.setVisible(false);
+        for (Review review : ReviewDAO.getReviews()) {
+            if (ProviderDAO.getProvider(review.getProviderNumber()).getUserNumber() == HelloApplication.userMain.getUserNumber() && review.isProviderReview()) {
+                String s = review.getSubject();
+                allReviews.getItems().add(s);
+            }
+        }
     }
-
     public void seeFullReview(ActionEvent actionEvent) {
+
+        Review review =new Review();
+        for (Review reviewToFind : ReviewDAO.getReviews()){
+            if(reviewToFind.getSubject().equals(allReviews.getSelectionModel().getSelectedItem())){
+                review = reviewToFind;
+            }
+        }
+        descriptionToSet.setText(review.getDescription());
+        scoreToSet.setText(String.valueOf(review.getScoreOn10()));
+        subjectToSet.setText(review.getSubject());
+
     }
 
     public void goBack(ActionEvent actionEvent) {
