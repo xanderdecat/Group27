@@ -35,6 +35,7 @@ public class RequestedEventsController {
     private Label streetNameToSet;
 
     public void initialize() {
+        /*
         eventNameToSet.setText(ProviderPageController.requestedEvent.getEventName());
         startDateToSet.setText(ProviderPageController.requestedEvent.getStartDate().toString());
         endDateToSet.setText(ProviderPageController.requestedEvent.getEndDate().toString());
@@ -44,6 +45,8 @@ public class RequestedEventsController {
         countryToSet.setText(ProviderPageController.requestedEvent.getCountry());
         linkToSet.setText(String.valueOf(ProviderPageController.requestedEvent.getLinkToPage()));
         descriptionToSet.setText(ProviderPageController.requestedEvent.getDescription());
+
+         */
     }
 
 
