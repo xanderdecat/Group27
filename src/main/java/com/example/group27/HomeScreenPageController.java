@@ -48,6 +48,7 @@ public class HomeScreenPageController {
 
         for (Provider provider : ProviderDAO.getProviders()) {
             if (provider.getUserNumber() == HelloApplication.userMain.getUserNumber()) {
+                HelloApplication.providerMain = provider;
                 continueButton.setVisible(true);
                 upgradeButton.setVisible(false);
             }
@@ -97,7 +98,6 @@ public class HomeScreenPageController {
         }
     }
 
-    // gaat naar nieuwe provider pagina toevoegingenen
     public void goToAddProviderPage(ActionEvent actionEvent) {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader();

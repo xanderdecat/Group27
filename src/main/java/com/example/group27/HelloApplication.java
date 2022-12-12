@@ -1,5 +1,6 @@
 package com.example.group27;
 
+import APPLICATION.Provider;
 import APPLICATION.User;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -10,6 +11,7 @@ import java.io.IOException;
 
 public class HelloApplication extends Application {
 public static User userMain;
+public static Provider providerMain;
     @Override
     public void start(Stage stage) throws IOException {
         userMain = new User();

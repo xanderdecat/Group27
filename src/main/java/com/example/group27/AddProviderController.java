@@ -93,7 +93,6 @@ public class AddProviderController {
         }
     }
 
-
     public void goToProviderPage(ActionEvent actionEvent) {         //op een of andere manier nog voorwaarden opleggen aan de input
         if (Provider.checkVATnumber(VATNumberInput.getText()) && accountNumberInput.getText() != null && ZIPCodeInput.getText() != null && activityDateInput.getValue() != null && activityDateInput.getClass().equals(DatePicker.class) && Provider.checkArtistName(artistNameInput.getText()) && cityInput.getText() != null && countryInput.getText() != null && descriptionInput.getText() != null && houseNumberInput.getText() != null && maxHoursInput.getText() != null && minHoursInput.getText() != null && Provider.checkMinMaxHours(minHoursInput, maxHoursInput) && priceHourInput.getText() != null && streetNameInput.getText() != null) {
         try {
@@ -101,7 +100,7 @@ public class AddProviderController {
             String accountNumber = accountNumberInput.getText();
             int ZIPCode = Integer.parseInt(ZIPCodeInput.getText());
             LocalDate ld = activityDateInput.getValue();
-            java.sql.Date testdate = java.sql.Date.valueOf(ld);
+            java.sql.Date date = java.sql.Date.valueOf(ld);
             String artistName = artistNameInput.getText();
             String city = cityInput.getText();
             String conditions = conditionsInput.getText();
@@ -160,9 +159,10 @@ public class AddProviderController {
                 genre = Provider.genres.Other;
 
 
-            Provider provider = new Provider(HelloApplication.userMain.getUserNumber(), HelloApplication.userMain.getFirstName(), HelloApplication.userMain.getLastName(), HelloApplication.userMain.getDateOfBirth(), HelloApplication.userMain.getAge(), HelloApplication.userMain.getEmail(), HelloApplication.userMain.getPhoneNumber(), HelloApplication.userMain.getPassword(), VATNumber, accountNumber, streetName, houseNumber, ZIPCode, city, country, artistName,
-                    genre, testdate, priceHour, minHours, maxHours, conditions, description, linkToSet, linkToPage);
-            ProviderDAO.saveProvider(provider);
+            HelloApplication.providerMain = new Provider(HelloApplication.userMain.getUserNumber(), HelloApplication.userMain.getFirstName(), HelloApplication.userMain.getLastName(), HelloApplication.userMain.getDateOfBirth(), HelloApplication.userMain.getAge(), HelloApplication.userMain.getEmail(), HelloApplication.userMain.getPhoneNumber(), HelloApplication.userMain.getPassword(), VATNumber, accountNumber, streetName, houseNumber, ZIPCode, city, country, artistName,
+                    genre, date, priceHour, minHours, maxHours, conditions, description, linkToSet, linkToPage);
+            ProviderDAO.saveProvider(HelloApplication.providerMain);
+
             try {
                 FXMLLoader fxmlLoader = new FXMLLoader();
                 fxmlLoader.setLocation(getClass().getResource("ProviderPage.fxml"));

@@ -35,9 +35,9 @@
       <DatePicker fx:id="activityDateInput" layoutX="149.0" layoutY="344.0" prefHeight="26.0" prefWidth="200.0" />
       <TextField fx:id="priceHourInput" layoutX="149.0" layoutY="374.0" prefHeight="27.0" prefWidth="200.0" />
       <Label fx:id="testLbl1" layoutX="62.0" layoutY="379.0" text="Price hour" />
-      <TextField fx:id="minHoursInput" layoutX="520.0" layoutY="134.0" prefHeight="27.0" prefWidth="200.0" />
+      <TextField fx:id="maxHoursInput" layoutX="520.0" layoutY="134.0" prefHeight="27.0" prefWidth="200.0" />
       <Label fx:id="testLbl11" layoutX="437.0" layoutY="113.0" text="Min hours" />
-      <TextField fx:id="maxHoursInput" layoutX="520.0" layoutY="104.0" prefHeight="27.0" prefWidth="200.0" />
+      <TextField fx:id="minHoursInput" layoutX="520.0" layoutY="104.0" prefHeight="27.0" prefWidth="200.0" />
       <Label fx:id="testLbl111" layoutX="433.0" layoutY="139.0" text="Max hours " />
       <TextField fx:id="conditionsInput" layoutX="520.0" layoutY="164.0" prefHeight="72.0" prefWidth="200.0" />
       <Label fx:id="testLbl1111" layoutX="430.0" layoutY="192.0" text="Conditions  " />
