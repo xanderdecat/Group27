@@ -80,7 +80,6 @@ public class Provider extends User {
         this.linkToPage = linkToPage;
     }
 
-
     public static void setHelpProviderNumber(int helpProviderNumber) {
         Provider.helpProviderNumber = helpProviderNumber;
     }
