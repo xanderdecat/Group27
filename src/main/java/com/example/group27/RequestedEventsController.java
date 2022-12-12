@@ -1,9 +1,17 @@
 package com.example.group27;
 
+import APPLICATION.Transaction;
+import DB.TransactionDAO;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Scene;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
+import javafx.stage.Stage;
+
+import java.io.IOException;
 
 public class RequestedEventsController {
 
@@ -34,8 +42,7 @@ public class RequestedEventsController {
     @FXML
     private Label streetNameToSet;
 
-    /*public void initialize() {
-        /*
+    public void initialize() {
         eventNameToSet.setText(ProviderPageController.requestedEvent.getEventName());
         startDateToSet.setText(ProviderPageController.requestedEvent.getStartDate().toString());
         endDateToSet.setText(ProviderPageController.requestedEvent.getEndDate().toString());
@@ -45,26 +52,58 @@ public class RequestedEventsController {
         countryToSet.setText(ProviderPageController.requestedEvent.getCountry());
         linkToSet.setText(String.valueOf(ProviderPageController.requestedEvent.getLinkToPage()));
         descriptionToSet.setText(ProviderPageController.requestedEvent.getDescription());
-
-
     }
-*/
+
 
     public void acceptRequest(ActionEvent actionEvent) {
-
+        ProviderPageController.requestedTransaction.setStatus(Transaction.status.Accepted);
+        TransactionDAO.saveTransaction(ProviderPageController.requestedTransaction);
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader();
+            fxmlLoader.setLocation(getClass().getResource("ProviderPage.fxml"));
+            Scene scene = new Scene(fxmlLoader.load(), 800, 500);
+            Stage stage = new Stage();
+            stage.setTitle("Muzer");
+            stage.setScene(scene);
+            stage.show();
+            stage.setResizable(false);
+            ((Node)(actionEvent.getSource())).getScene().getWindow().hide();
+        }
+        catch (IOException e) {
+        }
     }
 
     public void declineRequest(ActionEvent actionEvent) {
+        ProviderPageController.requestedTransaction.setStatus(Transaction.status.NotAccepted);
+        TransactionDAO.saveTransaction(ProviderPageController.requestedTransaction);
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader();
+            fxmlLoader.setLocation(getClass().getResource("ProviderPage.fxml"));
+            Scene scene = new Scene(fxmlLoader.load(), 800, 500);
+            Stage stage = new Stage();
+            stage.setTitle("Muzer");
+            stage.setScene(scene);
+            stage.show();
+            stage.setResizable(false);
+            ((Node)(actionEvent.getSource())).getScene().getWindow().hide();
+        }
+        catch (IOException e) {
+        }
     }
 
     public void goBack(ActionEvent actionEvent) {
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader();
+            fxmlLoader.setLocation(getClass().getResource("ProviderPage.fxml"));
+            Scene scene = new Scene(fxmlLoader.load(), 800, 500);
+            Stage stage = new Stage();
+            stage.setTitle("Muzer");
+            stage.setScene(scene);
+            stage.show();
+            stage.setResizable(false);
+            ((Node)(actionEvent.getSource())).getScene().getWindow().hide();
+        }
+        catch (IOException e) {
+        }
     }
-    //public static boolean checkProviderUserNumber(int providerNumber, int userNumber){
-    //        for (Provider provider : ProviderDAO.getProviders()) {
-    //            if (provider.getUserNumber() == userNumber)
-    //                return true;
-    //        }
-    //        return false;
-    //
-    //    }
 }

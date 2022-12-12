@@ -45,6 +45,8 @@
                               <Font size="10.0" />
                            </font>
                         </Button>
+                        <Button layoutX="28.0" layoutY="166.0" mnemonicParsing="false" onAction="#seeReviews" prefWidth="130.0" text="Reviews" />
+                        <Button layoutX="28.0" layoutY="127.0" mnemonicParsing="false" onAction="#seeTransactions" prefWidth="130.0" text="Transactions" />
                      </children>
                   </AnchorPane>
                   <Label layoutX="519.0" layoutY="103.0" text="Your average review score:">
