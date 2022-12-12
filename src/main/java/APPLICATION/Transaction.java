@@ -1,5 +1,7 @@
 package APPLICATION;
 
+import DB.TransactionDAO;
+
 import java.util.Date;
 
 public class Transaction {
@@ -46,13 +48,20 @@ public class Transaction {
         this.totalAmount = totalAmount;
     }
 
-    //
-    public Transaction(int eventNumber, int userNumber, int providerNumber, Transaction.status status, double totalAmount) {
+    // consturctor for transaction maker
+    public Transaction(int eventNumber, int userNumber, int providerNumber, Transaction.status status, String message, double totalAmount) {
+        this.transactionNumber = TransactionDAO.getTransactions().size() + 1;
         this.eventNumber = eventNumber;
         this.userNumber = userNumber;
         this.providerNumber = providerNumber;
         this.status = status;
+        this.message = message;
         this.totalAmount = totalAmount;
+        this.amountToProvider = 0.94 * totalAmount;
+        this.amountToNPO = 0.03 * totalAmount;
+        this.amountPlatform = 0.03 * totalAmount;
+        this.amountDiscount = 0;
+        this.amountToPay = totalAmount;
     }
 
     // getters en setters

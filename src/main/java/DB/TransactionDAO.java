@@ -33,7 +33,7 @@ public class TransactionDAO {
         }
     }
 
-    public Transaction getTransaction(int transactionNum) {
+    public static Transaction getTransaction(int transactionNum) {
         Connection con = null;
         try {
             con = DBHandler.getConnection();
@@ -75,7 +75,7 @@ public class TransactionDAO {
         }
     }
 
-    public void saveTransaction(Transaction transaction) {
+    public static void saveTransaction(Transaction transaction) {
         Connection con = null;
         try {
             con = DBHandler.getConnection();
@@ -91,16 +91,16 @@ public class TransactionDAO {
 
                 // UPDATE
                 String sqlUpdate = "UPDATE transactions " +
-                        "SET eventNumber = ? , " +
-                        " userNumber = ? , " +
-                        " providerNumber = ? , " +
-                        " status = ? , " +
-                        " message = ? , " +
-                        " totalAmount = ? , " +
-                        " amountToProvider = ? , " +
-                        " amountToNPO = ? , " +
-                        " amountPlatform = ? , " +
-                        " amountDiscount = ? , " +
+                        "SET eventNumber = ? ," +
+                        " userNumber = ? ," +
+                        " providerNumber = ? ," +
+                        " status = ? ," +
+                        " message = ? ," +
+                        " totalAmount = ? ," +
+                        " amountToProvider = ? ," +
+                        " amountToNPO = ? ," +
+                        " amountPlatform = ? ," +
+                        " amountDiscount = ? ," +
                         " amountToPay = ? " +
                         "WHERE TransactionNumber = ?";
                 PreparedStatement stmt2 = con.prepareStatement(sqlUpdate);
@@ -109,19 +109,20 @@ public class TransactionDAO {
                 stmt2.setInt(3, transaction.getProviderNumber());
                 stmt2.setString(4, String.valueOf(transaction.getStatus()));
                 stmt2.setString(5,transaction.getMessage());
-                stmt2.setDouble(6, transaction.getAmountToPay());
-                stmt2.setDouble(7, transaction.getAmountToNPO());
-                stmt2.setDouble(8, transaction.getAmountPlatform());
-                stmt2.setDouble(9, transaction.getAmountDiscount());
-                stmt2.setDouble(10, transaction.getAmountToPay());
-                stmt2.setInt(11,transaction.getTransactionNumber());
+                stmt2.setDouble(6, transaction.getTotalAmount());
+                stmt2.setDouble(7, transaction.getAmountToPay());
+                stmt2.setDouble(8, transaction.getAmountToNPO());
+                stmt2.setDouble(9, transaction.getAmountPlatform());
+                stmt2.setDouble(10, transaction.getAmountDiscount());
+                stmt2.setDouble(11, transaction.getAmountToPay());
+                stmt2.setInt(12,transaction.getTransactionNumber());
                 stmt2.executeUpdate();
             } else {
 
                 // INSERT
                 String sqlInsert = "INSERT into transactions "
                         + "(TransactionNumber, eventNumber, userNumber, providerNumber, status, message, totalAmount, amountToProvider, amountToNPO, amountPlatform, amountDiscount, amountToPay) "
-                        + "VALUES (?,?,?,?,?,?,?,?,?,?,?)";
+                        + "VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
                 //System.out.println(sql);
                 PreparedStatement insertStm = con.prepareStatement(sqlInsert);
                 insertStm.setInt(1,transaction.getTransactionNumber());
@@ -130,11 +131,12 @@ public class TransactionDAO {
                 insertStm.setInt(4, transaction.getProviderNumber());
                 insertStm.setString(5, String.valueOf(transaction.getStatus()));
                 insertStm.setString(6,transaction.getMessage());
-                insertStm.setDouble(7, transaction.getAmountToPay());
-                insertStm.setDouble(8, transaction.getAmountToNPO());
-                insertStm.setDouble(9, transaction.getAmountPlatform());
-                insertStm.setDouble(10, transaction.getAmountDiscount());
-                insertStm.setDouble(11, transaction.getAmountToPay());
+                insertStm.setDouble(7, transaction.getTotalAmount());
+                insertStm.setDouble(8, transaction.getAmountToPay());
+                insertStm.setDouble(9, transaction.getAmountToNPO());
+                insertStm.setDouble(10, transaction.getAmountPlatform());
+                insertStm.setDouble(11, transaction.getAmountDiscount());
+                insertStm.setDouble(12, transaction.getAmountToPay());
                 insertStm.executeUpdate();
             }
         } catch (Exception ex) {
@@ -143,7 +145,7 @@ public class TransactionDAO {
         }
     }
 
-    public ArrayList<Transaction> getTransacions() {
+    public static ArrayList<Transaction> getTransactions() {
         Connection con = null;
         try {
             con = DBHandler.getConnection();
