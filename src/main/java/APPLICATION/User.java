@@ -142,9 +142,16 @@ public class User {
         this.password = password;
     }
     public static double calculateAverageScore(User user){
+        double sum = 0;
+        double numberOfUsers = 0;
         for(Review review : ReviewDAO.getReviews()){
-            if (user.getUserNumber() == review.getUserNumber())
+            if (user.getUserNumber() == review.getUserNumber() && !review.isProviderReview()){
+                sum += review.getScoreOn10();
+                numberOfUsers++;
+            }
         }
-
+        if (numberOfUsers == 0)
+            return 0;
+        return sum/numberOfUsers;
     }
 }
