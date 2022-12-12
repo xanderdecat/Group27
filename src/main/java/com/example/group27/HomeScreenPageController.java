@@ -125,7 +125,7 @@ public class HomeScreenPageController {
         }
     }
 
-    public void viewUpcomingEvent(ActionEvent actionEvent) {
+    public void bookAnArtist(ActionEvent actionEvent) {
         String selected = upcomingEventsChooser.getSelectionModel().getSelectedItem();
         for (Event ev : EventDAO.getEvents())
             if (ev.getEventName().equals(selected.substring(0, selected.indexOf("-") - 1))) {
@@ -142,6 +142,26 @@ public class HomeScreenPageController {
                 } catch (IOException e) {
                 }
             }
+    }
+
+    public void viewEvent(ActionEvent actionEvent) {
+        String selected = upcomingEventsChooser.getSelectionModel().getSelectedItem();
+        for (Event ev : EventDAO.getEvents())
+            if (ev.getEventName().equals(selected.substring(0, selected.indexOf("-") - 1))) {
+                upcomingEvent = EventDAO.getEvent(ev.getEventNumber());
+                try {
+                    FXMLLoader fxmlLoader = new FXMLLoader();
+                    fxmlLoader.setLocation(getClass().getResource("EventPageRequested.fxml"));
+                    Scene scene = new Scene(fxmlLoader.load(), 800, 500);
+                    Stage stage = new Stage();
+                    stage.setTitle("Muzer");
+                    stage.setScene(scene);
+                    stage.show();
+                    ((Node) (actionEvent.getSource())).getScene().getWindow().hide();
+                } catch (IOException e) {
+                }
+            }
+
     }
 
     public void viewPreviousEvent(ActionEvent actionEvent) {
@@ -179,4 +199,6 @@ public class HomeScreenPageController {
         }
 
     }
+
+
 }
