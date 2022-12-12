@@ -7,27 +7,25 @@ import APPLICATION.User;
 import java.sql.*;
 import java.util.ArrayList;
 
-public class TransactionDAO { //klasse om te interageren met de database user table
+public class TransactionDAO {
 
     public static void createTables() throws DBException {
         try {
-            // dit maakt de tabellen aan, de relaties moeten nog wel gelegd
-            // worden via phpmyadmin
             Connection con = DBHandler.getConnection();
             Statement stmt = con.createStatement();
             String sql = "CREATE TABLE Transactions ("
                     + "TransactionNumber int NOT NULL, "
-                    + "beneficiaryPersonProviderNumber INT NOT NULL, "
-                    + "indebtedPersonUserNumber INT NOT NULL, "
-                    + "accountNumber int NOT NULL, "
-                    + "confirmationDate DATETIME NOT NULL, "
-                    + "statement varchar(50) NOT NULL, "
-                    + "amountToPay DECIMAL(2,0) NOT NULL, "
-                    + "amountPayed DECIMAL(2,0) NOT NULL, "
-                    + "amountProvider DECIMAL(2,0) NOT NULL, "
-                    + "amountNPO DECIMAL(2,0) NOT NULL, "
-                    + "amountDiscount DECIMAL(2,0) NOT NULL, "
-                    + "EventNumber int NOT NULL, "
+                    + "eventNumber INT NOT NULL, "
+                    + "userNumber INT NOT NULL, "
+                    + "providerNumber int NOT NULL, "
+                    + "status ENUM('Requested', 'Accepted', 'NotAccepted') NOT NULL, "
+                    + "message varchar(100) NOT NULL, "
+                    + "totalAmount DOUBLE NOT NULL, "
+                    + "amountToProvider DOUBLE NOT NULL, "
+                    + "amountToNPO DOUBLE NOT NULL, "
+                    + "amountPlatform DOUBLE NOT NULL, "
+                    + "amountDiscount DOUBLE NOT NULL, "
+                    + "amountToPay DOUBLE NOT NULL, "
                     + "PRIMARY KEY (TransactionNumber)" + ")";
             stmt.executeUpdate(sql);
         } catch (SQLException e) {
@@ -39,8 +37,8 @@ public class TransactionDAO { //klasse om te interageren met de database user ta
         Connection con = null;
         try {
             con = DBHandler.getConnection();
-            String sql1 = "SELECT TransactionNumber, beneficiaryPersonProviderNumber, indebtedPersonUserNumber, accountNumber, confirmationDate, statement, amountToPay, amountPayed, amountProvider, amountNPO, amountDiscount, EventNumber "
-                    + "FROM transaction "
+            String sql1 = "SELECT TransactionNumber, eventNumber, userNumber, providerNumber, status, message, totalAmount, amountToProvider, amountToNPO, amountPlatform, amountDiscount, amountToPay "
+                    + "FROM Transactions "
                     + "WHERE TransactionNumber = ?";
             PreparedStatement stmt = con.prepareStatement(sql1);
             stmt.setInt(1, transactionNum);
@@ -48,29 +46,28 @@ public class TransactionDAO { //klasse om te interageren met de database user ta
             // let op de spatie na 'summary' en 'Students' in voorgaande SQL
             ResultSet srs = stmt.executeQuery();
             String statement;
-            int TransactionNumber, accountNumber, EventNumber;
-            Date confirmationDate;
-            long amountToPay, amountPayed, amountProvider, amountNPO, amountDiscount;
-            Provider beneficiaryPerson;
-            User indebtedPerson;
+            int transactionNumber, eventNumber, userNumber, providerNumber;
+            String message;
+            Transaction.status status;
+            double totalAmount, amountToProvider, amountToNPO, amountPlatform, amountDiscount, amountToPay;
             if (srs.next()) {
-                TransactionNumber = srs.getInt("TransactionNumber");
-                beneficiaryPerson = ProviderDAO.getProvider(srs.getInt("beneficiaryPerson"));
-                indebtedPerson = (User) UserDAO.getUser(srs.getInt("indebtedPerson"));
-                confirmationDate = srs.getDate("confirmationDate");
-                accountNumber = srs.getInt("accountNumber");
-                statement = srs.getString("statement");
-                amountToPay = srs.getLong("amountToPay");
-                amountPayed = srs.getLong("amountPayed");
-                amountProvider = srs.getLong("amountProvider");
-                amountNPO = srs.getLong("amountNPO");
-                amountDiscount = srs.getLong("amountDiscount");
-                EventNumber = srs.getInt("EventNumber");
+                transactionNumber = srs.getInt("TransactionNumber");
+                eventNumber = srs.getInt("eventNumber");
+                userNumber = srs.getInt("userNumber");
+                providerNumber = srs.getInt("providerNumber");
+                status = Transaction.status.valueOf(srs.getString("status"));
+                message = srs.getString("message");
+                totalAmount = srs.getDouble("totalAmount");
+                amountToProvider = srs.getDouble("amountToProvider");
+                amountToNPO = srs.getDouble("amountToNPO");
+                amountPlatform = srs.getDouble("amountPlatform");
+                amountDiscount = srs.getDouble("amountDiscount");
+                amountToPay = srs.getDouble("amountToPay");
             } else {// we verwachten slechts 1 rij...
                 return null;
             }
-            Transaction transaction = new Transaction(TransactionNumber, beneficiaryPerson, indebtedPerson, confirmationDate, statement, amountNPO, amountDiscount, amountProvider, amountToPay, amountPayed, EventNumber, accountNumber);
-            return transaction;
+                Transaction transaction  = new Transaction(transactionNumber, eventNumber, userNumber, providerNumber, status, message, totalAmount, amountToProvider, amountToNPO, amountPlatform, amountDiscount, amountToPay);
+                return transaction;
         } catch (Exception ex) {
             ex.printStackTrace();
             DBHandler.closeConnection(con);
@@ -84,7 +81,7 @@ public class TransactionDAO { //klasse om te interageren met de database user ta
             con = DBHandler.getConnection();
 
             String sqlSelect = "SELECT TransactionNumber "
-                    + "FROM transaction "
+                    + "FROM Transactions "
                     + "WHERE TransactionNumber = ? ";
 
             PreparedStatement stmt = con.prepareStatement(sqlSelect);
@@ -94,54 +91,51 @@ public class TransactionDAO { //klasse om te interageren met de database user ta
 
                 // UPDATE
                 String sqlUpdate = "UPDATE transaction " +
-                        "SET beneficiaryPerson = ? , " +
-                        " indebtedPerson = ? , " +
-                        " confirmationDate = ? , " +
-                        " amountToPay = ? , " +
-                        " amountPayed = ? , " +
-                        " amountProvider = ? , " +
-                        " amountNPO = ? , " +
+                        "SET eventNumber = ? , " +
+                        " userNumber = ? , " +
+                        " providerNumber = ? , " +
+                        " status = ? , " +
+                        " message = ? , " +
+                        " totalAmount = ? , " +
+                        " amountToProvider = ? , " +
+                        " amountToNPO = ? , " +
+                        " amountPlatform = ? , " +
                         " amountDiscount = ? , " +
-                        " statement = ? , " +
-                        " accountNumber = ? , " +
-                        " EventNumber = ? " +
+                        " amountToPay = ? " +
                         "WHERE TransactionNumber = ?";
                 PreparedStatement stmt2 = con.prepareStatement(sqlUpdate);
-
-                stmt2.setInt(1, transaction.getBeneficiaryPerson().getProviderNumber());
-                stmt2.setInt(2, transaction.getIndebtedPerson().getUserNumber());
-                stmt2.setInt(3, transaction.getAccountNumber());
-                stmt2.setDate(4, (Date) transaction.getConfirmationDate());
-                stmt2.setString(5,transaction.getStatement());
-                stmt2.setLong(6, transaction.getAmountToPay());
-                stmt2.setLong(7, transaction.getAmountPayed());
-                stmt2.setLong(8, transaction.getAmountProvider());
-                stmt2.setLong(9, transaction.getAmountNPO());
-                stmt2.setLong(10, transaction.getAmountDiscount());
+                stmt2.setInt(1, transaction.getEventNumber());
+                stmt2.setInt(2, transaction.getUserNumber());
+                stmt2.setInt(3, transaction.getProviderNumber());
+                stmt2.setString(4, String.valueOf(transaction.getStatus()));
+                stmt2.setString(5,transaction.getMessage());
+                stmt2.setDouble(6, transaction.getAmountToPay());
+                stmt2.setDouble(7, transaction.getAmountToNPO());
+                stmt2.setDouble(8, transaction.getAmountPlatform());
+                stmt2.setDouble(9, transaction.getAmountDiscount());
+                stmt2.setDouble(10, transaction.getAmountToPay());
                 stmt2.setInt(11,transaction.getTransactionNumber());
-
-
                 stmt2.executeUpdate();
             } else {
 
                 // INSERT
-                String sqlInsert = "INSERT into transaction "
-                        + "(TransactionNumber, beneficiaryPerson, indebtedPerson, confirmationDate, statement, amountNPO, amountDiscount, amountProvider, amountToPay, amountPayed, EventNumber) "
+                String sqlInsert = "INSERT into Transactions "
+                        + "(TransactionNumber, eventNumber, userNumber, providerNumber, status, message, totalAmount, amountToProvider, amountToNPO, amountPlatform, amountDiscount, amountToPay) "
                         + "VALUES (?,?,?,?,?,?,?,?,?,?,?)";
                 //System.out.println(sql);
                 PreparedStatement insertStm = con.prepareStatement(sqlInsert);
-
                 insertStm.setInt(1,transaction.getTransactionNumber());
-                insertStm.setInt(2, transaction.getBeneficiaryPerson().getProviderNumber());
-                insertStm.setInt(3, transaction.getIndebtedPerson().getUserNumber());
-                insertStm.setInt(4, transaction.getAccountNumber());
-                insertStm.setDate(5, (Date) transaction.getConfirmationDate());
-                insertStm.setString(6,transaction.getStatement());
-                insertStm.setLong(7, transaction.getAmountToPay());
-                insertStm.setLong(8, transaction.getAmountPayed());
-                insertStm.setLong(9, transaction.getAmountProvider());
-                insertStm.setLong(10, transaction.getAmountNPO());
-                insertStm.setLong(11, transaction.getAmountDiscount());
+                insertStm.setInt(2, transaction.getEventNumber());
+                insertStm.setInt(3, transaction.getUserNumber());
+                insertStm.setInt(4, transaction.getProviderNumber());
+                insertStm.setString(5, String.valueOf(transaction.getStatus()));
+                insertStm.setString(6,transaction.getMessage());
+                insertStm.setDouble(7, transaction.getAmountToPay());
+                insertStm.setDouble(8, transaction.getAmountToNPO());
+                insertStm.setDouble(9, transaction.getAmountPlatform());
+                insertStm.setDouble(10, transaction.getAmountDiscount());
+                insertStm.setDouble(11, transaction.getAmountToPay());
+                insertStm.executeUpdate();
             }
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -156,7 +150,7 @@ public class TransactionDAO { //klasse om te interageren met de database user ta
             Statement stmt = con.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
 
             String sql = "SELECT TransactionNumber "
-                    + "FROM transaction";
+                    + "FROM Transactions";
             ResultSet srs = stmt.executeQuery(sql);
             ArrayList<Transaction> transactions = new ArrayList<Transaction>();
             while (srs.next())
@@ -176,7 +170,7 @@ public class TransactionDAO { //klasse om te interageren met de database user ta
         Connection con = null;
         try {
             con = DBHandler.getConnection();
-            String sql = "DELETE FROM transaction "
+            String sql = "DELETE FROM Transactions "
                     + "WHERE TransactionNumber = ?";
             PreparedStatement stmt = con.prepareStatement(sql);
             stmt.setInt(1, transaction.getTransactionNumber());
