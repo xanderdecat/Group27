@@ -1,5 +1,8 @@
 package APPLICATION;
 
+import DB.ReviewDAO;
+
+import java.time.LocalDate;
 import java.util.Date;
 
 public class Review {
@@ -13,11 +16,12 @@ public class Review {
     private String subject;
     private int scoreOn10;
     private String description;
-    private Date dateOfReviews;
+    private java.sql.Date dateOfReview;
+
 
     // constructor
 
-    public Review(int reviewNumber, int eventNumber, boolean providerReview, int userNumber, int providerNumber, String subject, int scoreOn10, String description, Date dateOfReviews) {
+    public Review(int reviewNumber, int eventNumber, boolean providerReview, int userNumber, int providerNumber, String subject, int scoreOn10, String description, java.sql.Date dateOfReviews) {
         this.reviewNumber = reviewNumber;
         this.eventNumber = eventNumber;
         this.providerReview = providerReview;
@@ -26,19 +30,30 @@ public class Review {
         this.subject = subject;
         this.scoreOn10 = scoreOn10;
         this.description = description;
-        this.dateOfReviews = dateOfReviews;
+        this.dateOfReview = dateOfReviews;
     }
 
-    public Review(int reviewNumber,String subject, int scoreOn10, String description, Date dateOfReviews, int eventNumber) {
+    public Review(int reviewNumber,String subject, int scoreOn10, String description, java.sql.Date dateOfReviews, int eventNumber) {
         this.reviewNumber = reviewNumber;
         this.subject = subject;
         this.eventNumber = eventNumber;
         this.scoreOn10 = scoreOn10;
         this.description = description;
-        this.dateOfReviews = dateOfReviews;
+        this.dateOfReview = dateOfReviews;
     }
-
-    //getters en setters
+// constructor voor het aanmaken van een review
+    public Review(int eventNumber, boolean providerReview, int userNumber, int providerNumber, String subject, int scoreOn10, String description) {
+        this.reviewNumber = ReviewDAO.getReviews().size() + 1;
+        this.eventNumber = eventNumber;
+        this.providerReview = providerReview;
+        this.userNumber = userNumber;
+        this.providerNumber = providerNumber;
+        this.subject = subject;
+        this.scoreOn10 = scoreOn10;
+        this.description = description;
+        this.dateOfReview = java.sql.Date.valueOf(LocalDate.now());
+    }
+//getters en setters
 
     public int getReviewNumber() {
         return reviewNumber;
@@ -104,11 +119,11 @@ public class Review {
         this.description = description;
     }
 
-    public Date getDateOfReviews() {
-        return dateOfReviews;
+    public java.sql.Date getDateOfReviews() {
+        return dateOfReview;
     }
 
-    public void setDateOfReviews(Date dateOfReviews) {
-        this.dateOfReviews = dateOfReviews;
+    public void setDateOfReviews(java.sql.Date dateOfReviews) {
+        this.dateOfReview = dateOfReviews;
     }
 }

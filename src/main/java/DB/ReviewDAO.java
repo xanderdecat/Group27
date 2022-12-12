@@ -28,7 +28,7 @@ public class ReviewDAO {
             e.printStackTrace();
         }
     }
-    public Review getReview(int reviewNum)  {
+    public static Review getReview(int reviewNum)  {
         Connection con = null;
         try {
             con = DBHandler.getConnection();
@@ -67,7 +67,7 @@ public class ReviewDAO {
             return null;
         }
     }
-    public void save(Review review)  {
+    public static void save(Review review)  {
         Connection con = null;
         try {
             con = DBHandler.getConnection();
@@ -129,7 +129,7 @@ public class ReviewDAO {
 
         }
     }
-    public ArrayList<Review> getReviews()  {
+    public static ArrayList<Review> getReviews()  {
         Connection con = null;
         try {
             con = DBHandler.getConnection();
@@ -151,7 +151,7 @@ public class ReviewDAO {
         }
         return null;
     }
-    public void deleteReview(Review review)  {
+    public static void deleteReview(Review review)  {
         Connection con = null;
         try {
             con = DBHandler.getConnection();
