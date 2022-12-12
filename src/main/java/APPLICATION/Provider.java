@@ -1,6 +1,7 @@
 package APPLICATION;
 
 import DB.ProviderDAO;
+import com.example.group27.HelloApplication;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 
@@ -232,6 +233,8 @@ public class Provider extends User {
     public static boolean checkVATnumber(String VATNumberToCheck) {
         if (VATNumberToCheck == null || VATNumberToCheck.length() == 0)
             return true;
+        if (HelloApplication.providerMain.getVATNumber().equals(VATNumberToCheck))
+            return true;
         for (Provider provider : ProviderDAO.getProviders())
             if (provider.VATNumber.equals(VATNumberToCheck))
                 return false;
@@ -240,6 +243,8 @@ public class Provider extends User {
     public static boolean checkArtistName(String artistName) {
         if (artistName == null || artistName.length() == 0)
             return false;
+        if (HelloApplication.providerMain.getArtistName().equals(artistName))
+            return true;
         for (Provider provider : ProviderDAO.getProviders())
             if (provider.artistName.equals(artistName))
                 return false;
