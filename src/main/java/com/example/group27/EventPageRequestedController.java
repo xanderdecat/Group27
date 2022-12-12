@@ -1,14 +1,18 @@
 package com.example.group27;
 
-import APPLICATION.Provider;
+import APPLICATION.Transaction;
 import DB.ProviderDAO;
+import DB.TransactionDAO;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
+import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -17,9 +21,6 @@ public class EventPageRequestedController {
 
     @FXML
     private Label ZIPToSet;
-
-    @FXML
-    private TableView<?> bookedArtists;
 
     @FXML
     private Label cityToSet;
@@ -39,6 +40,9 @@ public class EventPageRequestedController {
     @FXML
     private Label streetNameToSet;
 
+    @FXML
+    private ListView<String> bookedArtists;
+
     public void initialize() {
         eventNameToSet.setText(HomeScreenPageController.upcomingEvent.getEventName());
         startDateToSet.setText(HomeScreenPageController.upcomingEvent.getStartDate().toString());
@@ -47,6 +51,12 @@ public class EventPageRequestedController {
         ZIPToSet.setText(String.valueOf(HomeScreenPageController.upcomingEvent.getZIP()));
         countryToSet.setText(HomeScreenPageController.upcomingEvent.getCountry());
         streetNameToSet.setText(HomeScreenPageController.upcomingEvent.getStreetName() + " " + HomeScreenPageController.upcomingEvent.getHouseNumber());
+
+        for (Transaction transaction : TransactionDAO.getTransactions())
+            if (transaction.getEventNumber() == HomeScreenPageController.upcomingEvent.getEventNumber()) {
+                String s = "(" + transaction.getStatus().toString() + ") " + ProviderDAO.getProvider(transaction.getProviderNumber()).getArtistName() + " - €" + transaction.getTotalAmount();
+                bookedArtists.getItems().add(s);
+            }
     }
 
     public void goBack(ActionEvent actionEvent) {
