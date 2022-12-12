@@ -33,7 +33,7 @@
                         <Button fx:id="continueButton" layoutX="28.0" layoutY="120.0" mnemonicParsing="false" onAction="#continueAsProvider" prefWidth="130.0" text="Go to artist page" AnchorPane.rightAnchor="657.0" />
                         <Button fx:id="upgradeButton" layoutX="28.0" layoutY="120.0" mnemonicParsing="false" onAction="#goToAddProviderPage" prefWidth="130.0" text="Become an artist" AnchorPane.rightAnchor="657.0" />
                         <Button layoutX="28.0" layoutY="157.0" mnemonicParsing="false" onAction="#seePersonalInformation" prefWidth="130.0" text="Personal information" />
-                        <Button layoutX="28.0" layoutY="192.0" mnemonicParsing="false" onAction="#seePersonalInformation" prefWidth="130.0" text="Transactions" />
+                        <Button layoutX="28.0" layoutY="192.0" mnemonicParsing="false" onAction="#seeTransactions" prefWidth="130.0" text="Transactions" />
                         <Button layoutX="306.0" layoutY="245.0" mnemonicParsing="false" onAction="#viewEvent" text="View event!" />
                      </children>
                   </AnchorPane>

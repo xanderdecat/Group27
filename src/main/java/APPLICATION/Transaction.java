@@ -6,7 +6,7 @@ import java.util.Date;
 
 public class Transaction {
 
-    public enum status {Requested, Accepted, NotAccepted};
+    public enum status {Requested, Accepted, NotAccepted, Payed};
 
     // instantievariabelen
     private int transactionNumber;  // unique

@@ -18,7 +18,7 @@ public class TransactionDAO {
                     + "eventNumber INT NOT NULL, "
                     + "userNumber INT NOT NULL, "
                     + "providerNumber int NOT NULL, "
-                    + "status ENUM('Requested', 'Accepted', 'NotAccepted') NOT NULL, "
+                    + "status ENUM('Requested', 'Accepted', 'NotAccepted', 'Payed') NOT NULL, "
                     + "message varchar(100) NOT NULL, "
                     + "totalAmount DOUBLE NOT NULL, "
                     + "amountToProvider DOUBLE NOT NULL, "
