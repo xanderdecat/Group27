@@ -21,7 +21,7 @@
                               <Font name="Arial Black" size="13.0" />
                            </font>
                         </Label>
-                        <Button layoutX="28.0" layoutY="48.0" mnemonicParsing="false" onAction="#goToCreateNewEvent" prefHeight="59.0" prefWidth="130.0" text="Create new event" />
+                        <Button layoutX="28.0" layoutY="48.0" mnemonicParsing="false" onAction="#goToCreateNewEvent" prefHeight="61.0" prefWidth="130.0" text="Create new event" />
                         <ListView fx:id="previousEventsChooser" layoutX="500.0" layoutY="48.0" prefHeight="184.0" prefWidth="252.0" />
                         <Button layoutX="196.0" layoutY="245.0" mnemonicParsing="false" onAction="#bookAnArtist" text="Book an artist!" />
                         <Button layoutX="500.0" layoutY="245.0" mnemonicParsing="false" onAction="#viewPreviousEvent" text="Leave a review!" />
@@ -30,11 +30,12 @@
                               <Font name="Arial Black" size="13.0" />
                            </font>
                         </Label>
-                        <Button fx:id="continueButton" layoutX="28.0" layoutY="120.0" mnemonicParsing="false" onAction="#continueAsProvider" prefWidth="130.0" text="Go to artist page" AnchorPane.rightAnchor="657.0" />
-                        <Button fx:id="upgradeButton" layoutX="28.0" layoutY="120.0" mnemonicParsing="false" onAction="#goToAddProviderPage" prefWidth="130.0" text="Become an artist" AnchorPane.rightAnchor="657.0" />
-                        <Button layoutX="28.0" layoutY="157.0" mnemonicParsing="false" onAction="#seePersonalInformation" prefWidth="130.0" text="Personal information" />
-                        <Button layoutX="28.0" layoutY="192.0" mnemonicParsing="false" onAction="#seeTransactions" prefWidth="130.0" text="Transactions" />
+                        <Button fx:id="continueButton" layoutX="28.0" layoutY="125.0" mnemonicParsing="false" onAction="#continueAsProvider" prefWidth="130.0" text="Go to artist page" AnchorPane.rightAnchor="657.0" />
+                        <Button fx:id="upgradeButton" layoutX="28.0" layoutY="125.0" mnemonicParsing="false" onAction="#goToAddProviderPage" prefWidth="130.0" text="Become an artist" AnchorPane.rightAnchor="657.0" />
+                        <Button layoutX="28.0" layoutY="165.0" mnemonicParsing="false" onAction="#seePersonalInformation" prefWidth="130.0" text="Personal information" />
+                        <Button layoutX="28.0" layoutY="205.0" mnemonicParsing="false" onAction="#seeTransactions" prefWidth="130.0" text="Transactions" />
                         <Button layoutX="306.0" layoutY="245.0" mnemonicParsing="false" onAction="#viewEvent" text="View event!" />
+                        <Button layoutX="28.0" layoutY="245.0" mnemonicParsing="false" onAction="#goToReviews" prefWidth="130.0" text="Reviews" />
                      </children>
                   </AnchorPane>
                   <Label layoutX="519.0" layoutY="103.0" text="Your average review score:">
