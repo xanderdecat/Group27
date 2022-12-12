@@ -15,15 +15,8 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.HashSet;
 
 public class ProviderPageController {
-
-    public static Event upcomingEvent;
-    public static Event previousEvent;
-
 
     @FXML
     private Label artistNameToSet;
@@ -41,6 +34,8 @@ public class ProviderPageController {
     private Label scoreToSet;
 
     public static Event requestedEvent;
+    public static Event upcomingEvent;
+    public static Event previousEvent;
     public static Transaction requestedTransaction;
 
 
@@ -89,6 +84,24 @@ public class ProviderPageController {
     }
 
     public void viewUpcomingEvent(ActionEvent actionEvent) {
+        String selected = upcomingEvents.getSelectionModel().getSelectedItem();
+        for (Event event : EventDAO.getEvents())
+            if (selected.equals(event.getEventName() + " - " + event.getCity())) {
+                upcomingEvent = event;
+                try {
+                    FXMLLoader fxmlLoader = new FXMLLoader();
+                    fxmlLoader.setLocation(getClass().getResource("EventInfoProvider.fxml"));
+                    Scene scene = new Scene(fxmlLoader.load(), 800, 500);
+                    Stage stage = new Stage();
+                    stage.setTitle("Muzer");
+                    stage.setScene(scene);
+                    stage.show();
+                    stage.setResizable(false);
+                    ((Node) (actionEvent.getSource())).getScene().getWindow().hide();
+                } catch (IOException e) {
+                }
+
+            }
     }
 
     public void leaveAReview(ActionEvent actionEvent) {
