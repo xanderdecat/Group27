@@ -78,7 +78,6 @@ public class AddProviderController {
     }
 
 
-    // gaat terug naar HOMESCREEN
     public void goToHomeScreen(ActionEvent actionEvent) {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader();

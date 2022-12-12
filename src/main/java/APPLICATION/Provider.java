@@ -1,7 +1,6 @@
 package APPLICATION;
 
 import DB.ProviderDAO;
-import DB.ReviewDAO;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 
@@ -80,7 +79,6 @@ public class Provider extends User {
         this.teaserSet = teaserSet;
         this.linkToPage = linkToPage;
     }
-
 
     public static void setHelpProviderNumber(int helpProviderNumber) {
         Provider.helpProviderNumber = helpProviderNumber;
@@ -251,18 +249,5 @@ public class Provider extends User {
         double minHours = Double.parseDouble(minHoursInput.getText());
         return maxHours <= minHours;
     }
-    public static double calculateAverageScore(Provider provider){
-        double sum = 0;
-        double numberOfReviews = 0;
-        for(Review review : ReviewDAO.getReviews()){
-            if (provider.getProviderNumber() == review.getProviderNumber() && review.isProviderReview()){
-                sum += review.getScoreOn10();
-                numberOfReviews++;
-            }
-        }
-        if (numberOfReviews == 0)
-            return 0;
-        return sum/numberOfReviews;
 
-    }
 }

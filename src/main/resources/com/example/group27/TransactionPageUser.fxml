@@ -6,7 +6,6 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.group27.TransactionPageUserController">
    <children>
       <ListView fx:id="transactionsToDo" layoutX="111.0" layoutY="119.0" prefHeight="116.0" prefWidth="233.0" />
@@ -21,8 +20,8 @@
             <Font name="Arial Black" size="13.0" />
          </font>
       </Label>
-      <Button fx:id="selectToDoTransaction" layoutX="111.0" layoutY="246.0" mnemonicParsing="false" onAction="#seeToDoTransaction" text="Select transaction" />
-      <Button fx:id="selectDoneTransaction" layoutX="476.0" layoutY="246.0" mnemonicParsing="false" onAction="#seeDoneTransaction" text="Select transaction" />
+      <Button fx:id="selectToDoTransaction" layoutX="111.0" layoutY="246.0" mnemonicParsing="false" onAction="#seeToDoTransaction" text="See transaction" />
+      <Button fx:id="selectDoneTransaction" layoutX="476.0" layoutY="246.0" mnemonicParsing="false" onAction="#seeDoneTransaction" text="See transaction" />
       <Label layoutX="111.0" layoutY="294.0" text="Eventname:" />
       <Label layoutX="111.0" layoutY="334.0" text="Artistname:" />
       <Label layoutX="381.0" layoutY="334.0" text="Confirmation date to pay:" />

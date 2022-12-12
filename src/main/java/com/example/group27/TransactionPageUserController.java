@@ -31,15 +31,6 @@ public class TransactionPageUserController {
     private Label messageToSet;
 
     @FXML
-    private Button selectDoneTransaction;
-
-    @FXML
-    private Button selectToDoTransaction;
-
-    @FXML
-    private Button selectTransactionPayed;
-
-    @FXML
     private Label totalAmountToSet;
 
     @FXML
@@ -87,7 +78,7 @@ public class TransactionPageUserController {
     public void seeToDoTransaction(ActionEvent actionEvent) {
         String line = transactionsToDo.getSelectionModel().getSelectedItem();
         for (Transaction transaction : TransactionDAO.getTransactions()) {
-            if (transaction.getMessage().equals(line.substring(0, line.indexOf(")") - 1))) {
+            if (transaction.getMessage().equals(line.substring(0, line.indexOf("(") - 1))) {
                 eventNameToSet.setVisible(true);
                 artistNameToSet.setVisible(true);
                 messageToSet.setVisible(true);
@@ -106,7 +97,7 @@ public class TransactionPageUserController {
     public void seeDoneTransaction(ActionEvent actionEvent) {
         String line = transactionsDone.getSelectionModel().getSelectedItem();
         for (Transaction transaction : TransactionDAO.getTransactions()) {
-            if (transaction.getMessage().equals(line.substring(0, line.indexOf(")") - 1))) {
+            if (transaction.getMessage().equals(line.substring(0, line.indexOf("(") - 1))) {
                 eventNameToSet.setVisible(true);
                 artistNameToSet.setVisible(true);
                 messageToSet.setVisible(true);
@@ -125,12 +116,13 @@ public class TransactionPageUserController {
     public void selectPayed(ActionEvent actionEvent) {
         String line = transactionsToDo.getSelectionModel().getSelectedItem();
         for (Transaction transaction : TransactionDAO.getTransactions()) {
-            if (transaction.getMessage().equals(line.substring(0, line.indexOf(")") - 1))) {
+            if (transaction.getMessage().equals(line.substring(0, line.indexOf("(") - 1))) {
                 transaction.setStatus(Transaction.status.Payed);
                 TransactionDAO.saveTransaction(transaction);
             }
         }
 
+        transactionsToDo.getItems().clear();
         initialize();
     }
 }
