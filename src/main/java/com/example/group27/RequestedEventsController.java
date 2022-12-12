@@ -56,4 +56,12 @@ public class RequestedEventsController {
 
     public void goBack(ActionEvent actionEvent) {
     }
+    //public static boolean checkProviderUserNumber(int providerNumber, int userNumber){
+    //        for (Provider provider : ProviderDAO.getProviders()) {
+    //            if (provider.getUserNumber() == userNumber)
+    //                return true;
+    //        }
+    //        return false;
+    //
+    //    }
 }
