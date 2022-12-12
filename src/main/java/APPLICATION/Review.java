@@ -53,7 +53,11 @@ public class Review {
         this.description = description;
         this.dateOfReview = java.sql.Date.valueOf(LocalDate.now());
     }
-//getters en setters
+
+    //empty constructor
+    public Review() {
+    }
+    //getters en setters
 
     public int getReviewNumber() {
         return reviewNumber;

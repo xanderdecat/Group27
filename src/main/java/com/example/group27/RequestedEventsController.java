@@ -34,7 +34,7 @@ public class RequestedEventsController {
     @FXML
     private Label streetNameToSet;
 
-    public void initialize() {
+    /*public void initialize() {
         /*
         eventNameToSet.setText(ProviderPageController.requestedEvent.getEventName());
         startDateToSet.setText(ProviderPageController.requestedEvent.getStartDate().toString());
@@ -46,9 +46,9 @@ public class RequestedEventsController {
         linkToSet.setText(String.valueOf(ProviderPageController.requestedEvent.getLinkToPage()));
         descriptionToSet.setText(ProviderPageController.requestedEvent.getDescription());
 
-         */
-    }
 
+    }
+*/
 
     public void acceptRequest(ActionEvent actionEvent) {
 
