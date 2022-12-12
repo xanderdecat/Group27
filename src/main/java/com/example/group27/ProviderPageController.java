@@ -66,7 +66,6 @@ public class ProviderPageController {
     }
 
     public void replyOnRequest(ActionEvent actionEvent) {
-
         String selected = requestedEvents.getSelectionModel().getSelectedItem();
         for (Transaction transaction : TransactionDAO.getTransactions()) {
             if (transaction.getProviderNumber() == HelloApplication.providerMain.getProviderNumber() && (EventDAO.getEvent(transaction.getEventNumber()).getEventName() + " - " + EventDAO.getEvent(transaction.getEventNumber()).getCity()).equals(selected)) {
@@ -74,7 +73,7 @@ public class ProviderPageController {
                 requestedEvent = EventDAO.getEvent(transaction.getEventNumber());
                 try {
                     FXMLLoader fxmlLoader = new FXMLLoader();
-                    fxmlLoader.setLocation(getClass().getResource("HomeScreenPage.fxml"));
+                    fxmlLoader.setLocation(getClass().getResource("RequestedEvents.fxml"));
                     Scene scene = new Scene(fxmlLoader.load(), 800, 500);
                     Stage stage = new Stage();
                     stage.setTitle("Muzer");
@@ -87,8 +86,6 @@ public class ProviderPageController {
                 }
             }
         }
-
-
     }
 
     public void viewUpcomingEvent(ActionEvent actionEvent) {
