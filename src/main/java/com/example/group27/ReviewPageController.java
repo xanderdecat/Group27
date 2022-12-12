@@ -18,6 +18,7 @@ public class ReviewPageController {
             stage.setTitle("Muzer");
             stage.setScene(scene);
             stage.show();
+            stage.setResizable(false);
             ((Node)(actionEvent.getSource())).getScene().getWindow().hide();
         }
         catch (IOException e) {
@@ -33,6 +34,7 @@ public class ReviewPageController {
             stage.setTitle("Muzer");
             stage.setScene(scene);
             stage.show();
+            stage.setResizable(false);
             ((Node)(actionEvent.getSource())).getScene().getWindow().hide();
         }
         catch (IOException e) {
