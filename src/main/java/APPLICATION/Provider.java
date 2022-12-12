@@ -237,6 +237,14 @@ public class Provider extends User {
                 return false;
         return true;
     }
+    public static boolean checkArtistName(String artistName) {
+        if (artistName == null || artistName.length() == 0)
+            return false;
+        for (Provider provider : ProviderDAO.getProviders())
+            if (provider.artistName.equals(artistName))
+                return false;
+        return true;
+    }
     public static boolean checkMinMaxHours(TextField minHoursInput, TextField maxHoursInput){
         double maxHours = Double.parseDouble(maxHoursInput.getText());
         double minHours = Double.parseDouble(minHoursInput.getText());
