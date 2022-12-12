@@ -248,6 +248,6 @@ public class Provider extends User {
     public static boolean checkMinMaxHours(TextField minHoursInput, TextField maxHoursInput){
         double maxHours = Double.parseDouble(maxHoursInput.getText());
         double minHours = Double.parseDouble(minHoursInput.getText());
-        return maxHours >= minHours;
+        return maxHours <= minHours;
     }
 }
