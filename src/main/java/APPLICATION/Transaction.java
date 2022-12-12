@@ -4,68 +4,49 @@ import java.util.Date;
 
 public class Transaction {
 
+    public enum status {Requested, Accepted, NotAccepted};
+
     // instantievariabelen
-    private static long helpTransactionNumber = 0;
-    private int transactionNumber;
-    // private Provider.Event event;
-    private Provider beneficiaryPerson; // hieruit accountnumber halen
-    private User indebtedPerson;
-    private String statement;
-    private long amountNPO;
-    private long amountPlatform;
-    private long amountDiscount;
-    private long amountProvider;
-    private long amountTotal;
-    private long amountToPay;
-    private long amountPayed;
-
+    private int transactionNumber;  // unique
     private int eventNumber;
+    private int userNumber;
+    private int providerNumber;
+    private status status;
+    private String message;
+    private double totalAmount;
+    private double amountToProvider;  // 91%
+    private double amountToNPO; //3%
+    private double amountPlatform;    // 3%
+    private double amountDiscount;     // vanaf 3x: 3%
+    private double amountToPay;
 
-    private Date confirmationDate;
-    private int accountNumber;
-
-    // constructor
-
-
-    public Transaction(int transactionNumber, Provider beneficiaryPerson, User indeptedPerson, Date confirmationDate, String statement, long amountNPO, long amountDiscount, long amountProvider, long amountToPay, long amountPayed, int eventNumber, int accountNumber) {
+    // constructor for DAO
+    public Transaction(int transactionNumber, int eventNumber, int userNumber, int providerNumber, Transaction.status status, String message, double totalAmount, double amountToProvider, double amountToNPO, double amountPlatform, double amountDiscount, double amountToPay) {
         this.transactionNumber = transactionNumber;
-        this.beneficiaryPerson = beneficiaryPerson;
-        this.confirmationDate = confirmationDate;
-        this.indebtedPerson = indeptedPerson;
-        this.statement = statement;
-        this.amountNPO = amountNPO;
-        this.amountDiscount = amountDiscount;
-        this.amountProvider = amountProvider;
-        this.amountToPay = amountToPay;
-        this.amountPayed = amountPayed;
         this.eventNumber = eventNumber;
-        this.accountNumber = accountNumber;
+        this.userNumber = userNumber;
+        this.providerNumber = providerNumber;
+        this.status = status;
+        this.message = message;
+        this.totalAmount = totalAmount;
+        this.amountToProvider = amountToProvider;
+        this.amountToNPO = amountToNPO;
+        this.amountPlatform = amountPlatform;
+        this.amountDiscount = amountDiscount;
+        this.amountToPay = amountToPay;
     }
 
-    public int getAccountNumber() {
-        return accountNumber;
+    // constructor for GUI
+    public Transaction(int transactionNumber, int eventNumber, int userNumber, int providerNumber, Transaction.status status, double totalAmount) {
+        this.transactionNumber = transactionNumber;
+        this.eventNumber = eventNumber;
+        this.userNumber = userNumber;
+        this.providerNumber = providerNumber;
+        this.status = status;
+        this.totalAmount = totalAmount;
     }
 
-    public void setAccountNumber(int accountNumber) {
-        this.accountNumber = accountNumber;
-    }
-
-    public Date getConfirmationDate() {
-        return confirmationDate;
-    }
-
-    public void setConfirmationDate(Date confirmationDate) {
-        this.confirmationDate = confirmationDate;
-    }
-
-    public static long getHelpTransactionNumber() {
-        return helpTransactionNumber;
-    }
-
-    public static void setHelpTransactionNumber(long helpTransactionNumber) {
-        Transaction.helpTransactionNumber = helpTransactionNumber;
-    }
-
+    // getters en setters
     public int getTransactionNumber() {
         return transactionNumber;
     }
@@ -74,91 +55,91 @@ public class Transaction {
         this.transactionNumber = transactionNumber;
     }
 
-    public Provider getBeneficiaryPerson() {
-        return beneficiaryPerson;
-    }
-
-    public void setBeneficiaryPerson(Provider beneficiaryPerson) {
-        this.beneficiaryPerson = beneficiaryPerson;
-    }
-
-    public User getIndebtedPerson() {
-        return indebtedPerson;
-    }
-
-    public void setIndeptedPerson(User indeptedPerson) {
-        this.indebtedPerson = indeptedPerson;
-    }
-
-    public String getStatement() {
-        return statement;
-    }
-
-    public void setStatement(String statement) {
-        this.statement = statement;
-    }
-
-    public long getAmountNPO() {
-        return amountNPO;
-    }
-
-    public void setAmountNPO(long amountNPO) {
-        this.amountNPO = amountNPO;
-    }
-
-    public long getAmountPlatform() {
-        return amountPlatform;
-    }
-
-    public void setAmountPlatform(long amountPlatform) {
-        this.amountPlatform = amountPlatform;
-    }
-
-    public long getAmountDiscount() {
-        return amountDiscount;
-    }
-
-    public void setAmountDiscount(long amountDiscount) {
-        this.amountDiscount = amountDiscount;
-    }
-
-    public long getAmountProvider() {
-        return amountProvider;
-    }
-
-    public void setAmountProvider(long amountProvider) {
-        this.amountProvider = amountProvider;
-    }
-
-    public long getAmountTotal() {
-        return amountTotal;
-    }
-
-    public void setAmountTotal(long amountTotal) {
-        this.amountTotal = amountTotal;
-    }
-
-    public long getAmountToPay() {
-        return amountToPay;
-    }
-
-    public void setAmountToPay(long amountToPay) {
-        this.amountToPay = amountToPay;
-    }
-
-    public long getAmountPayed() {
-        return amountPayed;
-    }
-
-    public void setAmountPayed(long amountPayed) {
-        this.amountPayed = amountPayed;
-    }
-
     public int getEventNumber() {
         return eventNumber;
     }
 
     public void setEventNumber(int eventNumber) {
         this.eventNumber = eventNumber;
+    }
+
+    public int getUserNumber() {
+        return userNumber;
+    }
+
+    public void setUserNumber(int userNumber) {
+        this.userNumber = userNumber;
+    }
+
+    public int getProviderNumber() {
+        return providerNumber;
+    }
+
+    public void setProviderNumber(int providerNumber) {
+        this.providerNumber = providerNumber;
+    }
+
+    public Transaction.status getStatus() {
+        return status;
+    }
+
+    public void setStatus(Transaction.status status) {
+        this.status = status;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
+
+    public double getTotalAmount() {
+        return totalAmount;
+    }
+
+    public void setTotalAmount(double totalAmount) {
+        this.totalAmount = totalAmount;
+    }
+
+    public double getAmountToProvider() {
+        return amountToProvider;
+    }
+
+    public void setAmountToProvider(double amountToProvider) {
+        this.amountToProvider = amountToProvider;
+    }
+
+    public double getAmountToNPO() {
+        return amountToNPO;
+    }
+
+    public void setAmountToNPO(double amountToNPO) {
+        this.amountToNPO = amountToNPO;
+    }
+
+    public double getAmountPlatform() {
+        return amountPlatform;
+    }
+
+    public void setAmountPlatform(double amountPlatform) {
+        this.amountPlatform = amountPlatform;
+    }
+
+    public double getAmountDiscount() {
+        return amountDiscount;
+    }
+
+    public void setAmountDiscount(double amountDiscount) {
+        this.amountDiscount = amountDiscount;
+    }
+
+    public double getAmountToPay() {
+        return amountToPay;
+    }
+
+    public void setAmountToPay(double amountToPay) {
+        this.amountToPay = amountToPay;
     }
 }

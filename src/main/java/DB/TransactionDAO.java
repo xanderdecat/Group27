@@ -13,7 +13,7 @@ public class TransactionDAO {
         try {
             Connection con = DBHandler.getConnection();
             Statement stmt = con.createStatement();
-            String sql = "CREATE TABLE Transactions ("
+            String sql = "CREATE TABLE transactions ("
                     + "TransactionNumber int NOT NULL, "
                     + "eventNumber INT NOT NULL, "
                     + "userNumber INT NOT NULL, "
@@ -38,7 +38,7 @@ public class TransactionDAO {
         try {
             con = DBHandler.getConnection();
             String sql1 = "SELECT TransactionNumber, eventNumber, userNumber, providerNumber, status, message, totalAmount, amountToProvider, amountToNPO, amountPlatform, amountDiscount, amountToPay "
-                    + "FROM Transactions "
+                    + "FROM transactions "
                     + "WHERE TransactionNumber = ?";
             PreparedStatement stmt = con.prepareStatement(sql1);
             stmt.setInt(1, transactionNum);
@@ -81,7 +81,7 @@ public class TransactionDAO {
             con = DBHandler.getConnection();
 
             String sqlSelect = "SELECT TransactionNumber "
-                    + "FROM Transactions "
+                    + "FROM transactions "
                     + "WHERE TransactionNumber = ? ";
 
             PreparedStatement stmt = con.prepareStatement(sqlSelect);
@@ -90,7 +90,7 @@ public class TransactionDAO {
             if (srs.next()) {
 
                 // UPDATE
-                String sqlUpdate = "UPDATE transaction " +
+                String sqlUpdate = "UPDATE transactions " +
                         "SET eventNumber = ? , " +
                         " userNumber = ? , " +
                         " providerNumber = ? , " +
@@ -119,7 +119,7 @@ public class TransactionDAO {
             } else {
 
                 // INSERT
-                String sqlInsert = "INSERT into Transactions "
+                String sqlInsert = "INSERT into transactions "
                         + "(TransactionNumber, eventNumber, userNumber, providerNumber, status, message, totalAmount, amountToProvider, amountToNPO, amountPlatform, amountDiscount, amountToPay) "
                         + "VALUES (?,?,?,?,?,?,?,?,?,?,?)";
                 //System.out.println(sql);
@@ -150,7 +150,7 @@ public class TransactionDAO {
             Statement stmt = con.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
 
             String sql = "SELECT TransactionNumber "
-                    + "FROM Transactions";
+                    + "FROM transactions";
             ResultSet srs = stmt.executeQuery(sql);
             ArrayList<Transaction> transactions = new ArrayList<Transaction>();
             while (srs.next())
@@ -170,7 +170,7 @@ public class TransactionDAO {
         Connection con = null;
         try {
             con = DBHandler.getConnection();
-            String sql = "DELETE FROM Transactions "
+            String sql = "DELETE FROM transactions "
                     + "WHERE TransactionNumber = ?";
             PreparedStatement stmt = con.prepareStatement(sql);
             stmt.setInt(1, transaction.getTransactionNumber());

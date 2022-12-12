@@ -22,7 +22,7 @@
       <Label fx:id="startDateToSet" layoutX="110.0" layoutY="174.0" text="(STARTDATE)" />
       <Label fx:id="endDateToSet" layoutX="110.0" layoutY="204.0" text="(ENDDATE)" />
       <Label fx:id="cityToSet" layoutX="110.0" layoutY="234.0" text="(CITY)" />
-      <ListView fx:id="possibleArtists" layoutX="430.0" layoutY="144.0" prefHeight="241.0" prefWidth="299.0" />
+      <ListView fx:id="possibleArtists" layoutX="430.0" layoutY="144.0" prefHeight="79.0" prefWidth="290.0" />
       <Label layoutX="70.0" layoutY="274.0" text="Selection:">
          <font>
             <Font name="Arial Black" size="13.0" />
@@ -36,7 +36,7 @@
             <Font name="Arial Black" size="13.0" />
          </font>
       </Label>
-      <Button layoutX="430.0" layoutY="396.0" mnemonicParsing="false" onAction="#chooseArtist" text="Choose this artist!" />
+      <Button layoutX="430.0" layoutY="234.0" mnemonicParsing="false" onAction="#seeArtist" text="See this artist!" />
       <Button layoutX="84.0" layoutY="436.0" mnemonicParsing="false" onAction="#goBack3" text="Back" />
       <Label layoutX="244.0" layoutY="50.0" text="Choose an artist for your event!">
          <font>
@@ -44,5 +44,19 @@
          </font>
       </Label>
       <Button layoutX="230.0" layoutY="396.0" mnemonicParsing="false" onAction="#seeSpecificList" prefHeight="26.0" prefWidth="133.0" text="Show list!" />
+      <Label layoutX="430.0" layoutY="274.0" text="Chosen artist:">
+         <font>
+            <Font name="Arial Black" size="13.0" />
+         </font>
+      </Label>
+      <Label layoutX="430.0" layoutY="304.0" text="Price/hour:" />
+      <Label layoutX="430.0" layoutY="334.0" prefHeight="17.0" prefWidth="92.0" text="Min hrous:" />
+      <Label layoutX="430.0" layoutY="364.0" prefHeight="17.0" prefWidth="92.0" text="Max hours:" />
+      <Label layoutX="430.0" layoutY="394.0" prefHeight="17.0" prefWidth="92.0" text="Conditions:" />
+      <Label fx:id="priceHourToSet" layoutX="530.0" layoutY="304.0" text="(PRICEHOUR)" />
+      <Label fx:id="minHoursToSet" layoutX="530.0" layoutY="334.0" text="(MINHOURS)" />
+      <Label fx:id="maxHoursToSet" layoutX="530.0" layoutY="364.0" text="(MAXHOURS)" />
+      <Label fx:id="conditionsToSet" layoutX="530.0" layoutY="394.0" text="(CONDITIONS)" />
+      <Button layoutX="333.0" layoutY="436.0" mnemonicParsing="false" onAction="#chooseArtist" text="Choose this provider!" />
    </children>
 </AnchorPane>
