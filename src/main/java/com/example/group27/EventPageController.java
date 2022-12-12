@@ -103,6 +103,7 @@ public class EventPageController {
 
         if (minPrice != 0 && maxPrice != 0 && genre != null) {
             for (Provider provider : ProviderDAO.getProviders()) {
+                if(provider.getUserNumber() != HelloApplication.userMain.getUserNumber())
                 if ((minPrice <= provider.getPriceHour()) && (provider.getPriceHour() <= maxPrice) && provider.getGenre() == genre) {
                     String s = provider.getArtistName() + " - " + provider.getGenre().toString() + " - " + provider.getCity();
                     possibleArtists.getItems().add(s);
