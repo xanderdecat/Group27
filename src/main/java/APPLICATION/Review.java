@@ -5,7 +5,6 @@ import java.util.Date;
 public class Review {
 
     // instantievariabelen
-    private static long helpReviewNumber = 0;
     private int reviewNumber;
     private int eventNumber;
     private boolean providerReview;         // is het een provider review?
@@ -38,15 +37,8 @@ public class Review {
         this.description = description;
         this.dateOfReviews = dateOfReviews;
     }
+
     //getters en setters
-
-    public static long getHelpReviewNumber() {
-        return helpReviewNumber;
-    }
-
-    public static void setHelpReviewNumber(int helpReviewNumber) {
-        Review.helpReviewNumber = helpReviewNumber;
-    }
 
     public int getReviewNumber() {
         return reviewNumber;
@@ -72,7 +64,7 @@ public class Review {
         this.providerReview = providerReview;
     }
 
-    public long getUserNumber() {
+    public int getUserNumber() {
         return userNumber;
     }
 
@@ -80,7 +72,7 @@ public class Review {
         this.userNumber = userNumber;
     }
 
-    public long getProviderNumber() {
+    public int getProviderNumber() {
         return providerNumber;
     }
 

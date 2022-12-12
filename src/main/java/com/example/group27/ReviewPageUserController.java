@@ -1,5 +1,11 @@
 package com.example.group27;
 
+import APPLICATION.Event;
+import APPLICATION.Provider;
+import APPLICATION.Transaction;
+import DB.EventDAO;
+import DB.ProviderDAO;
+import DB.TransactionDAO;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -12,6 +18,7 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.time.LocalDateTime;
 
 public class ReviewPageUserController {
 
@@ -45,7 +52,18 @@ public class ReviewPageUserController {
         startDateToSet.setText(HomeScreenPageController.previousEvent.getStartDate().toString());
         endDateToSet.setText(HomeScreenPageController.previousEvent.getEndDate().toString());
         cityToSet.setText(HomeScreenPageController.previousEvent.getCity());
+        for (Event event : EventDAO.getEvents()) {
+            if (event.getEventUserNumber() == HelloApplication.userMain.getUserNumber() && event.getEndDate().isAfter(LocalDateTime.now())) {
+                for (Transaction transaction : TransactionDAO.getTransactions())
+                    if (transaction.getUserNumber() == HelloApplication.userMain.getUserNumber()) {
+                        String s = ProviderDAO.getProvider(transaction.getProviderNumber()).getArtistName();
+                        artistToChoose.getItems().add(s);
+                    }
+            }
+
+        }
     }
+
     public void goBack(ActionEvent actionEvent) {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader();
@@ -55,24 +73,28 @@ public class ReviewPageUserController {
             stage.setTitle("Muzer");
             stage.setScene(scene);
             stage.show();
-            ((Node)(actionEvent.getSource())).getScene().getWindow().hide();
-        }
-        catch (IOException e) {
+            ((Node) (actionEvent.getSource())).getScene().getWindow().hide();
+        } catch (IOException e) {
         }
     }
 
     public void submitReview(ActionEvent actionEvent) {
-        try {
-            FXMLLoader fxmlLoader = new FXMLLoader();
-            fxmlLoader.setLocation(getClass().getResource("HomeScreenPage.fxml"));
-            Scene scene = new Scene(fxmlLoader.load(), 800, 500);
-            Stage stage = new Stage();
-            stage.setTitle("Muzer");
-            stage.setScene(scene);
-            stage.show();
-            ((Node)(actionEvent.getSource())).getScene().getWindow().hide();
-        }
-        catch (IOException e) {
+        if (artistToChoose != null && descriptionInput != null && scoreOn10 != null && subjectInput != null) {
+            String subject = subjectInput.getText();
+            int score = Integer.parseInt(scoreOn10.getValue());
+            String description = descriptionInput.getText();
+
+            try {
+                FXMLLoader fxmlLoader = new FXMLLoader();
+                fxmlLoader.setLocation(getClass().getResource("HomeScreenPage.fxml"));
+                Scene scene = new Scene(fxmlLoader.load(), 800, 500);
+                Stage stage = new Stage();
+                stage.setTitle("Muzer");
+                stage.setScene(scene);
+                stage.show();
+                ((Node) (actionEvent.getSource())).getScene().getWindow().hide();
+            } catch (IOException e) {
+            }
         }
     }
 }

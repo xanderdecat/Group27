@@ -14,11 +14,14 @@ public class ReviewDAO {
             Statement stmt = con.createStatement();
             String sql = "CREATE TABLE reviews ("
                     + "ReviewNumber int NOT NULL, "
+                    + "EventNumber int NOT NULL, "
+                    + "providerReview BOOLEAN NOT NULL, "
+                    + "userNumber int NOT NULL, "
+                    + "providerNumber int NOT NULL, "
                     + "subject varchar(100) NOT NULL, "
-                    + "ScoreOn10 int(10) NOT NULL, "
+                    + "scoreOn10 int(10) NOT NULL, "
                     + "description varchar(100) NOT NULL, "
                     + "dateOfReview DATETIME NOT NULL, "
-                    + "eventNumber int NOT NULL, "
                     + "PRIMARY KEY (ReviewNumber)" + ")";
             stmt.executeUpdate(sql);
         } catch (SQLException e) {
@@ -29,8 +32,8 @@ public class ReviewDAO {
         Connection con = null;
         try {
             con = DBHandler.getConnection();
-            String sql1 = "SELECT ReviewNumber, subject, ScoreOn10, description, dateOfReview, EventNumber "
-                    + "FROM review "
+            String sql1 = "SELECT ReviewNumber, EventNumber, providerReview, userNumber, providerNumber, subject, scoreOn10, description, dateOfReview "
+                    + "FROM reviews "
                     + "WHERE ReviewNumber = ?";
             PreparedStatement stmt = con.prepareStatement(sql1);
             stmt.setInt(1,reviewNum);
@@ -38,20 +41,25 @@ public class ReviewDAO {
             // let op de spatie na 'summary' en 'Students' in voorgaande SQL
             ResultSet srs = stmt.executeQuery();
             String subject, description;
-            int ReviewNumber, scoreOn10, EventNumber;
+            int reviewNumber, eventNumber, userNumber, providerNumber, scoreOn10;
             Date dateOfReview;
+            boolean providerReview;
 
             if (srs.next()) {
-                ReviewNumber = srs.getInt("ReviewNumber");
+                reviewNumber = srs.getInt("ReviewNumber");
+                eventNumber = srs.getInt("EventNumber");
+                providerReview = srs.getBoolean("providerReview");
+                userNumber = srs.getInt("userNumber");
+                providerNumber = srs.getInt("providerNumber");
                 subject = srs.getString("subject");
                 scoreOn10 = srs.getInt("scoreOn10");
                 description = srs.getString("description");
                 dateOfReview = srs.getDate("dateOfReview");
-                EventNumber = srs.getInt("EventNumber");
+
             } else {// we verwachten slechts 1 rij...
                 return null;
             }
-            Review review = new Review(ReviewNumber, subject, scoreOn10, description, dateOfReview, EventNumber);
+            Review review = new Review(reviewNumber, eventNumber, providerReview, userNumber, providerNumber, subject, scoreOn10, description, dateOfReview);
             return review;
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -65,7 +73,7 @@ public class ReviewDAO {
             con = DBHandler.getConnection();
 
             String sqlSelect = "SELECT ReviewNumber "
-                    + "FROM review "
+                    + "FROM reviews "
                     + "WHERE ReviewNumber = ? ";
 
             PreparedStatement stmt = con.prepareStatement(sqlSelect);
@@ -74,35 +82,46 @@ public class ReviewDAO {
             if (srs.next()) {
 
                 // UPDATE
-                String sqlUpdate = "UPDATE review " +
+                String sqlUpdate = "UPDATE reviews " +
                         "SET " +
-                        " subject = ? , " +
+                        "EventNumber = ?, " +
+                        "providerReview = ?, " +
+                        "userNumber = ?, " +
+                        "providerNumber = ?," +
+                        "subject = ? , " +
                         "scoreOn10 = ?, " +
                         "description = ?, " +
                         "dateOfReview = ?, " +
-                        "EventNumber = ? " +
                         "WHERE ReviewNumber = ?";
                 PreparedStatement stmt2 = con.prepareStatement(sqlUpdate);
-                stmt2.setString(1, review.getSubject());
-                stmt2.setInt(2, review.getScoreOn10());
-                stmt2.setString(3, review.getDescription());
-                stmt2.setDate(4, (Date) review.getDateOfReviews());
-                stmt2.setInt(5, review.getEventNumber());
+                stmt2.setInt(1, review.getEventNumber());
+                stmt2.setBoolean(2, review.isProviderReview());
+                stmt2.setInt(3, review.getUserNumber());
+                stmt2.setInt(4, review.getProviderNumber());
+                stmt2.setString(5, review.getSubject());
+                stmt2.setInt(6, review.getScoreOn10());
+                stmt2.setString(7, review.getDescription());
+                stmt2.setDate(8, (Date) review.getDateOfReviews());
+
                 stmt2.executeUpdate();
             } else {
                 // INSERT
 
-                String sqlInsert = "INSERT into review "
-                        + "(ReviewNumber, subject, scoreOn10, description, dateOfReview, EventNumber) "
-                        + "VALUES (?,?,?,?,?,?)";
+                String sqlInsert = "INSERT into reviews "
+                        + "(ReviewNumber, EventNumber, providerReview, userNumber, providerNumber, subject, scoreOn10, description, dateOfReview) "
+                        + "VALUES (?,?,?,?,?,?,?,?,?)";
                 //System.out.println(sql);
                 PreparedStatement insertStm = con.prepareStatement(sqlInsert);
                 insertStm.setInt(1, review.getReviewNumber());
-                insertStm.setString(2,review.getSubject());
-                insertStm.setInt(3,review.getScoreOn10());
-                insertStm.setString(4, review.getDescription());
-                insertStm.setDate(5,(Date) review.getDateOfReviews());
-                insertStm.setInt(6,review.getEventNumber());
+                insertStm.setInt(2,review.getEventNumber());
+                insertStm.setBoolean(3,review.isProviderReview());
+                insertStm.setInt(4,review.getUserNumber());
+                insertStm.setInt(5,review.getProviderNumber());
+                insertStm.setString(6,review.getSubject());
+                insertStm.setInt(7,review.getScoreOn10());
+                insertStm.setString(8, review.getDescription());
+                insertStm.setDate(9,(Date) review.getDateOfReviews());
+
                 insertStm.executeUpdate();
             }
         } catch (Exception ex) {
@@ -117,7 +136,7 @@ public class ReviewDAO {
             Statement stmt = con.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
 
             String sql = "SELECT ReviewNumber "
-                    + "FROM review";
+                    + "FROM reviews";
             ResultSet srs = stmt.executeQuery(sql);
             ArrayList<Review> reviews = new ArrayList<Review>();
             while (srs.next())
@@ -136,7 +155,7 @@ public class ReviewDAO {
         Connection con = null;
         try {
             con = DBHandler.getConnection();
-            String sql ="DELETE FROM review "
+            String sql ="DELETE FROM reviews "
                     + "WHERE reviewNumber = ?";
             PreparedStatement stmt = con.prepareStatement(sql);
             stmt.setInt(1,review.getReviewNumber());
