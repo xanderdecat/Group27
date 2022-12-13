@@ -17,7 +17,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class EventPageController {
+public class EventPageUserController {
 
     @FXML
     private Label cityToSet;

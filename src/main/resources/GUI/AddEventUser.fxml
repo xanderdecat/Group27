@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.AddEventController">
+<AnchorPane prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.AddEventUserController">
    <children>
       <Label layoutX="55.0" layoutY="95.0" prefHeight="17.0" text="Event name" />
       <TextField fx:id="eventNameInput" layoutX="150.0" layoutY="90.0" prefHeight="27.0" prefWidth="200.0" />

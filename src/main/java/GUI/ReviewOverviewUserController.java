@@ -13,7 +13,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class ReviewOverviewController {
+public class ReviewOverviewUserController {
 
     @FXML
     private ListView<Review> allReviews;
