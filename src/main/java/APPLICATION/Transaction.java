@@ -8,7 +8,7 @@ public class Transaction {
 
     public enum status {Requested, Accepted, NotAccepted, Payed};
 
-    // instantievariabelen
+    // instance variables
     private int transactionNumber;  // unique
     private int eventNumber;
     private int userNumber;

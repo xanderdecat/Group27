@@ -14,7 +14,6 @@ public static User userMain;
 public static Provider providerMain;
     @Override
     public void start(Stage stage) throws IOException {
-        userMain = new User();
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("WelcomePage.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 800, 500);
         stage.setTitle("Muzer");

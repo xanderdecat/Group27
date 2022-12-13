@@ -2,19 +2,16 @@ package APPLICATION;
 
 import DB.ProviderDAO;
 import DB.ReviewDAO;
-import javafx.scene.control.DatePicker;
+
 import javafx.scene.control.TextField;
 
 import java.net.URL;
-import java.time.LocalDate;
-import java.util.Date;
 
 public class Provider extends User {
 
     public enum genres {Techno, Rock, Pop, Dance, Blues, Jazz, Soul, Party, Hiphop, Acoustic, Disco, Funk, Classic, Background, Nineties, Eighties, Seventies, Sixties, Latin, Lounge, Other}
 
-    // instantievariabelen
-    private static int helpProviderNumber = 0;
+    // instance variables
     private int providerNumber;            // unique key
     private String VATNumber;
     private String accountNumber;
@@ -33,6 +30,7 @@ public class Provider extends User {
     private String description;
     private URL teaserSet;
     private URL linkToPage;
+
 
     // constructor for GUI
     public Provider(int userNumber, String firstName, String lastName, java.sql.Date dateOfBirth, int age, String email, String phoneNumber, String password, String VATNumber, String accountNumber, String streetName, int houseNumber, int ZIP, String city, String country, String artistName, genres genre, java.sql.Date activityDate, double priceHour, double minHours, double maxHours, String conditions, String description, URL teaserSet, URL linkToPage) {
@@ -58,7 +56,7 @@ public class Provider extends User {
 
     }
 
-    // constructor for DAO
+    // constructor for ProviderDAO
     public Provider(int userNumber, String firstName, String lastName, java.sql.Date dateOfBirth, int age, String email, String phoneNumber, String password, int providerNumber, String VATNumber, String accountNumber, String streetName, int houseNumber, int ZIP, String city, String country, String artistName, genres genre, java.sql.Date activityDate, double priceHour, double minHours, double maxHours, String conditions, String description, URL teaserSet, URL linkToPage) {
         super(userNumber, firstName, lastName, dateOfBirth, age, email, phoneNumber, password);
         this.providerNumber = providerNumber;
@@ -81,10 +79,46 @@ public class Provider extends User {
         this.linkToPage = linkToPage;
     }
 
-    public static void setHelpProviderNumber(int helpProviderNumber) {
-        Provider.helpProviderNumber = helpProviderNumber;
+
+    // methodes
+    public static boolean checkVATnumber(String VATNumberToCheck) {
+        if (VATNumberToCheck == null || VATNumberToCheck.length() == 0)
+            return true;
+        for (Provider provider : ProviderDAO.getProviders())
+            if (provider.VATNumber.equals(VATNumberToCheck))
+                return false;
+        return true;
+    }
+    public static boolean checkArtistName(String artistName) {
+        if (artistName == null || artistName.length() == 0)
+            return false;
+        for (Provider provider : ProviderDAO.getProviders())
+            if (provider.artistName.equals(artistName))
+                return false;
+        return true;
+    }
+    public static boolean checkMinMaxHours(TextField minHoursInput, TextField maxHoursInput){
+        double maxHours = Double.parseDouble(maxHoursInput.getText());
+        double minHours = Double.parseDouble(minHoursInput.getText());
+        return maxHours <= minHours;
     }
 
+    public static double calculateAverageScoreForProvider(Provider p){
+        double sum = 0;
+        double numberOfProviders = 0;
+        for(Review review : ReviewDAO.getReviews()){
+            if (p.getProviderNumber() == review.getProviderNumber() && review.isProviderReview()){
+                sum = sum + review.getScoreOn10();
+                numberOfProviders = numberOfProviders + 1;
+            }
+        }
+        if (numberOfProviders == 0)
+            return 0;
+        return Math.round((sum / numberOfProviders * 100) * 10) / 10.0;
+    }
+
+
+    // getters and setters
     public int getProviderNumber() {
         return providerNumber;
     }
@@ -227,42 +261,6 @@ public class Provider extends User {
 
     public void setLinkToPage(URL linkToPage) {
         this.linkToPage = linkToPage;
-    }
-
-    public static boolean checkVATnumber(String VATNumberToCheck) {
-        if (VATNumberToCheck == null || VATNumberToCheck.length() == 0)
-            return true;
-        for (Provider provider : ProviderDAO.getProviders())
-            if (provider.VATNumber.equals(VATNumberToCheck))
-                return false;
-        return true;
-    }
-    public static boolean checkArtistName(String artistName) {
-        if (artistName == null || artistName.length() == 0)
-            return false;
-        for (Provider provider : ProviderDAO.getProviders())
-            if (provider.artistName.equals(artistName))
-                return false;
-        return true;
-    }
-    public static boolean checkMinMaxHours(TextField minHoursInput, TextField maxHoursInput){
-        double maxHours = Double.parseDouble(maxHoursInput.getText());
-        double minHours = Double.parseDouble(minHoursInput.getText());
-        return maxHours <= minHours;
-    }
-
-    public static double calculateAverageScoreForProvider(Provider p){
-        double sum = 0;
-        double numberOfProviders = 0;
-        for(Review review : ReviewDAO.getReviews()){
-            if (p.getProviderNumber() == review.getProviderNumber() && review.isProviderReview()){
-                sum = sum + review.getScoreOn10();
-                numberOfProviders = numberOfProviders + 1;
-            }
-        }
-        if (numberOfProviders == 0)
-            return 0;
-        return sum/numberOfProviders;
     }
 
 }

@@ -24,13 +24,7 @@ public class RequestedEvents {      //klasse gebruikt om events aan providers aa
     private LocalDateTime endDate;
     private String description;
     private URL linkToPage;
-    public static boolean checkProviderUserNumber(int providerNumber, int userNumber){
-        for (Provider provider : ProviderDAO.getProviders()) {
-            if (provider.getUserNumber() == userNumber)
-                return true;
-        }
-        return false;
 
-    }
+
 
 }

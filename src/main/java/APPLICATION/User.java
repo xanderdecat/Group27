@@ -1,20 +1,16 @@
 package APPLICATION;
 
 import DB.ReviewDAO;
-import DB.UserDAO;
 
 import java.sql.Date;
-import java.time.Instant;
 import java.time.LocalDate;
 import java.time.Period;
-import java.time.ZoneId;
-import java.util.ArrayList;
 
 import static DB.UserDAO.getUsers;
 
 public class User {
 
-    // instantievariabelen
+    // instance variables
     private static int helpUserNumber = 0;
     private int userNumber;                    // unique key
     private String firstName;
@@ -53,11 +49,23 @@ public class User {
         this.phoneNumber = phoneNumber;
         this.password = password;
     }
-    //empty constructor used in the main
-    public User() {
+
+    // methods
+    public static double calculateAverageScoreForUser(User user){
+        double sum = 0;
+        double numberOfUsers = 0;
+        for(Review review : ReviewDAO.getReviews()){
+            if (user.getUserNumber() == review.getUserNumber() && !review.isProviderReview()){
+                sum = sum + review.getScoreOn10();
+                numberOfUsers = numberOfUsers + 1;
+            }
+        }
+        if (numberOfUsers == 0)
+            return 0;
+        return Math.round((sum / numberOfUsers * 100) * 10) / 10.0;
     }
 
-    // getters en setters
+    // getters and setters
     public static int getHelpUserNumber() {
         return helpUserNumber;
     }
@@ -140,19 +148,5 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
-    }
-
-    public static double calculateAverageScoreForUser(User user){
-        double sum = 0;
-        double numberOfUsers = 0;
-        for(Review review : ReviewDAO.getReviews()){
-            if (user.getUserNumber() == review.getUserNumber() && !review.isProviderReview()){
-                sum = sum + review.getScoreOn10();
-                numberOfUsers = numberOfUsers + 1;
-            }
-        }
-        if (numberOfUsers == 0)
-            return 0;
-        return sum/numberOfUsers;
     }
 }
