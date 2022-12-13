@@ -30,6 +30,8 @@ public class LogInUserController {
         for (User user : UserDAO.getUsers())
             if (user.getEmail().equals(emailInput.getText()) && user.getPassword().equals(passwordInput.getText())) {
                 HelloApplication.userMain = new User(user.getUserNumber(), user.getFirstName(), user.getLastName(), user.getDateOfBirth(), user.getAge(), user.getEmail(), user.getPhoneNumber(), user.getPassword());
+                HelloApplication.loadPage("UserPage.fxml", actionEvent);
+                /*
                 try {
                     FXMLLoader fxmlLoader = new FXMLLoader();
                     fxmlLoader.setLocation(getClass().getResource("UserPage.fxml"));
@@ -43,12 +45,14 @@ public class LogInUserController {
                 } catch (IOException e) {
                 }
 
+                 */
+
             }
     }
 
-
-    // gaat terug naar WELCOMEPAGE
     public void goToWelcomePage (ActionEvent actionEvent){
+        HelloApplication.loadPage("WelcomePage.fxml", actionEvent);
+        /*
         try {
             FXMLLoader fxmlLoader = new FXMLLoader();
             fxmlLoader.setLocation(getClass().getResource("WelcomePage.fxml"));
@@ -61,6 +65,8 @@ public class LogInUserController {
             ((Node) (actionEvent.getSource())).getScene().getWindow().hide();
         } catch (IOException e) {
         }
+
+         */
     }
 }
 

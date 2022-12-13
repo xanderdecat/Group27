@@ -31,6 +31,8 @@ public class WelcomePageController {
     }
 
     public void goToNewUserPage(ActionEvent actionEvent) throws IOException {
+        HelloApplication.loadPage("AddUser.fxml", actionEvent);
+        /*
         try {
             FXMLLoader fxmlLoader = new FXMLLoader();
             fxmlLoader.setLocation(getClass().getResource("AddUser.fxml"));
@@ -45,5 +47,6 @@ public class WelcomePageController {
          catch (IOException e) {
         }
 
+         */
     }
 }
