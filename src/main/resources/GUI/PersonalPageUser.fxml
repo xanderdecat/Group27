@@ -7,7 +7,6 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.PersonalPageUserController">
    <children>
       <Label layoutX="51.0" layoutY="179.0" />
@@ -16,7 +15,7 @@
             <Font name="Arial Black" size="13.0" />
          </font>
       </Label>
-      <Label fx:id="firstNametoSet" layoutX="270.0" layoutY="150.0" text="(FIRSTNAME)" />
+      <Label fx:id="firstNameToSet" layoutX="270.0" layoutY="150.0" text="(FIRSTNAME)" />
       <Label fx:id="lastNameToSet" layoutX="270.0" layoutY="190.0" text="(LASTNAME)" />
       <Label fx:id="dateOfBirthToSet" layoutX="270.0" layoutY="230.0" text="(DATEOFBIRTH)" />
       <Label fx:id="emailToSet" layoutX="270.0" layoutY="270.0" text="(EMAIL)" />

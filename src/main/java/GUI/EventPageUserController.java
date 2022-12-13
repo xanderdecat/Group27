@@ -85,20 +85,8 @@ public class EventPageUserController {
 
          */
     }
-    public void goBack3(ActionEvent actionEvent) {
-        try {
-            FXMLLoader fxmlLoader = new FXMLLoader();
-            fxmlLoader.setLocation(getClass().getResource("UserPage.fxml"));
-            Scene scene = new Scene(fxmlLoader.load(), 800, 500);
-            Stage stage = new Stage();
-            stage.setTitle("Muzer");
-            stage.setScene(scene);
-            stage.show();
-            stage.setResizable(false);
-            ((Node)(actionEvent.getSource())).getScene().getWindow().hide();
-        }
-        catch (IOException e) {
-        }
+    public void goBack(ActionEvent actionEvent) {
+        HelloApplication.loadPage("UserPage.fxml", actionEvent);
     }
 
     public void seeSpecificList(ActionEvent actionEvent) {
@@ -110,14 +98,14 @@ public class EventPageUserController {
 
         if (minPrice != 0 && maxPrice != 0 && genre != null) {
             for (Provider provider : ProviderDAO.getProviders()) {
-                if(provider.getUserNumber() != HelloApplication.userMain.getUserNumber())
-                if ((minPrice <= provider.getPriceHour()) && (provider.getPriceHour() <= maxPrice) && provider.getGenre() == genre) {
-                    String s = provider.getArtistName() + " - " + provider.getGenre().toString() + " - " + provider.getCity();
-                    possibleArtists.getItems().add(s);
+                if(provider.getUserNumber() != HelloApplication.userMain.getUserNumber()) {
+                    if ((minPrice <= provider.getPriceHour()) && (provider.getPriceHour() <= maxPrice) && provider.getGenre() == genre) {
+                        String s = provider.getArtistName() + " - " + provider.getGenre().toString() + " - " + provider.getCity();
+                        possibleArtists.getItems().add(s);
+                    }
                 }
             }
         }
-
     }
     
     public void seeArtist(ActionEvent actionEvent) {
@@ -147,19 +135,7 @@ public class EventPageUserController {
             double totalamount = requestedHours1 * chosenProvider.getPriceHour();
             eventTransaction = new Transaction(UserPageController.upcomingEvent.getEventNumber(), HelloApplication.userMain.getUserNumber(), chosenProvider.getProviderNumber(), Transaction.status.Requested, UserPageController.upcomingEvent.getEventName() + " - " + chosenProvider.getArtistName(), totalamount);
             TransactionDAO.saveTransaction(eventTransaction);
-            try {
-                FXMLLoader fxmlLoader = new FXMLLoader();
-                fxmlLoader.setLocation(getClass().getResource("UserPage.fxml"));
-                Scene scene = new Scene(fxmlLoader.load(), 800, 500);
-                Stage stage = new Stage();
-                stage.setTitle("Muzer");
-                stage.setScene(scene);
-                stage.show();
-                stage.setResizable(false);
-                ((Node)(actionEvent.getSource())).getScene().getWindow().hide();
-            }
-            catch (IOException e) {
-            }
+            HelloApplication.loadPage("UserPage.fxml", actionEvent);
         }
     }
 }

@@ -20,37 +20,30 @@ import java.time.LocalDateTime;
 
 public class UserPageController {
 
+    public static Event upcomingEvent;
+    public static Event previousEvent;
     @FXML
     private Button continueButton;
-
     @FXML
     private Button upgradeButton;
     @FXML
-    private Label namefield;
-
+    private Label nameToSet;
     @FXML
     private ListView<String> previousEventsChooser;
-
     @FXML
-    private Label score;
-
+    private Label scoreToSet;
     @FXML
     private ListView<String> upcomingEventsChooser;
-
-    public static Event upcomingEvent;
-    public static Event previousEvent;
-
 
     public void initialize() {
         continueButton.setVisible(false);
         upgradeButton.setVisible(true);
-        namefield.setText(HelloApplication.userMain.getName());
-        namefield.setVisible(true);
+        nameToSet.setText(HelloApplication.userMain.getName());
 
         if (User.calculateAverageScoreForUser(HelloApplication.userMain) == 0)
-            score.setText("-");
+            scoreToSet.setText("-");
         else
-            score.setText(String.valueOf(User.calculateAverageScoreForUser(HelloApplication.userMain)));
+            scoreToSet.setText(String.valueOf(User.calculateAverageScoreForUser(HelloApplication.userMain)));
 
         for (Provider provider : ProviderDAO.getProviders()) {
             if (provider.getUserNumber() == HelloApplication.userMain.getUserNumber()) {
@@ -72,86 +65,12 @@ public class UserPageController {
         }
     }
 
-    public void logOut(ActionEvent actionEvent) {
-        try {
-            FXMLLoader fxmlLoader = new FXMLLoader();
-            fxmlLoader.setLocation(getClass().getResource("WelcomePage.fxml"));
-            Scene scene = new Scene(fxmlLoader.load(), 800, 500);
-            Stage stage = new Stage();
-            stage.setTitle("Muzer");
-            stage.setScene(scene);
-            stage.show();
-            stage.setResizable(false);
-            ((Node)(actionEvent.getSource())).getScene().getWindow().hide();
-        }
-        catch (IOException e) {
-        }
-    }
-
-    public void goToCreateNewEvent(ActionEvent actionEvent) {
-        try {
-            FXMLLoader fxmlLoader = new FXMLLoader();
-            fxmlLoader.setLocation(getClass().getResource("AddEventUser.fxml"));
-            Scene scene = new Scene(fxmlLoader.load(), 800, 500);
-            Stage stage = new Stage();
-            stage.setTitle("Muzer");
-            stage.setScene(scene);
-            stage.show();
-            stage.setResizable(false);
-            ((Node)(actionEvent.getSource())).getScene().getWindow().hide();
-        }
-        catch (IOException e) {
-        }
-    }
-
-    public void goToAddProviderPage(ActionEvent actionEvent) {
-        try {
-            FXMLLoader fxmlLoader = new FXMLLoader();
-            fxmlLoader.setLocation(getClass().getResource("AddProvider.fxml"));
-            Scene scene = new Scene(fxmlLoader.load(), 800, 500);
-            Stage stage = new Stage();
-            stage.setTitle("Muzer");
-            stage.setScene(scene);
-            stage.show();
-            stage.setResizable(false);
-            ((Node)(actionEvent.getSource())).getScene().getWindow().hide();
-        }
-        catch (IOException e) {
-        }
-    }
-
-    public void continueAsProvider(ActionEvent actionEvent) {
-        try {
-            FXMLLoader fxmlLoader = new FXMLLoader();
-            fxmlLoader.setLocation(getClass().getResource("ProviderPage.fxml"));
-            Scene scene = new Scene(fxmlLoader.load(), 800, 500);
-            Stage stage = new Stage();
-            stage.setTitle("Muzer");
-            stage.setScene(scene);
-            stage.show();
-            stage.setResizable(false);
-            ((Node) (actionEvent.getSource())).getScene().getWindow().hide();
-        } catch (IOException e) {
-        }
-    }
-
     public void bookAnArtist(ActionEvent actionEvent) {
         String selected = upcomingEventsChooser.getSelectionModel().getSelectedItem();
         for (Event ev : EventDAO.getEvents())
             if (ev.getEventName().equals(selected.substring(0, selected.indexOf("-") - 1))) {
                 upcomingEvent = EventDAO.getEvent(ev.getEventNumber());
-                try {
-                    FXMLLoader fxmlLoader = new FXMLLoader();
-                    fxmlLoader.setLocation(getClass().getResource("EventPageUser.fxml"));
-                    Scene scene = new Scene(fxmlLoader.load(), 800, 500);
-                    Stage stage = new Stage();
-                    stage.setTitle("Muzer");
-                    stage.setScene(scene);
-                    stage.show();
-                    stage.setResizable(false);
-                    ((Node) (actionEvent.getSource())).getScene().getWindow().hide();
-                } catch (IOException e) {
-                }
+                HelloApplication.loadPage("EventPageUser.fxml", actionEvent);
             }
     }
 
@@ -160,18 +79,7 @@ public class UserPageController {
         for (Event ev : EventDAO.getEvents())
             if (ev.getEventName().equals(selected.substring(0, selected.indexOf("-") - 1))) {
                 upcomingEvent = EventDAO.getEvent(ev.getEventNumber());
-                try {
-                    FXMLLoader fxmlLoader = new FXMLLoader();
-                    fxmlLoader.setLocation(getClass().getResource("EventInfoUser.fxml"));
-                    Scene scene = new Scene(fxmlLoader.load(), 800, 500);
-                    Stage stage = new Stage();
-                    stage.setTitle("Muzer");
-                    stage.setScene(scene);
-                    stage.show();
-                    stage.setResizable(false);
-                    ((Node) (actionEvent.getSource())).getScene().getWindow().hide();
-                } catch (IOException e) {
-                }
+                HelloApplication.loadPage("EventInfoUser.fxml", actionEvent);
             }
 
     }
@@ -181,69 +89,36 @@ public class UserPageController {
         for (Event ev : EventDAO.getEvents())
             if (ev.getEventName().equals(selected.substring(0, selected.indexOf("-") - 1))) {
                 previousEvent = EventDAO.getEvent(ev.getEventNumber());
-                try {
-                    FXMLLoader fxmlLoader = new FXMLLoader();
-                    fxmlLoader.setLocation(getClass().getResource("ReviewPageUser.fxml"));
-                    Scene scene = new Scene(fxmlLoader.load(), 800, 500);
-                    Stage stage = new Stage();
-                    stage.setTitle("Muzer");
-                    stage.setScene(scene);
-                    stage.show();
-                    stage.setResizable(false);
-                    ((Node) (actionEvent.getSource())).getScene().getWindow().hide();
-                } catch (IOException e) {
-                }
+                HelloApplication.loadPage("ReviewPageUser.fxml", actionEvent);
             }
     }
 
-
-    public void seePersonalInformation(ActionEvent actionEvent) {
-        try {
-            FXMLLoader fxmlLoader = new FXMLLoader();
-            fxmlLoader.setLocation(getClass().getResource("PersonalPageUser.fxml"));
-            Scene scene = new Scene(fxmlLoader.load(), 800, 500);
-            Stage stage = new Stage();
-            stage.setTitle("Muzer");
-            stage.setScene(scene);
-            stage.show();
-            stage.setResizable(false);
-            ((Node)(actionEvent.getSource())).getScene().getWindow().hide();
-        }
-        catch (IOException e) {
-        }
+    public void logOut(ActionEvent actionEvent) {
+        HelloApplication.loadPage("WelcomePage.fxml", actionEvent);
     }
 
+    public void goToCreateNewEvent(ActionEvent actionEvent) {
+        HelloApplication.loadPage("AddEventUser.fxml", actionEvent);
+    }
+
+    public void goToAddProviderPage(ActionEvent actionEvent) {
+        HelloApplication.loadPage("AddProvider.fxml", actionEvent);
+    }
+
+    public void continueAsProvider(ActionEvent actionEvent) {
+        HelloApplication.loadPage("ProviderPage.fxml", actionEvent);
+    }
+
+    public void seePersonalInformation(ActionEvent actionEvent) {
+        HelloApplication.loadPage("PersonalPageUser.fxml", actionEvent);
+    }
 
     public void seeTransactions(ActionEvent actionEvent) {
-        try {
-            FXMLLoader fxmlLoader = new FXMLLoader();
-            fxmlLoader.setLocation(getClass().getResource("TransactionPageUser.fxml"));
-            Scene scene = new Scene(fxmlLoader.load(), 800, 500);
-            Stage stage = new Stage();
-            stage.setTitle("Muzer");
-            stage.setScene(scene);
-            stage.show();
-            stage.setResizable(false);
-            ((Node)(actionEvent.getSource())).getScene().getWindow().hide();
-        }
-        catch (IOException e) {
-        }
+        HelloApplication.loadPage("TransactionPageUser.fxml", actionEvent);
     }
 
     public void goToReviews(ActionEvent actionEvent) {
-        try {
-            FXMLLoader fxmlLoader = new FXMLLoader();
-            fxmlLoader.setLocation(getClass().getResource("ReviewOverviewUser.fxml"));
-            Scene scene = new Scene(fxmlLoader.load(), 800, 500);
-            Stage stage = new Stage();
-            stage.setTitle("Muzer");
-            stage.setScene(scene);
-            stage.show();
-            stage.setResizable(false);
-            ((Node)(actionEvent.getSource())).getScene().getWindow().hide();
-        }
-        catch (IOException e) {
-        }
+        HelloApplication.loadPage("ReviewOverviewUser.fxml", actionEvent);
     }
 
 }

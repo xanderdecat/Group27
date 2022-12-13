@@ -38,7 +38,7 @@
          </font>
       </Label>
       <Button layoutX="430.0" layoutY="234.0" mnemonicParsing="false" onAction="#seeArtist" text="See this artist!" />
-      <Button layoutX="84.0" layoutY="436.0" mnemonicParsing="false" onAction="#goBack3" text="Back" />
+      <Button layoutX="84.0" layoutY="436.0" mnemonicParsing="false" onAction="#goBack" text="Back" />
       <Label layoutX="244.0" layoutY="50.0" text="Choose an artist for your event!">
          <font>
             <Font name="Arial Black" size="18.0" />

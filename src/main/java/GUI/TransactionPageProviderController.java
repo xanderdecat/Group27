@@ -19,22 +19,16 @@ public class TransactionPageProviderController {
 
     @FXML
     private Label nameToSet;
-
     @FXML
     private Label confirmationDateToSet;
-
     @FXML
     private Label eventNameToSet;
-
     @FXML
     private Label messageToSet;
-
     @FXML
     private ListView<String> openTransactions;
-
     @FXML
     private ListView<String> receivedTransactions;
-
     @FXML
     private Label totalAmountToSet;
 
@@ -58,19 +52,9 @@ public class TransactionPageProviderController {
             }
         }
     }
+
     public void goBack(ActionEvent actionEvent) {
-        try {
-            FXMLLoader fxmlLoader = new FXMLLoader();
-            fxmlLoader.setLocation(getClass().getResource("ProviderPage.fxml"));
-            Scene scene = new Scene(fxmlLoader.load(), 800, 500);
-            Stage stage = new Stage();
-            stage.setTitle("Muzer");
-            stage.setScene(scene);
-            stage.show();
-            stage.setResizable(false);
-            ((Node) (actionEvent.getSource())).getScene().getWindow().hide();
-        } catch (IOException e) {
-        }
+        HelloApplication.loadPage("ProviderPage.fxml", actionEvent);
     }
 
     public void seeToDoTransaction(ActionEvent actionEvent) {

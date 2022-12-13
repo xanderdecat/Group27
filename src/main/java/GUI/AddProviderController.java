@@ -57,17 +57,7 @@ public class AddProviderController {
     }
 
     public void goToHomeScreen(ActionEvent actionEvent) {
-        try {
-            FXMLLoader fxmlLoader = new FXMLLoader();
-            fxmlLoader.setLocation(getClass().getResource("UserPage.fxml"));
-            Scene scene = new Scene(fxmlLoader.load(), 800, 500);
-            Stage stage = new Stage();
-            stage.setTitle("Muzer");
-            stage.setScene(scene);
-            stage.show();
-            ((Node) (actionEvent.getSource())).getScene().getWindow().hide();
-        } catch (IOException e) {
-        }
+        HelloApplication.loadPage("UserPage.fxml", actionEvent);
     }
 
     public void goToProviderPage(ActionEvent actionEvent) {
@@ -140,18 +130,8 @@ public class AddProviderController {
                         genre, date, priceHour, minHours, maxHours, conditions, description, linkToSet, linkToPage);
                 ProviderDAO.saveProvider(HelloApplication.providerMain);
 
-                try {
-                    FXMLLoader fxmlLoader = new FXMLLoader();
-                    fxmlLoader.setLocation(getClass().getResource("ProviderPage.fxml"));
-                    Scene scene = new Scene(fxmlLoader.load(), 800, 500);
-                    Stage stage = new Stage();
-                    stage.setTitle("Muzer");
-                    stage.setScene(scene);
-                    stage.show();
-                    stage.setResizable(false);
-                    ((Node) (actionEvent.getSource())).getScene().getWindow().hide();
-                } catch (IOException e) {
-                }
+                HelloApplication.loadPage("ProviderPage.fxml", actionEvent);
+
             } catch (MalformedURLException | NumberFormatException e) {
             }
         }

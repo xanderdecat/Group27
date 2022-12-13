@@ -90,37 +90,13 @@ public class AddEventUserController {
             if (startDate1.isBefore(endDate1) && LocalDate.now().isBefore(ChronoLocalDate.from(startDate1.minusDays(5))) && eventName1 != null && streetName1 != null && houseNumberInput.getText() != null && zipCodeInput.getText() != null && country1 != null && description1 != null) {
                 eventMain = new Event(HelloApplication.userMain.getUserNumber(), eventName1, streetName1, houseNumber1, ZIPCode1, cityInput1, country1, startDate1, endDate1, description1, linkToPage1, npoNumber1);
                 EventDAO.saveEvent(eventMain);
-                try {
-                    FXMLLoader fxmlLoader = new FXMLLoader();
-                    fxmlLoader.setLocation(getClass().getResource("UserPage.fxml"));
-                    Scene scene = new Scene(fxmlLoader.load(), 800, 500);
-                    Stage stage = new Stage();
-                    stage.setTitle("Muzer");
-                    stage.setScene(scene);
-                    stage.show();
-                    stage.setResizable(false);
-                    ((Node)(actionEvent.getSource())).getScene().getWindow().hide();
-                }
-                catch (IOException e) {
-                }
+                HelloApplication.loadPage("UserPage.fxml", actionEvent);
             }
         }catch (MalformedURLException | NumberFormatException e) {
         }
     }
 
     public void goToHomePage(ActionEvent actionEvent) {
-        try {
-            FXMLLoader fxmlLoader = new FXMLLoader();
-            fxmlLoader.setLocation(getClass().getResource("UserPage.fxml"));
-            Scene scene = new Scene(fxmlLoader.load(), 800, 500);
-            Stage stage = new Stage();
-            stage.setTitle("Muzer");
-            stage.setScene(scene);
-            stage.show();
-            stage.setResizable(false);
-            ((Node)(actionEvent.getSource())).getScene().getWindow().hide();
-        }
-        catch (IOException e) {
-        }
+        HelloApplication.loadPage("UserPage.fxml", actionEvent);
     }
 }

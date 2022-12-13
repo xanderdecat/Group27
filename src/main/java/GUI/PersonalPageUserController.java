@@ -21,55 +21,38 @@ public class PersonalPageUserController {
 
     @FXML
     private Label dateOfBirthToSet;
-
     @FXML
     private Label emailToSet;
-
     @FXML
-    private Label firstNametoSet;
-
+    private Label firstNameToSet;
     @FXML
     private Label lastNameToSet;
-
-    @FXML
-    private Button makeNewEvent;
-
     @FXML
     private Label nameToSet;
-
     @FXML
     private DatePicker newDateOfBirthInput;
-
     @FXML
     private TextField newEmailInput;
-
     @FXML
     private TextField newFirstNameInput;
-
     @FXML
     private TextField newLastNameInput;
-
     @FXML
     private TextField newPasswordInput;
-
     @FXML
     private TextField newPhoneNumberInput;
-
     @FXML
     private Label passWordToSet;
-
     @FXML
     private Label phoneNumberToSet;
-
     @FXML
     private Button showPasswordButton;
-
     @FXML
     private Button hidePasswordButton;
 
     public void initialize() {
         nameToSet.setText(HelloApplication.userMain.getName());
-        firstNametoSet.setText(HelloApplication.userMain.getFirstName());
+        firstNameToSet.setText(HelloApplication.userMain.getFirstName());
         lastNameToSet.setText(HelloApplication.userMain.getLastName());
         dateOfBirthToSet.setText(HelloApplication.userMain.getDateOfBirth().toString());
         emailToSet.setText(HelloApplication.userMain.getEmail());
@@ -92,19 +75,7 @@ public class PersonalPageUserController {
     }
 
     public void goBack(ActionEvent actionEvent) {
-        try {
-            FXMLLoader fxmlLoader = new FXMLLoader();
-            fxmlLoader.setLocation(getClass().getResource("UserPage.fxml"));
-            Scene scene = new Scene(fxmlLoader.load(), 800, 500);
-            Stage stage = new Stage();
-            stage.setTitle("Muzer");
-            stage.setScene(scene);
-            stage.show();
-            stage.setResizable(false);
-            ((Node)(actionEvent.getSource())).getScene().getWindow().hide();
-        }
-        catch (IOException e) {
-        }
+        HelloApplication.loadPage("UserPage.fxml", actionEvent);
     }
 
     public void changePersonalInformation(ActionEvent actionEvent) {
@@ -148,9 +119,5 @@ public class PersonalPageUserController {
         newEmailInput.clear();
         newPhoneNumberInput.clear();
         newPasswordInput.clear();
-
-
     }
-
-
 }

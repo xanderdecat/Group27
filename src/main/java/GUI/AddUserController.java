@@ -46,36 +46,12 @@ public class AddUserController {
                 HelloApplication.userMain = new User(firstName1, lastName1, testdate, email1, phoneNumber1, wachtwoord1);
                 DB.UserDAO.saveUser(HelloApplication.userMain);   // toevoegen aan DataBase
 
-                try {
-
-                    FXMLLoader fxmlLoader = new FXMLLoader();
-                    fxmlLoader.setLocation(getClass().getResource("UserPage.fxml"));
-                    Scene scene = new Scene(fxmlLoader.load(), 800, 500);
-                    Stage stage = new Stage();
-                    stage.setTitle("Muzer");
-                    stage.setScene(scene);
-                    stage.show();
-                    stage.setResizable(false);
-                    ((Node) (actionEvent.getSource())).getScene().getWindow().hide();
-                } catch (IOException e) {
-                }
+                HelloApplication.loadPage("UserPage.fxml", actionEvent);
             }
         }
     }
 
     public void goToWelcomePage(ActionEvent actionEvent) {
-        try {
-            FXMLLoader fxmlLoader = new FXMLLoader();
-            fxmlLoader.setLocation(getClass().getResource("WelcomePage.fxml"));
-            Scene scene = new Scene(fxmlLoader.load(), 800, 500);
-            Stage stage = new Stage();
-            stage.setTitle("Muzer");
-            stage.setScene(scene);
-            stage.show();
-            stage.setResizable(false);
-            ((Node)(actionEvent.getSource())).getScene().getWindow().hide();
-        }
-        catch (IOException e) {
-        }
+        HelloApplication.loadPage("WelcomePage.fxml", actionEvent);
     }
 }

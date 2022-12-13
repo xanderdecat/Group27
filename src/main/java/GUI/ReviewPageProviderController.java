@@ -21,42 +21,25 @@ public class ReviewPageProviderController {
 
     @FXML
     private Label cityToSet;
-
     @FXML
     private TextField descriptionInput;
-
     @FXML
     private Label endDateToSet;
-
     @FXML
     private Label eventNameToSet;
-
     @FXML
     private ChoiceBox<String> scoreOn10;
-
     @FXML
     private Label startDateToSet;
-
     @FXML
     private TextField subjectInput;
-
     @FXML
     private ListView<String> userToChoose;
 
+    // initialize to do!
 
     public void goBack(ActionEvent actionEvent) {
-        try {
-            FXMLLoader fxmlLoader = new FXMLLoader();
-            fxmlLoader.setLocation(getClass().getResource("ProviderPageController.fxml"));
-            Scene scene = new Scene(fxmlLoader.load(), 800, 500);
-            Stage stage = new Stage();
-            stage.setTitle("Muzer");
-            stage.setScene(scene);
-            stage.show();
-            stage.setResizable(false);
-            ((Node) (actionEvent.getSource())).getScene().getWindow().hide();
-        } catch (IOException e) {
-        }
+        HelloApplication.loadPage("ProviderPageController.fxml", actionEvent);
     }
 
 
@@ -76,18 +59,7 @@ public class ReviewPageProviderController {
             ReviewDAO.save(review);
 
 
-            try {
-                FXMLLoader fxmlLoader = new FXMLLoader();
-                fxmlLoader.setLocation(getClass().getResource("UserPage.fxml"));
-                Scene scene = new Scene(fxmlLoader.load(), 800, 500);
-                Stage stage = new Stage();
-                stage.setTitle("Muzer");
-                stage.setScene(scene);
-                stage.show();
-                stage.setResizable(false);
-                ((Node) (actionEvent.getSource())).getScene().getWindow().hide();
-            } catch (IOException e) {
-            }
+            HelloApplication.loadPage("UserPage.fxml", actionEvent);
         }
     }
 }

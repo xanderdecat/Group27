@@ -19,22 +19,16 @@ public class TransactionPageUserController {
 
     @FXML
     private Label artistNameToSet;
-
     @FXML
     private Label confirmationDateToSet;
-
     @FXML
     private Label eventNameToSet;
-
     @FXML
     private Label messageToSet;
-
     @FXML
     private Label totalAmountToSet;
-
     @FXML
     private ListView<String> transactionsDone;
-
     @FXML
     private ListView<String> transactionsToDo;
 
@@ -60,18 +54,7 @@ public class TransactionPageUserController {
     }
 
     public void goBack(ActionEvent actionEvent) {
-        try {
-            FXMLLoader fxmlLoader = new FXMLLoader();
-            fxmlLoader.setLocation(getClass().getResource("UserPage.fxml"));
-            Scene scene = new Scene(fxmlLoader.load(), 800, 500);
-            Stage stage = new Stage();
-            stage.setTitle("Muzer");
-            stage.setScene(scene);
-            stage.show();
-            ((Node)(actionEvent.getSource())).getScene().getWindow().hide();
-        }
-        catch (IOException e) {
-        }
+        HelloApplication.loadPage("UserPage.fxml", actionEvent);
     }
 
     public void seeToDoTransaction(ActionEvent actionEvent) {
@@ -122,6 +105,7 @@ public class TransactionPageUserController {
         }
 
         transactionsToDo.getItems().clear();
+
         initialize();
     }
 }

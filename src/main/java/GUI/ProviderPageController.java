@@ -73,19 +73,7 @@ public class ProviderPageController {
             if (transaction.getProviderNumber() == HelloApplication.providerMain.getProviderNumber() && (EventDAO.getEvent(transaction.getEventNumber()).getEventName() + " - " + EventDAO.getEvent(transaction.getEventNumber()).getCity()).equals(selected)) {
                 requestedTransaction = transaction;
                 requestedEvent = EventDAO.getEvent(transaction.getEventNumber());
-                try {
-                    FXMLLoader fxmlLoader = new FXMLLoader();
-                    fxmlLoader.setLocation(getClass().getResource("EventPageProvider.fxml"));
-                    Scene scene = new Scene(fxmlLoader.load(), 800, 500);
-                    Stage stage = new Stage();
-                    stage.setTitle("Muzer");
-                    stage.setScene(scene);
-                    stage.show();
-                    stage.setResizable(false);
-                    ((Node)(actionEvent.getSource())).getScene().getWindow().hide();
-                }
-                catch (IOException e) {
-                }
+                HelloApplication.loadPage("EventPageProvider.fxml", actionEvent);
             }
         }
     }
@@ -95,19 +83,7 @@ public class ProviderPageController {
         for (Event event : EventDAO.getEvents())
             if (selected.equals(event.getEventName() + " - " + event.getCity())) {
                 upcomingEvent = event;
-                try {
-                    FXMLLoader fxmlLoader = new FXMLLoader();
-                    fxmlLoader.setLocation(getClass().getResource("EventInfoProvider.fxml"));
-                    Scene scene = new Scene(fxmlLoader.load(), 800, 500);
-                    Stage stage = new Stage();
-                    stage.setTitle("Muzer");
-                    stage.setScene(scene);
-                    stage.show();
-                    stage.setResizable(false);
-                    ((Node) (actionEvent.getSource())).getScene().getWindow().hide();
-                } catch (IOException e) {
-                }
-
+                HelloApplication.loadPage("EventInfoProvider.fxml", actionEvent);
             }
     }
 
@@ -116,94 +92,27 @@ public class ProviderPageController {
         for (Event ev : EventDAO.getEvents())
             if (ev.getEventName().equals(selected.substring(0, selected.indexOf("-") - 1))) {
                 previousEvent = EventDAO.getEvent(ev.getEventNumber());
-                try {
-                    FXMLLoader fxmlLoader = new FXMLLoader();
-                    fxmlLoader.setLocation(getClass().getResource("ReviewPageProvider.fxml"));
-                    Scene scene = new Scene(fxmlLoader.load(), 800, 500);
-                    Stage stage = new Stage();
-                    stage.setTitle("Muzer");
-                    stage.setScene(scene);
-                    stage.show();
-                    stage.setResizable(false);
-                    ((Node) (actionEvent.getSource())).getScene().getWindow().hide();
-                } catch (IOException e) {
-                }
+                HelloApplication.loadPage("ReviewPageProvider.fxml", actionEvent);
             }
     }
 
     public void goToUserPage(ActionEvent actionEvent) {
-        try {
-            FXMLLoader fxmlLoader = new FXMLLoader();
-            fxmlLoader.setLocation(getClass().getResource("UserPage.fxml"));
-            Scene scene = new Scene(fxmlLoader.load(), 800, 500);
-            Stage stage = new Stage();
-            stage.setTitle("Muzer");
-            stage.setScene(scene);
-            stage.show();
-            stage.setResizable(false);
-            ((Node) (actionEvent.getSource())).getScene().getWindow().hide();
-        } catch (IOException e) {
-        }
+        HelloApplication.loadPage("UserPage.fxml", actionEvent);
     }
 
     public void seeArtistInformation(ActionEvent actionEvent) {
-        try {
-            FXMLLoader fxmlLoader = new FXMLLoader();
-            fxmlLoader.setLocation(getClass().getResource("PersonalPageProvider.fxml"));
-            Scene scene = new Scene(fxmlLoader.load(), 800, 500);
-            Stage stage = new Stage();
-            stage.setTitle("Muzer");
-            stage.setScene(scene);
-            stage.show();
-            stage.setResizable(false);
-            ((Node) (actionEvent.getSource())).getScene().getWindow().hide();
-        } catch (IOException e) {
-        }
+        HelloApplication.loadPage("PersonalPageProvider.fxml", actionEvent);
     }
 
     public void logOut(ActionEvent actionEvent) {
-        try {
-            FXMLLoader fxmlLoader = new FXMLLoader();
-            fxmlLoader.setLocation(getClass().getResource("WelcomePage.fxml"));
-            Scene scene = new Scene(fxmlLoader.load(), 800, 500);
-            Stage stage = new Stage();
-            stage.setTitle("Muzer");
-            stage.setScene(scene);
-            stage.show();
-            stage.setResizable(false);
-            ((Node) (actionEvent.getSource())).getScene().getWindow().hide();
-        } catch (IOException e) {
-        }
+        HelloApplication.loadPage("WelcomePage.fxml", actionEvent);
     }
 
     public void seeReviews(ActionEvent actionEvent) {
-        try {
-            FXMLLoader fxmlLoader = new FXMLLoader();
-            fxmlLoader.setLocation(getClass().getResource("ReviewOverviewProvider.fxml"));
-            Scene scene = new Scene(fxmlLoader.load(), 800, 500);
-            Stage stage = new Stage();
-            stage.setTitle("Muzer");
-            stage.setScene(scene);
-            stage.show();
-            stage.setResizable(false);
-            ((Node)(actionEvent.getSource())).getScene().getWindow().hide();
-        }
-        catch (IOException e) {
-        }
+        HelloApplication.loadPage("ReviewOverviewProvider.fxml", actionEvent);
     }
 
     public void seeTransactions(ActionEvent actionEvent) {
-        try {
-            FXMLLoader fxmlLoader = new FXMLLoader();
-            fxmlLoader.setLocation(getClass().getResource("TransactionPageProvider.fxml"));
-            Scene scene = new Scene(fxmlLoader.load(), 800, 500);
-            Stage stage = new Stage();
-            stage.setTitle("Muzer");
-            stage.setScene(scene);
-            stage.show();
-            stage.setResizable(false);
-            ((Node) (actionEvent.getSource())).getScene().getWindow().hide();
-        } catch (IOException e) {
-        }
+        HelloApplication.loadPage("TransactionPageProvider.fxml", actionEvent);
     }
 }
