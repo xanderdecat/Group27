@@ -3,6 +3,7 @@ package APPLICATION;
 import DB.ProviderDAO;
 import DB.ReviewDAO;
 
+import GUI.HelloApplication;
 import javafx.scene.control.TextField;
 
 import java.net.URL;
@@ -81,20 +82,31 @@ public class Provider extends User {
 
 
     // methods
-    public static boolean checkVATnumber(String VATNumberToCheck) {
+    public static boolean checkVATNumber(String VATNumberToCheck) {
         if (VATNumberToCheck == null || VATNumberToCheck.length() == 0)
             return true;
-        for (Provider provider : ProviderDAO.getProviders())
-            if (provider.VATNumber.equals(VATNumberToCheck))
+        for (Provider provider : ProviderDAO.getProviders()) {
+            if (provider.getProviderNumber() == HelloApplication.providerMain.getProviderNumber()) {
+                provider.getVATNumber().equals(VATNumberToCheck);
+                return true;
+            }
+            if (provider.getVATNumber().equals(VATNumberToCheck))
                 return false;
+        }
         return true;
     }
-    public static boolean checkArtistName(String artistName) {
-        if (artistName == null || artistName.length() == 0)
+
+    public static boolean checkArtistName(String artistNameToCheck) {
+        if (artistNameToCheck == null || artistNameToCheck.length() == 0)
             return false;
-        for (Provider provider : ProviderDAO.getProviders())
-            if (provider.artistName.equals(artistName))
+        for (Provider provider : ProviderDAO.getProviders()) {
+            if (provider.getProviderNumber() == HelloApplication.providerMain.getProviderNumber()) {
+                provider.getArtistName().equals(artistNameToCheck);
+                return true;
+            }
+            if (provider.artistName.equals(artistNameToCheck))
                 return false;
+        }
         return true;
     }
     public static boolean checkMinMaxHours(TextField minHoursInput, TextField maxHoursInput){
