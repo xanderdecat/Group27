@@ -3,7 +3,6 @@ package APPLICATION;
 import DB.ReviewDAO;
 
 import java.time.LocalDate;
-import java.util.Date;
 
 public class Review {
 

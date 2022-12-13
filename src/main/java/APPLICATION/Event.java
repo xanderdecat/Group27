@@ -1,7 +1,5 @@
 package APPLICATION;
 
-import DB.EventDAO;
-
 import java.net.URL;
 import java.time.Duration;
 import java.time.LocalDateTime;

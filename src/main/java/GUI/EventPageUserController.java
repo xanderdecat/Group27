@@ -2,7 +2,6 @@ package GUI;
 
 import APPLICATION.Provider;
 import APPLICATION.Transaction;
-import APPLICATION.User;
 import DB.ProviderDAO;
 import DB.TransactionDAO;
 import javafx.event.ActionEvent;

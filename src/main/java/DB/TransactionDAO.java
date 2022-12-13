@@ -1,8 +1,6 @@
 package DB;
 
-import APPLICATION.Provider;
 import APPLICATION.Transaction;
-import APPLICATION.User;
 
 import java.sql.*;
 import java.util.ArrayList;

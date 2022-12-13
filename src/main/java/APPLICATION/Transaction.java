@@ -2,8 +2,6 @@ package APPLICATION;
 
 import DB.TransactionDAO;
 
-import java.util.Date;
-
 public class Transaction {
 
     public enum status {Requested, Accepted, NotAccepted, Payed};

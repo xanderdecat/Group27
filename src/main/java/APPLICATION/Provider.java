@@ -1,9 +1,7 @@
 package APPLICATION;
 
-import DB.EventDAO;
 import DB.ProviderDAO;
 import DB.ReviewDAO;
-
 import DB.TransactionDAO;
 import javafx.scene.control.TextField;
 
