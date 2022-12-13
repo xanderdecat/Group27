@@ -18,25 +18,18 @@ public class EventInfoUserController {
 
     @FXML
     private Label ZIPToSet;
-
     @FXML
     private Label cityToSet;
-
     @FXML
     private Label countryToSet;
-
     @FXML
     private Label endDateToSet;
-
     @FXML
     private Label eventNameToSet;
-
     @FXML
     private Label startDateToSet;
-
     @FXML
     private Label streetNameToSet;
-
     @FXML
     private ListView<String> bookedArtists;
 
@@ -49,11 +42,12 @@ public class EventInfoUserController {
         countryToSet.setText(UserPageController.upcomingEvent.getCountry());
         streetNameToSet.setText(UserPageController.upcomingEvent.getStreetName() + " " + UserPageController.upcomingEvent.getHouseNumber());
 
-        for (Transaction transaction : TransactionDAO.getTransactions())
+        for (Transaction transaction : TransactionDAO.getTransactions()) {
             if (transaction.getEventNumber() == UserPageController.upcomingEvent.getEventNumber()) {
                 String s = "(" + transaction.getStatus().toString() + ") " + ProviderDAO.getProvider(transaction.getProviderNumber()).getArtistName() + " - €" + transaction.getTotalAmount();
                 bookedArtists.getItems().add(s);
             }
+        }
     }
 
     public void goBack(ActionEvent actionEvent) {

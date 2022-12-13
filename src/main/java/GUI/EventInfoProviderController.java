@@ -16,25 +16,18 @@ public class EventInfoProviderController {
 
     @FXML
     private Label ZIPToSet;
-
     @FXML
     private Label cityToSet;
-
     @FXML
     private Label countryToSet;
-
     @FXML
     private Label endDateToSet;
-
     @FXML
     private Label eventNameToSet;
-
     @FXML
     private Label payedToSet;
-
     @FXML
     private Label startDateToSet;
-
     @FXML
     private Label streetNameToSet;
 

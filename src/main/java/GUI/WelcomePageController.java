@@ -11,6 +11,8 @@ import java.io.IOException;
 public class WelcomePageController {
 
     public void goToLogInPage(ActionEvent actionEvent) {
+        HelloApplication.loadPage("LogInUser.fxml", actionEvent);
+        /*
         try {
             FXMLLoader fxmlLoader = new FXMLLoader();
             fxmlLoader.setLocation(getClass().getResource("LogInUser.fxml"));
@@ -24,6 +26,8 @@ public class WelcomePageController {
         }
         catch (IOException e) {
         }
+
+         */
     }
 
     public void goToNewUserPage(ActionEvent actionEvent) throws IOException {

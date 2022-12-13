@@ -17,28 +17,20 @@ public class EventPageProviderController {
 
     @FXML
     private Label ZIPToSet;
-
     @FXML
     private Label cityToSet;
-
     @FXML
     private Label countryToSet;
-
     @FXML
     private Label descriptionToSet;
-
     @FXML
     private Label endDateToSet;
-
     @FXML
     private Label eventNameToSet;
-
     @FXML
     private Hyperlink linkToSet;
-
     @FXML
     private Label startDateToSet;
-
     @FXML
     private Label streetNameToSet;
 
