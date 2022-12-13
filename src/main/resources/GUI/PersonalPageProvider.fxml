@@ -50,7 +50,7 @@
             <TextField fx:id="linkToPageInput" layoutX="520.0" layoutY="344.0" prefHeight="27.0" prefWidth="200.0" />
             <Label layoutX="421.0" layoutY="349.0" text="Link to page " />
             <Label layoutX="456.0" layoutY="379.0" text="Genre " />
-            <Button layoutX="306.0" layoutY="436.0" mnemonicParsing="false" onAction="#changeInformation" prefHeight="26.0" text="Change personal inforamtion!" />
+            <Button layoutX="306.0" layoutY="436.0" mnemonicParsing="false" onAction="#changeInformation" prefHeight="26.0" text="Change personal information!" />
             <ChoiceBox fx:id="genreChooser" layoutX="520.0" layoutY="374.0" prefHeight="26.0" prefWidth="200.0" />
             <Button layoutX="84.0" layoutY="436.0" mnemonicParsing="false" onAction="#goBack" text="Back" />
          </children>

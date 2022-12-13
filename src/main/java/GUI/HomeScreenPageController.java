@@ -91,7 +91,7 @@ public class HomeScreenPageController {
     public void goToCreateNewEvent(ActionEvent actionEvent) {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader();
-            fxmlLoader.setLocation(getClass().getResource("AddEvent.fxml"));
+            fxmlLoader.setLocation(getClass().getResource("AddEventUser.fxml"));
             Scene scene = new Scene(fxmlLoader.load(), 800, 500);
             Stage stage = new Stage();
             stage.setTitle("Muzer");
@@ -142,7 +142,7 @@ public class HomeScreenPageController {
                 upcomingEvent = EventDAO.getEvent(ev.getEventNumber());
                 try {
                     FXMLLoader fxmlLoader = new FXMLLoader();
-                    fxmlLoader.setLocation(getClass().getResource("EventPage.fxml"));
+                    fxmlLoader.setLocation(getClass().getResource("EventPageUser.fxml"));
                     Scene scene = new Scene(fxmlLoader.load(), 800, 500);
                     Stage stage = new Stage();
                     stage.setTitle("Muzer");
@@ -162,7 +162,7 @@ public class HomeScreenPageController {
                 upcomingEvent = EventDAO.getEvent(ev.getEventNumber());
                 try {
                     FXMLLoader fxmlLoader = new FXMLLoader();
-                    fxmlLoader.setLocation(getClass().getResource("EventPageRequested.fxml"));
+                    fxmlLoader.setLocation(getClass().getResource("EventInfoUser.fxml"));
                     Scene scene = new Scene(fxmlLoader.load(), 800, 500);
                     Stage stage = new Stage();
                     stage.setTitle("Muzer");
@@ -233,7 +233,7 @@ public class HomeScreenPageController {
     public void goToReviews(ActionEvent actionEvent) {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader();
-            fxmlLoader.setLocation(getClass().getResource("ReviewOverview.fxml"));
+            fxmlLoader.setLocation(getClass().getResource("ReviewOverviewUser.fxml"));
             Scene scene = new Scene(fxmlLoader.load(), 800, 500);
             Stage stage = new Stage();
             stage.setTitle("Muzer");

@@ -14,7 +14,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class EventPageRequestedController {
+public class EventInfoUserController {
 
     @FXML
     private Label ZIPToSet;
