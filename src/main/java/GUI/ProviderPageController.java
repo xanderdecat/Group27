@@ -74,7 +74,7 @@ public class ProviderPageController {
                 requestedEvent = EventDAO.getEvent(transaction.getEventNumber());
                 try {
                     FXMLLoader fxmlLoader = new FXMLLoader();
-                    fxmlLoader.setLocation(getClass().getResource("RequestedEvents.fxml"));
+                    fxmlLoader.setLocation(getClass().getResource("EventPageProvider.fxml"));
                     Scene scene = new Scene(fxmlLoader.load(), 800, 500);
                     Stage stage = new Stage();
                     stage.setTitle("Muzer");
@@ -133,7 +133,7 @@ public class ProviderPageController {
     public void goToUserPage(ActionEvent actionEvent) {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader();
-            fxmlLoader.setLocation(getClass().getResource("HomeScreenPage.fxml"));
+            fxmlLoader.setLocation(getClass().getResource("UserPage.fxml"));
             Scene scene = new Scene(fxmlLoader.load(), 800, 500);
             Stage stage = new Stage();
             stage.setTitle("Muzer");

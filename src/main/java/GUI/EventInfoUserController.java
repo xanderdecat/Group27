@@ -41,16 +41,16 @@ public class EventInfoUserController {
     private ListView<String> bookedArtists;
 
     public void initialize() {
-        eventNameToSet.setText(HomeScreenPageController.upcomingEvent.getEventName());
-        startDateToSet.setText(HomeScreenPageController.upcomingEvent.getStartDate().toString());
-        endDateToSet.setText(HomeScreenPageController.upcomingEvent.getEndDate().toString());
-        cityToSet.setText(HomeScreenPageController.upcomingEvent.getCity());
-        ZIPToSet.setText(String.valueOf(HomeScreenPageController.upcomingEvent.getZIP()));
-        countryToSet.setText(HomeScreenPageController.upcomingEvent.getCountry());
-        streetNameToSet.setText(HomeScreenPageController.upcomingEvent.getStreetName() + " " + HomeScreenPageController.upcomingEvent.getHouseNumber());
+        eventNameToSet.setText(UserPageController.upcomingEvent.getEventName());
+        startDateToSet.setText(UserPageController.upcomingEvent.getStartDate().toString());
+        endDateToSet.setText(UserPageController.upcomingEvent.getEndDate().toString());
+        cityToSet.setText(UserPageController.upcomingEvent.getCity());
+        ZIPToSet.setText(String.valueOf(UserPageController.upcomingEvent.getZIP()));
+        countryToSet.setText(UserPageController.upcomingEvent.getCountry());
+        streetNameToSet.setText(UserPageController.upcomingEvent.getStreetName() + " " + UserPageController.upcomingEvent.getHouseNumber());
 
         for (Transaction transaction : TransactionDAO.getTransactions())
-            if (transaction.getEventNumber() == HomeScreenPageController.upcomingEvent.getEventNumber()) {
+            if (transaction.getEventNumber() == UserPageController.upcomingEvent.getEventNumber()) {
                 String s = "(" + transaction.getStatus().toString() + ") " + ProviderDAO.getProvider(transaction.getProviderNumber()).getArtistName() + " - €" + transaction.getTotalAmount();
                 bookedArtists.getItems().add(s);
             }
@@ -59,7 +59,7 @@ public class EventInfoUserController {
     public void goBack(ActionEvent actionEvent) {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader();
-            fxmlLoader.setLocation(getClass().getResource("HomeScreenPage.fxml"));
+            fxmlLoader.setLocation(getClass().getResource("UserPage.fxml"));
             Scene scene = new Scene(fxmlLoader.load(), 800, 500);
             Stage stage = new Stage();
             stage.setTitle("Muzer");

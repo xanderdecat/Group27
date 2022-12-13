@@ -106,7 +106,7 @@ public class AddEventUserController {
                 EventDAO.saveEvent(eventMain);
                 try {
                     FXMLLoader fxmlLoader = new FXMLLoader();
-                    fxmlLoader.setLocation(getClass().getResource("HomeScreenPage.fxml"));
+                    fxmlLoader.setLocation(getClass().getResource("UserPage.fxml"));
                     Scene scene = new Scene(fxmlLoader.load(), 800, 500);
                     Stage stage = new Stage();
                     stage.setTitle("Muzer");
@@ -125,7 +125,7 @@ public class AddEventUserController {
     public void goToHomePage(ActionEvent actionEvent) {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader();
-            fxmlLoader.setLocation(getClass().getResource("HomeScreenPage.fxml"));
+            fxmlLoader.setLocation(getClass().getResource("UserPage.fxml"));
             Scene scene = new Scene(fxmlLoader.load(), 800, 500);
             Stage stage = new Stage();
             stage.setTitle("Muzer");

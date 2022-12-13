@@ -76,7 +76,7 @@ public class AddProviderController {
     public void goToHomeScreen(ActionEvent actionEvent) {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader();
-            fxmlLoader.setLocation(getClass().getResource("HomeScreenPage.fxml"));
+            fxmlLoader.setLocation(getClass().getResource("UserPage.fxml"));
             Scene scene = new Scene(fxmlLoader.load(), 800, 500);
             Stage stage = new Stage();
             stage.setTitle("Muzer");

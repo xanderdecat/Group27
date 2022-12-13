@@ -70,10 +70,10 @@ public class EventPageUserController {
         selectedMinPrice.getItems().addAll("1", "50", "100", "200", "500", "1000");
         selectedMaxPrice.getItems().addAll("1", "50", "100", "200", "500", "1000", "10000");
         selectedGenre.getItems().addAll("Techno", "Rock", "Pop", "Dance", "Blues", "Jazz", "Soul", "Party", "Hiphop", "Acoustic", "Disco", "Funk", "Classic", "Background", "Nineties", "Eighties", "Seventies", "Sixties", "Latin", "Lounge", "Other");
-        eventNameToSet.setText(HomeScreenPageController.upcomingEvent.getEventName());
-        startDateToSet.setText(HomeScreenPageController.upcomingEvent.getStartDate().toString());
-        endDateToSet.setText(HomeScreenPageController.upcomingEvent.getEndDate().toString());
-        cityToSet.setText(HomeScreenPageController.upcomingEvent.getCity());
+        eventNameToSet.setText(UserPageController.upcomingEvent.getEventName());
+        startDateToSet.setText(UserPageController.upcomingEvent.getStartDate().toString());
+        endDateToSet.setText(UserPageController.upcomingEvent.getEndDate().toString());
+        cityToSet.setText(UserPageController.upcomingEvent.getCity());
 
         for (Provider provider : ProviderDAO.getProviders()) {
             String s = provider.getArtistName() + " - " + provider.getGenre().toString() + " - " + provider.getCity();
@@ -84,7 +84,7 @@ public class EventPageUserController {
     public void goBack3(ActionEvent actionEvent) {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader();
-            fxmlLoader.setLocation(getClass().getResource("HomeScreenPage.fxml"));
+            fxmlLoader.setLocation(getClass().getResource("UserPage.fxml"));
             Scene scene = new Scene(fxmlLoader.load(), 800, 500);
             Stage stage = new Stage();
             stage.setTitle("Muzer");
@@ -141,11 +141,11 @@ public class EventPageUserController {
         double requestedHours1 = Double.parseDouble(requestedHours.getText());
         if (requestedHours1 >= chosenProvider.getMinHours() && requestedHours1 <= chosenProvider.getMaxHours()) {
             double totalamount = requestedHours1 * chosenProvider.getPriceHour();
-            eventTransaction = new Transaction(HomeScreenPageController.upcomingEvent.getEventNumber(), HelloApplication.userMain.getUserNumber(), chosenProvider.getProviderNumber(), Transaction.status.Requested, HomeScreenPageController.upcomingEvent.getEventName() + " - " + chosenProvider.getArtistName(), totalamount);
+            eventTransaction = new Transaction(UserPageController.upcomingEvent.getEventNumber(), HelloApplication.userMain.getUserNumber(), chosenProvider.getProviderNumber(), Transaction.status.Requested, UserPageController.upcomingEvent.getEventName() + " - " + chosenProvider.getArtistName(), totalamount);
             TransactionDAO.saveTransaction(eventTransaction);
             try {
                 FXMLLoader fxmlLoader = new FXMLLoader();
-                fxmlLoader.setLocation(getClass().getResource("HomeScreenPage.fxml"));
+                fxmlLoader.setLocation(getClass().getResource("UserPage.fxml"));
                 Scene scene = new Scene(fxmlLoader.load(), 800, 500);
                 Stage stage = new Stage();
                 stage.setTitle("Muzer");

@@ -47,10 +47,10 @@ public class ReviewPageUserController {
 
     public void initialize() {
         scoreOn10.getItems().addAll("1/10", "2/10", "3/10", "4/10", "5/10", "6/10", "7/10", "8/10", "9/10", "10/10");
-        eventNameToSet.setText(HomeScreenPageController.previousEvent.getEventName());
-        startDateToSet.setText(HomeScreenPageController.previousEvent.getStartDate().toString());
-        endDateToSet.setText(HomeScreenPageController.previousEvent.getEndDate().toString());
-        cityToSet.setText(HomeScreenPageController.previousEvent.getCity());
+        eventNameToSet.setText(UserPageController.previousEvent.getEventName());
+        startDateToSet.setText(UserPageController.previousEvent.getStartDate().toString());
+        endDateToSet.setText(UserPageController.previousEvent.getEndDate().toString());
+        cityToSet.setText(UserPageController.previousEvent.getCity());
             for (Transaction transaction : TransactionDAO.getTransactions()) {
                 if (transaction.getUserNumber() == HelloApplication.userMain.getUserNumber()) {
                     for (Provider provider : ProviderDAO.getProviders()) {
@@ -65,7 +65,7 @@ public class ReviewPageUserController {
     public void goBack(ActionEvent actionEvent) {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader();
-            fxmlLoader.setLocation(getClass().getResource("HomeScreenPage.fxml"));
+            fxmlLoader.setLocation(getClass().getResource("UserPage.fxml"));
             Scene scene = new Scene(fxmlLoader.load(), 800, 500);
             Stage stage = new Stage();
             stage.setTitle("Muzer");
@@ -89,13 +89,13 @@ public class ReviewPageUserController {
             String subject = subjectInput.getText();
             int score = Integer.parseInt(scoreOn10.getValue().toString().substring(0,scoreOn10.getValue().indexOf("/")));
             String description = descriptionInput.getText();
-            Review review = new Review(HomeScreenPageController.previousEvent.getEventNumber(), true, HomeScreenPageController.previousEvent.getEventUserNumber(), providerNumber, subject, score, description);
+            Review review = new Review(UserPageController.previousEvent.getEventNumber(), true, UserPageController.previousEvent.getEventUserNumber(), providerNumber, subject, score, description);
             ReviewDAO.save(review);
 
 
         try {
             FXMLLoader fxmlLoader = new FXMLLoader();
-            fxmlLoader.setLocation(getClass().getResource("HomeScreenPage.fxml"));
+            fxmlLoader.setLocation(getClass().getResource("UserPage.fxml"));
             Scene scene = new Scene(fxmlLoader.load(), 800, 500);
             Stage stage = new Stage();
             stage.setTitle("Muzer");

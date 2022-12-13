@@ -32,7 +32,7 @@ public class LogInUserController {
                 HelloApplication.userMain = new User(user.getUserNumber(), user.getFirstName(), user.getLastName(), user.getDateOfBirth(), user.getAge(), user.getEmail(), user.getPhoneNumber(), user.getPassword());
                 try {
                     FXMLLoader fxmlLoader = new FXMLLoader();
-                    fxmlLoader.setLocation(getClass().getResource("HomeScreenPage.fxml"));
+                    fxmlLoader.setLocation(getClass().getResource("UserPage.fxml"));
                     Scene scene = new Scene(fxmlLoader.load(), 800, 500);
                     Stage stage = new Stage();
                     stage.setTitle("Muzer");

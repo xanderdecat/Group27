@@ -72,13 +72,13 @@ public class ReviewPageProviderController {
             String subject = subjectInput.getText();
             int score = Integer.parseInt(scoreOn10.getValue().toString().substring(0, scoreOn10.getValue().indexOf("/")));
             String description = descriptionInput.getText();
-            Review review = new Review(HomeScreenPageController.previousEvent.getEventNumber(), true, HomeScreenPageController.previousEvent.getEventUserNumber(), providerNumber, subject, score, description);
+            Review review = new Review(UserPageController.previousEvent.getEventNumber(), true, UserPageController.previousEvent.getEventUserNumber(), providerNumber, subject, score, description);
             ReviewDAO.save(review);
 
 
             try {
                 FXMLLoader fxmlLoader = new FXMLLoader();
-                fxmlLoader.setLocation(getClass().getResource("HomeScreenPage.fxml"));
+                fxmlLoader.setLocation(getClass().getResource("UserPage.fxml"));
                 Scene scene = new Scene(fxmlLoader.load(), 800, 500);
                 Stage stage = new Stage();
                 stage.setTitle("Muzer");
