@@ -1,9 +1,10 @@
 package APPLICATION;
 
+import DB.EventDAO;
 import DB.ProviderDAO;
 import DB.ReviewDAO;
 
-import GUI.HelloApplication;
+import DB.TransactionDAO;
 import javafx.scene.control.TextField;
 
 import java.net.URL;
@@ -82,31 +83,20 @@ public class Provider extends User {
 
 
     // methods
-    public static boolean checkVATNumber(String VATNumberToCheck) {
+    public static boolean checkVATnumber(String VATNumberToCheck) {
         if (VATNumberToCheck == null || VATNumberToCheck.length() == 0)
             return true;
-        for (Provider provider : ProviderDAO.getProviders()) {
-            if (provider.getProviderNumber() == HelloApplication.providerMain.getProviderNumber()) {
-                provider.getVATNumber().equals(VATNumberToCheck);
-                return true;
-            }
-            if (provider.getVATNumber().equals(VATNumberToCheck))
+        for (Provider provider : ProviderDAO.getProviders())
+            if (provider.VATNumber.equals(VATNumberToCheck))
                 return false;
-        }
         return true;
     }
-
-    public static boolean checkArtistName(String artistNameToCheck) {
-        if (artistNameToCheck == null || artistNameToCheck.length() == 0)
+    public static boolean checkArtistName(String artistName) {
+        if (artistName == null || artistName.length() == 0)
             return false;
-        for (Provider provider : ProviderDAO.getProviders()) {
-            if (provider.getProviderNumber() == HelloApplication.providerMain.getProviderNumber()) {
-                provider.getArtistName().equals(artistNameToCheck);
-                return true;
-            }
-            if (provider.artistName.equals(artistNameToCheck))
+        for (Provider provider : ProviderDAO.getProviders())
+            if (provider.artistName.equals(artistName))
                 return false;
-        }
         return true;
     }
     public static boolean checkMinMaxHours(TextField minHoursInput, TextField maxHoursInput){
@@ -128,6 +118,13 @@ public class Provider extends User {
             return 0;
         return Math.round((sum / numberOfProviders) * 10) / 10.0;
     }
+    public static boolean provideTheSameEvent(Event event, Provider provider){
+        for (Transaction transaction : TransactionDAO.getTransactions()){
+            if(transaction.getProviderNumber() == provider.getProviderNumber() && event.getEventNumber() == transaction.getEventNumber() && !Event.isFinished(event)){
+                return true;}}
+                return false;
+            }
+
 
 
     // getters and setters

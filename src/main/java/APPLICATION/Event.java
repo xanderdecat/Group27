@@ -193,6 +193,9 @@ public class Event {
     public void setNPONumber(int NPONumber) {
         this.NPONumber = NPONumber;
     }
+    public static boolean isFinished(Event event){
+        return event.getEndDate().isBefore(LocalDateTime.now());
+    }
 
     /*
     // methodes
