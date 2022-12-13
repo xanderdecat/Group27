@@ -6,7 +6,7 @@ import java.time.LocalDate;
 
 public class Review {
 
-    // instantievariabelen
+    // instance variables
     private int reviewNumber;
     private int eventNumber;
     private boolean providerReview;         // is het een provider review?
@@ -18,8 +18,7 @@ public class Review {
     private java.sql.Date dateOfReview;
 
 
-    // constructor
-
+    // constructor for ReviewDAO
     public Review(int reviewNumber, int eventNumber, boolean providerReview, int userNumber, int providerNumber, String subject, int scoreOn10, String description, java.sql.Date dateOfReviews) {
         this.reviewNumber = reviewNumber;
         this.eventNumber = eventNumber;
@@ -32,15 +31,7 @@ public class Review {
         this.dateOfReview = dateOfReviews;
     }
 
-    public Review(int reviewNumber,String subject, int scoreOn10, String description, java.sql.Date dateOfReviews, int eventNumber) {
-        this.reviewNumber = reviewNumber;
-        this.subject = subject;
-        this.eventNumber = eventNumber;
-        this.scoreOn10 = scoreOn10;
-        this.description = description;
-        this.dateOfReview = dateOfReviews;
-    }
-// constructor voor het aanmaken van een review
+    // constructor for GUI
     public Review(int eventNumber, boolean providerReview, int userNumber, int providerNumber, String subject, int scoreOn10, String description) {
         this.reviewNumber = ReviewDAO.getReviews().size() + 1;
         this.eventNumber = eventNumber;
@@ -53,11 +44,7 @@ public class Review {
         this.dateOfReview = java.sql.Date.valueOf(LocalDate.now());
     }
 
-    //empty constructor
-    public Review() {
-    }
-    //getters en setters
-
+    //getters and setters
     public int getReviewNumber() {
         return reviewNumber;
     }
@@ -134,4 +121,5 @@ public class Review {
     public String toString() {
         return subject;
     }
+
 }
