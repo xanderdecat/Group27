@@ -20,7 +20,7 @@ public class Transaction {
     private double amountDiscount;     // vanaf 3x: 3%
     private double amountToPay;
 
-    // constructor for DAO
+    // constructor for TransactionDAO
     public Transaction(int transactionNumber, int eventNumber, int userNumber, int providerNumber, Transaction.status status, String message, double totalAmount, double amountToProvider, double amountToNPO, double amountPlatform, double amountDiscount, double amountToPay) {
         this.transactionNumber = transactionNumber;
         this.eventNumber = eventNumber;
@@ -36,17 +36,7 @@ public class Transaction {
         this.amountToPay = amountToPay;
     }
 
-    // constructor for GUI
-    public Transaction(int transactionNumber, int eventNumber, int userNumber, int providerNumber, Transaction.status status, double totalAmount) {
-        this.transactionNumber = transactionNumber;
-        this.eventNumber = eventNumber;
-        this.userNumber = userNumber;
-        this.providerNumber = providerNumber;
-        this.status = status;
-        this.totalAmount = totalAmount;
-    }
-
-    // consturctor for transaction maker
+    // consturctor for GUI
     public Transaction(int eventNumber, int userNumber, int providerNumber, Transaction.status status, String message, double totalAmount) {
         this.transactionNumber = TransactionDAO.getTransactions().size() + 1;
         this.eventNumber = eventNumber;
@@ -62,7 +52,7 @@ public class Transaction {
         this.amountToPay = totalAmount;
     }
 
-    // getters en setters
+    // getters and setters
     public int getTransactionNumber() {
         return transactionNumber;
     }
@@ -158,4 +148,5 @@ public class Transaction {
     public void setAmountToPay(double amountToPay) {
         this.amountToPay = amountToPay;
     }
+
 }

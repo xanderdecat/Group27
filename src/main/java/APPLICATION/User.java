@@ -22,6 +22,19 @@ public class User {
     private String phoneNumber;
     private String password;
 
+    // constructor for UserDAO
+    public User(int userNumber, String firstName, String lastName, java.sql.Date dateOfBirth, int age, String email, String phoneNumber, String password) {
+        this.userNumber = userNumber;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.name = firstName + " " + lastName;
+        this.dateOfBirth = dateOfBirth;
+        this.age = age;
+        this.email = email;
+        this.phoneNumber = phoneNumber;
+        this.password = password;
+    }
+
     // constructor for GUI
     public User(String firstName, String lastName, Date dateOfBirth, String email, String phoneNumber, String password) {
         helpUserNumber = getUsers().size() + 1;
@@ -32,19 +45,6 @@ public class User {
         this.dateOfBirth = dateOfBirth;
         LocalDate lDateOfBirth = dateOfBirth.toLocalDate();
         this.age = Period.between(lDateOfBirth, LocalDate.now()).getYears();
-        this.email = email;
-        this.phoneNumber = phoneNumber;
-        this.password = password;
-    }
-
-    // constructor for UserDAO
-    public User(int userNumber, String firstName, String lastName, java.sql.Date dateOfBirth, int age, String email, String phoneNumber, String password) {
-        this.userNumber = userNumber;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.name = firstName + " " + lastName;
-        this.dateOfBirth = dateOfBirth;
-        this.age = age;
         this.email = email;
         this.phoneNumber = phoneNumber;
         this.password = password;
@@ -149,4 +149,5 @@ public class User {
     public void setPassword(String password) {
         this.password = password;
     }
+
 }
