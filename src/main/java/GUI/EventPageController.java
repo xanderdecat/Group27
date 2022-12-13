@@ -76,11 +76,12 @@ public class EventPageController {
         cityToSet.setText(HomeScreenPageController.upcomingEvent.getCity());
 
         for (Provider provider : ProviderDAO.getProviders()) {
-            String s = provider.getArtistName() + " - " + provider.getGenre().toString() + " - " + provider.getCity();
-            possibleArtists.getItems().add(s);
+            if (!Provider.provideYourOwnEvent(HomeScreenPageController.upcomingEvent, provider)) {
+                String s = provider.getArtistName() + " - " + provider.getGenre().toString() + " - " + provider.getCity();
+                possibleArtists.getItems().add(s);
+            }
         }
     }
-
     public void goBack3(ActionEvent actionEvent) {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader();

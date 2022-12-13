@@ -1,8 +1,10 @@
 package APPLICATION;
 
+import DB.EventDAO;
 import DB.ProviderDAO;
 import DB.ReviewDAO;
 
+import DB.TransactionDAO;
 import javafx.scene.control.TextField;
 
 import java.net.URL;
@@ -116,6 +118,13 @@ public class Provider extends User {
             return 0;
         return Math.round((sum / numberOfProviders) * 10) / 10.0;
     }
+    public static boolean provideTheSameEvent(Event event, Provider provider){
+        for (Transaction transaction : TransactionDAO.getTransactions()){
+            if(transaction.getProviderNumber() == provider.getProviderNumber() && event.getEventNumber() == transaction.getEventNumber() && !Event.isFinished(event)){
+                return true;}}
+                return false;
+            }
+
 
 
     // getters and setters
