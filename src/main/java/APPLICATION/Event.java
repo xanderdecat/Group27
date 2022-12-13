@@ -5,9 +5,10 @@ import java.time.Duration;
 import java.time.LocalDateTime;
 
 public class Event {
+
     private enum stage {created, acceptedByProvider, transactionCompleted, last48hoursBeforeStart, ended}
 
-    // instantievariabelen
+    // instance variables
     private static long helpEventNumber = 0;
     private int eventNumber;
     private int eventUserNumber;
@@ -25,7 +26,7 @@ public class Event {
     private URL linkToPage;
     private int NPONumber;
 
-    // constructor for DAO
+    // constructor for EventDAO
     public Event(int eventNumber, int eventUserNumber, String eventName, String streetName, int houseNumber, int ZIP, String city, String country, LocalDateTime startDate, LocalDateTime confirmationDate, LocalDateTime endDate, double eventDuration, String description, URL linkToPage, int NPONumber) {
         this.eventNumber = eventNumber;
         this.eventUserNumber = eventUserNumber;
@@ -63,7 +64,7 @@ public class Event {
         this.NPONumber = NPONumber;
     }
 
-    // getters en setters
+    // getters and setters
     public static long getHelpEventNumber() {
         return helpEventNumber;
     }
@@ -194,21 +195,5 @@ public class Event {
     public static boolean isFinished(Event event){
         return event.getEndDate().isBefore(LocalDateTime.now());
     }
-
-    /*
-    // methodes
-    public long calculateDuration (LocalDateTime startDate, LocalDateTime endDate) {
-        Duration tijd = Duration.between(startDate, endDate);
-        if (tijd.toHours() > 24)
-            return tijd.toDays();
-        return tijd.toHours();
-    }
-
-     */
-
-
-
-
-
 
 }

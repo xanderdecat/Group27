@@ -2,11 +2,9 @@ package APPLICATION;
 
 public class NonProfitOrganisation {
 
-
-    // enum voor goede doelen
     public enum cause {Education, AnimalRights, ClimateChange, HumanRights, Poverty, Research, Healthcare, Other}      // nog aan te vullen
 
-    // instantievariabelen
+    // instance variables
     private int nonPONumber;
     private String NPOName;
     private String description;
@@ -22,8 +20,7 @@ public class NonProfitOrganisation {
         this.causeOfNPO = causeOfNPO;
     }
 
-    // getters en setters
-
+    // getters and setters
     public int getNonPONumber() {
         return nonPONumber;
     }
