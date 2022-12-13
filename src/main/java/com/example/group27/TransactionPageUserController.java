@@ -49,11 +49,11 @@ public class TransactionPageUserController {
         for (Transaction transaction : TransactionDAO.getTransactions()) {
             if (transaction.getUserNumber() == HelloApplication.userMain.getUserNumber()) {
                 if (transaction.getStatus() == Transaction.status.Accepted) {
-                    String s = transaction.getMessage() + " (€" + transaction.getTotalAmount();
+                    String s = transaction.getMessage() + " (€" + transaction.getTotalAmount() + ")";
                     transactionsToDo.getItems().add(s);
                 }
                 if (transaction.getStatus() == Transaction.status.Payed) {
-                    String s = transaction.getMessage() + " (€" + transaction.getTotalAmount();
+                    String s = transaction.getMessage() + " (€" + transaction.getTotalAmount() + ")";
                     transactionsDone.getItems().add(s);
                 }
             }
