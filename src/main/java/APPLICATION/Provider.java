@@ -12,7 +12,7 @@ public class Provider extends User {
     public enum genres {Techno, Rock, Pop, Dance, Blues, Jazz, Soul, Party, Hiphop, Acoustic, Disco, Funk, Classic, Background, Nineties, Eighties, Seventies, Sixties, Latin, Lounge, Other}
 
     // instance variables
-    private int providerNumber;            // unique key
+    private int providerNumber;
     private String VATNumber;
     private String accountNumber;
     private String streetName;
@@ -80,7 +80,7 @@ public class Provider extends User {
     }
 
 
-    // methodes
+    // methods
     public static boolean checkVATnumber(String VATNumberToCheck) {
         if (VATNumberToCheck == null || VATNumberToCheck.length() == 0)
             return true;
@@ -114,7 +114,7 @@ public class Provider extends User {
         }
         if (numberOfProviders == 0)
             return 0;
-        return Math.round((sum / numberOfProviders * 100) * 10) / 10.0;
+        return Math.round((sum / numberOfProviders) * 10) / 10.0;
     }
 
 

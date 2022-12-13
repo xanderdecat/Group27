@@ -62,7 +62,7 @@ public class User {
         }
         if (numberOfUsers == 0)
             return 0;
-        return Math.round((sum / numberOfUsers * 100) * 10) / 10.0;
+        return Math.round((sum / numberOfUsers) * 10) / 10.0;
     }
 
     // getters and setters

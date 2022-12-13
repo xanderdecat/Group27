@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.ReviewOverviewController">
+   <children>
+      <Label layoutX="341.0" layoutY="58.0" text="Your reviews">
+         <font>
+            <Font name="Arial Black" size="18.0" />
+         </font>
+      </Label>
+      <ListView fx:id="allReviews" layoutX="70.0" layoutY="105.0" prefHeight="237.0" prefWidth="180.0" />
+      <Button layoutX="70.0" layoutY="351.0" mnemonicParsing="false" onAction="#seeFullReview" prefWidth="180.0" text="See full review" />
+      <Button layoutX="104.0" layoutY="419.0" mnemonicParsing="false" onAction="#goBack" text="Back" />
+      <Label layoutX="359.0" layoutY="140.0" text="Subject" />
+      <Label layoutX="359.0" layoutY="175.0" text="Score:" />
+      <Label layoutX="359.0" layoutY="210.0" text="Description:" />
+      <Label fx:id="subjectToSet" layoutX="481.0" layoutY="140.0" text="(SUBJECT)" />
+      <Label fx:id="scoreToSet" layoutX="481.0" layoutY="175.0" text="(SCORE)" />
+      <Label fx:id="descriptionToSet" alignment="TOP_LEFT" layoutX="481.0" layoutY="210.0" maxHeight="167.0" maxWidth="231.0" prefHeight="167.0" prefWidth="231.0" text="(DESCRIPTION)" />
+   </children>
+</AnchorPane>
