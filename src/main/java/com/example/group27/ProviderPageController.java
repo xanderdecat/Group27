@@ -42,7 +42,11 @@ public class ProviderPageController {
 
     public void initialize() {
         artistNameToSet.setText(HelloApplication.providerMain.getArtistName());
-        scoreToSet.setText(String.valueOf(Provider.calculateAverageScoreForProvider(HelloApplication.providerMain)));
+
+        if (Provider.calculateAverageScoreForProvider(HelloApplication.providerMain) == 0)
+            scoreToSet.setText("-");
+        else
+            scoreToSet.setText(String.valueOf(Provider.calculateAverageScoreForProvider(HelloApplication.providerMain)));
 
         for (Transaction transaction : TransactionDAO.getTransactions()) {
             if (transaction.getProviderNumber() == HelloApplication.providerMain.getProviderNumber()) {

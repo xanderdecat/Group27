@@ -1,5 +1,10 @@
 package com.example.group27;
 
+import APPLICATION.Transaction;
+import DB.EventDAO;
+import DB.ProviderDAO;
+import DB.TransactionDAO;
+import DB.UserDAO;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -15,7 +20,7 @@ import java.io.IOException;
 public class TransactionPageProviderController {
 
     @FXML
-    private Label artistNameToSet;
+    private Label nameToSet;
 
     @FXML
     private Label confirmationDateToSet;
@@ -36,7 +41,24 @@ public class TransactionPageProviderController {
     private Label totalAmountToSet;
 
     public void initialize() {
+        eventNameToSet.setVisible(false);
+        nameToSet.setVisible(false);
+        messageToSet.setVisible(false);
+        totalAmountToSet.setVisible(false);
+        confirmationDateToSet.setVisible(false);
 
+        for (Transaction transaction : TransactionDAO.getTransactions()) {
+            if (transaction.getProviderNumber() == HelloApplication.providerMain.getProviderNumber()) {
+                if (transaction.getStatus() == Transaction.status.Accepted) {
+                    String s = transaction.getMessage() + " (€" + transaction.getTotalAmount() + ")";
+                    openTransactions.getItems().add(s);
+                }
+                if (transaction.getStatus() == Transaction.status.Payed) {
+                    String s = transaction.getMessage() + " (€" + transaction.getTotalAmount() + ")";
+                    receivedTransactions.getItems().add(s);
+                }
+            }
+        }
     }
     public void goBack(ActionEvent actionEvent) {
         try {
@@ -54,8 +76,40 @@ public class TransactionPageProviderController {
     }
 
     public void seeToDoTransaction(ActionEvent actionEvent) {
+        String line = openTransactions.getSelectionModel().getSelectedItem();
+        for (Transaction transaction : TransactionDAO.getTransactions()) {
+            if (transaction.getMessage().equals(line.substring(0, line.indexOf("(") - 1))) {
+                eventNameToSet.setVisible(true);
+                nameToSet.setVisible(true);
+                messageToSet.setVisible(true);
+                totalAmountToSet.setVisible(true);
+                confirmationDateToSet.setVisible(true);
+
+                eventNameToSet.setText(EventDAO.getEvent(transaction.getEventNumber()).getEventName());
+                nameToSet.setText(UserDAO.getUser(transaction.getUserNumber()).getName());
+                messageToSet.setText(transaction.getMessage());
+                totalAmountToSet.setText(String.valueOf(transaction.getTotalAmount()));
+                confirmationDateToSet.setText(EventDAO.getEvent(transaction.getEventNumber()).getConfirmationDate().toString());
+            }
+        }
     }
 
     public void seeDoneTransaction(ActionEvent actionEvent) {
+        String line = receivedTransactions.getSelectionModel().getSelectedItem();
+        for (Transaction transaction : TransactionDAO.getTransactions()) {
+            if (transaction.getMessage().equals(line.substring(0, line.indexOf("(") - 1))) {
+                eventNameToSet.setVisible(true);
+                nameToSet.setVisible(true);
+                messageToSet.setVisible(true);
+                totalAmountToSet.setVisible(true);
+                confirmationDateToSet.setVisible(true);
+
+                eventNameToSet.setText(EventDAO.getEvent(transaction.getEventNumber()).getEventName());
+                nameToSet.setText(UserDAO.getUser(transaction.getUserNumber()).getName());
+                messageToSet.setText(transaction.getMessage());
+                totalAmountToSet.setText(String.valueOf(transaction.getTotalAmount()));
+                confirmationDateToSet.setText(EventDAO.getEvent(transaction.getEventNumber()).getConfirmationDate().toString());
+            }
+        }
     }
 }
