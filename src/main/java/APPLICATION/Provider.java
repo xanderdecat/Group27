@@ -83,7 +83,7 @@ public class Provider extends User {
 
 
     // methods
-    public static boolean checkVATnumber(String VATNumberToCheck) {
+    public static boolean checkVATNumber(String VATNumberToCheck) {
         if (VATNumberToCheck == null || VATNumberToCheck.length() == 0)
             return true;
         for (Provider provider : ProviderDAO.getProviders())

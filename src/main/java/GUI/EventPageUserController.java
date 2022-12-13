@@ -2,6 +2,7 @@ package GUI;
 
 import APPLICATION.Provider;
 import APPLICATION.Transaction;
+import APPLICATION.User;
 import DB.ProviderDAO;
 import DB.TransactionDAO;
 import javafx.event.ActionEvent;
@@ -75,12 +76,15 @@ public class EventPageUserController {
         endDateToSet.setText(UserPageController.upcomingEvent.getEndDate().toString());
         cityToSet.setText(UserPageController.upcomingEvent.getCity());
 
+        /*
         for (Provider provider : ProviderDAO.getProviders()) {
-            if (!Provider.provideYourOwnEvent(HomeScreenPageController.upcomingEvent, provider)) {
+            if (!Provider.provideYourOwnEvent(UserPageController.upcomingEvent, provider)) {
                 String s = provider.getArtistName() + " - " + provider.getGenre().toString() + " - " + provider.getCity();
                 possibleArtists.getItems().add(s);
             }
         }
+
+         */
     }
     public void goBack3(ActionEvent actionEvent) {
         try {
