@@ -47,7 +47,10 @@ public class HomeScreenPageController {
         namefield.setText(HelloApplication.userMain.getName());
         namefield.setVisible(true);
 
-        score.setText(String.valueOf(User.calculateAverageScoreForUser(HelloApplication.userMain)));
+        if (User.calculateAverageScoreForUser(HelloApplication.userMain) == 0)
+            score.setText("-");
+        else
+            score.setText(String.valueOf(User.calculateAverageScoreForUser(HelloApplication.userMain)));
 
         for (Provider provider : ProviderDAO.getProviders()) {
             if (provider.getUserNumber() == HelloApplication.userMain.getUserNumber()) {
