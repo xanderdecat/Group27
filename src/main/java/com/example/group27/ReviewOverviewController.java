@@ -21,7 +21,7 @@ import java.io.IOException;
 public class ReviewOverviewController {
 
     @FXML
-    private ListView<String> allReviews;
+    private ListView<Review> allReviews;
 
     @FXML
     private Label descriptionToSet;
@@ -40,8 +40,7 @@ public class ReviewOverviewController {
 
         for (Review review : ReviewDAO.getReviews()) {
             if (review.getUserNumber() == HelloApplication.userMain.getUserNumber() && !review.isProviderReview()) {
-                        String s = review.getSubject() + " #" + review.getReviewNumber();
-                        allReviews.getItems().add(s);
+                        allReviews.getItems().add(review);
                     }
                 }
             }
@@ -50,7 +49,7 @@ public class ReviewOverviewController {
 
     public void seeFullReview(ActionEvent actionEvent) {
         for (Review review : ReviewDAO.getReviews()) {
-            if (review.getReviewNumber() == Integer.parseInt(allReviews.getSelectionModel().getSelectedItem().substring(allReviews.getSelectionModel().getSelectedItem().indexOf("#") + 1))) {
+            if (review.getReviewNumber() == allReviews.getSelectionModel().getSelectedItem().getReviewNumber()) {
                 descriptionToSet.setText(review.getDescription());
                 scoreToSet.setText(String.valueOf(review.getScoreOn10()));
                 subjectToSet.setText(review.getSubject());
