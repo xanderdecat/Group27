@@ -130,4 +130,9 @@ public class Review {
     public void setDateOfReviews(java.sql.Date dateOfReviews) {
         this.dateOfReview = dateOfReviews;
     }
+
+    @Override
+    public String toString() {
+        return subject;
+    }
 }
