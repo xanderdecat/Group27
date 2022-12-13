@@ -17,58 +17,51 @@ import java.time.LocalDate;
 public class AddUserController {
 
     @FXML
-    private Button RegisterButton;
-
-    @FXML
     private DatePicker dateOfBirth;
-
     @FXML
     private TextField email;
-
     @FXML
     private TextField firstName;
-
     @FXML
     private TextField lastName;
-
     @FXML
     private TextField phoneNumber;
-
     @FXML
     private TextField wachtwoordInput;
 
     public void goToHomePage(ActionEvent actionEvent) {
         if (dateOfBirth.getValue() != null && email.getText() != null && firstName.getText() != null && lastName.getText() != null && phoneNumber.getText() != null && wachtwoordInput.getText() != null) {
             if(dateOfBirth.getClass().equals(DatePicker.class) ){
-            String firstName1 = firstName.getText();
-            String lastName1 = lastName.getText();
-            LocalDate ld = dateOfBirth.getValue();
-            java.sql.Date testdate = java.sql.Date.valueOf(ld);
+                String firstName1 = firstName.getText();
+                String lastName1 = lastName.getText();
+                LocalDate ld = dateOfBirth.getValue();
+                java.sql.Date testdate = java.sql.Date.valueOf(ld);
 
 
-            String email1 = email.getText();
-            String phoneNumber1 = phoneNumber.getText();
-            String wachtwoord1 = wachtwoordInput.getText();
+                String email1 = email.getText();
+                String phoneNumber1 = phoneNumber.getText();
+                String wachtwoord1 = wachtwoordInput.getText();
 
 
-            HelloApplication.userMain = new User(firstName1, lastName1, testdate, email1, phoneNumber1, wachtwoord1);
-            DB.UserDAO.saveUser(HelloApplication.userMain);   // toevoegen aan DataBase
+                HelloApplication.userMain = new User(firstName1, lastName1, testdate, email1, phoneNumber1, wachtwoord1);
+                DB.UserDAO.saveUser(HelloApplication.userMain);   // toevoegen aan DataBase
 
-            try {
+                try {
 
-                FXMLLoader fxmlLoader = new FXMLLoader();
-                fxmlLoader.setLocation(getClass().getResource("UserPage.fxml"));
-                Scene scene = new Scene(fxmlLoader.load(), 800, 500);
-                Stage stage = new Stage();
-                stage.setTitle("Muzer");
-                stage.setScene(scene);
-                stage.show();
-                stage.setResizable(false);
-                ((Node) (actionEvent.getSource())).getScene().getWindow().hide();
-            } catch (IOException e) {
+                    FXMLLoader fxmlLoader = new FXMLLoader();
+                    fxmlLoader.setLocation(getClass().getResource("UserPage.fxml"));
+                    Scene scene = new Scene(fxmlLoader.load(), 800, 500);
+                    Stage stage = new Stage();
+                    stage.setTitle("Muzer");
+                    stage.setScene(scene);
+                    stage.show();
+                    stage.setResizable(false);
+                    ((Node) (actionEvent.getSource())).getScene().getWindow().hide();
+                } catch (IOException e) {
+                }
             }
         }
-    }}
+    }
 
     public void goToWelcomePage(ActionEvent actionEvent) {
         try {

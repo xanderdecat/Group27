@@ -22,39 +22,28 @@ import java.time.chrono.ChronoLocalDate;
 public class AddEventUserController {
 
     public static Event eventMain;
-
     @FXML
     private TextField cityInput;
-
     @FXML
     private TextField countryInput;
-
     @FXML
     private TextField descriptionInput;
-
     @FXML
     private DatePicker endDateInput;
-
     @FXML
     private TextField eventNameInput;
-
     @FXML
     private TextField houseNumberInput;
-
     @FXML
     private TextField linkToPageInput;
-
     @FXML
-    private Button makeNewEvent;
-
+    private TextField zipCodeInput;
     @FXML
     private DatePicker startDateInput;
-
     @FXML
     private TextField streetNameInput;
     @FXML
     private ChoiceBox<String> endDatePicker;
-
     @FXML
     private ChoiceBox<String> startDatePicker;
     @FXML
@@ -70,9 +59,6 @@ public class AddEventUserController {
         endDatePicker.getItems().addAll("00:00", "01:00", "02:00", "03:00", "04:00", "05:00", "06:00", "07:00", "08:00", "09:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00", "20:00", "21:00", "22:00", "23:00");
     }
 
-
-    @FXML
-    private TextField zipCodeInput;
     public void makeNewEvent(ActionEvent actionEvent) {
         try {
             String eventName1 = eventNameInput.getText();
