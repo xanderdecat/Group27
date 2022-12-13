@@ -19,26 +19,22 @@ import java.time.LocalDateTime;
 
 public class ProviderPageController {
 
-    @FXML
-    private Label artistNameToSet;
-
-    @FXML
-    private ListView<String> previousEvents;
-
-    @FXML
-    private ListView<String> requestedEvents;
-
-    @FXML
-    private ListView<String> upcomingEvents;
-
-    @FXML
-    private Label scoreToSet;
-
     public static Event requestedEvent;
     public static Event upcomingEvent;
     public static Event previousEvent;
     public static Transaction requestedTransaction;
-
+    @FXML
+    private Label artistNameToSet;
+    @FXML
+    private ListView<String> previousEvents;
+    @FXML
+    private ListView<String> requestedEvents;
+    @FXML
+    private ListView<String> upcomingEvents;
+    @FXML
+    private Label scoreToSet;
+    @FXML
+    private Label amountToSet;
 
     public void initialize() {
         artistNameToSet.setText(HelloApplication.providerMain.getArtistName());
@@ -48,8 +44,10 @@ public class ProviderPageController {
         else
             scoreToSet.setText(String.valueOf(Provider.calculateAverageScoreForProvider(HelloApplication.providerMain)));
 
+        double amountForNPO = 0;
         for (Transaction transaction : TransactionDAO.getTransactions()) {
             if (transaction.getProviderNumber() == HelloApplication.providerMain.getProviderNumber()) {
+                amountForNPO = amountForNPO + transaction.getAmountToNPO();
                 if (transaction.getStatus() == Transaction.status.Requested && EventDAO.getEvent(transaction.getEventNumber()).getConfirmationDate().isAfter(LocalDateTime.now())) {
                     String s = EventDAO.getEvent(transaction.getEventNumber()).getEventName() + " - " + EventDAO.getEvent(transaction.getEventNumber()).getCity();
                     requestedEvents.getItems().add(s);
@@ -64,6 +62,9 @@ public class ProviderPageController {
                 }
             }
         }
+
+        amountToSet.setText("€" + String.valueOf(Math.round((amountForNPO) * 10) / 10.0));
+
     }
 
     public void replyOnRequest(ActionEvent actionEvent) {
