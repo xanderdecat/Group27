@@ -41,7 +41,8 @@ public class ProviderPageController {
         double amountForNPO = 0;
         for (Transaction transaction : TransactionDAO.getTransactions()) {
             if (transaction.getProviderNumber() == Main.providerMain.getProviderNumber()) {
-                amountForNPO = amountForNPO + transaction.getAmountToNPO();
+                if (transaction.getStatus() == Transaction.status.Payed)
+                    amountForNPO = amountForNPO + transaction.getAmountToNPO();
                 if (transaction.getStatus() == Transaction.status.Requested && EventDAO.getEvent(transaction.getEventNumber()).getConfirmationDate().isAfter(LocalDateTime.now())) {
                     String s = EventDAO.getEvent(transaction.getEventNumber()).getEventName() + " - " + EventDAO.getEvent(transaction.getEventNumber()).getCity();
                     requestedEvents.getItems().add(s);
