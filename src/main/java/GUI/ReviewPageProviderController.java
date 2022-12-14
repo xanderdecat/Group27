@@ -30,12 +30,12 @@ public class ReviewPageProviderController {
     @FXML
     private ListView<String> userToChoose;
 
-    // initialize to do!
-
-    public void goBack(ActionEvent actionEvent) {
-        Main.loadPage("ProviderPageController.fxml", actionEvent);
+    public void initialize() {
+        eventNameToSet.setText(ProviderPageController.previousEvent.getEventName());
+        startDateToSet.setText(ProviderPageController.previousEvent.getStartDate().toString());
+        endDateToSet.setText(ProviderPageController.previousEvent.getEndDate().toString());
+        cityToSet.setText(ProviderPageController.previousEvent.getCity());
     }
-
 
     public void submitReview(ActionEvent actionEvent) {
         if (userToChoose != null && descriptionInput != null && scoreOn10 != null && subjectInput != null) {
@@ -53,5 +53,9 @@ public class ReviewPageProviderController {
             ReviewDAO.save(review);
             Main.loadPage("UserPage.fxml", actionEvent);
         }
+    }
+
+    public void goBack(ActionEvent actionEvent) {
+        Main.loadPage("ProviderPageController.fxml", actionEvent);
     }
 }
