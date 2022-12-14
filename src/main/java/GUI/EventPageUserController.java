@@ -68,15 +68,15 @@ public class EventPageUserController {
         endDateToSet.setText(UserPageController.upcomingEvent.getEndDate().toString());
         cityToSet.setText(UserPageController.upcomingEvent.getCity());
 
-        /*
+
         for (Provider provider : ProviderDAO.getProviders()) {
-            if (!Provider.provideYourOwnEvent(UserPageController.upcomingEvent, provider)) {
+            if (provider.getProviderNumber() != Main.providerMain.getProviderNumber() && Provider.provideTheSameEvent(provider)) {
                 String s = provider.getArtistName() + " - " + provider.getGenre().toString() + " - " + provider.getCity();
                 possibleArtists.getItems().add(s);
             }
         }
 
-         */
+
     }
     public void goBack(ActionEvent actionEvent) {
         Main.loadPage("UserPage.fxml", actionEvent);
