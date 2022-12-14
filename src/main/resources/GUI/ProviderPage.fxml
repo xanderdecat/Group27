@@ -30,7 +30,7 @@
                         <Font name="Arial Black" size="13.0" />
                      </font>
                   </Label>
-                  <Button layoutX="28.0" layoutY="48.0" mnemonicParsing="false" onAction="#goToUserPage" prefWidth="130.0" text="Go to user page" />
+                  <Button layoutX="28.0" layoutY="48.0" mnemonicParsing="false" onAction="#goToUserPage" prefWidth="130.0" text="Back to user page" />
                   <Button layoutX="28.0" layoutY="87.0" mnemonicParsing="false" onAction="#seeArtistInformation" prefWidth="130.0" text="Artist information" />
                   <Label layoutX="500.0" layoutY="20.0" text="Upcoming events:">
                      <font>

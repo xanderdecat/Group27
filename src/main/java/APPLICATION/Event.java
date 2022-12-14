@@ -9,7 +9,6 @@ public class Event {
     private enum stage {created, acceptedByProvider, transactionCompleted, last48hoursBeforeStart, ended}
 
     // instance variables
-    private static long helpEventNumber = 0;
     private int eventNumber;
     private int eventUserNumber;
     private String eventName;
@@ -70,14 +69,6 @@ public class Event {
     }
 
     // getters and setters
-    public static long getHelpEventNumber() {
-        return helpEventNumber;
-    }
-
-    public static void setHelpEventNumber(long helpEventNumber) {
-        Event.helpEventNumber = helpEventNumber;
-    }
-
     public int getEventNumber() {
         return eventNumber;
     }

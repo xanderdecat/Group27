@@ -99,7 +99,7 @@ public class ProviderPageController {
     }
 
     public void logOut(ActionEvent actionEvent) {
-        Main.loadPage("WelcomePage.fxml", actionEvent);
+        Main.loadPage("LogInUser.fxml", actionEvent);
     }
 
     public void seeReviews(ActionEvent actionEvent) {

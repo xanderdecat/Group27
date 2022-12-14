@@ -7,6 +7,8 @@ import javafx.fxml.FXML;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
+import java.io.IOException;
+
 public class LogInUserController {
 
     @FXML
@@ -25,6 +27,10 @@ public class LogInUserController {
 
     public void goToWelcomePage (ActionEvent actionEvent){
         Main.loadPage("WelcomePage.fxml", actionEvent);
+    }
+
+    public void goToNewUserPage(ActionEvent actionEvent) throws IOException {
+        Main.loadPage("AddUser.fxml", actionEvent);
     }
 }
 

@@ -42,4 +42,9 @@ public class AddUserController {
     public void goToWelcomePage(ActionEvent actionEvent) {
         Main.loadPage("WelcomePage.fxml", actionEvent);
     }
+
+    public void goToLogInPage(ActionEvent actionEvent) {
+        Main.loadPage("LogInUser.fxml", actionEvent);
+    }
+
 }
