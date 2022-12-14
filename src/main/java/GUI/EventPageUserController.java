@@ -78,9 +78,6 @@ public class EventPageUserController {
 
 
     }
-    public void goBack(ActionEvent actionEvent) {
-        Main.loadPage("UserPage.fxml", actionEvent);
-    }
 
     public void seeSpecificList(ActionEvent actionEvent) {
         possibleArtists.getItems().clear();
@@ -127,5 +124,9 @@ public class EventPageUserController {
             TransactionDAO.saveTransaction(eventTransaction);
             Main.loadPage("UserPage.fxml", actionEvent);
         }
+    }
+
+    public void goBack(ActionEvent actionEvent) {
+        Main.loadPage("UserPage.fxml", actionEvent);
     }
 }

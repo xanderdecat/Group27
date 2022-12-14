@@ -45,9 +45,6 @@ public class Event {
         this.NPONumber = NPONumber;
     }
 
-
-
-
     // constructor for GUI
     public Event(int eventUserNumber, String eventName, String streetName, int houseNumber, int ZIP, String city, String country, LocalDateTime startDate, LocalDateTime endDate, String description, URL linkToPage, int NPONumber) {
         this.eventNumber = DB.EventDAO.getEvents().size() + 1;
@@ -65,6 +62,11 @@ public class Event {
         this.description = description;
         this.linkToPage = linkToPage;
         this.NPONumber = NPONumber;
+    }
+
+    // methods
+    public static boolean isFinished(Event event){
+        return event.getEndDate().isBefore(LocalDateTime.now());
     }
 
     // getters and setters
@@ -195,8 +197,6 @@ public class Event {
     public void setNPONumber(int NPONumber) {
         this.NPONumber = NPONumber;
     }
-    public static boolean isFinished(Event event){
-        return event.getEndDate().isBefore(LocalDateTime.now());
-    }
+
 
 }
