@@ -124,14 +124,10 @@ public class AddProviderController {
                     genre = Provider.genres.Lounge;
                 if (genre0.equals("Other"))
                     genre = Provider.genres.Other;
-
-
                 HelloApplication.providerMain = new Provider(HelloApplication.userMain.getUserNumber(), HelloApplication.userMain.getFirstName(), HelloApplication.userMain.getLastName(), HelloApplication.userMain.getDateOfBirth(), HelloApplication.userMain.getAge(), HelloApplication.userMain.getEmail(), HelloApplication.userMain.getPhoneNumber(), HelloApplication.userMain.getPassword(), VATNumber, accountNumber, streetName, houseNumber, ZIPCode, city, country, artistName,
                         genre, date, priceHour, minHours, maxHours, conditions, description, linkToSet, linkToPage);
                 ProviderDAO.saveProvider(HelloApplication.providerMain);
-
                 HelloApplication.loadPage("ProviderPage.fxml", actionEvent);
-
             } catch (MalformedURLException | NumberFormatException e) {
             }
         }

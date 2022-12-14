@@ -21,52 +21,36 @@ public class PersonalPageProviderController {
 
     @FXML
     private TextField VATNumberInput;
-
     @FXML
     private TextField ZIPCodeInput;
-
     @FXML
     private TextField accountNumberInput;
-
     @FXML
     private DatePicker activityDateInput;
-
     @FXML
     private TextField artistNameInput;
-
     @FXML
     private TextField cityInput;
-
     @FXML
     private TextField conditionsInput;
-
     @FXML
     private TextField countryInput;
-
     @FXML
     private TextField descriptionInput;
-
     @FXML
     private ChoiceBox<String> genreChooser;
-
     @FXML
     private TextField houseNumberInput;
-
     @FXML
     private TextField linkToPageInput;
-
     @FXML
     private TextField linkToSetInput;
-
     @FXML
     private TextField maxHoursInput;
-
     @FXML
     private TextField minHoursInput;
-
     @FXML
     private TextField priceHourInput;
-
     @FXML
     private TextField streetNameInput;
 
