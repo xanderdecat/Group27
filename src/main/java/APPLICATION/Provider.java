@@ -102,10 +102,10 @@ public class Provider extends User {
                 return false;
         return true;
     }
-    public static boolean checkMinMaxHours(TextField minHoursInput, TextField maxHoursInput){
-        double maxHours = Double.parseDouble(maxHoursInput.getText());
-        double minHours = Double.parseDouble(minHoursInput.getText());
-        return maxHours <= minHours;
+    public static boolean checkMinMaxHours(String minHoursString, String maxHoursString){
+        double minHours = Double.parseDouble(minHoursString);
+        double maxHours = Double.parseDouble(maxHoursString);
+        return maxHours >= minHours;
     }
 
     public static double calculateAverageScoreForProvider(Provider p){
