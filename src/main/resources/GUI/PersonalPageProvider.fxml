@@ -16,7 +16,7 @@
             <TextField fx:id="VATNumberInput" layoutX="149.0" layoutY="104.0" prefHeight="27.0" prefWidth="200.0" />
             <TextField fx:id="accountNumberInput" layoutX="149.0" layoutY="134.0" prefHeight="27.0" prefWidth="200.0" />
             <Label layoutX="33.0" layoutY="139.0" text="Accountnumber" />
-            <Label layoutX="50.0" layoutY="349.0" text="Activity date" />
+            <Label layoutX="50.0" layoutY="349.0" text="Active since" />
             <Label layoutX="57.0" layoutY="169.0" text="Streetname" />
             <Label layoutX="45.0" layoutY="199.0" text="Housenumber" />
             <Label layoutX="72.0" layoutY="229.0" text="ZIP code" />
