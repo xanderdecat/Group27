@@ -8,7 +8,7 @@
 
 <AnchorPane prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.TransactionPageProviderController">
    <children>
-      <AnchorPane prefHeight="500.0" prefWidth="800.0">
+      <AnchorPane prefHeight="500.0" prefWidth="800.0" style="-fx-background-color: E9E3C8;">
          <children>
             <ListView fx:id="openTransactions" layoutX="111.0" layoutY="119.0" prefHeight="116.0" prefWidth="233.0" />
             <Label layoutX="71.0" layoutY="84.0" text="Open transactions:">

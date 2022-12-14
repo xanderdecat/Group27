@@ -6,10 +6,9 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.ReviewOverviewProviderController">
    <children>
-      <AnchorPane prefHeight="500.0" prefWidth="800.0">
+      <AnchorPane prefHeight="500.0" prefWidth="800.0" style="-fx-background-color: E9E3C8;">
          <children>
             <Label layoutX="341.0" layoutY="58.0" text="Your reviews">
                <font>

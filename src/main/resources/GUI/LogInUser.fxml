@@ -5,9 +5,12 @@
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.RadialGradient?>
+<?import javafx.scene.paint.Stop?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.LogInUserController">
+<AnchorPane prefHeight="500.0" prefWidth="800.0" style="-fx-background-color: E9E3C8;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.LogInUserController">
    <children>
       <Label layoutX="273.0" layoutY="243.0" prefHeight="20.0" prefWidth="63.0" text="Email">
          <font>
@@ -23,10 +26,31 @@
             <Font name="Arial Black" size="13.0" />
          </font></Label>
       <PasswordField fx:id="passwordInput" layoutX="336.0" layoutY="276.0" prefWidth="200.0" />
-      <Label layoutX="268.0" layoutY="63.0" text="MUZER" textFill="#eb4848">
+      <Label layoutX="258.0" layoutY="60.0" text="MUZER">
          <font>
             <Font name="Bangla MN" size="74.0" />
          </font>
+         <textFill>
+            <RadialGradient centerX="0.5" centerY="0.5" radius="0.5">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="1.0" green="0.7858796119689941" blue="0.14351852238178253" />
+                     </color>
+                  </Stop>
+                  <Stop offset="0.006711409395973154">
+                     <color>
+                        <Color red="1.0" green="0.15000000596046448" blue="0.15000000596046448" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.59945148229599" green="0.3149999976158142" blue="0.6299999952316284" />
+                     </color>
+                  </Stop>
+               </stops>
+            </RadialGradient>
+         </textFill>
       </Label>
       <Button fx:id="newUserButton" layoutX="460.0" layoutY="408.0" mnemonicParsing="false" onAction="#goToNewUserPage" text="Register">
          <font>
