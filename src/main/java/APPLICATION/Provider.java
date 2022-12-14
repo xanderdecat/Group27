@@ -84,10 +84,11 @@ public class Provider extends User {
         this.linkToPage = linkToPage;
     }
 
-
     // methods
     public static boolean checkVATNumber(String VATNumberToCheck) {
         if (VATNumberToCheck == null || VATNumberToCheck.length() == 0)
+            return true;
+        if (Main.providerMain.getVATNumber().equals(VATNumberToCheck))
             return true;
         for (Provider provider : ProviderDAO.getProviders())
             if (provider.VATNumber.equals(VATNumberToCheck))
@@ -97,6 +98,8 @@ public class Provider extends User {
     public static boolean checkArtistName(String artistName) {
         if (artistName == null || artistName.length() == 0)
             return false;
+        if (Main.providerMain.getArtistName().equals(artistName))
+            return true;
         for (Provider provider : ProviderDAO.getProviders())
             if (provider.artistName.equals(artistName))
                 return false;

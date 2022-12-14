@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.PersonalPageUserController">
+<AnchorPane prefHeight="500.0" prefWidth="800.0" style="-fx-background-color: E9E3C8;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.PersonalPageUserController">
    <children>
       <Label layoutX="51.0" layoutY="179.0" />
       <Label layoutX="130.0" layoutY="110.0" text="Personal informarion:">

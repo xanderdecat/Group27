@@ -10,7 +10,7 @@
 
 <AnchorPane prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.PersonalPageProviderController">
    <children>
-      <AnchorPane prefHeight="500.0" prefWidth="800.0">
+      <AnchorPane prefHeight="500.0" prefWidth="800.0" style="-fx-background-color: E9E3C8;">
          <children>
             <Label layoutX="50.0" layoutY="109.0" prefHeight="17.0" prefWidth="92.0" text="VAT Number" />
             <TextField fx:id="VATNumberInput" layoutX="149.0" layoutY="104.0" prefHeight="27.0" prefWidth="200.0" />

@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.TransactionPageUserController">
+<AnchorPane prefHeight="500.0" prefWidth="800.0" style="-fx-background-color: E9E3C8;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.TransactionPageUserController">
    <children>
       <ListView fx:id="transactionsToDo" layoutX="111.0" layoutY="119.0" prefHeight="116.0" prefWidth="233.0" />
       <Label layoutX="71.0" layoutY="84.0" text="Transactions to do:">

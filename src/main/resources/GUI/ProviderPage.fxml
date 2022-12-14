@@ -4,13 +4,42 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.RadialGradient?>
+<?import javafx.scene.paint.Stop?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.ProviderPageController">
    <children>
-      <AnchorPane prefHeight="500.0" prefWidth="800.0">
+      <AnchorPane prefHeight="500.0" prefWidth="800.0" style="-fx-background-color: E9E3C8;">
          <children>
-            <AnchorPane layoutY="141.0" prefHeight="291.0" prefWidth="800.0" style="-fx-background-color: #add8e6;">
+            <Label layoutX="313.0" text="MUZER">
+               <font>
+                  <Font name="Bangla MN" size="48.0" />
+               </font>
+               <textFill>
+                  <RadialGradient centerX="0.5" centerY="0.5" radius="0.5">
+                     <stops>
+                        <Stop>
+                           <color>
+                              <Color red="1.0" green="0.7858796119689941" blue="0.14351852238178253" />
+                           </color>
+                        </Stop>
+                        <Stop offset="0.006711409395973154">
+                           <color>
+                              <Color red="1.0" green="0.15000000596046448" blue="0.15000000596046448" />
+                           </color>
+                        </Stop>
+                        <Stop offset="1.0">
+                           <color>
+                              <Color red="0.59945148229599" green="0.3149999976158142" blue="0.6299999952316284" />
+                           </color>
+                        </Stop>
+                     </stops>
+                  </RadialGradient>
+               </textFill>
+            </Label>
+            <AnchorPane layoutY="141.0" prefHeight="291.0" prefWidth="800.0" style="-fx-background-color: B5C7D1;">
                <children>
                   <ListView fx:id="requestedEvents" layoutX="196.0" layoutY="48.0" prefHeight="184.0" prefWidth="252.0" />
                   <Label layoutX="196.0" layoutY="20.0" text="Requested events:">
@@ -57,20 +86,10 @@
                   <Font name="Arial Black" size="21.0" />
                </font>
             </Label>
-            <Label layoutX="313.0" prefHeight="80.0" text="MUZER" textAlignment="CENTER" textFill="#eb4848">
-               <font>
-                  <Font name="Bangla MN" size="48.0" />
-               </font>
-            </Label>
             <Button layoutX="714.0" layoutY="43.0" mnemonicParsing="false" onAction="#logOut" text="Log out" />
             <Label fx:id="scoreToSet" layoutX="714.0" layoutY="95.0" text="(SCORE)">
                <font>
                   <Font name="Arial Black" size="13.0" />
-               </font>
-            </Label>
-            <Label layoutX="358.0" layoutY="71.0" text="FOR ARTISTS" textFill="#eb4848">
-               <font>
-                  <Font name="Bangla MN" size="14.0" />
                </font>
             </Label>
             <Label layoutX="510.0" layoutY="115.0" text="Total collected for charity:">
@@ -82,6 +101,32 @@
                <font>
                   <Font name="Arial Black" size="13.0" />
                </font>
+            </Label>
+            <Label layoutX="358.0" layoutY="71.0" text="FOR ARTISTS">
+               <font>
+                  <Font name="Bangla MN" size="14.0" />
+               </font>
+               <textFill>
+                  <RadialGradient centerX="0.5" centerY="0.5" radius="0.5">
+                     <stops>
+                        <Stop>
+                           <color>
+                              <Color red="1.0" green="0.7858796119689941" blue="0.14351852238178253" />
+                           </color>
+                        </Stop>
+                        <Stop offset="0.006711409395973154">
+                           <color>
+                              <Color red="1.0" green="0.15000000596046448" blue="0.15000000596046448" />
+                           </color>
+                        </Stop>
+                        <Stop offset="1.0">
+                           <color>
+                              <Color red="0.59945148229599" green="0.3149999976158142" blue="0.6299999952316284" />
+                           </color>
+                        </Stop>
+                     </stops>
+                  </RadialGradient>
+               </textFill>
             </Label>
          </children>
       </AnchorPane>
