@@ -6,14 +6,8 @@ import DB.TransactionDAO;
 import DB.UserDAO;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
-import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
-import javafx.stage.Stage;
-
-import java.io.IOException;
 
 public class TransactionPageProviderController {
 
@@ -40,7 +34,7 @@ public class TransactionPageProviderController {
         confirmationDateToSet.setVisible(false);
 
         for (Transaction transaction : TransactionDAO.getTransactions()) {
-            if (transaction.getProviderNumber() == HelloApplication.providerMain.getProviderNumber()) {
+            if (transaction.getProviderNumber() == Main.providerMain.getProviderNumber()) {
                 if (transaction.getStatus() == Transaction.status.Accepted) {
                     String s = transaction.getMessage() + " (€" + transaction.getTotalAmount() + ")";
                     openTransactions.getItems().add(s);
@@ -54,7 +48,7 @@ public class TransactionPageProviderController {
     }
 
     public void goBack(ActionEvent actionEvent) {
-        HelloApplication.loadPage("ProviderPage.fxml", actionEvent);
+        Main.loadPage("ProviderPage.fxml", actionEvent);
     }
 
     public void seeToDoTransaction(ActionEvent actionEvent) {

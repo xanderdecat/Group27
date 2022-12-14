@@ -44,16 +44,16 @@ public class EventPageProviderController {
     public void acceptRequest(ActionEvent actionEvent) {
         ProviderPageController.requestedTransaction.setStatus(Transaction.status.Accepted);
         TransactionDAO.saveTransaction(ProviderPageController.requestedTransaction);
-        HelloApplication.loadPage("ProviderPage.fxml", actionEvent);
+        Main.loadPage("ProviderPage.fxml", actionEvent);
     }
 
     public void declineRequest(ActionEvent actionEvent) {
         ProviderPageController.requestedTransaction.setStatus(Transaction.status.NotAccepted);
         TransactionDAO.saveTransaction(ProviderPageController.requestedTransaction);
-        HelloApplication.loadPage("ProviderPage.fxml", actionEvent);
+        Main.loadPage("ProviderPage.fxml", actionEvent);
     }
 
     public void goBack(ActionEvent actionEvent) {
-        HelloApplication.loadPage("ProviderPage.fxml", actionEvent);
+        Main.loadPage("ProviderPage.fxml", actionEvent);
     }
 }

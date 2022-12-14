@@ -7,10 +7,10 @@ import java.io.IOException;
 public class WelcomePageController {
 
     public void goToLogInPage(ActionEvent actionEvent) {
-        HelloApplication.loadPage("LogInUser.fxml", actionEvent);
+        Main.loadPage("LogInUser.fxml", actionEvent);
     }
 
     public void goToNewUserPage(ActionEvent actionEvent) throws IOException {
-        HelloApplication.loadPage("AddUser.fxml", actionEvent);
+        Main.loadPage("AddUser.fxml", actionEvent);
     }
 }

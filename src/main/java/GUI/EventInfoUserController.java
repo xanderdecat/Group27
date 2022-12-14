@@ -45,6 +45,6 @@ public class EventInfoUserController {
     }
 
     public void goBack(ActionEvent actionEvent) {
-        HelloApplication.loadPage("UserPage.fxml", actionEvent);
+        Main.loadPage("UserPage.fxml", actionEvent);
     }
 }

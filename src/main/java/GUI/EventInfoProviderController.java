@@ -4,13 +4,7 @@ import APPLICATION.Transaction;
 import DB.TransactionDAO;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
-import javafx.scene.Scene;
 import javafx.scene.control.Label;
-import javafx.stage.Stage;
-
-import java.io.IOException;
 
 public class EventInfoProviderController {
 
@@ -42,13 +36,13 @@ public class EventInfoProviderController {
         payedToSet.setText("No");
 
         for (Transaction transaction : TransactionDAO.getTransactions()) {
-            if (transaction.getProviderNumber() == HelloApplication.providerMain.getProviderNumber() && transaction.getEventNumber() == ProviderPageController.upcomingEvent.getEventNumber() && transaction.getStatus() == Transaction.status.Payed) {
+            if (transaction.getProviderNumber() == Main.providerMain.getProviderNumber() && transaction.getEventNumber() == ProviderPageController.upcomingEvent.getEventNumber() && transaction.getStatus() == Transaction.status.Payed) {
                 payedToSet.setText("yes");
             }
         }
     }
 
     public void goBack(ActionEvent actionEvent) {
-        HelloApplication.loadPage("ProviderPage.fxml", actionEvent);
+        Main.loadPage("ProviderPage.fxml", actionEvent);
     }
 }

@@ -32,14 +32,14 @@ public class AddUserController {
                 String email = emailInput.getText();
                 String phoneNumber = phoneNumberInput.getText();
                 String password = passwordInput.getText();
-                HelloApplication.userMain = new User(firstName, lastName, date, email, phoneNumber, password);
-                DB.UserDAO.saveUser(HelloApplication.userMain);
-                HelloApplication.loadPage("UserPage.fxml", actionEvent);
+                Main.userMain = new User(firstName, lastName, date, email, phoneNumber, password);
+                DB.UserDAO.saveUser(Main.userMain);
+                Main.loadPage("UserPage.fxml", actionEvent);
             }
         }
     }
 
     public void goToWelcomePage(ActionEvent actionEvent) {
-        HelloApplication.loadPage("WelcomePage.fxml", actionEvent);
+        Main.loadPage("WelcomePage.fxml", actionEvent);
     }
 }

@@ -4,15 +4,10 @@ import APPLICATION.Provider;
 import DB.ProviderDAO;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
-import javafx.scene.Scene;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
-import javafx.stage.Stage;
 
-import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.time.LocalDate;
@@ -57,23 +52,23 @@ public class PersonalPageProviderController {
     public void initialize() {
         genreChooser.getItems().addAll("Techno", "Rock", "Pop", "Dance", "Blues", "Jazz", "Soul", "Party", "Hiphop", "Acoustic", "Disco", "Funk", "Classic", "Background", "Nineties", "Eighties", "Seventies", "Sixties", "Latin", "Lounge", "Other");
 
-        VATNumberInput.setText(HelloApplication.providerMain.getVATNumber());
-        accountNumberInput.setText(HelloApplication.providerMain.getAccountNumber());
-        streetNameInput.setText(HelloApplication.providerMain.getAccountNumber());
-        houseNumberInput.setText(String.valueOf(HelloApplication.providerMain.getHouseNumber()));
-        ZIPCodeInput.setText(String.valueOf(HelloApplication.providerMain.getZIP()));
-        cityInput.setText(HelloApplication.providerMain.getCity());
-        countryInput.setText(HelloApplication.providerMain.getCountry());
-        artistNameInput.setText(HelloApplication.providerMain.getArtistName());
-        activityDateInput.setValue(HelloApplication.providerMain.getActivityDate().toLocalDate());
-        priceHourInput.setText(String.valueOf(HelloApplication.providerMain.getPriceHour()));
-        minHoursInput.setText(String.valueOf(HelloApplication.providerMain.getMinHours()));
-        maxHoursInput.setText(String.valueOf(HelloApplication.providerMain.getMaxHours()));
-        conditionsInput.setText(HelloApplication.providerMain.getConditions());
-        descriptionInput.setText(HelloApplication.providerMain.getDescription());
-        linkToSetInput.setText(String.valueOf(HelloApplication.providerMain.getTeaserSet()));
-        linkToPageInput.setText(String.valueOf(HelloApplication.providerMain.getLinkToPage()));
-        genreChooser.setValue(String.valueOf(HelloApplication.providerMain.getGenre()));
+        VATNumberInput.setText(Main.providerMain.getVATNumber());
+        accountNumberInput.setText(Main.providerMain.getAccountNumber());
+        streetNameInput.setText(Main.providerMain.getAccountNumber());
+        houseNumberInput.setText(String.valueOf(Main.providerMain.getHouseNumber()));
+        ZIPCodeInput.setText(String.valueOf(Main.providerMain.getZIP()));
+        cityInput.setText(Main.providerMain.getCity());
+        countryInput.setText(Main.providerMain.getCountry());
+        artistNameInput.setText(Main.providerMain.getArtistName());
+        activityDateInput.setValue(Main.providerMain.getActivityDate().toLocalDate());
+        priceHourInput.setText(String.valueOf(Main.providerMain.getPriceHour()));
+        minHoursInput.setText(String.valueOf(Main.providerMain.getMinHours()));
+        maxHoursInput.setText(String.valueOf(Main.providerMain.getMaxHours()));
+        conditionsInput.setText(Main.providerMain.getConditions());
+        descriptionInput.setText(Main.providerMain.getDescription());
+        linkToSetInput.setText(String.valueOf(Main.providerMain.getTeaserSet()));
+        linkToPageInput.setText(String.valueOf(Main.providerMain.getLinkToPage()));
+        genreChooser.setValue(String.valueOf(Main.providerMain.getGenre()));
     }
 
     public void changeInformation(ActionEvent actionEvent) {
@@ -142,27 +137,27 @@ public class PersonalPageProviderController {
                 if (genre0.equals("Other"))
                     genre = Provider.genres.Other;
 
-                HelloApplication.providerMain.setVATNumber(VATNumber);
-                HelloApplication.providerMain.setAccountNumber(accountNumber);
-                HelloApplication.providerMain.setStreetName(streetName);
-                HelloApplication.providerMain.setHouseNumber(houseNumber);
-                HelloApplication.providerMain.setZIP(ZIPCode);
-                HelloApplication.providerMain.setCity(city);
-                HelloApplication.providerMain.setCountry(country);
-                HelloApplication.providerMain.setArtistName(artistName);
-                HelloApplication.providerMain.setGenre(genre);
-                HelloApplication.providerMain.setActivityDate(date);
-                HelloApplication.providerMain.setPriceHour(priceHour);
-                HelloApplication.providerMain.setMinHours(minHours);
-                HelloApplication.providerMain.setMaxHours(maxHours);
-                HelloApplication.providerMain.setConditions(conditions);
-                HelloApplication.providerMain.setDescription(description);
-                HelloApplication.providerMain.setTeaserSet(linkToSet);
-                HelloApplication.providerMain.setLinkToPage(linkToPage);
+                Main.providerMain.setVATNumber(VATNumber);
+                Main.providerMain.setAccountNumber(accountNumber);
+                Main.providerMain.setStreetName(streetName);
+                Main.providerMain.setHouseNumber(houseNumber);
+                Main.providerMain.setZIP(ZIPCode);
+                Main.providerMain.setCity(city);
+                Main.providerMain.setCountry(country);
+                Main.providerMain.setArtistName(artistName);
+                Main.providerMain.setGenre(genre);
+                Main.providerMain.setActivityDate(date);
+                Main.providerMain.setPriceHour(priceHour);
+                Main.providerMain.setMinHours(minHours);
+                Main.providerMain.setMaxHours(maxHours);
+                Main.providerMain.setConditions(conditions);
+                Main.providerMain.setDescription(description);
+                Main.providerMain.setTeaserSet(linkToSet);
+                Main.providerMain.setLinkToPage(linkToPage);
 
-                ProviderDAO.saveProvider(HelloApplication.providerMain);
+                ProviderDAO.saveProvider(Main.providerMain);
 
-                HelloApplication.loadPage("ProviderPage.fxml", actionEvent);
+                Main.loadPage("ProviderPage.fxml", actionEvent);
 
             } catch (MalformedURLException | NumberFormatException e) {
             }
@@ -170,7 +165,7 @@ public class PersonalPageProviderController {
     }
 
     public void goBack(ActionEvent actionEvent) {
-        HelloApplication.loadPage("ProviderPage.fxml", actionEvent);
+        Main.loadPage("ProviderPage.fxml", actionEvent);
     }
 
 }

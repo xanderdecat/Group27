@@ -45,19 +45,19 @@ public class PersonalPageUserController {
     private Button hidePasswordButton;
 
     public void initialize() {
-        nameToSet.setText(HelloApplication.userMain.getName());
-        firstNameToSet.setText(HelloApplication.userMain.getFirstName());
-        lastNameToSet.setText(HelloApplication.userMain.getLastName());
-        dateOfBirthToSet.setText(HelloApplication.userMain.getDateOfBirth().toString());
-        emailToSet.setText(HelloApplication.userMain.getEmail());
-        phoneNumberToSet.setText(HelloApplication.userMain.getPhoneNumber());
+        nameToSet.setText(Main.userMain.getName());
+        firstNameToSet.setText(Main.userMain.getFirstName());
+        lastNameToSet.setText(Main.userMain.getLastName());
+        dateOfBirthToSet.setText(Main.userMain.getDateOfBirth().toString());
+        emailToSet.setText(Main.userMain.getEmail());
+        phoneNumberToSet.setText(Main.userMain.getPhoneNumber());
         passWordToSet.setText("**********");
         showPasswordButton.setVisible(true);
         hidePasswordButton.setVisible(false);
     }
 
     public void showPassword(ActionEvent actionEvent) {
-        passWordToSet.setText(HelloApplication.userMain.getPassword());
+        passWordToSet.setText(Main.userMain.getPassword());
         showPasswordButton.setVisible(false);
         hidePasswordButton.setVisible(true);
     }
@@ -69,18 +69,18 @@ public class PersonalPageUserController {
     }
 
     public void goBack(ActionEvent actionEvent) {
-        HelloApplication.loadPage("UserPage.fxml", actionEvent);
+        Main.loadPage("UserPage.fxml", actionEvent);
     }
 
     public void changePersonalInformation(ActionEvent actionEvent) {
-        int userNumber = HelloApplication.userMain.getUserNumber();
-        String newFirstName = HelloApplication.userMain.getFirstName();
-        String newLastName = HelloApplication.userMain.getLastName();
-        java.sql.Date newDateofBirth = HelloApplication.userMain.getDateOfBirth();
-        int newAge = HelloApplication.userMain.getAge();
-        String newEmail = HelloApplication.userMain.getEmail();
-        String newPhoneNumber = HelloApplication.userMain.getPhoneNumber();
-        String newPassword = HelloApplication.userMain.getPassword();
+        int userNumber = Main.userMain.getUserNumber();
+        String newFirstName = Main.userMain.getFirstName();
+        String newLastName = Main.userMain.getLastName();
+        java.sql.Date newDateofBirth = Main.userMain.getDateOfBirth();
+        int newAge = Main.userMain.getAge();
+        String newEmail = Main.userMain.getEmail();
+        String newPhoneNumber = Main.userMain.getPhoneNumber();
+        String newPassword = Main.userMain.getPassword();
         if (newFirstNameInput.getText() != "") {
             newFirstName = newFirstNameInput.getText();
         }
@@ -101,8 +101,8 @@ public class PersonalPageUserController {
         if (newPasswordInput.getText() != "") {
             newPassword = newPasswordInput.getText();
         }
-        HelloApplication.userMain = new User(userNumber, newFirstName, newLastName, newDateofBirth, newAge, newEmail, newPhoneNumber, newPassword);
-        UserDAO.saveUser(HelloApplication.userMain);
+        Main.userMain = new User(userNumber, newFirstName, newLastName, newDateofBirth, newAge, newEmail, newPhoneNumber, newPassword);
+        UserDAO.saveUser(Main.userMain);
         initialize();
         newFirstNameInput.clear();
         newLastNameInput.clear();

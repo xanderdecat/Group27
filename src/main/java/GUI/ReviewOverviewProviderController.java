@@ -24,7 +24,7 @@ public class ReviewOverviewProviderController {
         descriptionToSet.setVisible(false);
 
         for (Review review : ReviewDAO.getReviews()) {
-            if (review.getProviderNumber() == HelloApplication.providerMain.getProviderNumber() && review.isProviderReview()) {
+            if (review.getProviderNumber() == Main.providerMain.getProviderNumber() && review.isProviderReview()) {
                 allReviews.getItems().add(review);
             }
         }
@@ -44,6 +44,6 @@ public class ReviewOverviewProviderController {
     }
 
     public void goBack(ActionEvent actionEvent) {
-        HelloApplication.loadPage("ProviderPage.fxml", actionEvent);
+        Main.loadPage("ProviderPage.fxml", actionEvent);
     }
 }

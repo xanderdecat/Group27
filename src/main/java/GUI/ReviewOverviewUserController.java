@@ -25,7 +25,7 @@ public class ReviewOverviewUserController {
 
 
         for (Review review : ReviewDAO.getReviews()) {
-            if (review.getUserNumber() == HelloApplication.userMain.getUserNumber() && !review.isProviderReview()) {
+            if (review.getUserNumber() == Main.userMain.getUserNumber() && !review.isProviderReview()) {
                 allReviews.getItems().add(review);
             }
         }
@@ -46,6 +46,6 @@ public class ReviewOverviewUserController {
     }
 
     public void goBack(ActionEvent actionEvent) {
-        HelloApplication.loadPage("UserPage.fxml", actionEvent);
+        Main.loadPage("UserPage.fxml", actionEvent);
     }
 }

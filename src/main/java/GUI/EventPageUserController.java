@@ -79,7 +79,7 @@ public class EventPageUserController {
          */
     }
     public void goBack(ActionEvent actionEvent) {
-        HelloApplication.loadPage("UserPage.fxml", actionEvent);
+        Main.loadPage("UserPage.fxml", actionEvent);
     }
 
     public void seeSpecificList(ActionEvent actionEvent) {
@@ -89,7 +89,7 @@ public class EventPageUserController {
         Provider.genres genre = Provider.genres.valueOf(selectedGenre.getValue());
         if (minPrice != 0 && maxPrice != 0 && genre != null) {
             for (Provider provider : ProviderDAO.getProviders()) {
-                if(provider.getUserNumber() != HelloApplication.userMain.getUserNumber()) {
+                if(provider.getUserNumber() != Main.userMain.getUserNumber()) {
                     if ((minPrice <= provider.getPriceHour()) && (provider.getPriceHour() <= maxPrice) && provider.getGenre() == genre) {
                         String s = provider.getArtistName() + " - " + provider.getGenre().toString() + " - " + provider.getCity();
                         possibleArtists.getItems().add(s);
@@ -123,9 +123,9 @@ public class EventPageUserController {
         double requestedHours1 = Double.parseDouble(requestedHours.getText());
         if (requestedHours1 >= chosenProvider.getMinHours() && requestedHours1 <= chosenProvider.getMaxHours()) {
             double totalamount = requestedHours1 * chosenProvider.getPriceHour();
-            eventTransaction = new Transaction(UserPageController.upcomingEvent.getEventNumber(), HelloApplication.userMain.getUserNumber(), chosenProvider.getProviderNumber(), Transaction.status.Requested, UserPageController.upcomingEvent.getEventName() + " - " + chosenProvider.getArtistName(), totalamount);
+            eventTransaction = new Transaction(UserPageController.upcomingEvent.getEventNumber(), Main.userMain.getUserNumber(), chosenProvider.getProviderNumber(), Transaction.status.Requested, UserPageController.upcomingEvent.getEventName() + " - " + chosenProvider.getArtistName(), totalamount);
             TransactionDAO.saveTransaction(eventTransaction);
-            HelloApplication.loadPage("UserPage.fxml", actionEvent);
+            Main.loadPage("UserPage.fxml", actionEvent);
         }
     }
 }

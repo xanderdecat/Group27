@@ -8,16 +8,10 @@ import DB.ReviewDAO;
 import DB.TransactionDAO;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
-import javafx.scene.Scene;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
-import javafx.stage.Stage;
-
-import java.io.IOException;
 
 public class ReviewPageUserController {
 
@@ -45,7 +39,7 @@ public class ReviewPageUserController {
         endDateToSet.setText(UserPageController.previousEvent.getEndDate().toString());
         cityToSet.setText(UserPageController.previousEvent.getCity());
             for (Transaction transaction : TransactionDAO.getTransactions()) {
-                if (transaction.getUserNumber() == HelloApplication.userMain.getUserNumber()) {
+                if (transaction.getUserNumber() == Main.userMain.getUserNumber()) {
                     for (Provider provider : ProviderDAO.getProviders()) {
                         if (provider.getProviderNumber() == transaction.getProviderNumber()) {
                             String s = provider.getArtistName();
@@ -57,7 +51,7 @@ public class ReviewPageUserController {
     }
 
     public void goBack(ActionEvent actionEvent) {
-        HelloApplication.loadPage("UserPage.fxml", actionEvent);
+        Main.loadPage("UserPage.fxml", actionEvent);
     }
 
     public void submitReview(ActionEvent actionEvent) {
@@ -74,7 +68,7 @@ public class ReviewPageUserController {
             String description = descriptionInput.getText();
             Review review = new Review(UserPageController.previousEvent.getEventNumber(), true, UserPageController.previousEvent.getEventUserNumber(), providerNumber, subject, score, description);
             ReviewDAO.save(review);
-            HelloApplication.loadPage("UserPage.fxml", actionEvent);
+            Main.loadPage("UserPage.fxml", actionEvent);
 
         }
     }

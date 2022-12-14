@@ -31,16 +31,16 @@ public class ProviderPageController {
     private Label amountToSet;
 
     public void initialize() {
-        artistNameToSet.setText(HelloApplication.providerMain.getArtistName());
+        artistNameToSet.setText(Main.providerMain.getArtistName());
 
-        if (Provider.calculateAverageScoreForProvider(HelloApplication.providerMain) == 0)
+        if (Provider.calculateAverageScoreForProvider(Main.providerMain) == 0)
             scoreToSet.setText("-");
         else
-            scoreToSet.setText(String.valueOf(Provider.calculateAverageScoreForProvider(HelloApplication.providerMain)));
+            scoreToSet.setText(String.valueOf(Provider.calculateAverageScoreForProvider(Main.providerMain)));
 
         double amountForNPO = 0;
         for (Transaction transaction : TransactionDAO.getTransactions()) {
-            if (transaction.getProviderNumber() == HelloApplication.providerMain.getProviderNumber()) {
+            if (transaction.getProviderNumber() == Main.providerMain.getProviderNumber()) {
                 amountForNPO = amountForNPO + transaction.getAmountToNPO();
                 if (transaction.getStatus() == Transaction.status.Requested && EventDAO.getEvent(transaction.getEventNumber()).getConfirmationDate().isAfter(LocalDateTime.now())) {
                     String s = EventDAO.getEvent(transaction.getEventNumber()).getEventName() + " - " + EventDAO.getEvent(transaction.getEventNumber()).getCity();
@@ -64,10 +64,10 @@ public class ProviderPageController {
     public void replyOnRequest(ActionEvent actionEvent) {
         String selected = requestedEvents.getSelectionModel().getSelectedItem();
         for (Transaction transaction : TransactionDAO.getTransactions()) {
-            if (transaction.getProviderNumber() == HelloApplication.providerMain.getProviderNumber() && (EventDAO.getEvent(transaction.getEventNumber()).getEventName() + " - " + EventDAO.getEvent(transaction.getEventNumber()).getCity()).equals(selected)) {
+            if (transaction.getProviderNumber() == Main.providerMain.getProviderNumber() && (EventDAO.getEvent(transaction.getEventNumber()).getEventName() + " - " + EventDAO.getEvent(transaction.getEventNumber()).getCity()).equals(selected)) {
                 requestedTransaction = transaction;
                 requestedEvent = EventDAO.getEvent(transaction.getEventNumber());
-                HelloApplication.loadPage("EventPageProvider.fxml", actionEvent);
+                Main.loadPage("EventPageProvider.fxml", actionEvent);
             }
         }
     }
@@ -77,7 +77,7 @@ public class ProviderPageController {
         for (Event event : EventDAO.getEvents())
             if (selected.equals(event.getEventName() + " - " + event.getCity())) {
                 upcomingEvent = event;
-                HelloApplication.loadPage("EventInfoProvider.fxml", actionEvent);
+                Main.loadPage("EventInfoProvider.fxml", actionEvent);
             }
     }
 
@@ -86,27 +86,27 @@ public class ProviderPageController {
         for (Event ev : EventDAO.getEvents())
             if (ev.getEventName().equals(selected.substring(0, selected.indexOf("-") - 1))) {
                 previousEvent = EventDAO.getEvent(ev.getEventNumber());
-                HelloApplication.loadPage("ReviewPageProvider.fxml", actionEvent);
+                Main.loadPage("ReviewPageProvider.fxml", actionEvent);
             }
     }
 
     public void goToUserPage(ActionEvent actionEvent) {
-        HelloApplication.loadPage("UserPage.fxml", actionEvent);
+        Main.loadPage("UserPage.fxml", actionEvent);
     }
 
     public void seeArtistInformation(ActionEvent actionEvent) {
-        HelloApplication.loadPage("PersonalPageProvider.fxml", actionEvent);
+        Main.loadPage("PersonalPageProvider.fxml", actionEvent);
     }
 
     public void logOut(ActionEvent actionEvent) {
-        HelloApplication.loadPage("WelcomePage.fxml", actionEvent);
+        Main.loadPage("WelcomePage.fxml", actionEvent);
     }
 
     public void seeReviews(ActionEvent actionEvent) {
-        HelloApplication.loadPage("ReviewOverviewProvider.fxml", actionEvent);
+        Main.loadPage("ReviewOverviewProvider.fxml", actionEvent);
     }
 
     public void seeTransactions(ActionEvent actionEvent) {
-        HelloApplication.loadPage("TransactionPageProvider.fxml", actionEvent);
+        Main.loadPage("TransactionPageProvider.fxml", actionEvent);
     }
 }

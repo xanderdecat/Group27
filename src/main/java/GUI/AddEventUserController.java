@@ -6,13 +6,8 @@ import DB.EventDAO;
 import DB.NonProfitOrganisationDAO;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.stage.Stage;
 
-import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.time.LocalDate;
@@ -89,15 +84,15 @@ public class AddEventUserController {
                     npoNumber1 = npo.getNonPONumber();
             }
             if (startDate1.isBefore(endDate1) && LocalDate.now().isBefore(ChronoLocalDate.from(startDate1.minusDays(5))) && eventName1 != null && streetName1 != null && houseNumberInput.getText() != null && zipCodeInput.getText() != null && country1 != null && description1 != null) {
-                eventMain = new Event(HelloApplication.userMain.getUserNumber(), eventName1, streetName1, houseNumber1, ZIPCode1, cityInput1, country1, startDate1, endDate1, description1, linkToPage1, npoNumber1);
+                eventMain = new Event(Main.userMain.getUserNumber(), eventName1, streetName1, houseNumber1, ZIPCode1, cityInput1, country1, startDate1, endDate1, description1, linkToPage1, npoNumber1);
                 EventDAO.saveEvent(eventMain);
-                HelloApplication.loadPage("UserPage.fxml", actionEvent);
+                Main.loadPage("UserPage.fxml", actionEvent);
             }
         }catch (MalformedURLException | NumberFormatException e) {
         }
     }
 
     public void goToHomePage(ActionEvent actionEvent) {
-        HelloApplication.loadPage("UserPage.fxml", actionEvent);
+        Main.loadPage("UserPage.fxml", actionEvent);
     }
 }

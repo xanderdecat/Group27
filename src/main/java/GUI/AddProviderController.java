@@ -4,13 +4,8 @@ import APPLICATION.Provider;
 import DB.ProviderDAO;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.stage.Stage;
 
-import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.time.LocalDate;
@@ -57,7 +52,7 @@ public class AddProviderController {
     }
 
     public void goToHomeScreen(ActionEvent actionEvent) {
-        HelloApplication.loadPage("UserPage.fxml", actionEvent);
+        Main.loadPage("UserPage.fxml", actionEvent);
     }
 
     public void goToProviderPage(ActionEvent actionEvent) {
@@ -124,10 +119,10 @@ public class AddProviderController {
                     genre = Provider.genres.Lounge;
                 if (genre0.equals("Other"))
                     genre = Provider.genres.Other;
-                HelloApplication.providerMain = new Provider(HelloApplication.userMain.getUserNumber(), HelloApplication.userMain.getFirstName(), HelloApplication.userMain.getLastName(), HelloApplication.userMain.getDateOfBirth(), HelloApplication.userMain.getAge(), HelloApplication.userMain.getEmail(), HelloApplication.userMain.getPhoneNumber(), HelloApplication.userMain.getPassword(), VATNumber, accountNumber, streetName, houseNumber, ZIPCode, city, country, artistName,
+                Main.providerMain = new Provider(Main.userMain.getUserNumber(), Main.userMain.getFirstName(), Main.userMain.getLastName(), Main.userMain.getDateOfBirth(), Main.userMain.getAge(), Main.userMain.getEmail(), Main.userMain.getPhoneNumber(), Main.userMain.getPassword(), VATNumber, accountNumber, streetName, houseNumber, ZIPCode, city, country, artistName,
                         genre, date, priceHour, minHours, maxHours, conditions, description, linkToSet, linkToPage);
-                ProviderDAO.saveProvider(HelloApplication.providerMain);
-                HelloApplication.loadPage("ProviderPage.fxml", actionEvent);
+                ProviderDAO.saveProvider(Main.providerMain);
+                Main.loadPage("ProviderPage.fxml", actionEvent);
             } catch (MalformedURLException | NumberFormatException e) {
             }
         }

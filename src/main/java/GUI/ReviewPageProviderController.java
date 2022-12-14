@@ -6,16 +6,10 @@ import DB.ProviderDAO;
 import DB.ReviewDAO;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
-import javafx.scene.Scene;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
-import javafx.stage.Stage;
-
-import java.io.IOException;
 
 public class ReviewPageProviderController {
 
@@ -39,7 +33,7 @@ public class ReviewPageProviderController {
     // initialize to do!
 
     public void goBack(ActionEvent actionEvent) {
-        HelloApplication.loadPage("ProviderPageController.fxml", actionEvent);
+        Main.loadPage("ProviderPageController.fxml", actionEvent);
     }
 
 
@@ -57,7 +51,7 @@ public class ReviewPageProviderController {
             String description = descriptionInput.getText();
             Review review = new Review(UserPageController.previousEvent.getEventNumber(), true, UserPageController.previousEvent.getEventUserNumber(), providerNumber, subject, score, description);
             ReviewDAO.save(review);
-            HelloApplication.loadPage("UserPage.fxml", actionEvent);
+            Main.loadPage("UserPage.fxml", actionEvent);
         }
     }
 }
