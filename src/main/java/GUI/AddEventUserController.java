@@ -81,7 +81,7 @@ public class AddEventUserController {
             int npoNumber1 = 0;
             for (NonProfitOrganisation npo : NonProfitOrganisationDAO.getNonProfitOrganisations()) {
                 if (subs.equals(npo.getNPOName()))
-                    npoNumber1 = npo.getNonPONumber();
+                    npoNumber1 = npo.getNPONumber();
             }
             if (startDate1.isBefore(endDate1) && LocalDate.now().isBefore(ChronoLocalDate.from(startDate1.minusDays(5))) && eventName1 != null && streetName1 != null && houseNumberInput.getText() != null && zipCodeInput.getText() != null && country1 != null && description1 != null) {
                 eventMain = new Event(Main.userMain.getUserNumber(), eventName1, streetName1, houseNumber1, ZIPCode1, cityInput1, country1, startDate1, endDate1, description1, linkToPage1, npoNumber1);
