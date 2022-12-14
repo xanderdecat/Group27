@@ -92,7 +92,7 @@ public class UserPageController {
     }
 
     public void logOut(ActionEvent actionEvent) {
-        Main.loadPage("WelcomePage.fxml", actionEvent);
+        Main.loadPage("LogInUser.fxml", actionEvent);
     }
 
     public void goToCreateNewEvent(ActionEvent actionEvent) {
