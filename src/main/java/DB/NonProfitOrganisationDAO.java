@@ -69,7 +69,7 @@ public class NonProfitOrganisationDAO {
                     + "WHERE nonPONumber = ? ";
 
             PreparedStatement stmt = con.prepareStatement(sqlSelect);
-            stmt.setInt(1,nonProfitOrganisation.getNonPONumber());
+            stmt.setInt(1,nonProfitOrganisation.getNPONumber());
             ResultSet srs = stmt.executeQuery();
             if (srs.next()) {
 
@@ -85,7 +85,7 @@ public class NonProfitOrganisationDAO {
                 stmt2.setString(2, nonProfitOrganisation.getDescription());
                 stmt2.setString(3, nonProfitOrganisation.getAccountNumber());
                 stmt2.setString(4, String.valueOf(nonProfitOrganisation.getCauseOfNPO()));
-                stmt2.setInt(5, nonProfitOrganisation.getNonPONumber());
+                stmt2.setInt(5, nonProfitOrganisation.getNPONumber());
                 stmt2.executeUpdate();
             } else {
                 // INSERT
@@ -95,7 +95,7 @@ public class NonProfitOrganisationDAO {
                         + "VALUES (?,?,?,?,?)";
                 //System.out.println(sql);
                 PreparedStatement insertStm = con.prepareStatement(sqlInsert);
-                insertStm.setInt(1, nonProfitOrganisation.getNonPONumber());
+                insertStm.setInt(1, nonProfitOrganisation.getNPONumber());
                 insertStm.setString(2, nonProfitOrganisation.getNPOName());
                 insertStm.setString(3, nonProfitOrganisation.getDescription());
                 insertStm.setString(4, nonProfitOrganisation.getAccountNumber());
@@ -136,7 +136,7 @@ public class NonProfitOrganisationDAO {
             String sql ="DELETE FROM nonprofitorganisations "
                     + "WHERE nonPONumber = ?";
             PreparedStatement stmt = con.prepareStatement(sql);
-            stmt.setInt(1,nonProfitOrganisation.getNonPONumber());
+            stmt.setInt(1,nonProfitOrganisation.getNPONumber());
 
             stmt.executeUpdate();
         } catch (DBException dbe) {
