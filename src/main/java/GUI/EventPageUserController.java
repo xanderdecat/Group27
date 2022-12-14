@@ -70,7 +70,7 @@ public class EventPageUserController {
 
 
         for (Provider provider : ProviderDAO.getProviders()) {
-            if (provider.getProviderNumber() != Main.providerMain.getProviderNumber() && Provider.provideTheSameEvent(provider)) {
+            if (provider.getProviderNumber() != Main.providerMain.getProviderNumber() && !Provider.provideTheSameEvent(provider)) {
                 String s = provider.getArtistName() + " - " + provider.getGenre().toString() + " - " + provider.getCity();
                 possibleArtists.getItems().add(s);
             }
