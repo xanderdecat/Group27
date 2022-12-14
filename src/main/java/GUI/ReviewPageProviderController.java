@@ -57,8 +57,6 @@ public class ReviewPageProviderController {
             String description = descriptionInput.getText();
             Review review = new Review(UserPageController.previousEvent.getEventNumber(), true, UserPageController.previousEvent.getEventUserNumber(), providerNumber, subject, score, description);
             ReviewDAO.save(review);
-
-
             HelloApplication.loadPage("UserPage.fxml", actionEvent);
         }
     }

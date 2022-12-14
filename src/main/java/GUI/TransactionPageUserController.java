@@ -61,17 +61,16 @@ public class TransactionPageUserController {
         String line = transactionsToDo.getSelectionModel().getSelectedItem();
         for (Transaction transaction : TransactionDAO.getTransactions()) {
             if (transaction.getMessage().equals(line.substring(0, line.indexOf("(") - 1))) {
-                eventNameToSet.setVisible(true);
-                artistNameToSet.setVisible(true);
-                messageToSet.setVisible(true);
-                totalAmountToSet.setVisible(true);
-                confirmationDateToSet.setVisible(true);
-
                 eventNameToSet.setText(EventDAO.getEvent(transaction.getEventNumber()).getEventName());
                 artistNameToSet.setText(ProviderDAO.getProvider(transaction.getProviderNumber()).getArtistName());
                 messageToSet.setText(transaction.getMessage());
                 totalAmountToSet.setText(String.valueOf(transaction.getTotalAmount()));
                 confirmationDateToSet.setText(EventDAO.getEvent(transaction.getEventNumber()).getConfirmationDate().toString());
+                eventNameToSet.setVisible(true);
+                artistNameToSet.setVisible(true);
+                messageToSet.setVisible(true);
+                totalAmountToSet.setVisible(true);
+                confirmationDateToSet.setVisible(true);
             }
         }
     }
@@ -80,17 +79,16 @@ public class TransactionPageUserController {
         String line = transactionsDone.getSelectionModel().getSelectedItem();
         for (Transaction transaction : TransactionDAO.getTransactions()) {
             if (transaction.getMessage().equals(line.substring(0, line.indexOf("(") - 1))) {
-                eventNameToSet.setVisible(true);
-                artistNameToSet.setVisible(true);
-                messageToSet.setVisible(true);
-                totalAmountToSet.setVisible(true);
-                confirmationDateToSet.setVisible(true);
-
                 eventNameToSet.setText(EventDAO.getEvent(transaction.getEventNumber()).getEventName());
                 artistNameToSet.setText(ProviderDAO.getProvider(transaction.getProviderNumber()).getArtistName());
                 messageToSet.setText(transaction.getMessage());
                 totalAmountToSet.setText(String.valueOf(transaction.getTotalAmount()));
                 confirmationDateToSet.setText(EventDAO.getEvent(transaction.getEventNumber()).getConfirmationDate().toString());
+                eventNameToSet.setVisible(true);
+                artistNameToSet.setVisible(true);
+                messageToSet.setVisible(true);
+                totalAmountToSet.setVisible(true);
+                confirmationDateToSet.setVisible(true);
             }
         }
     }
@@ -103,9 +101,7 @@ public class TransactionPageUserController {
                 TransactionDAO.saveTransaction(transaction);
             }
         }
-
         transactionsToDo.getItems().clear();
-
         initialize();
     }
 }

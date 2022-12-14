@@ -67,30 +67,33 @@ public class UserPageController {
 
     public void bookAnArtist(ActionEvent actionEvent) {
         String selected = upcomingEventsChooser.getSelectionModel().getSelectedItem();
-        for (Event ev : EventDAO.getEvents())
+        for (Event ev : EventDAO.getEvents()) {
             if (ev.getEventName().equals(selected.substring(0, selected.indexOf("-") - 1))) {
                 upcomingEvent = EventDAO.getEvent(ev.getEventNumber());
                 HelloApplication.loadPage("EventPageUser.fxml", actionEvent);
             }
+        }
     }
 
     public void viewEvent(ActionEvent actionEvent) {
         String selected = upcomingEventsChooser.getSelectionModel().getSelectedItem();
-        for (Event ev : EventDAO.getEvents())
+        for (Event ev : EventDAO.getEvents()) {
             if (ev.getEventName().equals(selected.substring(0, selected.indexOf("-") - 1))) {
                 upcomingEvent = EventDAO.getEvent(ev.getEventNumber());
                 HelloApplication.loadPage("EventInfoUser.fxml", actionEvent);
             }
+        }
 
     }
 
     public void viewPreviousEvent(ActionEvent actionEvent) {
         String selected = previousEventsChooser.getSelectionModel().getSelectedItem();
-        for (Event ev : EventDAO.getEvents())
+        for (Event ev : EventDAO.getEvents()) {
             if (ev.getEventName().equals(selected.substring(0, selected.indexOf("-") - 1))) {
                 previousEvent = EventDAO.getEvent(ev.getEventNumber());
                 HelloApplication.loadPage("ReviewPageUser.fxml", actionEvent);
             }
+        }
     }
 
     public void logOut(ActionEvent actionEvent) {

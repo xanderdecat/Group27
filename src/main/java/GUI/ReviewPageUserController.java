@@ -64,17 +64,16 @@ public class ReviewPageUserController {
         if(artistToChoose !=null && descriptionInput != null && scoreOn10 != null && subjectInput != null) {
             int providerNumber = 0;
             String artist = artistToChoose.getSelectionModel().getSelectedItem();
-            for(Provider provider : ProviderDAO.getProviders()){
-            if(artist.equals(provider.getArtistName())){
-                providerNumber = provider.getProviderNumber();
-            }}
+            for(Provider provider : ProviderDAO.getProviders()) {
+                if(artist.equals(provider.getArtistName())) {
+                    providerNumber = provider.getProviderNumber();
+                }
+            }
             String subject = subjectInput.getText();
             int score = Integer.parseInt(scoreOn10.getValue().toString().substring(0,scoreOn10.getValue().indexOf("/")));
             String description = descriptionInput.getText();
             Review review = new Review(UserPageController.previousEvent.getEventNumber(), true, UserPageController.previousEvent.getEventUserNumber(), providerNumber, subject, score, description);
             ReviewDAO.save(review);
-
-
             HelloApplication.loadPage("UserPage.fxml", actionEvent);
 
         }

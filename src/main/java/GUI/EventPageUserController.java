@@ -91,11 +91,9 @@ public class EventPageUserController {
 
     public void seeSpecificList(ActionEvent actionEvent) {
         possibleArtists.getItems().clear();
-
         double minPrice = Double.parseDouble(selectedMinPrice.getValue());
         double maxPrice = Double.parseDouble(selectedMaxPrice.getValue());
         Provider.genres genre = Provider.genres.valueOf(selectedGenre.getValue());
-
         if (minPrice != 0 && maxPrice != 0 && genre != null) {
             for (Provider provider : ProviderDAO.getProviders()) {
                 if(provider.getUserNumber() != HelloApplication.userMain.getUserNumber()) {
@@ -113,16 +111,15 @@ public class EventPageUserController {
         String artist = chosen.substring(0, chosen.indexOf("-") - 1);
         for (Provider provider : ProviderDAO.getProviders()) {
             if (provider.getArtistName().equals(artist)) {
-                priceHourToSet.setVisible(true);
-                minHoursToSet.setVisible(true);
-                maxHoursToSet.setVisible(true);
-                conditionsToSet.setVisible(true);
-
                 priceHourToSet.setText("€" + String.valueOf(provider.getPriceHour()));
                 minHoursToSet.setText(String.valueOf(provider.getMinHours()) + " hours");
                 maxHoursToSet.setText(String.valueOf(provider.getMaxHours()) + " hours");
                 conditionsToSet.setText(provider.getConditions());
                 chosenProvider = provider;
+                priceHourToSet.setVisible(true);
+                minHoursToSet.setVisible(true);
+                maxHoursToSet.setVisible(true);
+                conditionsToSet.setVisible(true);
             }
         }
     }

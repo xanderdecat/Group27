@@ -37,17 +37,14 @@ public class ReviewOverviewProviderController {
     }
 
     public void seeFullReview(ActionEvent actionEvent) {
-
         for (Review review : ReviewDAO.getReviews()) {
             if (review.getReviewNumber() == allReviews.getSelectionModel().getSelectedItem().getReviewNumber()) {
                 descriptionToSet.setText(review.getDescription());
                 scoreToSet.setText(String.valueOf(review.getScoreOn10()));
                 subjectToSet.setText(review.getSubject());
-
                 subjectToSet.setVisible(true);
                 scoreToSet.setVisible(true);
                 descriptionToSet.setVisible(true);
-
             }
         }
     }

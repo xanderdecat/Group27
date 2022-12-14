@@ -3,49 +3,37 @@ package GUI;
 import APPLICATION.User;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
-import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
-import javafx.stage.Stage;
-
-import java.io.IOException;
 import java.time.LocalDate;
 
 public class AddUserController {
 
     @FXML
-    private DatePicker dateOfBirth;
+    private DatePicker dateOfBirthInput;
     @FXML
-    private TextField email;
+    private TextField emailInput;
     @FXML
-    private TextField firstName;
+    private TextField firstNameInput;
     @FXML
-    private TextField lastName;
+    private TextField lastNameInput;
     @FXML
-    private TextField phoneNumber;
+    private TextField phoneNumberInput;
     @FXML
-    private TextField wachtwoordInput;
+    private TextField passwordInput;
 
     public void goToHomePage(ActionEvent actionEvent) {
-        if (dateOfBirth.getValue() != null && email.getText() != null && firstName.getText() != null && lastName.getText() != null && phoneNumber.getText() != null && wachtwoordInput.getText() != null) {
-            if(dateOfBirth.getClass().equals(DatePicker.class) ){
-                String firstName1 = firstName.getText();
-                String lastName1 = lastName.getText();
-                LocalDate ld = dateOfBirth.getValue();
-                java.sql.Date testdate = java.sql.Date.valueOf(ld);
-
-
-                String email1 = email.getText();
-                String phoneNumber1 = phoneNumber.getText();
-                String wachtwoord1 = wachtwoordInput.getText();
-
-
-                HelloApplication.userMain = new User(firstName1, lastName1, testdate, email1, phoneNumber1, wachtwoord1);
-                DB.UserDAO.saveUser(HelloApplication.userMain);   // toevoegen aan DataBase
-
+        if (dateOfBirthInput.getValue() != null && emailInput.getText() != null && firstNameInput.getText() != null && lastNameInput.getText() != null && phoneNumberInput.getText() != null && passwordInput.getText() != null) {
+            if(dateOfBirthInput.getClass().equals(DatePicker.class) ){
+                String firstName = firstNameInput.getText();
+                String lastName = lastNameInput.getText();
+                LocalDate ld = dateOfBirthInput.getValue();
+                java.sql.Date date = java.sql.Date.valueOf(ld);
+                String email = emailInput.getText();
+                String phoneNumber = phoneNumberInput.getText();
+                String password = passwordInput.getText();
+                HelloApplication.userMain = new User(firstName, lastName, date, email, phoneNumber, password);
+                DB.UserDAO.saveUser(HelloApplication.userMain);
                 HelloApplication.loadPage("UserPage.fxml", actionEvent);
             }
         }

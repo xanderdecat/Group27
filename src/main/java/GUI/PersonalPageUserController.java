@@ -107,12 +107,9 @@ public class PersonalPageUserController {
         if (newPasswordInput.getText() != "") {
             newPassword = newPasswordInput.getText();
         }
-
         HelloApplication.userMain = new User(userNumber, newFirstName, newLastName, newDateofBirth, newAge, newEmail, newPhoneNumber, newPassword);
         UserDAO.saveUser(HelloApplication.userMain);
-
         initialize();
-
         newFirstNameInput.clear();
         newLastNameInput.clear();
         newDateOfBirthInput.setValue(null);
