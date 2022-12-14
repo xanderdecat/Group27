@@ -1,8 +1,13 @@
 package APPLICATION;
 
+import DB.EventDAO;
 import DB.ProviderDAO;
 import DB.ReviewDAO;
+
 import DB.TransactionDAO;
+import GUI.Main;
+import GUI.PersonalPageUserController;
+import GUI.UserPageController;
 import javafx.scene.control.TextField;
 
 import java.net.URL;
@@ -31,28 +36,6 @@ public class Provider extends User {
     private URL teaserSet;
     private URL linkToPage;
 
-    // constructor for ProviderDAO
-    public Provider(int userNumber, String firstName, String lastName, java.sql.Date dateOfBirth, int age, String email, String phoneNumber, String password, int providerNumber, String VATNumber, String accountNumber, String streetName, int houseNumber, int ZIP, String city, String country, String artistName, genres genre, java.sql.Date activityDate, double priceHour, double minHours, double maxHours, String conditions, String description, URL teaserSet, URL linkToPage) {
-        super(userNumber, firstName, lastName, dateOfBirth, age, email, phoneNumber, password);
-        this.providerNumber = providerNumber;
-        this.VATNumber = VATNumber;
-        this.accountNumber = accountNumber;
-        this.streetName = streetName;
-        this.houseNumber = houseNumber;
-        this.ZIP = ZIP;
-        this.city = city;
-        this.country = country;
-        this.artistName = artistName;
-        this.genre = genre;
-        this.activityDate = activityDate;
-        this.priceHour = priceHour;
-        this.minHours = minHours;
-        this.maxHours = maxHours;
-        this.conditions = conditions;
-        this.description = description;
-        this.teaserSet = teaserSet;
-        this.linkToPage = linkToPage;
-    }
 
     // constructor for GUI
     public Provider(int userNumber, String firstName, String lastName, java.sql.Date dateOfBirth, int age, String email, String phoneNumber, String password, String VATNumber, String accountNumber, String streetName, int houseNumber, int ZIP, String city, String country, String artistName, genres genre, java.sql.Date activityDate, double priceHour, double minHours, double maxHours, String conditions, String description, URL teaserSet, URL linkToPage) {
@@ -78,6 +61,30 @@ public class Provider extends User {
 
     }
 
+    // constructor for ProviderDAO
+    public Provider(int userNumber, String firstName, String lastName, java.sql.Date dateOfBirth, int age, String email, String phoneNumber, String password, int providerNumber, String VATNumber, String accountNumber, String streetName, int houseNumber, int ZIP, String city, String country, String artistName, genres genre, java.sql.Date activityDate, double priceHour, double minHours, double maxHours, String conditions, String description, URL teaserSet, URL linkToPage) {
+        super(userNumber, firstName, lastName, dateOfBirth, age, email, phoneNumber, password);
+        this.providerNumber = providerNumber;
+        this.VATNumber = VATNumber;
+        this.accountNumber = accountNumber;
+        this.streetName = streetName;
+        this.houseNumber = houseNumber;
+        this.ZIP = ZIP;
+        this.city = city;
+        this.country = country;
+        this.artistName = artistName;
+        this.genre = genre;
+        this.activityDate = activityDate;
+        this.priceHour = priceHour;
+        this.minHours = minHours;
+        this.maxHours = maxHours;
+        this.conditions = conditions;
+        this.description = description;
+        this.teaserSet = teaserSet;
+        this.linkToPage = linkToPage;
+    }
+
+
     // methods
     public static boolean checkVATNumber(String VATNumberToCheck) {
         if (VATNumberToCheck == null || VATNumberToCheck.length() == 0)
@@ -87,7 +94,6 @@ public class Provider extends User {
                 return false;
         return true;
     }
-
     public static boolean checkArtistName(String artistName) {
         if (artistName == null || artistName.length() == 0)
             return false;
@@ -96,7 +102,6 @@ public class Provider extends User {
                 return false;
         return true;
     }
-
     public static boolean checkMinMaxHours(TextField minHoursInput, TextField maxHoursInput){
         double maxHours = Double.parseDouble(maxHoursInput.getText());
         double minHours = Double.parseDouble(minHoursInput.getText());
@@ -116,13 +121,17 @@ public class Provider extends User {
             return 0;
         return Math.round((sum / numberOfProviders) * 10) / 10.0;
     }
-
-    public static boolean provideTheSameEvent(Event event, Provider provider){
+    public static boolean provideTheSameEvent(Provider provider){
         for (Transaction transaction : TransactionDAO.getTransactions()){
-            if(transaction.getProviderNumber() == provider.getProviderNumber() && event.getEventNumber() == transaction.getEventNumber() && !Event.isFinished(event)){
+            if(transaction.getProviderNumber() == provider.getProviderNumber() && UserPageController.upcomingEvent.getEventNumber() == transaction.getEventNumber() && !Event.isFinished(UserPageController.upcomingEvent)){
                 return true;}}
-        return false;
-    }
+                return false;
+            }
+
+
+
+
+
 
     // getters and setters
     public int getProviderNumber() {
