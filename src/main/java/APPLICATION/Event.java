@@ -45,6 +45,9 @@ public class Event {
         this.NPONumber = NPONumber;
     }
 
+
+
+
     // constructor for GUI
     public Event(int eventUserNumber, String eventName, String streetName, int houseNumber, int ZIP, String city, String country, LocalDateTime startDate, LocalDateTime endDate, String description, URL linkToPage, int NPONumber) {
         this.eventNumber = DB.EventDAO.getEvents().size() + 1;
