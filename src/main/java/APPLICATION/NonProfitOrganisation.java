@@ -25,7 +25,7 @@ public class NonProfitOrganisation {
         return nPONumber;
     }
 
-    public void setNonPONumber(int nonPONumber) {
+    public void setNPONumber(int nonPONumber) {
         this.nPONumber = nonPONumber;
     }
 
