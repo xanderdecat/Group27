@@ -54,7 +54,7 @@ public class PersonalPageProviderController {
 
         VATNumberInput.setText(Main.providerMain.getVATNumber());
         accountNumberInput.setText(Main.providerMain.getAccountNumber());
-        streetNameInput.setText(Main.providerMain.getAccountNumber());
+        streetNameInput.setText(Main.providerMain.getStreetName());
         houseNumberInput.setText(String.valueOf(Main.providerMain.getHouseNumber()));
         ZIPCodeInput.setText(String.valueOf(Main.providerMain.getZIP()));
         cityInput.setText(Main.providerMain.getCity());

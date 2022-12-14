@@ -11,7 +11,6 @@ import static DB.UserDAO.getUsers;
 public class User {
 
     // instance variables
-    private static int helpUserNumber = 0;
     private int userNumber;                    // unique key
     private String firstName;
     private String lastName;
@@ -37,8 +36,7 @@ public class User {
 
     // constructor for GUI
     public User(String firstName, String lastName, Date dateOfBirth, String email, String phoneNumber, String password) {
-        helpUserNumber = getUsers().size() + 1;
-        this.userNumber = helpUserNumber;
+        this.userNumber = getUsers().size() + 1;
         this.firstName = firstName;
         this.lastName = lastName;
         this.name = firstName + " " + lastName;
@@ -66,14 +64,6 @@ public class User {
     }
 
     // getters and setters
-    public static int getHelpUserNumber() {
-        return helpUserNumber;
-    }
-
-    public static void setHelpUserNumber(int helpUserNumber) {
-        User.helpUserNumber = helpUserNumber;
-    }
-
     public int getUserNumber() {
         return userNumber;
     }
