@@ -1,6 +1,7 @@
 package APPLICATION;
 
 import DB.TransactionDAO;
+import GUI.Main;
 
 public class Transaction {
 
@@ -44,14 +45,32 @@ public class Transaction {
         this.providerNumber = providerNumber;
         this.status = status;
         this.message = message;
-        this.totalAmount = totalAmount;
-        this.amountToProvider = 0.94 * totalAmount;
-        this.amountToNPO = 0.03 * totalAmount;
-        this.amountPlatform = 0.03 * totalAmount;
-        this.amountDiscount = 0;
-        this.amountToPay = totalAmount;
+        if (isDiscounted(providerNumber)) {
+
+            this.amountToProvider = 0.94 * totalAmount;
+            this.amountToNPO = 0.03 * totalAmount;
+            this.amountPlatform = 0.01 * totalAmount;
+            this.amountDiscount = 0.02 * totalAmount;
+            this.totalAmount = totalAmount - this.amountDiscount;
+        }
+        else {
+            this.totalAmount = totalAmount;
+            this.amountToProvider = 0.94 * totalAmount;
+            this.amountToNPO = 0.03 * totalAmount;
+            this.amountPlatform = 0.03 * totalAmount;
+            this.amountDiscount = 0;
+        }
+        this.amountToPay = this.totalAmount;
     }
 
+    public boolean isDiscounted(int providerNumber){
+        int count = 0;
+        for (Transaction transaction : TransactionDAO.getTransactions())
+            if (transaction.getUserNumber()== Main.userMain.getUserNumber() && transaction.getProviderNumber() == providerNumber)
+                count++;
+        return count > 2.5;
+
+    }
     // getters and setters
     public int getTransactionNumber() {
         return transactionNumber;
