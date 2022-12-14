@@ -5,16 +5,16 @@ public class NonProfitOrganisation {
     public enum cause {Education, AnimalRights, ClimateChange, HumanRights, Poverty, Research, Healthcare, Other}      // nog aan te vullen
 
     // instance variables
-    private int NPONumber;
-    private String NPOName;
+    private int nPONumber;
+    private String nPOName;
     private String description;
     private String accountNumber;
     private cause causeOfNPO;
 
     // constructor for NonProfitOrganisationDAO
     public NonProfitOrganisation(int nonPONumber, String NPOName, String description, String accountNumber, cause causeOfNPO) {
-        this.NPONumber = nonPONumber;
-        this.NPOName = NPOName;
+        this.nPONumber = nonPONumber;
+        this.nPOName = NPOName;
         this.description = description;
         this.accountNumber = accountNumber;
         this.causeOfNPO = causeOfNPO;
@@ -22,19 +22,19 @@ public class NonProfitOrganisation {
 
     // getters and setters
     public int getNPONumber() {
-        return NPONumber;
+        return nPONumber;
     }
 
     public void setNonPONumber(int nonPONumber) {
-        this.NPONumber = nonPONumber;
+        this.nPONumber = nonPONumber;
     }
 
     public String getNPOName() {
-        return NPOName;
+        return nPOName;
     }
 
     public void setNPOName(String NPOName) {
-        this.NPOName = NPOName;
+        this.nPOName = NPOName;
     }
 
     public String getDescription() {
