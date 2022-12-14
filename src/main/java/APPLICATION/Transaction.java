@@ -17,8 +17,8 @@ public class Transaction {
     private double totalAmount;
     private double amountToProvider;  // 91%
     private double amountToNPO; //3%
-    private double amountPlatform;    // 3%
-    private double amountDiscount;     // vanaf 3x: 3%
+    private double amountPlatform;    // 3% vanaf 3x: 1%
+    private double amountDiscount;     // vanaf 3x: 2%
     private double amountToPay;
 
     // constructor for TransactionDAO

@@ -18,7 +18,7 @@ public class Provider extends User {
 
     // instance variables
     private int providerNumber;
-    private String VATNumber;
+    private String vATNumber;
     private String accountNumber;
     private String streetName;
     private int houseNumber;
@@ -38,10 +38,10 @@ public class Provider extends User {
 
 
     // constructor for GUI
-    public Provider(int userNumber, String firstName, String lastName, java.sql.Date dateOfBirth, int age, String email, String phoneNumber, String password, String VATNumber, String accountNumber, String streetName, int houseNumber, int ZIP, String city, String country, String artistName, genres genre, java.sql.Date activityDate, double priceHour, double minHours, double maxHours, String conditions, String description, URL teaserSet, URL linkToPage) {
+    public Provider(int userNumber, String firstName, String lastName, java.sql.Date dateOfBirth, int age, String email, String phoneNumber, String password, String VATNumber, String accountNumber, String streetName, int houseNumber, int ZIP, String city, String country, String artistName, genres genre, java.sql.Date activityDate, double priceHour, double minHours, double maxHours, String conditions, String description) {
         super(userNumber, firstName, lastName, dateOfBirth, age, email, phoneNumber, password);
         this.providerNumber = ProviderDAO.getProviders().size() + 1;
-        this.VATNumber = VATNumber;
+        this.vATNumber = VATNumber;
         this.accountNumber = accountNumber;
         this.streetName = streetName;
         this.houseNumber = houseNumber;
@@ -60,12 +60,13 @@ public class Provider extends User {
         this.linkToPage = linkToPage;
 
     }
+
 
     // constructor for ProviderDAO
     public Provider(int userNumber, String firstName, String lastName, java.sql.Date dateOfBirth, int age, String email, String phoneNumber, String password, int providerNumber, String VATNumber, String accountNumber, String streetName, int houseNumber, int ZIP, String city, String country, String artistName, genres genre, java.sql.Date activityDate, double priceHour, double minHours, double maxHours, String conditions, String description, URL teaserSet, URL linkToPage) {
         super(userNumber, firstName, lastName, dateOfBirth, age, email, phoneNumber, password);
         this.providerNumber = providerNumber;
-        this.VATNumber = VATNumber;
+        this.vATNumber = VATNumber;
         this.accountNumber = accountNumber;
         this.streetName = streetName;
         this.houseNumber = houseNumber;
@@ -83,6 +84,7 @@ public class Provider extends User {
         this.teaserSet = teaserSet;
         this.linkToPage = linkToPage;
     }
+
 
     // methods
     public static boolean checkVATNumber(String VATNumberToCheck) {
@@ -91,7 +93,7 @@ public class Provider extends User {
         if (Main.providerMain.getVATNumber().equals(VATNumberToCheck))
             return true;
         for (Provider provider : ProviderDAO.getProviders())
-            if (provider.VATNumber.equals(VATNumberToCheck))
+            if (provider.vATNumber.equals(VATNumberToCheck))
                 return false;
         return true;
     }
@@ -146,11 +148,11 @@ public class Provider extends User {
     }
 
     public String getVATNumber() {
-        return VATNumber;
+        return vATNumber;
     }
 
-    public void setVATNumber(String VATNumber) {
-        this.VATNumber = VATNumber;
+    public void setVATNumber(String vATNumber) {
+        this.vATNumber = vATNumber;
     }
 
     public String getAccountNumber() {
