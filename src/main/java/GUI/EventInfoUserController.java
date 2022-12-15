@@ -26,6 +26,8 @@ public class EventInfoUserController {
     private Label streetNameToSet;
     @FXML
     private ListView<String> bookedArtists;
+    @FXML
+    private Label noArtistsFound;
 
     public void initialize() {
         eventNameToSet.setText(UserPageController.upcomingEvent.getEventName());
@@ -35,6 +37,7 @@ public class EventInfoUserController {
         ZIPToSet.setText(String.valueOf(UserPageController.upcomingEvent.getZIP()));
         countryToSet.setText(UserPageController.upcomingEvent.getCountry());
         streetNameToSet.setText(UserPageController.upcomingEvent.getStreetName() + " " + UserPageController.upcomingEvent.getHouseNumber());
+        noArtistsFound.setVisible(false);
 
         for (Transaction transaction : TransactionDAO.getTransactions()) {
             if (transaction.getEventNumber() == UserPageController.upcomingEvent.getEventNumber()) {
@@ -42,6 +45,8 @@ public class EventInfoUserController {
                 bookedArtists.getItems().add(s);
             }
         }
+        if (bookedArtists.getItems().isEmpty())
+            noArtistsFound.setVisible(true);
     }
 
     public void goBack(ActionEvent actionEvent) {

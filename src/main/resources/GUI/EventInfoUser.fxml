@@ -27,5 +27,6 @@
          </font>
       </Label>
       <ListView fx:id="bookedArtists" layoutX="365.0" layoutY="144.0" prefHeight="195.0" prefWidth="320.0" />
+      <Label fx:id="noArtistsFound" layoutX="482.0" layoutY="234.0" text="No artists found" />
    </children>
 </AnchorPane>

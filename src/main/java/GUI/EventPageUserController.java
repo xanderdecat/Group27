@@ -55,7 +55,6 @@ public class EventPageUserController {
         eventNameToSet.setText(UserPageController.upcomingEvent.getEventName());
         startDateToSet.setText(UserPageController.upcomingEvent.getStartDate().toString());
         endDateToSet.setText(UserPageController.upcomingEvent.getEndDate().toString());
-
         setAllInvisible();
         showAll();
     }
@@ -127,7 +126,7 @@ public class EventPageUserController {
         }
         else
             enterValidData.setVisible(true);
-        if (possibleArtists.getItems().size() == 0)
+        if (possibleArtists.getItems().isEmpty())
             noArtistsFound.setVisible(true);
     }
 
@@ -151,7 +150,7 @@ public class EventPageUserController {
                     possibleArtists.getItems().add(s);
             }
         }
-        if (possibleArtists.getItems().size() == 0)
+        if (possibleArtists.getItems().isEmpty())
             noRecommendation.setVisible(true);
     }
     
