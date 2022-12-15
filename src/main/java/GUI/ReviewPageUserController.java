@@ -64,7 +64,7 @@ public class ReviewPageUserController {
                 }
             }
             String subject = subjectInput.getText();
-            int score = Integer.parseInt(scoreOn10.getValue().toString().substring(0,scoreOn10.getValue().indexOf("/")));
+            int score = Integer.parseInt(scoreOn10.getValue().substring(0,scoreOn10.getValue().indexOf("/")));
             String description = descriptionInput.getText();
             Review review = new Review(UserPageController.previousEvent.getEventNumber(), true, UserPageController.previousEvent.getEventUserNumber(), providerNumber, subject, score, description);
             ReviewDAO.save(review);

@@ -25,12 +25,12 @@
             <Button layoutX="111.0" layoutY="246.0" mnemonicParsing="false" onAction="#seeToDoTransaction" text="See transaction" />
             <Button layoutX="476.0" layoutY="246.0" mnemonicParsing="false" onAction="#seeDoneTransaction" text="See transaction" />
             <Label layoutX="111.0" layoutY="294.0" text="Eventname:" />
-            <Label layoutX="111.0" layoutY="334.0" text="Username:" />
+            <Label layoutX="111.0" layoutY="334.0" text="Organized by:" />
             <Label layoutX="381.0" layoutY="334.0" text="Confirmation date to pay:" />
             <Label layoutX="381.0" layoutY="294.0" text="Total amount:" />
             <Label layoutX="111.0" layoutY="374.0" text="Structured message:" />
             <Button layoutX="84.0" layoutY="436.0" mnemonicParsing="false" onAction="#goBack" text="Back" />
-            <Label fx:id="eventNameToSet" layoutX="208.0" layoutY="294.0" text="(EVENTNAME)" />
+            <Label fx:id="eventNameToSet" layoutX="195.0" layoutY="294.0" text="(EVENTNAME)" />
             <Label fx:id="nameToSet" layoutX="208.0" layoutY="334.0" text="(NAME)" />
             <Label fx:id="messageToSet" layoutX="251.0" layoutY="374.0" text="(MESSAGE)" />
             <Label fx:id="totalAmountToSet" layoutX="508.0" layoutY="294.0" text="(TOTALAMOUNT)" />

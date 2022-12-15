@@ -60,6 +60,7 @@ public class OverviewProviderController {
         seeAllButton.setVisible(false);
     }
 
+    // nu kan je nog in de toekomst kijken
     public void seeSpecificOverview(ActionEvent actionEvent) {
         LocalDate startDateLD = startDatePicker.getValue();
         LocalDateTime startDate1 = LocalDateTime.of(startDateLD.getYear(), startDateLD.getMonth(), startDateLD.getDayOfMonth(), 00, 00, 00);
@@ -84,11 +85,12 @@ public class OverviewProviderController {
                     declinedRequests = declinedRequests + 1;
             }
         }
+
         requestsToSet.setText(String.valueOf(acceptedRequests + declinedRequests));
         acceptedToSet.setText(String.valueOf(acceptedRequests));
         declinedToSet.setText(String.valueOf(declinedRequests));
-        earnedToSet.setText(String.valueOf(Math.round((totalEarned) * 10) / 10.0));
-        charityToSet.setText(String.valueOf(Math.round((totalCharity) * 10) / 10.0));
+        earnedToSet.setText("€" + Math.round((totalEarned) * 10) / 10.0);
+        charityToSet.setText("€" + Math.round((totalCharity) * 10) / 10.0);
         completeOverviewText.setVisible(true);
         seeAllButton.setVisible(true);
     }

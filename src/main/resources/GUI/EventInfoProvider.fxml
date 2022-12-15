@@ -15,26 +15,28 @@
                </font>
             </Label>
             <Label fx:id="eventNameToSet" contentDisplay="CENTER" layoutX="435.0" layoutY="158.0" text="(EVENTNAME)" />
-            <Label fx:id="startDateToSet" contentDisplay="CENTER" layoutX="435.0" layoutY="188.0" text="(STARTDATE)" />
-            <Label fx:id="endDateToSet" contentDisplay="CENTER" layoutX="435.0" layoutY="218.0" text="(ENDDATE)" />
-            <Label fx:id="streetNameToSet" contentDisplay="CENTER" layoutX="435.0" layoutY="248.0" text="(STREET)" />
+            <Label fx:id="startDateToSet" contentDisplay="CENTER" layoutX="435.0" layoutY="218.0" text="(STARTDATE)" />
+            <Label fx:id="endDateToSet" contentDisplay="CENTER" layoutX="435.0" layoutY="248.0" text="(ENDDATE)" />
+            <Label fx:id="streetNameToSet" contentDisplay="CENTER" layoutX="435.0" layoutY="278.0" text="(STREET)" />
             <Button layoutX="84.0" layoutY="436.0" mnemonicParsing="false" onAction="#goBack" text="Back" />
-            <Label fx:id="ZIPToSet" contentDisplay="CENTER" layoutX="435.0" layoutY="278.0" text="(ZIP)" />
-            <Label fx:id="cityToSet" contentDisplay="CENTER" layoutX="435.0" layoutY="308.0" text="(CITY)" />
-            <Label fx:id="countryToSet" contentDisplay="CENTER" layoutX="435.0" layoutY="338.0" text="(COUNTRY)" />
+            <Label fx:id="ZIPToSet" contentDisplay="CENTER" layoutX="435.0" layoutY="308.0" text="(ZIP)" />
+            <Label fx:id="cityToSet" contentDisplay="CENTER" layoutX="435.0" layoutY="338.0" text="(CITY)" />
+            <Label fx:id="countryToSet" contentDisplay="CENTER" layoutX="435.0" layoutY="368.0" text="(COUNTRY)" />
             <Label contentDisplay="CENTER" layoutX="330.0" layoutY="158.0" text="Eventname:" />
-            <Label contentDisplay="CENTER" layoutX="330.0" layoutY="188.0" text="Startdate:" />
-            <Label contentDisplay="CENTER" layoutX="330.0" layoutY="218.0" text="Enddate" />
-            <Label contentDisplay="CENTER" layoutX="330.0" layoutY="248.0" text="Streetname:" />
-            <Label contentDisplay="CENTER" layoutX="330.0" layoutY="278.0" text="ZIP code" />
-            <Label contentDisplay="CENTER" layoutX="330.0" layoutY="308.0" text="City:" />
-            <Label contentDisplay="CENTER" layoutX="330.0" layoutY="338.0" text="Country:" />
-            <Label contentDisplay="CENTER" layoutX="330.0" layoutY="368.0" text="Payed:" />
-            <Label fx:id="payedToSet" contentDisplay="CENTER" layoutX="435.0" layoutY="368.0" text="(PAYED)">
+            <Label contentDisplay="CENTER" layoutX="330.0" layoutY="218.0" text="Startdate:" />
+            <Label contentDisplay="CENTER" layoutX="330.0" layoutY="248.0" text="Enddate" />
+            <Label contentDisplay="CENTER" layoutX="330.0" layoutY="278.0" text="Streetname:" />
+            <Label contentDisplay="CENTER" layoutX="330.0" layoutY="308.0" text="ZIP code" />
+            <Label contentDisplay="CENTER" layoutX="330.0" layoutY="338.0" text="City:" />
+            <Label contentDisplay="CENTER" layoutX="330.0" layoutY="368.0" text="Country:" />
+            <Label contentDisplay="CENTER" layoutX="330.0" layoutY="398.0" text="Payed:" />
+            <Label fx:id="payedToSet" contentDisplay="CENTER" layoutX="435.0" layoutY="398.0" text="(PAYED)">
                <font>
                   <Font name="System Bold Italic" size="13.0" />
                </font>
             </Label>
+            <Label fx:id="userToSet" contentDisplay="CENTER" layoutX="435.0" layoutY="188.0" text="(USER)" />
+            <Label contentDisplay="CENTER" layoutX="330.0" layoutY="188.0" text="Organised by:" />
          </children>
       </AnchorPane>
    </children>

@@ -47,11 +47,11 @@ public class ProviderPageController {
                     String s = EventDAO.getEvent(transaction.getEventNumber()).getEventName() + " - " + EventDAO.getEvent(transaction.getEventNumber()).getCity();
                     requestedEvents.getItems().add(s);
                 }
-                if (transaction.getStatus() == Transaction.status.Accepted && EventDAO.getEvent(transaction.getEventNumber()).getEndDate().isAfter(LocalDateTime.now())) {
+                if ((transaction.getStatus() == Transaction.status.Payed || transaction.getStatus() == Transaction.status.Accepted) && EventDAO.getEvent(transaction.getEventNumber()).getEndDate().isAfter(LocalDateTime.now())) {
                     String s = EventDAO.getEvent(transaction.getEventNumber()).getEventName() + " - " + EventDAO.getEvent(transaction.getEventNumber()).getCity();
                     upcomingEvents.getItems().add(s);
                 }
-                if (transaction.getStatus() == Transaction.status.Accepted && EventDAO.getEvent(transaction.getEventNumber()).getEndDate().isBefore(LocalDateTime.now())) {
+                if ((transaction.getStatus() == Transaction.status.Payed || transaction.getStatus() == Transaction.status.Accepted) && EventDAO.getEvent(transaction.getEventNumber()).getEndDate().isBefore(LocalDateTime.now())) {
                     String s = EventDAO.getEvent(transaction.getEventNumber()).getEventName() + " - " + EventDAO.getEvent(transaction.getEventNumber()).getCity();
                     previousEvents.getItems().add(s);
                 }
@@ -83,12 +83,14 @@ public class ProviderPageController {
     }
 
     public void leaveAReview(ActionEvent actionEvent) {
+        Main.loadPage("ReviewPageProvider.fxml", actionEvent);
         String selected = previousEvents.getSelectionModel().getSelectedItem();
-        for (Event ev : EventDAO.getEvents())
+        for (Event ev : EventDAO.getEvents()) {
             if (ev.getEventName().equals(selected.substring(0, selected.indexOf("-") - 1))) {
-                previousEvent = EventDAO.getEvent(ev.getEventNumber());
+                previousEvent = ev;
                 Main.loadPage("ReviewPageProvider.fxml", actionEvent);
             }
+        }
     }
 
     public void goToUserPage(ActionEvent actionEvent) {
@@ -109,5 +111,9 @@ public class ProviderPageController {
 
     public void seeTransactions(ActionEvent actionEvent) {
         Main.loadPage("TransactionPageProvider.fxml", actionEvent);
+    }
+
+    public void seeOverview(ActionEvent actionEvent) {
+        Main.loadPage("OverviewProvider.fxml", actionEvent);
     }
 }

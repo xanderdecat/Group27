@@ -4,6 +4,7 @@ import APPLICATION.Provider;
 import APPLICATION.Review;
 import DB.ProviderDAO;
 import DB.ReviewDAO;
+import DB.UserDAO;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.ChoiceBox;
@@ -28,34 +29,30 @@ public class ReviewPageProviderController {
     @FXML
     private TextField subjectInput;
     @FXML
-    private ListView<String> userToChoose;
+    private Label userToSet;
 
     public void initialize() {
+        scoreOn10.getItems().addAll("1/10", "2/10", "3/10", "4/10", "5/10", "6/10", "7/10", "8/10", "9/10", "10/10");
         eventNameToSet.setText(ProviderPageController.previousEvent.getEventName());
+        userToSet.setText(UserDAO.getUser(ProviderPageController.previousEvent.getEventUserNumber()).getName());
         startDateToSet.setText(ProviderPageController.previousEvent.getStartDate().toString());
         endDateToSet.setText(ProviderPageController.previousEvent.getEndDate().toString());
         cityToSet.setText(ProviderPageController.previousEvent.getCity());
     }
 
     public void submitReview(ActionEvent actionEvent) {
-        if (userToChoose != null && descriptionInput != null && scoreOn10 != null && subjectInput != null) {
-            int providerNumber = 0;
-            String artist = userToChoose.getSelectionModel().getSelectedItem();
-            for (Provider provider : ProviderDAO.getProviders()) {
-                if (artist.equals(provider.getArtistName())) {
-                    providerNumber = provider.getProviderNumber();
-                }
-            }
+        if (descriptionInput.getText() != null && scoreOn10.getValue() != null && subjectInput.getText() != null) {
             String subject = subjectInput.getText();
-            int score = Integer.parseInt(scoreOn10.getValue().toString().substring(0, scoreOn10.getValue().indexOf("/")));
+            int score = Integer.parseInt(scoreOn10.getValue().substring(0, scoreOn10.getValue().indexOf("/")));
             String description = descriptionInput.getText();
-            Review review = new Review(UserPageController.previousEvent.getEventNumber(), true, UserPageController.previousEvent.getEventUserNumber(), providerNumber, subject, score, description);
+            Review review = new Review(ProviderPageController.previousEvent.getEventNumber(), false, ProviderPageController.previousEvent.getEventUserNumber(), Main.providerMain.getProviderNumber(), subject, score, description);
             ReviewDAO.save(review);
             Main.loadPage("UserPage.fxml", actionEvent);
         }
     }
 
     public void goBack(ActionEvent actionEvent) {
-        Main.loadPage("ProviderPageController.fxml", actionEvent);
+        Main.loadPage("ProviderPage.fxml", actionEvent);
     }
+
 }

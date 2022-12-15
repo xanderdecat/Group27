@@ -1,7 +1,9 @@
 package GUI;
 
 import APPLICATION.Review;
+import DB.EventDAO;
 import DB.ReviewDAO;
+import DB.UserDAO;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -14,6 +16,10 @@ public class ReviewOverviewProviderController {
     @FXML
     private Label descriptionToSet;
     @FXML
+    private Label eventToSet;
+    @FXML
+    private Label nameToSet;
+    @FXML
     private Label scoreToSet;
     @FXML
     private Label subjectToSet;
@@ -22,9 +28,11 @@ public class ReviewOverviewProviderController {
 
     public void initialize() {
         subjectToSet.setVisible(false);
+        dateToSet.setVisible(false);
+        eventToSet.setVisible(false);
+        nameToSet.setVisible(false);
         scoreToSet.setVisible(false);
         descriptionToSet.setVisible(false);
-        dateToSet.setVisible(false);
 
         for (Review review : ReviewDAO.getReviews()) {
             if (review.getProviderNumber() == Main.providerMain.getProviderNumber() && review.isProviderReview()) {
@@ -37,13 +45,17 @@ public class ReviewOverviewProviderController {
         for (Review review : ReviewDAO.getReviews()) {
             if (review.getReviewNumber() == allReviews.getSelectionModel().getSelectedItem().getReviewNumber()) {
                 descriptionToSet.setText(review.getDescription());
+                dateToSet.setText(review.getDateOfReviews().toString());
+                eventToSet.setText(EventDAO.getEvent(review.getEventNumber()).getEventName());
+                nameToSet.setText(UserDAO.getUser(review.getUserNumber()).getName());
                 scoreToSet.setText(String.valueOf(review.getScoreOn10()));
                 subjectToSet.setText(review.getSubject());
-                dateToSet.setText(review.getDateOfReviews().toString());
                 subjectToSet.setVisible(true);
+                dateToSet.setVisible(true);
+                eventToSet.setVisible(true);
+                nameToSet.setVisible(true);
                 scoreToSet.setVisible(true);
                 descriptionToSet.setVisible(true);
-                dateToSet.setVisible(true);
             }
         }
     }

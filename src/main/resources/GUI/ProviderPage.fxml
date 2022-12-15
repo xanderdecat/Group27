@@ -74,6 +74,7 @@
                   </Button>
                   <Button layoutX="28.0" layoutY="166.0" mnemonicParsing="false" onAction="#seeReviews" prefWidth="130.0" text="Reviews" />
                   <Button layoutX="28.0" layoutY="127.0" mnemonicParsing="false" onAction="#seeTransactions" prefWidth="130.0" text="Transactions" />
+                  <Button layoutX="28.0" layoutY="204.0" mnemonicParsing="false" onAction="#seeOverview" prefWidth="130.0" text="Overview" />
                </children>
             </AnchorPane>
             <Label layoutX="510.0" layoutY="95.0" text="Your average review score:">
