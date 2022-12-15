@@ -99,7 +99,7 @@ public class Provider extends User {
     }
 
     public static boolean checkVATNumberAddProvider(String VATNumberToCheck) {
-        if (VATNumberToCheck == null || VATNumberToCheck.length() == 0)
+        if (VATNumberToCheck.equals(""))
             return true;
         for (Provider provider : ProviderDAO.getProviders())
             if (provider.getVATNumber().equals(VATNumberToCheck))
@@ -127,6 +127,15 @@ public class Provider extends User {
         return true;
     }
 
+    public static boolean checkAccountNumberAddProvider(String accountNumber) {
+        if (accountNumber.equals(""))
+            return false;
+        for (Provider provider : ProviderDAO.getProviders())
+            if (provider.getAccountNumber().equals(accountNumber))
+                return false;
+        return true;
+    }
+
     public static boolean checkMinMaxHours(String minHoursString, String maxHoursString){
         double minHours = Double.parseDouble(minHoursString);
         double maxHours = Double.parseDouble(maxHoursString);
@@ -146,12 +155,14 @@ public class Provider extends User {
             return 0;
         return Math.round((sum / numberOfProviders) * 10) / 10.0;
     }
-    public static boolean provideTheSameEvent(Provider provider){
+    public static boolean provideTheSameEvent(Provider provider, Event event){
         for (Transaction transaction : TransactionDAO.getTransactions()){
-            if(transaction.getProviderNumber() == provider.getProviderNumber() && UserPageController.upcomingEvent.getEventNumber() == transaction.getEventNumber() && !Event.isFinished(UserPageController.upcomingEvent)){
-                return true;}}
-                return false;
+            if(transaction.getProviderNumber() == provider.getProviderNumber() && event.getEventNumber() == transaction.getEventNumber() && !Event.isFinished(event)){
+                return true;
             }
+        }
+        return false;
+    }
 
 
 

@@ -51,6 +51,8 @@
       <Button fx:id="registerMP" layoutX="339.0" layoutY="436.0" mnemonicParsing="false" onAction="#goToProviderPage" prefHeight="26.0" text="Register as new artist!" />
       <ChoiceBox fx:id="genreChooser" layoutX="520.0" layoutY="374.0" prefHeight="26.0" prefWidth="200.0" />
       <Button layoutX="84.0" layoutY="436.0" mnemonicParsing="false" onAction="#goToHomeScreen" text="Back" />
-      <Label layoutX="585.0" layoutY="409.0" text="* = fields must be filled in" />
+      <Label layoutX="598.0" layoutY="408.0" text="*fields must be filled in" />
+      <Label fx:id="enterValidData" layoutX="520.0" layoutY="441.0" text="Please enter valid data" textFill="RED" />
+      <Label fx:id="enterValidURL" layoutX="520.0" layoutY="441.0" text="Please enter valid URL" textFill="RED" />
    </children>
 </AnchorPane>

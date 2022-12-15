@@ -10,57 +10,77 @@
 
 <AnchorPane prefHeight="500.0" prefWidth="800.0" style="-fx-background-color: E9E3C8;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.EventPageUserController">
    <children>
-      <Label layoutX="110.0" layoutY="364.0" text="Genre:" />
-      <Label layoutX="110.0" layoutY="334.0" prefHeight="17.0" prefWidth="92.0" text="Max. price/hour" />
-      <Label layoutX="110.0" layoutY="304.0" text="Min price/hour" />
+      <ListView fx:id="possibleArtists" layoutX="433.0" layoutY="115.0" prefHeight="121.0" prefWidth="241.0" />
+      <Label layoutX="109.0" layoutY="176.0" text="Genre:" />
+      <Label layoutX="109.0" layoutY="146.0" prefHeight="17.0" prefWidth="92.0" text="Max. price/hour" />
+      <Label layoutX="109.0" layoutY="116.0" text="Min price/hour" />
       <Label layoutX="41.0" layoutY="169.0" />
-      <Label layoutX="70.0" layoutY="110.0" text="Event specifications:">
+      <Label layoutX="70.0" layoutY="81.0" text="Selection:">
          <font>
             <Font name="Arial Black" size="13.0" />
          </font>
       </Label>
-      <Label fx:id="eventNameToSet" layoutX="110.0" layoutY="144.0" text="(EVENTNAME)" />
-      <Label fx:id="startDateToSet" layoutX="110.0" layoutY="174.0" text="(STARTDATE)" />
-      <Label fx:id="endDateToSet" layoutX="110.0" layoutY="204.0" text="(ENDDATE)" />
-      <Label fx:id="cityToSet" layoutX="110.0" layoutY="234.0" text="(CITY)" />
-      <ListView fx:id="possibleArtists" layoutX="430.0" layoutY="144.0" prefHeight="79.0" prefWidth="290.0" />
-      <Label layoutX="70.0" layoutY="274.0" text="Selection:">
+      <Label fx:id="eventNameToSet" layoutX="110.0" layoutY="351.0" text="(EVENTNAME)" />
+      <Label fx:id="startDateToSet" layoutX="110.0" layoutY="381.0" text="(STARTDATE)" />
+      <Label fx:id="endDateToSet" layoutX="247.0" layoutY="381.0" text="(ENDDATE)" />
+      <Label layoutX="71.0" layoutY="321.0" text="Event specifications:">
          <font>
             <Font name="Arial Black" size="13.0" />
          </font>
       </Label>
-      <ChoiceBox fx:id="selectedMinPrice" layoutX="230.0" layoutY="304.0" prefHeight="26.0" prefWidth="133.0" />
-      <ChoiceBox fx:id="selectedMaxPrice" layoutX="230.0" layoutY="334.0" prefHeight="26.0" prefWidth="133.0" />
-      <ChoiceBox fx:id="selectedGenre" layoutX="230.0" layoutY="364.0" prefHeight="26.0" prefWidth="133.0" />
-      <Label layoutX="430.0" layoutY="110.0" text="Artists:">
+      <ChoiceBox fx:id="selectedMinPrice" layoutX="229.0" layoutY="116.0" prefHeight="26.0" prefWidth="100.0" />
+      <ChoiceBox fx:id="selectedMaxPrice" layoutX="229.0" layoutY="146.0" prefHeight="26.0" prefWidth="100.0" />
+      <ChoiceBox fx:id="selectedGenre" layoutX="229.0" layoutY="176.0" prefHeight="26.0" prefWidth="100.0" />
+      <Label layoutX="400.0" layoutY="81.0" text="Artists:">
          <font>
             <Font name="Arial Black" size="13.0" />
          </font>
       </Label>
-      <Button layoutX="430.0" layoutY="234.0" mnemonicParsing="false" onAction="#seeArtist" text="See this artist!" />
+      <Button layoutX="433.0" layoutY="245.0" mnemonicParsing="false" onAction="#seeArtist" prefHeight="23.0" prefWidth="241.0" text="See selected artist!">
+         <font>
+            <Font size="12.0" />
+         </font></Button>
       <Button layoutX="84.0" layoutY="436.0" mnemonicParsing="false" onAction="#goBack" text="Back" />
-      <Label layoutX="244.0" layoutY="50.0" text="Choose an artist for your event!">
+      <Label layoutX="244.0" layoutY="34.0" text="Choose an artist for your event!">
          <font>
             <Font name="Arial Black" size="18.0" />
          </font>
       </Label>
-      <Button layoutX="230.0" layoutY="396.0" mnemonicParsing="false" onAction="#seeSpecificList" prefHeight="26.0" prefWidth="133.0" text="Show list!" />
-      <Label layoutX="430.0" layoutY="274.0" text="Chosen artist:">
+      <Button layoutX="105.0" layoutY="215.0" mnemonicParsing="false" onAction="#showSelection" prefWidth="226.0" text="Show selection">
+         <font>
+            <Font size="12.0" />
+         </font></Button>
+      <Label layoutX="400.0" layoutY="291.0" text="Chosen artist:">
          <font>
             <Font name="Arial Black" size="13.0" />
          </font>
       </Label>
-      <Label layoutX="430.0" layoutY="304.0" text="Price/hour:" />
-      <Label layoutX="430.0" layoutY="334.0" prefHeight="17.0" prefWidth="92.0" text="Min hours:" />
-      <Label layoutX="430.0" layoutY="364.0" prefHeight="17.0" prefWidth="92.0" text="Max hours:" />
-      <Label layoutX="430.0" layoutY="394.0" prefHeight="17.0" prefWidth="92.0" text="Conditions:" />
-      <Label fx:id="priceHourToSet" layoutX="530.0" layoutY="304.0" text="(PRICEHOUR)" />
-      <Label fx:id="minHoursToSet" layoutX="530.0" layoutY="334.0" text="(MINHOURS)" />
-      <Label fx:id="maxHoursToSet" layoutX="530.0" layoutY="364.0" text="(MAXHOURS)" />
-      <Label fx:id="conditionsToSet" layoutX="530.0" layoutY="394.0" text="(CONDITIONS)" />
+      <Label layoutX="433.0" layoutY="324.0" text="Price/hour:" />
+      <Label layoutX="433.0" layoutY="351.0" prefHeight="17.0" prefWidth="92.0" text="Min hours:" />
+      <Label layoutX="590.0" layoutY="351.0" prefHeight="17.0" prefWidth="92.0" text="Max hours:" />
+      <Label layoutX="430.0" layoutY="381.0" prefHeight="17.0" prefWidth="92.0" text="Conditions:" />
+      <Label fx:id="priceHourToSet" layoutX="510.0" layoutY="324.0" text="(PRICEHOUR)" />
+      <Label fx:id="minHoursToSet" layoutX="499.0" layoutY="351.0" text="(MINHOURS)" />
+      <Label fx:id="maxHoursToSet" layoutX="660.0" layoutY="351.0" text="(MAXHOURS)" />
+      <Label fx:id="conditionsToSet" alignment="TOP_LEFT" layoutX="500.0" layoutY="381.0" maxHeight="55.0" maxWidth="280.0" prefHeight="48.0" prefWidth="280.0" text="(CONDITIONS)" />
       <Button layoutX="452.0" layoutY="437.0" mnemonicParsing="false" onAction="#chooseArtist" text="Submit!" />
       <TextField fx:id="requestedHours" layoutX="350.0" layoutY="436.0" prefHeight="26.0" prefWidth="52.0" />
       <Label layoutX="249.0" layoutY="441.0" text="Request artist for " />
       <Label layoutX="409.0" layoutY="441.0" text="hours" />
+      <Button layoutX="105.0" layoutY="245.0" mnemonicParsing="false" onAction="#showAllArtists" prefHeight="23.0" prefWidth="226.0" text="Show all artists">
+         <font>
+            <Font size="12.0" />
+         </font>
+      </Button>
+      <Button layoutX="105.0" layoutY="275.0" mnemonicParsing="false" onAction="#showRecommendedArtists" prefWidth="226.0" text="Show recommended artists">
+         <font>
+            <Font size="12.0" />
+         </font>
+      </Button>
+      <Label layoutX="229.0" layoutY="381.0" text="-" />
+      <Label fx:id="enterValidData" layoutX="207.0" layoutY="83.0" text="Please enter valid data" textFill="RED" />
+      <Label fx:id="enterValidDataHour" layoutX="529.0" layoutY="442.0" text="Please enter valid data" textFill="RED" />
+      <Label fx:id="noArtistsFound" layoutX="512.0" layoutY="169.0" text="No artists found" />
+      <Label fx:id="noRecommendation" layoutX="487.0" layoutY="157.0" prefHeight="42.0" prefWidth="137.0" text="Not enough data to show recommendations" textAlignment="CENTER" wrapText="true" />
    </children>
 </AnchorPane>

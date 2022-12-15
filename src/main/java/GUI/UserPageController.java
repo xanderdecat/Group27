@@ -92,6 +92,8 @@ public class UserPageController {
     }
 
     public void logOut(ActionEvent actionEvent) {
+        Main.userMain = null;
+        Main.providerMain = null;
         Main.loadPage("LogInUser.fxml", actionEvent);
     }
 

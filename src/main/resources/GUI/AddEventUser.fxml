@@ -44,5 +44,6 @@
       <Label layoutX="423.0" layoutY="215.0" text="Choose your non profit organisation to support:" />
       <Label layoutX="450.0" layoutY="400.0" text="* 3% of the total amount will be donated to charity " />
       <Label layoutX="581.0" layoutY="417.0" text="* all fields must be filled in" />
+      <Label fx:id="enterValidData" layoutX="498.0" layoutY="441.0" text="Please enter valid data" textFill="RED" />
    </children>
 </AnchorPane>

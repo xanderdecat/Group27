@@ -108,7 +108,7 @@ public class TransactionDAO {
                 stmt2.setString(4, String.valueOf(transaction.getStatus()));
                 stmt2.setString(5,transaction.getMessage());
                 stmt2.setDouble(6, transaction.getTotalAmount());
-                stmt2.setDouble(7, transaction.getAmountToPay());
+                stmt2.setDouble(7, transaction.getAmountToProvider());
                 stmt2.setDouble(8, transaction.getAmountToNPO());
                 stmt2.setDouble(9, transaction.getAmountPlatform());
                 stmt2.setDouble(10, transaction.getAmountDiscount());

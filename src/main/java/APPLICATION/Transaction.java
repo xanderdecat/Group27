@@ -46,7 +46,6 @@ public class Transaction {
         this.status = status;
         this.message = message;
         if (isDiscounted(providerNumber)) {
-
             this.amountToProvider = 0.94 * totalAmount;
             this.amountToNPO = 0.03 * totalAmount;
             this.amountPlatform = 0.01 * totalAmount;

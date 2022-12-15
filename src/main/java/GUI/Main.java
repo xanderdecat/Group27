@@ -13,8 +13,8 @@ import java.util.EventObject;
 
 public class Main extends Application {
 
-    public static User userMain;
-    public static Provider providerMain;
+    public static User userMain = null;
+    public static Provider providerMain = null;
 
     @Override
     public void start(Stage stage) throws IOException {

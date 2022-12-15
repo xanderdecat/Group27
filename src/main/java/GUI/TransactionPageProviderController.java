@@ -36,11 +36,11 @@ public class TransactionPageProviderController {
         for (Transaction transaction : TransactionDAO.getTransactions()) {
             if (transaction.getProviderNumber() == Main.providerMain.getProviderNumber()) {
                 if (transaction.getStatus() == Transaction.status.Accepted) {
-                    String s = transaction.getMessage() + " (€" + transaction.getTotalAmount() + ")";
+                    String s = transaction.getMessage() + " (€" + transaction.getAmountToProvider() + ")";
                     openTransactions.getItems().add(s);
                 }
                 if (transaction.getStatus() == Transaction.status.Payed) {
-                    String s = transaction.getMessage() + " (€" + transaction.getTotalAmount() + ")";
+                    String s = transaction.getMessage() + " (€" + transaction.getAmountToProvider() + ")";
                     receivedTransactions.getItems().add(s);
                 }
             }
