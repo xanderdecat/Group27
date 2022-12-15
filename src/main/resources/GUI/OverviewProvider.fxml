@@ -29,7 +29,8 @@
       <Label contentDisplay="CENTER" layoutX="195.0" layoutY="229.0" text="until:" />
       <DatePicker fx:id="endDatePicker" layoutX="231.0" layoutY="227.0" prefHeight="26.0" prefWidth="124.0" />
       <Button layoutX="231.0" layoutY="258.0" mnemonicParsing="false" onAction="#seeSpecificOverview" text="See!" />
-      <Button fx:id="seeAllButton" layoutX="231.0" layoutY="317.0" mnemonicParsing="false" onAction="#seeAll" text="See all!" />
-      <Label fx:id="completeOverviewText" layoutX="106.0" layoutY="322.0" text="Complete overview?" />
+      <Button fx:id="seeAllButton" layoutX="230.0" layoutY="339.0" mnemonicParsing="false" onAction="#seeAll" text="See all!" />
+      <Label fx:id="completeOverviewText" layoutX="105.0" layoutY="344.0" text="Complete overview?" />
+      <Label fx:id="enterValidDates" layoutX="231.0" layoutY="292.0" text="Please enter valid dates" textFill="#ff0707" />
    </children>
 </AnchorPane>
