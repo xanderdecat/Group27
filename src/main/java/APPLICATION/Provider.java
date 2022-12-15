@@ -18,11 +18,11 @@ public class Provider extends User {
 
     // instance variables
     private int providerNumber;
-    private String VATNumber;
+    private String vATNumber;
     private String accountNumber;
     private String streetName;
     private int houseNumber;
-    private int ZIP;
+    private int zIP;
     private String city;
     private String country;
     private String artistName;
@@ -38,14 +38,14 @@ public class Provider extends User {
 
 
     // constructor for GUI
-    public Provider(int userNumber, String firstName, String lastName, java.sql.Date dateOfBirth, int age, String email, String phoneNumber, String password, String VATNumber, String accountNumber, String streetName, int houseNumber, int ZIP, String city, String country, String artistName, genres genre, java.sql.Date activityDate, double priceHour, double minHours, double maxHours, String conditions, String description, URL teaserSet, URL linkToPage) {
+    public Provider(int userNumber, String firstName, String lastName, java.sql.Date dateOfBirth, int age, String email, String phoneNumber, String password, String vATNumber, String accountNumber, String streetName, int houseNumber, int zIP, String city, String country, String artistName, genres genre, java.sql.Date activityDate, double priceHour, double minHours, double maxHours, String conditions, String description) {
         super(userNumber, firstName, lastName, dateOfBirth, age, email, phoneNumber, password);
         this.providerNumber = ProviderDAO.getProviders().size() + 1;
-        this.VATNumber = VATNumber;
+        this.vATNumber = vATNumber;
         this.accountNumber = accountNumber;
         this.streetName = streetName;
         this.houseNumber = houseNumber;
-        this.ZIP = ZIP;
+        this.zIP = zIP;
         this.city = city;
         this.country = country;
         this.artistName = artistName;
@@ -60,16 +60,17 @@ public class Provider extends User {
         this.linkToPage = linkToPage;
 
     }
+
 
     // constructor for ProviderDAO
-    public Provider(int userNumber, String firstName, String lastName, java.sql.Date dateOfBirth, int age, String email, String phoneNumber, String password, int providerNumber, String VATNumber, String accountNumber, String streetName, int houseNumber, int ZIP, String city, String country, String artistName, genres genre, java.sql.Date activityDate, double priceHour, double minHours, double maxHours, String conditions, String description, URL teaserSet, URL linkToPage) {
+    public Provider(int userNumber, String firstName, String lastName, java.sql.Date dateOfBirth, int age, String email, String phoneNumber, String password, int providerNumber, String vATNumber, String accountNumber, String streetName, int houseNumber, int zIP, String city, String country, String artistName, genres genre, java.sql.Date activityDate, double priceHour, double minHours, double maxHours, String conditions, String description, URL teaserSet, URL linkToPage) {
         super(userNumber, firstName, lastName, dateOfBirth, age, email, phoneNumber, password);
         this.providerNumber = providerNumber;
-        this.VATNumber = VATNumber;
+        this.vATNumber = vATNumber;
         this.accountNumber = accountNumber;
         this.streetName = streetName;
         this.houseNumber = houseNumber;
-        this.ZIP = ZIP;
+        this.zIP = zIP;
         this.city = city;
         this.country = country;
         this.artistName = artistName;
@@ -84,14 +85,15 @@ public class Provider extends User {
         this.linkToPage = linkToPage;
     }
 
+
     // methods
-    public static boolean checkVATNumber(String VATNumberToCheck) {
-        if (VATNumberToCheck == null || VATNumberToCheck.length() == 0)
+    public static boolean checkVATNumber(String vATNumberToCheck) {
+        if (vATNumberToCheck == null || vATNumberToCheck.length() == 0)
             return true;
-        if (Main.providerMain.getVATNumber().equals(VATNumberToCheck))
+        if (Main.providerMain.getVATNumber().equals(vATNumberToCheck))
             return true;
         for (Provider provider : ProviderDAO.getProviders())
-            if (provider.VATNumber.equals(VATNumberToCheck))
+            if (provider.vATNumber.equals(vATNumberToCheck))
                 return false;
         return true;
     }
@@ -166,11 +168,11 @@ public class Provider extends User {
     }
 
     public String getVATNumber() {
-        return VATNumber;
+        return vATNumber;
     }
 
-    public void setVATNumber(String VATNumber) {
-        this.VATNumber = VATNumber;
+    public void setVATNumber(String vATNumber) {
+        this.vATNumber = vATNumber;
     }
 
     public String getAccountNumber() {
@@ -198,11 +200,11 @@ public class Provider extends User {
     }
 
     public int getZIP() {
-        return ZIP;
+        return zIP;
     }
 
     public void setZIP(int ZIP) {
-        this.ZIP = ZIP;
+        this.zIP = ZIP;
     }
 
     public String getCity() {
