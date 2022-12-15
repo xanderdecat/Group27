@@ -93,7 +93,7 @@ public class Provider extends User {
         if (Main.providerMain.getVATNumber().equals(vATNumberToCheck))
             return true;
         for (Provider provider : ProviderDAO.getProviders())
-            if (provider.vATNumber.equals(vATNumberToCheck))
+            if (provider.getVATNumber().equals(vATNumberToCheck))
                 return false;
         return true;
     }
@@ -102,7 +102,7 @@ public class Provider extends User {
         if (VATNumberToCheck == null || VATNumberToCheck.length() == 0)
             return true;
         for (Provider provider : ProviderDAO.getProviders())
-            if (provider.VATNumber.equals(VATNumberToCheck))
+            if (provider.getVATNumber().equals(VATNumberToCheck))
                 return false;
         return true;
     }
@@ -122,7 +122,7 @@ public class Provider extends User {
         if (artistName == null || artistName.length() == 0)
             return false;
         for (Provider provider : ProviderDAO.getProviders())
-            if (provider.artistName.equals(artistName))
+            if (provider.getArtistName().equals(artistName))
                 return false;
         return true;
     }
