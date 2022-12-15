@@ -56,7 +56,7 @@ public class AddProviderController {
     }
 
     public void goToProviderPage(ActionEvent actionEvent) {
-        if (Provider.checkVATNumber(VATNumberInput.getText()) && accountNumberInput.getText() != null && ZIPCodeInput.getText() != null && activityDateInput.getValue() != null && activityDateInput.getClass().equals(DatePicker.class) && Provider.checkArtistName(artistNameInput.getText()) && cityInput.getText() != null && countryInput.getText() != null && descriptionInput.getText() != null && houseNumberInput.getText() != null && maxHoursInput.getText() != null && minHoursInput.getText() != null && Provider.checkMinMaxHours(minHoursInput.getText(), maxHoursInput.getText()) && priceHourInput.getText() != null && streetNameInput.getText() != null) {
+        if (Provider.checkVATNumberAddProvider(VATNumberInput.getText()) && accountNumberInput.getText() != null && ZIPCodeInput.getText() != null && activityDateInput.getValue() != null && activityDateInput.getClass().equals(DatePicker.class) && Provider.checkArtistNameAddProvider(artistNameInput.getText()) && cityInput.getText() != null && countryInput.getText() != null && descriptionInput.getText() != null && houseNumberInput.getText() != null && maxHoursInput.getText() != null && minHoursInput.getText() != null && Provider.checkMinMaxHours(minHoursInput.getText(), maxHoursInput.getText()) && priceHourInput.getText() != null && streetNameInput.getText() != null) {
             try {
                 String VATNumber = VATNumberInput.getText();
                 String accountNumber = accountNumberInput.getText();

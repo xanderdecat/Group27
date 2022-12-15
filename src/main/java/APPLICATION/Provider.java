@@ -95,6 +95,16 @@ public class Provider extends User {
                 return false;
         return true;
     }
+
+    public static boolean checkVATNumberAddProvider(String VATNumberToCheck) {
+        if (VATNumberToCheck == null || VATNumberToCheck.length() == 0)
+            return true;
+        for (Provider provider : ProviderDAO.getProviders())
+            if (provider.VATNumber.equals(VATNumberToCheck))
+                return false;
+        return true;
+    }
+
     public static boolean checkArtistName(String artistName) {
         if (artistName == null || artistName.length() == 0)
             return false;
@@ -105,6 +115,16 @@ public class Provider extends User {
                 return false;
         return true;
     }
+
+    public static boolean checkArtistNameAddProvider(String artistName) {
+        if (artistName == null || artistName.length() == 0)
+            return false;
+        for (Provider provider : ProviderDAO.getProviders())
+            if (provider.artistName.equals(artistName))
+                return false;
+        return true;
+    }
+
     public static boolean checkMinMaxHours(String minHoursString, String maxHoursString){
         double minHours = Double.parseDouble(minHoursString);
         double maxHours = Double.parseDouble(maxHoursString);

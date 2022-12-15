@@ -13,13 +13,13 @@
       <Label layoutX="50.0" layoutY="109.0" prefHeight="17.0" prefWidth="92.0" text="VAT Number" />
       <TextField fx:id="VATNumberInput" layoutX="149.0" layoutY="104.0" prefHeight="27.0" prefWidth="200.0" />
       <TextField fx:id="accountNumberInput" layoutX="149.0" layoutY="134.0" prefHeight="27.0" prefWidth="200.0" />
-      <Label layoutX="33.0" layoutY="139.0" text="Accountnumber" />
-      <Label fx:id="testLbl" layoutX="50.0" layoutY="349.0" text="Active since" />
-      <Label layoutX="57.0" layoutY="169.0" text="Streetname" />
-      <Label layoutX="45.0" layoutY="199.0" text="Housenumber" />
-      <Label layoutX="72.0" layoutY="229.0" text="ZIP code" />
-      <Label layoutX="96.0" layoutY="259.0" text="City" />
-      <Label layoutX="74.0" layoutY="289.0" text="Country" />
+      <Label layoutX="33.0" layoutY="139.0" text="Accountnumber*" />
+      <Label fx:id="testLbl" layoutX="50.0" layoutY="349.0" text="Active since*" />
+      <Label layoutX="57.0" layoutY="169.0" text="Streetname*" />
+      <Label layoutX="45.0" layoutY="199.0" text="Housenumber*" />
+      <Label layoutX="72.0" layoutY="229.0" text="ZIP code*" />
+      <Label layoutX="96.0" layoutY="259.0" text="City*" />
+      <Label layoutX="74.0" layoutY="289.0" text="Country*" />
       <Label layoutX="146.0" layoutY="32.0" text="Please fill in all the boxes as a new Music Provider">
          <font>
             <Font name="Arial Black" size="18.0" />
@@ -31,25 +31,26 @@
       <TextField fx:id="cityInput" layoutX="149.0" layoutY="254.0" prefHeight="27.0" prefWidth="200.0" />
       <TextField fx:id="countryInput" layoutX="149.0" layoutY="284.0" prefHeight="27.0" prefWidth="200.0" />
       <TextField fx:id="artistNameInput" layoutX="149.0" layoutY="314.0" prefHeight="27.0" prefWidth="200.0" />
-      <Label layoutX="59.0" layoutY="319.0" text="Artistname" />
+      <Label layoutX="59.0" layoutY="319.0" text="Artistname*" />
       <DatePicker fx:id="activityDateInput" layoutX="149.0" layoutY="344.0" prefHeight="26.0" prefWidth="200.0" />
       <TextField fx:id="priceHourInput" layoutX="149.0" layoutY="374.0" prefHeight="27.0" prefWidth="200.0" />
-      <Label fx:id="testLbl1" layoutX="62.0" layoutY="379.0" text="Price hour" />
+      <Label fx:id="testLbl1" layoutX="62.0" layoutY="379.0" text="Price hour*" />
       <TextField fx:id="maxHoursInput" layoutX="520.0" layoutY="134.0" prefHeight="27.0" prefWidth="200.0" />
-      <Label fx:id="testLbl11" layoutX="437.0" layoutY="113.0" text="Min hours" />
+      <Label fx:id="testLbl11" layoutX="437.0" layoutY="113.0" text="Min hours*" />
       <TextField fx:id="minHoursInput" layoutX="520.0" layoutY="104.0" prefHeight="27.0" prefWidth="200.0" />
-      <Label fx:id="testLbl111" layoutX="433.0" layoutY="139.0" text="Max hours " />
+      <Label fx:id="testLbl111" layoutX="433.0" layoutY="139.0" text="Max hours*" />
       <TextField fx:id="conditionsInput" layoutX="520.0" layoutY="164.0" prefHeight="72.0" prefWidth="200.0" />
-      <Label fx:id="testLbl1111" layoutX="430.0" layoutY="192.0" text="Conditions  " />
+      <Label fx:id="testLbl1111" layoutX="430.0" layoutY="192.0" text="Conditions" />
       <TextField fx:id="descriptionInput" layoutX="520.0" layoutY="241.0" prefHeight="69.0" prefWidth="200.0" />
-      <Label fx:id="testLbl11111" layoutX="425.0" layoutY="267.0" text="Description  " />
+      <Label fx:id="testLbl11111" layoutX="425.0" layoutY="267.0" text="Description*" />
       <TextField fx:id="linkToSetInput" layoutX="520.0" layoutY="314.0" prefHeight="27.0" prefWidth="200.0" />
-      <Label fx:id="testLbl1112" layoutX="399.0" layoutY="319.0" text="Link to teaserset" />
+      <Label fx:id="testLbl1112" layoutX="399.0" layoutY="319.0" text="Link to teaserset*" />
       <TextField fx:id="linkToPageInput" layoutX="520.0" layoutY="344.0" prefHeight="27.0" prefWidth="200.0" />
-      <Label fx:id="testLbl1113" layoutX="421.0" layoutY="349.0" text="Link to page " />
-      <Label fx:id="testLbl11131" layoutX="456.0" layoutY="379.0" text="Genre " />
+      <Label fx:id="testLbl1113" layoutX="421.0" layoutY="349.0" text="Link to page *" />
+      <Label fx:id="testLbl11131" layoutX="456.0" layoutY="379.0" text="Genre*" />
       <Button fx:id="registerMP" layoutX="339.0" layoutY="436.0" mnemonicParsing="false" onAction="#goToProviderPage" prefHeight="26.0" text="Register as new artist!" />
       <ChoiceBox fx:id="genreChooser" layoutX="520.0" layoutY="374.0" prefHeight="26.0" prefWidth="200.0" />
       <Button layoutX="84.0" layoutY="436.0" mnemonicParsing="false" onAction="#goToHomeScreen" text="Back" />
+      <Label layoutX="585.0" layoutY="409.0" text="* = fields must be filled in" />
    </children>
 </AnchorPane>

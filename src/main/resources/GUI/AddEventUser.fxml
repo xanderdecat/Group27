@@ -42,6 +42,7 @@
       <ChoiceBox fx:id="endDatePicker" layoutX="150.0" layoutY="370.0" prefHeight="26.0" prefWidth="67.0" />
       <ListView fx:id="goodCauses" layoutX="424.0" layoutY="250.0" prefHeight="146.0" prefWidth="296.0" />
       <Label layoutX="423.0" layoutY="215.0" text="Choose your non profit organisation to support:" />
-      <Label layoutX="423.0" layoutY="400.0" text="* 3% of the total amount will be donated to charity " />
+      <Label layoutX="450.0" layoutY="400.0" text="* 3% of the total amount will be donated to charity " />
+      <Label layoutX="581.0" layoutY="417.0" text="* all fields must be filled in" />
    </children>
 </AnchorPane>

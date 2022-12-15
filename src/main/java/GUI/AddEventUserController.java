@@ -65,12 +65,12 @@ public class AddEventUserController {
 
             LocalDate startDateLD = startDateInput.getValue();
             String startDateString = startDatePicker.getValue();
-            int startDateInteger = Integer.parseInt(startDateString.substring(0, 1));
+            int startDateInteger = Integer.parseInt(startDateString.substring(0, 2));
             LocalDateTime startDate1 = LocalDateTime.of(startDateLD.getYear(), startDateLD.getMonth(), startDateLD.getDayOfMonth(), startDateInteger, 00, 00);
 
             LocalDate endDateLD = endDateInput.getValue();
             String endDateString = endDatePicker.getValue();
-            int endDateInteger = Integer.parseInt(endDateString.substring(0, 1));
+            int endDateInteger = Integer.parseInt(endDateString.substring(0, 2));
             LocalDateTime endDate1 = LocalDateTime.of(endDateLD.getYear(), endDateLD.getMonth(), endDateLD.getDayOfMonth(), endDateInteger, 00, 00);
 
             String description1 = descriptionInput.getText();
