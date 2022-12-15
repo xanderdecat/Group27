@@ -38,7 +38,7 @@ public class Provider extends User {
 
 
     // constructor for GUI
-    public Provider(int userNumber, String firstName, String lastName, java.sql.Date dateOfBirth, int age, String email, String phoneNumber, String password, String vATNumber, String accountNumber, String streetName, int houseNumber, int zIP, String city, String country, String artistName, genres genre, java.sql.Date activityDate, double priceHour, double minHours, double maxHours, String conditions, String description) {
+    public Provider(int userNumber, String firstName, String lastName, java.sql.Date dateOfBirth, int age, String email, String phoneNumber, String password, String vATNumber, String accountNumber, String streetName, int houseNumber, int zIP, String city, String country, String artistName, genres genre, java.sql.Date activityDate, double priceHour, double minHours, double maxHours, String conditions, String description, URL teaserSet, URL linkToPage) {
         super(userNumber, firstName, lastName, dateOfBirth, age, email, phoneNumber, password);
         this.providerNumber = ProviderDAO.getProviders().size() + 1;
         this.vATNumber = vATNumber;
