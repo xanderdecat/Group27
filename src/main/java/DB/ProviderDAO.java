@@ -36,7 +36,7 @@ public class ProviderDAO extends UserDAO {
                     + "conditions varchar(100), "
                     + "description varchar(100) NOT NULL, "
                     + "teaserSet varchar(300) NOT NULL, "
-                    + "linkToPage varchar(300) UNIQUE, "
+                    + "linkToPage varchar(300) NOT NULL UNIQUE, "
                     + "PRIMARY KEY (providerNumber)" + ")";
             stmt.executeUpdate(sql);
         } catch (SQLException e) {

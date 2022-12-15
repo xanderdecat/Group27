@@ -17,11 +17,14 @@ public class ReviewOverviewProviderController {
     private Label scoreToSet;
     @FXML
     private Label subjectToSet;
+    @FXML
+    private Label dateToSet;
 
     public void initialize() {
         subjectToSet.setVisible(false);
         scoreToSet.setVisible(false);
         descriptionToSet.setVisible(false);
+        dateToSet.setVisible(false);
 
         for (Review review : ReviewDAO.getReviews()) {
             if (review.getProviderNumber() == Main.providerMain.getProviderNumber() && review.isProviderReview()) {
@@ -36,9 +39,11 @@ public class ReviewOverviewProviderController {
                 descriptionToSet.setText(review.getDescription());
                 scoreToSet.setText(String.valueOf(review.getScoreOn10()));
                 subjectToSet.setText(review.getSubject());
+                dateToSet.setText(review.getDateOfReviews().toString());
                 subjectToSet.setVisible(true);
                 scoreToSet.setVisible(true);
                 descriptionToSet.setVisible(true);
+                dateToSet.setVisible(true);
             }
         }
     }
