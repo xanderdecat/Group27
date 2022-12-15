@@ -51,14 +51,13 @@ public class AddEventUserController {
             String s = npo.getNPOName() + " - " + npo.getCauseOfNPO().toString();
             goodCauses.getItems().add(s);
         }
-
         enterValidData.setVisible(false);
         startDatePicker.getItems().addAll("00:00", "01:00", "02:00", "03:00", "04:00", "05:00", "06:00", "07:00", "08:00", "09:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00", "20:00", "21:00", "22:00", "23:00");
         endDatePicker.getItems().addAll("00:00", "01:00", "02:00", "03:00", "04:00", "05:00", "06:00", "07:00", "08:00", "09:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00", "20:00", "21:00", "22:00", "23:00");
     }
 
     public void makeNewEvent(ActionEvent actionEvent) {
-        if (eventNameInput.getText().equals("") && !streetNameInput.getText().equals("") && !houseNumberInput.getText().equals("") && !zipCodeInput.getText().equals("") && !cityInput.getText().equals("") && !countryInput.getText().equals("") && startDateInput.getValue() != null && !startDatePicker.getValue().equals("") && endDateInput.getValue() != null && !endDatePicker.getValue().equals("") && !descriptionInput.getText().equals("") && !linkToPageInput.getText().equals("") && !goodCauses.getSelectionModel().getSelectedItem().equals("")) {
+        if (!eventNameInput.getText().equals("") && !streetNameInput.getText().equals("") && !houseNumberInput.getText().equals("") && !zipCodeInput.getText().equals("") && !cityInput.getText().equals("") && !countryInput.getText().equals("") && startDateInput.getValue() != null && !startDatePicker.getValue().equals("") && endDateInput.getValue() != null && !endDatePicker.getValue().equals("") && !descriptionInput.getText().equals("") && !linkToPageInput.getText().equals("") && !goodCauses.getSelectionModel().getSelectedItem().equals("")) {
             try {
                 String eventName1 = eventNameInput.getText();
                 String streetName1 = streetNameInput.getText();
@@ -87,14 +86,18 @@ public class AddEventUserController {
                     if (subs.equals(npo.getNPOName()))
                         npoNumber1 = npo.getNPONumber();
                 }
-                if (startDate1.isBefore(endDate1) && LocalDate.now().isBefore(ChronoLocalDate.from(startDate1.minusDays(5))) && eventName1 != null && streetName1 != null && houseNumberInput.getText() != null && zipCodeInput.getText() != null && country1 != null && description1 != null) {
+                if (startDate1.isBefore(endDate1) && LocalDate.now().isBefore(ChronoLocalDate.from(startDate1.minusDays(5)))) {
                     eventMain = new Event(Main.userMain.getUserNumber(), eventName1, streetName1, houseNumber1, ZIPCode1, cityInput1, country1, startDate1, endDate1, description1, linkToPage1, npoNumber1);
                     EventDAO.saveEvent(eventMain);
                     Main.loadPage("UserPage.fxml", actionEvent);
                 }
+                else 
+                    enterValidData.setVisible(true);
             } catch (MalformedURLException | NumberFormatException e) {
             }
         }
+        else
+            enterValidData.setVisible(true);
     }
 
     public void goToHomePage(ActionEvent actionEvent) {
