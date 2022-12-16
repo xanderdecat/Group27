@@ -65,42 +65,48 @@ public class UserPageController {
     }
 
     public void bookAnArtist(ActionEvent actionEvent) {
-        String selected = upcomingEventsChooser.getSelectionModel().getSelectedItem();
-        for (Event ev : EventDAO.getEvents()) {
-            if (ev.getEventName().equals(selected.substring(0, selected.indexOf("-") - 1))) {
-                upcomingEvent = EventDAO.getEvent(ev.getEventNumber());
-                Main.loadPage("EventPageUser.fxml", actionEvent);
+        if (upcomingEventsChooser.getSelectionModel().getSelectedItem() != null) {
+            String selected = upcomingEventsChooser.getSelectionModel().getSelectedItem();
+            for (Event ev : EventDAO.getEvents()) {
+                if (ev.getEventName().equals(selected.substring(0, selected.indexOf("-") - 1))) {
+                    upcomingEvent = EventDAO.getEvent(ev.getEventNumber());
+                    Main.loadPage("EventPageUser.fxml", actionEvent);
+                }
             }
         }
     }
 
     public void viewEvent(ActionEvent actionEvent) {
-        String selected = upcomingEventsChooser.getSelectionModel().getSelectedItem();
-        for (Event ev : EventDAO.getEvents()) {
-            if (ev.getEventName().equals(selected.substring(0, selected.indexOf("-") - 1))) {
-                upcomingEvent = EventDAO.getEvent(ev.getEventNumber());
-                Main.loadPage("EventInfoUser.fxml", actionEvent);
+        if (upcomingEventsChooser.getSelectionModel().getSelectedItem() != null) {
+            String selected = upcomingEventsChooser.getSelectionModel().getSelectedItem();
+            for (Event ev : EventDAO.getEvents()) {
+                if (ev.getEventName().equals(selected.substring(0, selected.indexOf("-") - 1))) {
+                    upcomingEvent = EventDAO.getEvent(ev.getEventNumber());
+                    Main.loadPage("EventInfoUser.fxml", actionEvent);
+                }
             }
         }
 
     }
 
     public void viewPreviousEvent(ActionEvent actionEvent) {
-        String selected = previousEventsChooser.getSelectionModel().getSelectedItem();
-        for (Event ev : EventDAO.getEvents()) {
-            if (ev.getEventName().equals(selected.substring(0, selected.indexOf("-") - 1))) {
-                previousEvent = EventDAO.getEvent(ev.getEventNumber());
+        if (previousEventsChooser.getSelectionModel().getSelectedItem() != null) {
+            String selected = previousEventsChooser.getSelectionModel().getSelectedItem();
+            for (Event ev : EventDAO.getEvents()) {
+                if (ev.getEventName().equals(selected.substring(0, selected.indexOf("-") - 1))) {
+                    previousEvent = EventDAO.getEvent(ev.getEventNumber());
+                }
             }
-        }
-        boolean OK = false;
-        for (Review review : ReviewDAO.getReviews()) {
-            if (review.getUserNumber() == Main.userMain.getUserNumber() && review.getEventNumber() == previousEvent.getEventNumber() && review.isProviderReview()) {
-                reviewExists.setVisible(true);
-                OK = true;
+            boolean OK = false;
+            for (Review review : ReviewDAO.getReviews()) {
+                if (review.getUserNumber() == Main.userMain.getUserNumber() && review.getEventNumber() == previousEvent.getEventNumber() && review.isProviderReview()) {
+                    reviewExists.setVisible(true);
+                    OK = true;
+                }
             }
+            if (!OK)
+                Main.loadPage("ReviewPageUser.fxml", actionEvent);
         }
-        if (!OK)
-            Main.loadPage("ReviewPageUser.fxml", actionEvent);
     }
 
     public void logOut(ActionEvent actionEvent) {

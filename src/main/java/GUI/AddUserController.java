@@ -4,6 +4,7 @@ import APPLICATION.User;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import java.time.LocalDate;
 
@@ -21,10 +22,17 @@ public class AddUserController {
     private TextField phoneNumberInput;
     @FXML
     private TextField passwordInput;
+    @FXML
+    private Label enterValidData;
+
+    public void initialize() {
+        enterValidData.setVisible(false);
+    }
 
     public void goToHomePage(ActionEvent actionEvent) {
-        if (dateOfBirthInput.getValue() != null && emailInput.getText() != null && firstNameInput.getText() != null && lastNameInput.getText() != null && phoneNumberInput.getText() != null && passwordInput.getText() != null) {
-            if(dateOfBirthInput.getClass().equals(DatePicker.class) ){
+        boolean OK = false;
+        if (dateOfBirthInput.getValue() != null && dateOfBirthInput.getClass().equals(DatePicker.class) && !emailInput.getText().equals("") && !firstNameInput.getText().equals("") && !lastNameInput.getText().equals("") && !phoneNumberInput.getText().equals("") && !passwordInput.getText().equals("")) {
+            if(dateOfBirthInput.getValue().isBefore(LocalDate.now())){
                 String firstName = firstNameInput.getText();
                 String lastName = lastNameInput.getText();
                 LocalDate ld = dateOfBirthInput.getValue();
@@ -35,8 +43,11 @@ public class AddUserController {
                 Main.userMain = new User(firstName, lastName, date, email, phoneNumber, password);
                 DB.UserDAO.saveUser(Main.userMain);
                 Main.loadPage("UserPage.fxml", actionEvent);
+                OK = true;
             }
         }
+        if (!OK)
+            enterValidData.setVisible(true);
     }
 
     public void goToWelcomePage(ActionEvent actionEvent) {

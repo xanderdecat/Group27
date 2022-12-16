@@ -54,5 +54,6 @@
       </Label>
       <Button fx:id="newUserButton" layoutX="440.0" layoutY="411.0" mnemonicParsing="false" onAction="#goToNewUserPage" text="Register" />
       <Label layoutX="288.0" layoutY="415.0" text="Register as a new user?" />
+      <Label fx:id="incorrectEmailPassword" layoutX="481.0" layoutY="326.0" text="Incorrect email or password" textFill="RED" />
    </children>
 </AnchorPane>
