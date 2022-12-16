@@ -30,8 +30,11 @@ public class ReviewPageProviderController {
     private TextField subjectInput;
     @FXML
     private Label userToSet;
+    @FXML
+    private Label enterValidData;
 
     public void initialize() {
+        enterValidData.setVisible(false);
         scoreOn10.getItems().addAll("1/10", "2/10", "3/10", "4/10", "5/10", "6/10", "7/10", "8/10", "9/10", "10/10");
         eventNameToSet.setText(ProviderPageController.previousEvent.getEventName());
         userToSet.setText(UserDAO.getUser(ProviderPageController.previousEvent.getEventUserNumber()).getName());
@@ -41,14 +44,16 @@ public class ReviewPageProviderController {
     }
 
     public void submitReview(ActionEvent actionEvent) {
-        if (descriptionInput.getText() != null && scoreOn10.getValue() != null && subjectInput.getText() != null) {
+        if (!descriptionInput.getText().equals("") && !scoreOn10.getValue().equals("") && !subjectInput.getText().equals("")) {
             String subject = subjectInput.getText();
             int score = Integer.parseInt(scoreOn10.getValue().substring(0, scoreOn10.getValue().indexOf("/")));
             String description = descriptionInput.getText();
             Review review = new Review(ProviderPageController.previousEvent.getEventNumber(), false, ProviderPageController.previousEvent.getEventUserNumber(), Main.providerMain.getProviderNumber(), subject, score, description);
             ReviewDAO.save(review);
-            Main.loadPage("UserPage.fxml", actionEvent);
+            Main.loadPage("ProviderPage.fxml", actionEvent);
         }
+        else
+            enterValidData.setVisible(true);
     }
 
     public void goBack(ActionEvent actionEvent) {

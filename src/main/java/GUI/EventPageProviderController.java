@@ -2,6 +2,7 @@ package GUI;
 
 import APPLICATION.Transaction;
 import DB.TransactionDAO;
+import DB.UserDAO;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Hyperlink;
@@ -27,9 +28,12 @@ public class EventPageProviderController {
     private Label startDateToSet;
     @FXML
     private Label streetNameToSet;
+    @FXML
+    private Label userToSet;
 
     public void initialize() {
         eventNameToSet.setText(ProviderPageController.requestedEvent.getEventName());
+        userToSet.setText(UserDAO.getUser(ProviderPageController.requestedEvent.getEventUserNumber()).getName());
         startDateToSet.setText(ProviderPageController.requestedEvent.getStartDate().toString());
         endDateToSet.setText(ProviderPageController.requestedEvent.getEndDate().toString());
         streetNameToSet.setText(ProviderPageController.requestedEvent.getStreetName() + " " + ProviderPageController.requestedEvent.getHouseNumber());

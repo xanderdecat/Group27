@@ -2,8 +2,10 @@ package GUI;
 
 import APPLICATION.Event;
 import APPLICATION.Provider;
+import APPLICATION.Review;
 import APPLICATION.Transaction;
 import DB.EventDAO;
+import DB.ReviewDAO;
 import DB.TransactionDAO;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -29,9 +31,12 @@ public class ProviderPageController {
     private Label scoreToSet;
     @FXML
     private Label amountToSet;
+    @FXML
+    private Label reviewExists;
 
     public void initialize() {
         artistNameToSet.setText(Main.providerMain.getArtistName());
+        reviewExists.setVisible(false);
 
         if (Provider.calculateAverageScoreForProvider(Main.providerMain) == 0)
             scoreToSet.setText("-");
@@ -41,7 +46,7 @@ public class ProviderPageController {
         double amountForNPO = 0;
         for (Transaction transaction : TransactionDAO.getTransactions()) {
             if (transaction.getProviderNumber() == Main.providerMain.getProviderNumber()) {
-                if (transaction.getStatus() == Transaction.status.Payed)
+                if (transaction.getStatus() == Transaction.status.Payed && EventDAO.getEvent(transaction.getEventNumber()).getEndDate().isBefore(LocalDateTime.now()))
                     amountForNPO = amountForNPO + transaction.getAmountToNPO();
                 if (transaction.getStatus() == Transaction.status.Requested && EventDAO.getEvent(transaction.getEventNumber()).getConfirmationDate().isAfter(LocalDateTime.now())) {
                     String s = EventDAO.getEvent(transaction.getEventNumber()).getEventName() + " - " + EventDAO.getEvent(transaction.getEventNumber()).getCity();
@@ -83,14 +88,21 @@ public class ProviderPageController {
     }
 
     public void leaveAReview(ActionEvent actionEvent) {
-        Main.loadPage("ReviewPageProvider.fxml", actionEvent);
         String selected = previousEvents.getSelectionModel().getSelectedItem();
         for (Event ev : EventDAO.getEvents()) {
             if (ev.getEventName().equals(selected.substring(0, selected.indexOf("-") - 1))) {
                 previousEvent = ev;
-                Main.loadPage("ReviewPageProvider.fxml", actionEvent);
             }
         }
+        boolean OK = false;
+        for (Review review : ReviewDAO.getReviews()) {
+            if (review.getProviderNumber() == Main.providerMain.getProviderNumber() && review.getEventNumber() == previousEvent.getEventNumber() && !review.isProviderReview()) {
+                reviewExists.setVisible(true);
+                OK = true;
+            }
+        }
+        if (!OK)
+            Main.loadPage("ReviewPageProvider.fxml", actionEvent);
     }
 
     public void goToUserPage(ActionEvent actionEvent) {

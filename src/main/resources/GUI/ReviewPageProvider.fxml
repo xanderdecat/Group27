@@ -45,6 +45,7 @@
             <Label layoutX="96.0" layoutY="212.0" text="Startdate:" />
             <Label layoutX="96.0" layoutY="242.0" text="Startdate:" />
             <Label layoutX="96.0" layoutY="272.0" text="City:" />
+            <Label fx:id="enterValidData" layoutX="508.0" layoutY="424.0" text="Please enter valid data" textFill="RED" />
          </children>
       </AnchorPane>
    </children>

@@ -82,5 +82,6 @@
             </Label>
          </children>
       </AnchorPane>
+      <Label fx:id="reviewExists" layoutX="555.0" layoutY="448.0" text="A review for this event already exists" textFill="RED" />
    </children>
 </AnchorPane>

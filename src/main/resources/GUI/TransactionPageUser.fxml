@@ -34,5 +34,6 @@
       <Label fx:id="messageToSet" layoutX="251.0" layoutY="374.0" text="(MESSAGE)" />
       <Label fx:id="totalAmountToSet" layoutX="508.0" layoutY="294.0" text="(TOTALAMOUNT)" />
       <Label fx:id="confirmationDateToSet" layoutX="559.0" layoutY="334.0" text="(CONFIRAMTIONDATE)" />
+      <Label fx:id="pleaseSelectTransaction" layoutX="381.0" layoutY="374.0" text="Please select a transaction" textFill="RED" />
    </children>
 </AnchorPane>

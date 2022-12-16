@@ -2,15 +2,16 @@ package GUI;
 
 import APPLICATION.Event;
 import APPLICATION.Provider;
+import APPLICATION.Review;
 import APPLICATION.User;
 import DB.EventDAO;
 import DB.ProviderDAO;
+import DB.ReviewDAO;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
-
 import java.time.LocalDateTime;
 
 public class UserPageController {
@@ -29,10 +30,13 @@ public class UserPageController {
     private Label scoreToSet;
     @FXML
     private ListView<String> upcomingEventsChooser;
+    @FXML
+    private Label reviewExists;
 
     public void initialize() {
         continueButton.setVisible(false);
         upgradeButton.setVisible(true);
+        reviewExists.setVisible(false);
         nameToSet.setText(Main.userMain.getName());
 
         if (User.calculateAverageScoreForUser(Main.userMain) == 0)
@@ -86,9 +90,17 @@ public class UserPageController {
         for (Event ev : EventDAO.getEvents()) {
             if (ev.getEventName().equals(selected.substring(0, selected.indexOf("-") - 1))) {
                 previousEvent = EventDAO.getEvent(ev.getEventNumber());
-                Main.loadPage("ReviewPageUser.fxml", actionEvent);
             }
         }
+        boolean OK = false;
+        for (Review review : ReviewDAO.getReviews()) {
+            if (review.getUserNumber() == Main.userMain.getUserNumber() && review.getEventNumber() == previousEvent.getEventNumber() && review.isProviderReview()) {
+                reviewExists.setVisible(true);
+                OK = true;
+            }
+        }
+        if (!OK)
+            Main.loadPage("ReviewPageUser.fxml", actionEvent);
     }
 
     public void logOut(ActionEvent actionEvent) {
@@ -120,5 +132,4 @@ public class UserPageController {
     public void goToReviews(ActionEvent actionEvent) {
         Main.loadPage("ReviewOverviewUser.fxml", actionEvent);
     }
-
 }

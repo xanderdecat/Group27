@@ -25,6 +25,8 @@ public class ReviewOverviewProviderController {
     private Label subjectToSet;
     @FXML
     private Label dateToSet;
+    @FXML
+    private Label noReviewsReceived;
 
     public void initialize() {
         subjectToSet.setVisible(false);
@@ -33,29 +35,34 @@ public class ReviewOverviewProviderController {
         nameToSet.setVisible(false);
         scoreToSet.setVisible(false);
         descriptionToSet.setVisible(false);
+        noReviewsReceived.setVisible(false);
 
         for (Review review : ReviewDAO.getReviews()) {
             if (review.getProviderNumber() == Main.providerMain.getProviderNumber() && review.isProviderReview()) {
                 allReviews.getItems().add(review);
             }
         }
+        if (allReviews.getItems().isEmpty())
+            noReviewsReceived.setVisible(true);
     }
 
     public void seeFullReview(ActionEvent actionEvent) {
-        for (Review review : ReviewDAO.getReviews()) {
-            if (review.getReviewNumber() == allReviews.getSelectionModel().getSelectedItem().getReviewNumber()) {
-                descriptionToSet.setText(review.getDescription());
-                dateToSet.setText(review.getDateOfReviews().toString());
-                eventToSet.setText(EventDAO.getEvent(review.getEventNumber()).getEventName());
-                nameToSet.setText(UserDAO.getUser(review.getUserNumber()).getName());
-                scoreToSet.setText(String.valueOf(review.getScoreOn10()));
-                subjectToSet.setText(review.getSubject());
-                subjectToSet.setVisible(true);
-                dateToSet.setVisible(true);
-                eventToSet.setVisible(true);
-                nameToSet.setVisible(true);
-                scoreToSet.setVisible(true);
-                descriptionToSet.setVisible(true);
+        if (allReviews.getSelectionModel().getSelectedItem() != null) {
+            for (Review review : ReviewDAO.getReviews()) {
+                if (review.getReviewNumber() == allReviews.getSelectionModel().getSelectedItem().getReviewNumber()) {
+                    descriptionToSet.setText(review.getDescription());
+                    dateToSet.setText(review.getDateOfReviews().toString());
+                    eventToSet.setText(EventDAO.getEvent(review.getEventNumber()).getEventName());
+                    nameToSet.setText(UserDAO.getUser(review.getUserNumber()).getName());
+                    scoreToSet.setText(String.valueOf(review.getScoreOn10()));
+                    subjectToSet.setText(review.getSubject());
+                    subjectToSet.setVisible(true);
+                    dateToSet.setVisible(true);
+                    eventToSet.setVisible(true);
+                    nameToSet.setVisible(true);
+                    scoreToSet.setVisible(true);
+                    descriptionToSet.setVisible(true);
+                }
             }
         }
     }

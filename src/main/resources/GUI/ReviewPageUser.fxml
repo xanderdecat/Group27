@@ -44,5 +44,6 @@
             <Font name="Arial Black" size="13.0" />
          </font>
       </Label>
+      <Label fx:id="enterValidData" layoutX="521.0" layoutY="424.0" text="Please enter valid data" textFill="RED" />
    </children>
 </AnchorPane>

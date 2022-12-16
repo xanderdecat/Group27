@@ -43,6 +43,8 @@ public class PersonalPageUserController {
     private Button showPasswordButton;
     @FXML
     private Button hidePasswordButton;
+    @FXML
+    private Label enterValidData;
 
     public void initialize() {
         nameToSet.setText(Main.userMain.getName());
@@ -54,6 +56,7 @@ public class PersonalPageUserController {
         passWordToSet.setText("**********");
         showPasswordButton.setVisible(true);
         hidePasswordButton.setVisible(false);
+        enterValidData.setVisible(false);
     }
 
     public void showPassword(ActionEvent actionEvent) {
@@ -73,6 +76,7 @@ public class PersonalPageUserController {
     }
 
     public void changePersonalInformation(ActionEvent actionEvent) {
+        enterValidData.setVisible(false);
         int userNumber = Main.userMain.getUserNumber();
         String newFirstName = Main.userMain.getFirstName();
         String newLastName = Main.userMain.getLastName();
@@ -88,9 +92,15 @@ public class PersonalPageUserController {
             newLastName = newLastNameInput.getText();
         }
         if (newDateOfBirthInput.getValue() != null) {
-            LocalDate ld = newDateOfBirthInput.getValue();
-            newDateofBirth = java.sql.Date.valueOf(ld);
-            newAge = Period.between(ld, LocalDate.now()).getYears();
+            if (newDateOfBirthInput.getValue().isBefore(LocalDate.now())) {
+                LocalDate ld = newDateOfBirthInput.getValue();
+                newDateofBirth = java.sql.Date.valueOf(ld);
+                newAge = Period.between(ld, LocalDate.now()).getYears();
+            }
+            else {
+                enterValidData.setVisible(true);
+                return;
+            }
         }
         if (newEmailInput.getText() != "") {
             newEmail = newEmailInput.getText();

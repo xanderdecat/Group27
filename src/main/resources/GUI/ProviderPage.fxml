@@ -129,6 +129,7 @@
                   </RadialGradient>
                </textFill>
             </Label>
+            <Label fx:id="reviewExists" layoutX="554.0" layoutY="442.0" text="A review for this event already exists" textFill="RED" />
          </children>
       </AnchorPane>
    </children>

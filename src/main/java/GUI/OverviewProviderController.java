@@ -56,8 +56,8 @@ public class OverviewProviderController {
         requestsToSet.setText(String.valueOf(acceptedRequests + declinedRequests));
         acceptedToSet.setText(String.valueOf(acceptedRequests));
         declinedToSet.setText(String.valueOf(declinedRequests));
-        earnedToSet.setText(String.valueOf(Math.round((totalEarned) * 10) / 10.0));
-        charityToSet.setText(String.valueOf(Math.round((totalCharity) * 10) / 10.0));
+        earnedToSet.setText("€" + Math.round((totalEarned) * 10) / 10.0);
+        charityToSet.setText("€" + Math.round((totalCharity) * 10) / 10.0);
         completeOverviewText.setVisible(false);
         seeAllButton.setVisible(false);
         enterValidDates.setVisible(false);

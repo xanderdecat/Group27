@@ -94,12 +94,12 @@ public class EventPageUserController {
     }
 
     public void showSelection(ActionEvent actionEvent) {
+        setAllInvisible();
         if (selectedMinPrice.getValue() != null && selectedMaxPrice.getValue() != null && selectedGenre.getValue() != null) {
             double minPrice = Double.parseDouble(selectedMinPrice.getValue());
             double maxPrice = Double.parseDouble(selectedMaxPrice.getValue());
             Provider.genres genre = Provider.genres.valueOf(selectedGenre.getValue());
             if (maxPrice >= minPrice) {
-                setAllInvisible();
                 if (Main.providerMain  != null) {
                     for (Provider provider : ProviderDAO.getProviders()) {
                         if (provider.getProviderNumber() != Main.providerMain.getProviderNumber() && !Provider.provideTheSameEvent(provider, UserPageController.upcomingEvent)) {
@@ -155,23 +155,25 @@ public class EventPageUserController {
     }
     
     public void seeArtist(ActionEvent actionEvent) {
-        enterValidDataHour.setVisible(false);
-        String chosen = possibleArtists.getSelectionModel().getSelectedItem();
-        String artist = chosen.substring(0, chosen.indexOf("-") - 1);
-        for (Provider provider : ProviderDAO.getProviders()) {
-            if (provider.getArtistName().equals(artist)) {
-                priceHourToSet.setText("€" + provider.getPriceHour());
-                minHoursToSet.setText(provider.getMinHours() + " hours");
-                maxHoursToSet.setText(provider.getMaxHours() + " hours");
-                if (provider.getConditions().equals(""))
-                    conditionsToSet.setText("/");
-                else
-                    conditionsToSet.setText(provider.getConditions());
-                chosenProvider = provider;
-                priceHourToSet.setVisible(true);
-                minHoursToSet.setVisible(true);
-                maxHoursToSet.setVisible(true);
-                conditionsToSet.setVisible(true);
+        if (possibleArtists.getSelectionModel().getSelectedItem() != null) {
+            enterValidDataHour.setVisible(false);
+            String chosen = possibleArtists.getSelectionModel().getSelectedItem();
+            String artist = chosen.substring(0, chosen.indexOf("-") - 1);
+            for (Provider provider : ProviderDAO.getProviders()) {
+                if (provider.getArtistName().equals(artist)) {
+                    priceHourToSet.setText("€" + provider.getPriceHour());
+                    minHoursToSet.setText(provider.getMinHours() + " hours");
+                    maxHoursToSet.setText(provider.getMaxHours() + " hours");
+                    if (provider.getConditions().equals(""))
+                        conditionsToSet.setText("/");
+                    else
+                        conditionsToSet.setText(provider.getConditions());
+                    chosenProvider = provider;
+                    priceHourToSet.setVisible(true);
+                    minHoursToSet.setVisible(true);
+                    maxHoursToSet.setVisible(true);
+                    conditionsToSet.setVisible(true);
+                }
             }
         }
     }

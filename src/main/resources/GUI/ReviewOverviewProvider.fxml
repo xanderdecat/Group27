@@ -30,6 +30,7 @@
             <Label fx:id="nameToSet" layoutX="481.0" layoutY="245.0" text="(NAME)" />
             <Label layoutX="359.0" layoutY="210.0" text="Event of review:" />
             <Label fx:id="eventToSet" layoutX="481.0" layoutY="210.0" text="(EVENT)" />
+            <Label fx:id="noReviewsReceived" layoutX="95.0" layoutY="215.0" text="No reviews received yet" />
          </children>
       </AnchorPane>
    </children>
